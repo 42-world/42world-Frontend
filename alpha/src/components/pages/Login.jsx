@@ -35,7 +35,13 @@ const Login = () => {
   return (
     <LoginBlock>
       <div className="video-container">
-        <video src="assets/videos/video-4.mp4" type="video/mp4" loop muted />
+        <video
+          src="assets/videos/video-4.mp4"
+          type="video/mp4"
+          loop
+          muted
+          autoplay
+        />
         <Main>
           <div className="title">
             <img src="assets/images/logo/Logo@1x.png" alt="" />

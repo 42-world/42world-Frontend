@@ -9,20 +9,6 @@ import {
 } from "../organisms/main";
 
 const Main = () => {
-  const [mainContent, setMainContent] = useState([]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     let { content } = await getRecentBoardArticleList();
-  //     setMainContent(
-  //       content.sort(
-  //         (a, b) =>
-  //           new Date(a.createdAt).getTime() > new Date(b.createdAt).getTime()
-  //       )
-  //     );
-  //   })();
-  // }, []);
-
   return (
     <MainContainer>
       <main className="main-container">
