@@ -1,7 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TopNav from "./components/organisms/TopNav";
+import Community from "./components/pages/Community";
 import Login from "./components/pages/Login";
 import Main from "./components/pages/Main";
+import Mypage from "./components/pages/Mypage";
+import Signup from "./components/pages/Signup";
+import Writing from "./components/pages/Writing";
 
 const Router = () => {
   return (
@@ -10,6 +14,10 @@ const Router = () => {
         <Route path="/" element={<TopNav />}>
           <Route exact path="/" element={<Main />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/Signup" element={<Signup />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/writing" element={<Writing />} />
         </Route>
         {/* <Route path="/" element={<LoginCheck />}>
           

@@ -1,3 +1,10 @@
+/* 색은 여기에 저장해놓으시면 됩니다. */
+:root {
+  --primary: #2a2d38;
+  --primary-point: #53b7ba;
+  --primary-white: #f8f8f8;
+}
+
 .App {
   text-align: center;
 }

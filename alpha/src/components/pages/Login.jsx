@@ -1,36 +1,33 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  Link,
-  useNavigate,
-} from "../../../node_modules/react-router-dom/index";
+//import { useNavigate } from "../../../node_modules/react-router-dom/index";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [loginInfo, setLoginInfo] = useState({});
+  //const navigate = useNavigate();
+  //const [loginInfo, setLoginInfo] = useState({});
   //const { setIsLogin } = useContext(UserContext);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginInfo({ ...loginInfo, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setLoginInfo({ ...loginInfo, [name]: value });
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // const { error, token, msg } = await tryLogin(loginInfo);
-    // console.log(error, token, msg);
-    // if (!error) {
-    //   localStorage.setItem("token", token);
-    //   //localStorage.token = token;
-    //   //Instance.defaults.headers.common["Authorization"] = token;
-    //   axios.defaults.headers.common["Authorization"] = token;
-    //   setIsLogin(true);
-    //   navigate("/");
-    // } else {
-    //   localStorage.removeItem("token");
-    //   alert(msg);
-    // }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // const { error, token, msg } = await tryLogin(loginInfo);
+  //   // console.log(error, token, msg);
+  //   // if (!error) {
+  //   //   localStorage.setItem("token", token);
+  //   //   //localStorage.token = token;
+  //   //   //Instance.defaults.headers.common["Authorization"] = token;
+  //   //   axios.defaults.headers.common["Authorization"] = token;
+  //   //   setIsLogin(true);
+  //   //   navigate("/");
+  //   // } else {
+  //   //   localStorage.removeItem("token");
+  //   //   alert(msg);
+  //   // }
+  // };
 
   return (
     <LoginBlock>
@@ -38,9 +35,9 @@ const Login = () => {
         <video
           src="assets/videos/video-4.mp4"
           type="video/mp4"
+          autoPlay
           loop
           muted
-          autoplay
         />
         <Main>
           <div className="title">
@@ -48,23 +45,18 @@ const Login = () => {
             <p>당신이 있기에 행복한 42</p>
           </div>
           <div className="Box">
-            <form className="Loginform" onSubmit={handleSubmit}>
-              <InputText
-                name="email"
-                placeholder="이메일"
-                value={loginInfo.email}
-                onChange={handleChange}
-              />
-              <InputText
-                name="password"
-                placeholder="비밀번호"
-                type="password"
-                value={loginInfo.password}
-                onChange={handleChange}
-              />
-              <BtnSubmit>로그인</BtnSubmit>
-            </form>
-            <BtnSeoul>42Seoul로 로그인</BtnSeoul>
+            <center className="Alert">
+              <p>42WORLD 커뮤니티는</p>
+              <p>
+                42서울인들과{" "}
+                <span className="Important">취업자/창업자/알럼나이/카뎃</span>을
+              </p>
+              <p>아우르느 통합 커뮤니티입니다.</p>
+              <p>여러분의 피드백을 받아</p>
+              <p>지속적인 업데이트가 이루어 집니다.</p>
+            </center>
+            <span className="LoginTitle">로그인하기</span>
+            <button className="BtnSeoul">42Seoul로 로그인</button>
             {/* <ForgotPassword>비밀번호를 잊으셨나요?</ForgotPassword> */}
           </div>
           {/* <Box>
@@ -89,15 +81,47 @@ export const Main = styled.main`
     font-size: 1.5rem;
     color: white;
     text-align: center;
+    font-weight: bold;
   }
   .Box {
     width: 500px;
     padding: 10px 0;
     margin-bottom: 10px;
-    background: #fff;
+    background: var(--primary-white);
     border: 1px solid #dbdbdb;
     text-align: center;
     border-radius: 10px;
+    .Alert {
+      padding: 20px 5px;
+      font-size: 1.25rem;
+      p {
+        margin-top: 5px;
+        font-weight: 700;
+        .Important {
+          color: var(--primary-point);
+        }
+      }
+    }
+    .LoginTitle {
+      display: block;
+      margin-top: 50px;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .BtnSeoul {
+      width: 77%;
+      padding: 13px 9px;
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+      background: #2a2d38;
+      color: #fff;
+      border: 1px solid #d8d8d8;
+      box-sizing: border-box;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
     .Loginform {
       margin-top: 24px;
       padding: 0 40px;
@@ -145,16 +169,6 @@ export const SignupWrapper = styled.div`
   }
 `;
 
-export const BtnSeoul = styled.button`
-  width: 77%;
-  padding: 6px 9px;
-  background: #2c2d2d;
-  color: #fff;
-  border: transparent;
-  border-radius: 4px;
-  font-weight: bold;
-`;
-
 const LoginBlock = styled.div`
   video {
     object-fit: cover;
@@ -165,6 +179,8 @@ const LoginBlock = styled.div`
   }
 
   .video-container {
+    position: fixed;
+    scrollbar-width: none;
     /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
     height: 100vh;
     width: 100%;

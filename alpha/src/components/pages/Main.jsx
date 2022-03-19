@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import styled from "styled-components";
-//import { PostList } from "../organisms";
+import { Container } from "../atoms/global";
 import {
-  BestBoardCard,
-  BoardCard,
+  // BestBoardCard,
+  // BoardCard,
   Searchbar,
   RealtimeFamousCompany,
 } from "../organisms/main";
@@ -39,22 +39,13 @@ const Main = () => {
   );
 };
 
-const BoardCardContainer = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 45px 40px;
-`;
+const MainContainer = styled(Container)``;
 
-export const MainContainer = styled.div`
-  display: flex;
-  margin: auto;
-  width: 100%;
-  max-width: 1100px;
-  main {
-    width: 100%;
-    max-width: 736px;
-  }
-`;
+// const BoardCardContainer = styled.div`
+//   width: 100%;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 45px 40px;
+// `;
 
 export default Main;
