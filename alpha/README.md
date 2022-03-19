@@ -5,6 +5,8 @@ npm start
 
 # 임시 배포 위치
 
+[https://festive-engelbart-6556a5.netlify.app/](https://festive-engelbart-6556a5.netlify.app/)
+
 # 개발 순서
 
 - 1. 목업 디자인을 만듭니다.(반응형 고려)
@@ -33,3 +35,7 @@ qs
 ![readme/img.png](readme/img.png)
 
 # 참고할만한 사이트
+
+# 개발팁
+
+jsx 파일안에서 `srfc` 하면 자동으로 styled components 형태로 만들어짐
