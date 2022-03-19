@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 //import { getCompanyListFamous } from "../../../apis/company";
 
 function RealtimeFamousCompany() {
-  const [companyList, setCompanyList] = useState([]);
+  //const [companyList, setCompanyList] = useState([]);
   // useEffect(() => {
   //   (async () => {
   //     const data = await getCompanyListFamous();
@@ -15,12 +15,7 @@ function RealtimeFamousCompany() {
     <RealtimeWrapper>
       <div className="head">실시간 인기 회사</div>
       <ol>
-        {companyList.map((v, i) => (
-          <li key={v._id}>
-            <em>{i + 1}</em>
-            {v.name}
-          </li>
-        ))}
+        <li>삼성전자</li>
       </ol>
       <p>
         <AiOutlineInfoCircle size="14" />
