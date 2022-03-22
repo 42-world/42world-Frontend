@@ -45,83 +45,22 @@ function TopNavTMP() {
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커뮤니티
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>커뮤니티</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>익명1</li>
-                        <li>연애게시판</li>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>익명1</li>
-                        <li>연애게시판</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </li>
 
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커리어
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>커리어</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>스타벅스 오리가미</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 생활
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>생활</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>연애게시판</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 프로젝트
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>프로젝트</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>스타벅스 오리가미</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </li>
 
             <li>
@@ -201,60 +140,18 @@ const TopNavBlock = styled.nav`
     margin-right: 2rem;
     .nav-item {
       height: 80px;
-      .nav-links {
-        color: #fff;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        height: 100%;
-      }
-      :hover {
-        transition: all 0.2s ease-out;
-        background-color: var(--primary-point);
-        color: var(--primary-white);
-        .nav-contents {
-          display: block;
-        }
-      }
-
-      .nav-contents {
-        width: 100%;
-        position: fixed;
-        left: 0;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        .contents-menu {
-          background-color: var(--primary-point);
-          .inner {
-            //display: flex;
-            padding: 10px 0;
-            li {
-              //width: 220px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              h4 {
-                display: block;
-                height: 100%;
-                margin-right: 10px;
-                font-size: 48px;
-                color: #fff;
-              }
-              ul {
-                li {
-                  padding: 5px 10px;
-                  font-size: 12px;
-                  color: var(--primary);
-                  cursor: pointer;
-                  border-left: 1px solid #fff;
-                }
-              }
-            }
-          }
-        }
-      }
+    }
+    .nav-links {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      height: 100%;
+    }
+    .nav-links:hover {
+      border-bottom: 4px solid #fff;
+      transition: all 0.2s ease-out;
     }
   }
 
