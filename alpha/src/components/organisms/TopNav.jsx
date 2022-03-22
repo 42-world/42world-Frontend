@@ -44,6 +44,7 @@ function TopNav() {
                 커뮤니티
               </Link>
             </li>
+
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커리어
@@ -135,24 +136,21 @@ const TopNavBlock = styled.nav`
     width: 60vw;
     justify-content: end;
     margin-right: 2rem;
-  }
-
-  .nav-item {
-    height: 80px;
-  }
-
-  .nav-links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    height: 100%;
-  }
-
-  .nav-links:hover {
-    border-bottom: 4px solid #fff;
-    transition: all 0.2s ease-out;
+    .nav-item {
+      height: 80px;
+    }
+    .nav-links {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      height: 100%;
+    }
+    .nav-links:hover {
+      border-bottom: 4px solid #fff;
+      transition: all 0.2s ease-out;
+    }
   }
 
   .fa-bars {
