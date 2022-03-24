@@ -71,6 +71,16 @@ const ArticleContentBlock = styled.div`
     .article_info {
       color: #888;
     }
+    .edit_article {
+      button {
+        border: none;
+        background-color: transparent;
+        color: #555;
+        font-size: 0.8rem;
+        margin-right: 0.4rem;
+        font-weight: bold;
+      }
+    }
   }
 
   .content {
