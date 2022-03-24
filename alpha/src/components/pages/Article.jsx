@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/global";
 import { CommunityList } from "../organisms/community";
-import { ArticleContent } from "../organisms/article";
+import { ArticleContent, Comment } from "../organisms/article";
 
 const Article = () => {
   return (
@@ -10,18 +10,18 @@ const Article = () => {
       <div className="community_block">
         <CommunityList />
       </div>
-      <div>
+      <div className="article_block">
         <ArticleContent />
+        <Comment />
       </div>
     </ArticleBlock>
   );
 };
 
 const ArticleBlock = styled(Container)`
-  background-color: #f8f8f8;
   display: flex;
   flex-direction: row;
-  padding: 1.5rem 0;
+  margin-top: 1.5rem;
 
   & > div {
     margin: 0 0.8rem;
@@ -30,6 +30,11 @@ const ArticleBlock = styled(Container)`
   }
   .community_block {
     width: 13rem;
+  }
+  .article_block {
+    & > div {
+      margin-bottom: 1.5rem;
+    }
   }
 `;
 
