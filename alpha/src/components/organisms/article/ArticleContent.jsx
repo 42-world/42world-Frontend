@@ -9,7 +9,7 @@ const ArticleContent = () => {
   const isModifiable = true;
   const isReactionPossible = true;
   const [isLike, setIsLike] = React.useState(true);
-  const likeCount = 3;
+
   return (
     <ArticleContentBlock>
       <div className="header">

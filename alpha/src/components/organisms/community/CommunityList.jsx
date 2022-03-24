@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CommunityList = () => {
-  const [curCommunity, setCurCommunity] = React.useState("자유게시판");
+  const [curCommunity] = React.useState("자유게시판");
 
   const communityList = [
     "자유게시판",
