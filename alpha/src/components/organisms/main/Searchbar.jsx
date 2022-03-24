@@ -24,7 +24,8 @@ const SearchBar = () => {
 
 const WrapSearchbar = styled.form`
   margin: 40px 0 20px;
-  width: 100%;
+  width: 76.8rem;
+
   & > input {
     display: block;
     padding: 0 10px 0 62px;
@@ -34,6 +35,10 @@ const WrapSearchbar = styled.form`
     border: 2px solid #222;
     border-radius: 30px;
     box-sizing: border-box;
+  }
+
+  ${(props) => props.theme.mobileSize} {
+    width: 100%;
   }
 `;
 //absolute는 margin으로 relative는 top,left등으로
