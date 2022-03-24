@@ -88,7 +88,6 @@ function TopNav() {
 const OutletWrapper = styled.div`
   //margin-top: 70px;
   height: 100vh;
-  background-color: #f8f8f8;
   //background: #fafafa;
 `;
 
