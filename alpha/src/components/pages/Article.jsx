@@ -26,7 +26,6 @@ const ArticleBlock = styled(Container)`
   & > div {
     margin: 0 0.8rem;
     width: 100%;
-    min-width: max-content;
   }
   .community_block {
     width: 13rem;
