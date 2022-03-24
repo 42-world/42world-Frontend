@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 
 const WritingContent = ({ articleInfo }) => {
@@ -13,6 +14,26 @@ const WritingContent = ({ articleInfo }) => {
     "고양이게시판",
     "강아지게시판",
   ];
+  const editorRef = React.useRef(null);
+
+  const markdownEditorSetting = () => {
+    const editor = editorRef.current;
+    editor.getRootElement().classList.add("editor");
+    editor.getInstance().removeHook("addImageBlobHook");
+    //editor.getInstance().addHook("addImageBlobHook", (blob, callback) => {
+    //  (async () => {
+    //    ImageService.uploadImage(blob).then((res) => {
+    //      callback(res);
+    //    });
+    //  })();
+    //});   마크다운을 통한 이미지 업로드 시 필요한 기능
+  };
+
+  React.useEffect(() => {
+    if (editorRef.current) {
+      markdownEditorSetting();
+    }
+  }, [editorRef]);
 
   return (
     <WritingContentBlock>
@@ -30,7 +51,15 @@ const WritingContent = ({ articleInfo }) => {
           placeholder="제목을 입력하세요"
         />
       </div>
-      <div className="content"></div>
+      <div className="content">
+        <Editor
+          previewStyle="vertical"
+          initialEditType="wysiwyg"
+          onChange={() => {}}
+          ref={editorRef}
+        />
+        <button className="submit">글쓰기</button>
+      </div>
     </WritingContentBlock>
   );
 };
@@ -57,11 +86,22 @@ const WritingContentBlock = styled.div`
       padding: 0.5rem 0.5rem;
       font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
     }
   }
 
   .content {
+    margin-top: 1rem;
+    .submit {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.5rem 0.5rem;
+      border: none;
+      background-color: #53b7ba;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 0.3rem;
+    }
   }
 `;
 
