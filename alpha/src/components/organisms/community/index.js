@@ -1,1 +1,3 @@
-export { default as Community } from "./Community";
+export { default as LeftBar } from "./LeftBar";
+export { default as Board } from "./Board";
+export { default as Advertisement } from "./Advertisement";
