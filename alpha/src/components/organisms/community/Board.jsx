@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import {
-  // ArticleList,
-  // ArticleTitle,
-  // Body,
-  // CountDisplay,
-  // CountItem,
-  // Head,
-  // TitleSide,
-  // Wrapper,
-  BoardContainer
+  ArticleList,
+  ArticleTitle,
+  BoardIcon,
+  BoardLink,
+  Body,
+  CountItem,
+  Head,
+  TitleSide,
+  Wrapper
 } from "../../atoms/Board";
+import { AiOutlineEye } from "react-icons/ai";
+
 import styled from "styled-components";
 
 const getData = () => {
@@ -53,16 +55,29 @@ const Board = () => {
   }, []);
   return (
     <CommunityBlock>
-      <div className="header">
-        <h1>자유게시판</h1> <h2>검색</h2>
-        <button>글 쓰기</button>
-      </div>
-      <BoardContainer>
-        {Articles &&
-          Articles.map(article => {
-            return <div>{article.content}</div>;
-          })}
-      </BoardContainer>
+      <Wrapper>
+        <Head>
+          <TitleSide>
+            <BoardIcon></BoardIcon>
+            <h2>자유게시판</h2>
+          </TitleSide>
+          <BoardLink to={`/topics/1`}>더보기 +</BoardLink>
+        </Head>
+        <Body>
+          <ArticleList>
+            {Articles &&
+              Articles.map((a, id) => (
+                <li key={a.title + id}>
+                  <ArticleTitle>{a.title}</ArticleTitle>
+                  <CountItem>
+                    <AiOutlineEye size="16" className="icon" />
+                    <span>{a.viewCount}</span>
+                  </CountItem>
+                </li>
+              ))}
+          </ArticleList>
+        </Body>
+      </Wrapper>
     </CommunityBlock>
   );
 };
