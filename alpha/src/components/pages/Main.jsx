@@ -1,8 +1,10 @@
 //import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/global";
-import CategoryPreview from "../organisms/CategoryPreview";
+import CategoryPreview from "../organisms/main/CategoryPreview";
 import { Searchbar } from "../organisms/main";
+import QuickLink from "../organisms/main/QuickLink";
+import ClusterStatus from "../organisms/main/ClusterStatus";
 
 const categories = [
   { id: 0, name: "인기글" },
@@ -14,7 +16,7 @@ const Main = () => {
   // 카테고리 종류랄 받아오면
   return (
     <MainContainer>
-      <main className="main-container">
+      <main>
         <Searchbar />
         <div className="category-preview-container">
           {categories.map((category) => (
@@ -22,16 +24,40 @@ const Main = () => {
           ))}
         </div>
       </main>
+      <aside>
+        <ClusterStatus />
+        <QuickLink />
+      </aside>
     </MainContainer>
   );
 };
 
 const MainContainer = styled(Container)`
-  width: 76.8rem;
+  justify-content: center;
+
+  main,
+  aside {
+    margin-top: 4rem;
+  }
+
+  main {
+    max-width: 76.8rem;
+  }
+
+  aside {
+    width: 24rem;
+    padding-left: 2rem;
+
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
+  }
+
   .category-preview-container {
     display: flex;
     flex-wrap: wrap;
 
+    margin-top: 2rem;
     max-width: 76.8rem;
   }
 `;

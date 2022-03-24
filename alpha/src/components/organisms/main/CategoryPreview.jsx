@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import ArticlePreview from "./ArticlePreview";
 
-import data from "../../datas";
+import data from "../../../datas";
 
 const CategoryPreview = ({ title }) => {
   const [articles] = useState(data.articles.data);

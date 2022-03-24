@@ -51,4 +51,7 @@ export const theme = {
   //   mobileMinWidth: "28rem",
   //   desktopWidth: "24.5rem"
   mobileSize: "@media screen and (max-width: 768px)",
+
+  //shadow
+  boxShadow: "1px 2px 6px 0px rgba(0, 0, 0, 0.3)",
 };

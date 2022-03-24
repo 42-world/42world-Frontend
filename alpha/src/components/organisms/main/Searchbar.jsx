@@ -23,7 +23,6 @@ const SearchBar = () => {
 };
 
 const WrapSearchbar = styled.form`
-  margin: 40px 0 20px;
   width: 76.8rem;
 
   & > input {
