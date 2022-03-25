@@ -11,13 +11,13 @@ const MypageProfileSect = () => {
       windowHeight={window.innerHeight}>
       <div className="mypage-photo-sect">
         <img alt="테스트" src={MypageData.profilePhoto} />
-        <button>사진 변경</button>
+        <MypageButton>사진 변경</MypageButton>
       </div>
       <div className="mypage-auth-sect">
         <h1>{MypageData.userName}</h1>
         <div className="mypage-auth-button">
-          <button className="btn-auth-42">42인증하기</button>
-          <button className="btn-logout">로그아웃</button>
+          <MypageButton btnType="auth-42">42인증하기</MypageButton>
+          <MypageButton>로그아웃</MypageButton>
         </div>
       </div>
     </MypageProfileContainer>
@@ -48,6 +48,17 @@ const Mypage = () => {
   );
 };
 
+const MypageButton = styled.button`
+  padding: 2pt 5pt;
+  margin: 0 5px;
+  border: none;
+  width: 60pt;
+  font-size: 10pt;
+  background-color: ${(props) =>
+    props.btnType === "auth-42" ? "#53b7ba" : "#2a2d38"};
+  color: white;
+`;
+
 const MypageProfileContainer = styled.div`
   width: 75%;
   border: 1px solid red;
@@ -69,26 +80,12 @@ const MypageProfileContainer = styled.div`
       border-radius: 50%;
       margin-bottom: 5px;
     }
-    button {
-      padding: 2pt 5pt;
-      width: fit-content;
-      height: 16pt;
-      font-size: 10pt;
-      background-color: #2a2d38;
-      color: white;
-      border: none;
-    }
   }
   .mypage-auth-sect {
     border: 1px solid green;
     width: 60%;
     .mypage-auth-button {
       margin: 5px;
-      .btn-auth-42 {
-        padding: 2pt 5pt;
-        border: none;
-        background-color: #53b7ba;
-      }
     }
   }
 `;
