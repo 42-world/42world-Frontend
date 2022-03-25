@@ -11,6 +11,9 @@ const MypageProfileSect = () => {
         <img alt="테스트" src={MypageData.profilePhoto} />
         <button>사진 변경</button>
       </div>
+      <div className="mypage-auth-sect">
+        <h1>{MypageData.userName}</h1>
+      </div>
     </MypageProfileContainer>
   );
 };
@@ -29,7 +32,7 @@ const Mypage = () => {
       <MypageContainer windowWidth={window.innerWidth}>
         <h1>마이페이지</h1>
         <hr />
-        <div>
+        <div className="mypage-section">
           <MypageProfileSect />
           <MyPageLinkSect />
         </div>
@@ -40,8 +43,10 @@ const Mypage = () => {
 };
 
 const MypageProfileContainer = styled.div`
-width: 70%;
+width: 75%;
 border: 1px solid red;
+display: flex;
+align-items: center;
 .mypage-photo-sect {
   border: 1px solid blue;
   width: 40%;
@@ -49,19 +54,25 @@ border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   img {
-    width: 40%;
+    height: 70%;
     border: 2px solid black;
     border-radius: 50%;
+    margin-bottom: 5px;
   }
   button {
-    margin: 5px 0px;
     width: 40%;
+    font-size: 10pt;
+    height: 16pt;
+    background-color: #2a2d38;
+    color: white;
+    border: none;
   }
 `;
 
 const MyPageLinkContainer = styled.div`
-  width: 30%;
+  width: 25%;
   border: 1px solid black;
 `;
 
@@ -69,7 +80,7 @@ const MypageContainer = styled.div`
   background-color: white;
   box-shadow: 2px 5px 5px gray;
   margin: 10px;
-  width: ${(props) => (props.windowWidth <= 960 ? "100% - 10px" : "70%")};
+  width: ${(props) => (props.windowWidth <= 960 ? "calc(100% - 20px)" : "70%")};
   height: ${(props) => (props.windowWidth <= 960 ? "30vh" : "40vh")};
   border-radius: 10px;
   h1 {
@@ -82,9 +93,14 @@ const MypageContainer = styled.div`
     padding: 0;
     color: #d8d8d8;
   }
-  div {
+  .mypage-section {
+    margin: 5px;
+    padding: 5px;
     display: flex;
-    height: 90%;
+    height: ${(props) =>
+      props.windowWidth <= 960
+        ? "calc(100% - 35pt - 25px)"
+        : "calc(100% - 40pt - 25px)"};
   }
 `;
 //Line Color: lineGray3 (#d8d8d8)
