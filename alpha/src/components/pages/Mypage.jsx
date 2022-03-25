@@ -26,7 +26,7 @@ const MypageProfileSect = ({ profileImg, userName }) => {
 };
 
 const MyPageLinkSect = ({ links }) => {
-  const MypageGetIcon = (linkType) => {
+  const GetIcon = (linkType) => {
     return linkType === "github" ? (
       <IconSet.IconGithub />
     ) : linkType === "intra42" ? (
@@ -44,7 +44,7 @@ const MyPageLinkSect = ({ links }) => {
   for (let i in links)
     arr.push(
       <div className="mypage-link">
-        <a href={links[i][0]}>{MypageGetIcon(i)}</a>
+        <a href={links[i][0]}>{GetIcon(i)}</a>
         {links[i][1]}
       </div>
     );
