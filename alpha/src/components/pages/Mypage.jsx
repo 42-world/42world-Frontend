@@ -5,27 +5,6 @@ import { Container } from "../atoms/global";
 import IconSet from "../atoms/Mypage";
 import MypageData from "../../datas/mypage";
 
-const MypageLink = ({ linkType, linkName, linkHref }) => {
-  const icon =
-    linkType === "github" ? (
-      <IconSet.IconGithub />
-    ) : linkType === "intra42" ? (
-      <IconSet.Icon42 />
-    ) : linkType === "linkedin" ? (
-      <IconSet.IconLinkedIn />
-    ) : linkType === "twitter" ? (
-      <IconSet.IconTwitter />
-    ) : linkType === "facebook" ? (
-      <IconSet.IconFacebook />
-    ) : undefined;
-  return (
-    <div className="mypage-link">
-      <a href={linkHref}>{icon}</a>
-      {linkName}
-    </div>
-  );
-};
-
 const MypageProfileSect = ({ profileImg, userName }) => {
   return (
     <MypageProfileContainer
@@ -47,17 +26,30 @@ const MypageProfileSect = ({ profileImg, userName }) => {
 };
 
 const MyPageLinkSect = ({ links }) => {
+  const MypageGetIcon = (linkType) => {
+    return linkType === "github" ? (
+      <IconSet.IconGithub />
+    ) : linkType === "intra42" ? (
+      <IconSet.Icon42 />
+    ) : linkType === "linkedin" ? (
+      <IconSet.IconLinkedIn />
+    ) : linkType === "twitter" ? (
+      <IconSet.IconTwitter />
+    ) : linkType === "facebook" ? (
+      <IconSet.IconFacebook />
+    ) : undefined;
+  };
+
   let arr = [];
   for (let i in links)
     arr.push(
-      <MypageLink linkType={i} linkHref={links[i][0]} linkName={links[i][1]} />
+      <div className="mypage-link">
+        <a href={links[i][0]}>{MypageGetIcon(i)}</a>
+        {links[i][1]}
+      </div>
     );
 
-  return (
-    <>
-      <MyPageLinkContainer>{arr}</MyPageLinkContainer>
-    </>
-  );
+  return <MyPageLinkContainer>{arr}</MyPageLinkContainer>;
 };
 
 const Mypage = () => {
