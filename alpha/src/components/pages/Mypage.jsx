@@ -2,19 +2,42 @@ import React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/global";
 
+import IconSet from "../atoms/Mypage";
 import MypageData from "../../datas/mypage";
 
-const MypageProfileSect = () => {
+const MypageLink = ({ linkType, linkName, linkHref }) => {
+  const icon =
+    linkType === "github"
+      ? IconSet.IconGithub
+      : linkType === "intra42"
+      ? IconSet.Icon42
+      : linkType === "linkedin"
+      ? IconSet.IconLinkedIn
+      : linkType === "twitter"
+      ? IconSet.IconTwitter
+      : linkType === "facebook"
+      ? IconSet.IconFacebook
+      : undefined;
+
+  return (
+    <div className="mypage-link">
+      <a href={linkHref}>{icon}</a>
+      {linkName}
+    </div>
+  );
+};
+
+const MypageProfileSect = ({ profileImg, userName }) => {
   return (
     <MypageProfileContainer
       windowWidth={window.innerWidth}
       windowHeight={window.innerHeight}>
       <div className="mypage-photo-sect">
-        <img alt="테스트" src={MypageData.profilePhoto} />
+        <img alt="테스트" src={profileImg} />
         <MypageButton>사진 변경</MypageButton>
       </div>
       <div className="mypage-auth-sect">
-        <h1>{MypageData.userName}</h1>
+        <h1>{userName}</h1>
         <div className="mypage-auth-button">
           <MypageButton btnType="auth-42">42인증하기</MypageButton>
           <MypageButton>로그아웃</MypageButton>
@@ -24,23 +47,35 @@ const MypageProfileSect = () => {
   );
 };
 
-const MyPageLinkSect = () => {
+const MyPageLinkSect = ({ links }) => {
+  let arr = [];
+  for (let i in links) {
+    arr.push(<MypageLink linkType={i} linkHref={links[i][0]} linkName={links[i][1]} />)
+  }
   return (
     <>
-      <MyPageLinkContainer>bye</MyPageLinkContainer>
+      <MyPageLinkContainer>{
+        links => {
+          for
+        }
+        }</MyPageLinkContainer>
     </>
   );
 };
 
 const Mypage = () => {
+  //MypageData 대신 props로 데이터 받아와야 함 (아마도)
   return (
     <MypageBlock>
       <MypageContainer windowWidth={window.innerWidth}>
         <h1>마이페이지</h1>
         <hr />
         <div className="mypage-section">
-          <MypageProfileSect />
-          <MyPageLinkSect />
+          <MypageProfileSect
+            profileImg={MypageData.profilePhoto}
+            userName={MypageData.userName}
+          />
+          <MyPageLinkSect links={MypageData.links} />
         </div>
       </MypageContainer>
       <div>게시물 영역</div>
@@ -85,7 +120,9 @@ const MypageProfileContainer = styled.div`
     border: 1px solid green;
     width: 60%;
     h1 {
-      margin: 10px 5px;
+      font-size: ${(props) => (props.windowWidth <= 960 ? "20pt" : "30pt")};
+      margin: ${(props) =>
+        props.windowWidth < props.windowHeight ? "10px 5px" : "20px 5px"};
       border: 1px solid black;
     }
     .mypage-auth-button {
