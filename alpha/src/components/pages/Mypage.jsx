@@ -13,6 +13,10 @@ const MypageProfileSect = () => {
       </div>
       <div className="mypage-auth-sect">
         <h1>{MypageData.userName}</h1>
+        <div className="mypage-auth-button">
+          <button className="btn-auth-42">42인증하기</button>
+          <button className="btn-logout">로그아웃</button>
+        </div>
       </div>
     </MypageProfileContainer>
   );
