@@ -6,7 +6,9 @@ import MypageData from "../../datas/mypage";
 
 const MypageProfileSect = () => {
   return (
-    <MypageProfileContainer>
+    <MypageProfileContainer
+      windowWidth={window.innerWidth}
+      windowHeight={window.innerHeight}>
       <div className="mypage-photo-sect">
         <img alt="테스트" src={MypageData.profilePhoto} />
         <button>사진 변경</button>
@@ -41,37 +43,53 @@ const Mypage = () => {
           <MyPageLinkSect />
         </div>
       </MypageContainer>
-      <div>게시물 역</div>
+      <div>게시물 영역</div>
     </MypageBlock>
   );
 };
 
 const MypageProfileContainer = styled.div`
-width: 75%;
-border: 1px solid red;
-display: flex;
-align-items: center;
-.mypage-photo-sect {
-  border: 1px solid blue;
-  width: 40%;
-  height: 100%;
+  width: 75%;
+  border: 1px solid red;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  img {
-    height: 70%;
-    border: 2px solid black;
-    border-radius: 50%;
-    margin-bottom: 5px;
-  }
-  button {
+  .mypage-photo-sect {
+    border: 1px solid blue;
     width: 40%;
-    font-size: 10pt;
-    height: 16pt;
-    background-color: #2a2d38;
-    color: white;
-    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    img {
+      ${(props) =>
+        props.windowWidth < props.windowHeight ? "width: 70%" : "height: 70%"};
+      border: 2px solid black;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+    button {
+      padding: 2pt 5pt;
+      width: fit-content;
+      height: 16pt;
+      font-size: 10pt;
+      background-color: #2a2d38;
+      color: white;
+      border: none;
+    }
+  }
+  .mypage-auth-sect {
+    border: 1px solid green;
+    width: 60%;
+    .mypage-auth-button {
+      margin: 5px;
+      .btn-auth-42 {
+        padding: 2pt 5pt;
+        border: none;
+        background-color: #53b7ba;
+      }
+    }
   }
 `;
 
@@ -89,8 +107,8 @@ const MypageContainer = styled.div`
   border-radius: 10px;
   h1 {
     margin: 5pt;
-    height: ${(props) => (props.windowWidth <= 960 ? "35pt" : "40pt")};
-    font-size: ${(props) => (props.windowWidth <= 960 ? "25pt" : "30pt")};
+    height: ${(props) => (props.windowWidth <= 960 ? "30pt" : "40pt")};
+    font-size: ${(props) => (props.windowWidth <= 960 ? "20pt" : "30pt")};
   }
   hr {
     margin: 0;
