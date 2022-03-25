@@ -50,7 +50,7 @@ const Mypage = () => {
 
 const MypageButton = styled.button`
   padding: 2pt 5pt;
-  margin: 0 5px;
+  margin: 3px 5px;
   border: none;
   width: 60pt;
   font-size: 10pt;
@@ -84,8 +84,13 @@ const MypageProfileContainer = styled.div`
   .mypage-auth-sect {
     border: 1px solid green;
     width: 60%;
+    h1 {
+      margin: 10px 5px;
+      border: 1px solid black;
+    }
     .mypage-auth-button {
-      margin: 5px;
+      margin: 10px 5px;
+      border: 1px solid black;
     }
   }
 `;
