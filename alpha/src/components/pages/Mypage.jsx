@@ -18,7 +18,7 @@ const MypageProfileSect = () => {
 const MyPageLinkSect = () => {
   return (
     <>
-      <div className="mypage-photo-sect">bye</div>
+      <MyPageLinkContainer>bye</MyPageLinkContainer>
     </>
   );
 };
@@ -34,6 +34,7 @@ const Mypage = () => {
           <MyPageLinkSect />
         </div>
       </MypageContainer>
+      <div>게시물 역</div>
     </MypageBlock>
   );
 };
@@ -43,7 +44,8 @@ width: 70%;
 border: 1px solid red;
 .mypage-photo-sect {
   border: 1px solid blue;
-  width: 50%;
+  width: 40%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,34 +60,39 @@ border: 1px solid red;
   }
 `;
 
+const MyPageLinkContainer = styled.div`
+  width: 30%;
+  border: 1px solid black;
+`;
+
 const MypageContainer = styled.div`
   background-color: white;
   box-shadow: 2px 5px 5px gray;
   margin: 10px;
-  width: ${(props) => (props.windowWidth <= 960 ? "100vw" : "30vw")};
-  height: 40vh;
+  width: ${(props) => (props.windowWidth <= 960 ? "100% - 10px" : "70%")};
+  height: ${(props) => (props.windowWidth <= 960 ? "30vh" : "40vh")};
   border-radius: 10px;
   h1 {
-    margin: 1% 2%;
-    height: 10%;
-    display: inline-block;
-    vertical-align: middle;
+    margin: 5pt;
+    height: ${(props) => (props.windowWidth <= 960 ? "35pt" : "40pt")};
     font-size: ${(props) => (props.windowWidth <= 960 ? "25pt" : "30pt")};
   }
   hr {
     margin: 0;
     padding: 0;
+    color: #d8d8d8;
   }
   div {
     display: flex;
-    }
-    div:nth-child(2) {
-      width: 30%;
-      border: 1px solid black;
-    }
+    height: 90%;
   }
 `;
+//Line Color: lineGray3 (#d8d8d8)
 
-const MypageBlock = styled(Container)``;
+const MypageBlock = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid magenta;
+`;
 
 export default Mypage;
