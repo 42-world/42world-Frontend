@@ -45,11 +45,15 @@ const MyPageLinkSect = ({ links }) => {
     arr.push(
       <div className="mypage-link">
         <a href={links[i][0]}>{GetIcon(i)}</a>
-        {links[i][1]}
+        <span>{links[i][1]}</span>
       </div>
     );
 
-  return <MyPageLinkContainer>{arr}</MyPageLinkContainer>;
+  return (
+    <MyPageLinkContainer windowWidth={window.innerWidth}>
+      {arr}
+    </MyPageLinkContainer>
+  );
 };
 
 const Mypage = () => {
@@ -84,12 +88,11 @@ const MypageButton = styled.button`
 `;
 
 const MypageProfileContainer = styled.div`
-  width: 75%;
+  width: ${(props) => (props.windowWidth <= 960 ? "65%" : "75%")};
   border: 1px solid red;
   display: flex;
   align-items: center;
   .mypage-photo-sect {
-    border: 1px solid blue;
     width: 40%;
     height: 100%;
     display: flex;
@@ -106,24 +109,40 @@ const MypageProfileContainer = styled.div`
     }
   }
   .mypage-auth-sect {
-    border: 1px solid green;
     width: 60%;
     h1 {
       font-size: ${(props) => (props.windowWidth <= 960 ? "20pt" : "30pt")};
       margin: ${(props) =>
         props.windowWidth < props.windowHeight ? "10px 5px" : "20px 5px"};
-      border: 1px solid black;
+      padding: 0 0 0 5px;
     }
     .mypage-auth-button {
       margin: 10px 5px;
-      border: 1px solid black;
     }
   }
 `;
 
 const MyPageLinkContainer = styled.div`
-  width: 25%;
+  width: ${(props) => (props.windowWidth <= 960 ? "35%" : "25%")};
   border: 1px solid black;
+  font-size: 5%;
+  .mypage-link {
+    height: 20pt;
+    padding: 0 0 0 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    svg {
+      width: 10pt;
+      margin: 0 3px;
+    }
+    span {
+      overflow: auto;
+      font-size: 10pt;
+      display: inline-block;
+      margin: 0 3px;
+    }
+  }
 `;
 
 const MypageContainer = styled.div`
