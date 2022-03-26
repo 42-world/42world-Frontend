@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 import PreviewArticles from "./PreviewArticles";
+import BoardHeader from "./BoardHeader";
+
 // import { AiOutlineEye } from "react-icons/ai";
 
 import { ArticleList, Body, Head, TitleSide, Wrapper } from "../../atoms/Board";
@@ -50,11 +52,11 @@ const Board = () => {
   return (
     <CommunityBlock>
       <Wrapper>
-        <Head>
-          <TitleSide>
-            <h2>자유게시판</h2>
-          </TitleSide>
-        </Head>
+        {/* <Head> */}
+        {/* <TitleSide> */}
+        <BoardHeader />
+        {/* </TitleSide> */}
+        {/* </Head> */}
         <Body>
           <ArticleList>
             {Articles &&
