@@ -25,9 +25,14 @@ const CommunityBlock = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  margin: 2em;
+  margin: 1em;
   .title {
     border-bottom: 1px solid black;
+    font-size: 18px;
+  }
+  text {
+    margin: 0.3em;
+    font-weight: bold;
   }
 `;
 
