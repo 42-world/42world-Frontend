@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  ArticleList,
-  ArticleTitle,
-  BoardIcon,
-  BoardLink,
-  Body,
-  CountItem,
-  Head,
-  TitleSide,
-  Wrapper,
-} from "../../atoms/Board";
-import { AiOutlineEye } from "react-icons/ai";
 
+import PreviewArticles from "./PreviewArticles";
+// import { AiOutlineEye } from "react-icons/ai";
+
+import { ArticleList, Body, Head, TitleSide, Wrapper } from "../../atoms/Board";
 import styled from "styled-components";
 
 const getData = () => {
@@ -27,6 +19,7 @@ const getData = () => {
             viewCount: 124,
             likeCount: 16,
             commentCount: 4,
+            id: 1,
           },
           {
             title: "success",
@@ -36,6 +29,7 @@ const getData = () => {
             viewCount: 124,
             likeCount: 16,
             commentCount: 4,
+            id: 2,
           },
         ]),
       1000
@@ -64,14 +58,8 @@ const Board = () => {
         <Body>
           <ArticleList>
             {Articles &&
-              Articles.map((a, id) => (
-                <li key={a.title + id}>
-                  <ArticleTitle>{a.title}</ArticleTitle>
-                  <CountItem>
-                    <AiOutlineEye />
-                    <span>{a.viewCount}</span>
-                  </CountItem>
-                </li>
+              Articles.map((article, id) => (
+                <PreviewArticles key={article.id} article={article} />
               ))}
           </ArticleList>
         </Body>
