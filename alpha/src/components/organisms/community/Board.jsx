@@ -8,7 +8,7 @@ import {
   CountItem,
   Head,
   TitleSide,
-  Wrapper
+  Wrapper,
 } from "../../atoms/Board";
 import { AiOutlineEye } from "react-icons/ai";
 
@@ -26,7 +26,7 @@ const getData = () => {
             createTime: "2022-03-24",
             viewCount: 124,
             likeCount: 16,
-            commentCount: 4
+            commentCount: 4,
           },
           {
             title: "success",
@@ -35,8 +35,8 @@ const getData = () => {
             createTime: "2022-03-24",
             viewCount: 124,
             likeCount: 16,
-            commentCount: 4
-          }
+            commentCount: 4,
+          },
         ]),
       1000
     );
@@ -58,10 +58,8 @@ const Board = () => {
       <Wrapper>
         <Head>
           <TitleSide>
-            <BoardIcon></BoardIcon>
             <h2>자유게시판</h2>
           </TitleSide>
-          <BoardLink to={`/topics/1`}>더보기 +</BoardLink>
         </Head>
         <Body>
           <ArticleList>
@@ -70,7 +68,7 @@ const Board = () => {
                 <li key={a.title + id}>
                   <ArticleTitle>{a.title}</ArticleTitle>
                   <CountItem>
-                    <AiOutlineEye size="16" className="icon" />
+                    <AiOutlineEye />
                     <span>{a.viewCount}</span>
                   </CountItem>
                 </li>
@@ -83,6 +81,9 @@ const Board = () => {
 };
 
 const CommunityBlock = styled.div`
+  border: 1px solid black;
+  margin: 1em;
+  width: 90%;
   .header {
     display: flex;
     flex-direction: row;

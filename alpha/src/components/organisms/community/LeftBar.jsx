@@ -9,18 +9,26 @@ const LeftBar = () => {
     "지듣노[지최가듣는노래]",
     "42Chelin",
     "고양이게시판",
-    "강아지 게시판"
+    "강아지 게시판",
   ];
   return (
     <CommunityBlock>
-      <h1>커뮤니티</h1>
-      {categoryList.map(cate => (
-        <h1>{cate}</h1>
+      <text className="title">커뮤니티</text>
+      {categoryList.map((cate) => (
+        <text>{cate}</text>
       ))}
     </CommunityBlock>
   );
 };
 
-const CommunityBlock = styled.div``;
+const CommunityBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 2em;
+  .title {
+    border-bottom: 1px solid black;
+  }
+`;
 
 export default LeftBar;
