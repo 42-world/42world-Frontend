@@ -71,21 +71,24 @@ const Mypage = () => {
   //MypageData 대신 props로 데이터 받아와야 함 (아마도)
   return (
     <MypageBlock windowWidth={window.innerWidth}>
-      <MypageContainer windowWidth={window.innerWidth}>
-        <h1>마이페이지</h1>
-        <hr />
-        <div className="mypage-section">
-          <MypageProfileSect
-            profileImg={MypageData.profilePhoto}
-            userName={MypageData.userName}
-          />
-          <MypageLinkSect links={MypageData.links} />
+      <div className="mypage-left">
+        <MypageProfile windowWidth={window.innerWidth}>
+          <h1>마이페이지</h1>
+          <hr />
+          <div className="mypage-section">
+            <MypageProfileSect
+              profileImg={MypageData.profilePhoto}
+              userName={MypageData.userName}
+            />
+            <MypageLinkSect links={MypageData.links} />
+          </div>
+        </MypageProfile>
+        <div className="mypage-article">
+          {/*게시글 박스 컴포넌트 가져와서 심어야 할 부분*/}
+          <div>내 게시글</div> <div>내 댓글</div>
         </div>
-      </MypageContainer>
-      <div className="mypage-article-container">
-        {/*게시글 박스 컴포넌트 가져와서 심어야 할 부분*/}
-        <div>내 게시글</div> <div>내 댓글</div>
       </div>
+      <div className="mypage-right">나머지</div>
     </MypageBlock>
   );
 };
@@ -96,9 +99,9 @@ const MypageButton = styled.button`
   border: none;
   width: ${(props) =>
     props.windowWidth <= 640
-      ? props.windowWidth <= 370
-        ? "100%"
-        : "80%"
+      ? "80%"
+      : props.windowWidth <= 360
+      ? "100%"
       : "40%"};
   height: ${(props) => (props.windowWidth <= 960 ? "fit-content" : "25pt")};
   font-size: ${(props) =>
@@ -126,7 +129,11 @@ const MypageProfileContainer = styled.div`
     overflow: auto;
     img {
       ${(props) =>
-        props.windowWidth < props.windowHeight ? "width: 70%" : "height: 50%"};
+        props.windowWidth <= 450
+          ? "width: 55%"
+          : props.windowWidth <= 550
+          ? "width: 50%"
+          : "height: 50%"};
       border: 2px solid black;
       border-radius: 50%;
       margin-bottom: 5px;
@@ -180,11 +187,11 @@ const MypageLinkContainer = styled.div`
   }
 `;
 
-const MypageContainer = styled.div`
+const MypageProfile = styled.div`
   background-color: white;
   box-shadow: 2px 5px 5px gray;
   margin: 10px;
-  width: ${(props) => (props.windowWidth <= 960 ? "calc(100% - 20px)" : "70%")};
+  width: calc(100% - 20px)
   height: ${(props) => (props.windowWidth <= 960 ? "30vh" : "40vh")};
   border-radius: 10px;
   h1 {
@@ -212,23 +219,35 @@ const MypageContainer = styled.div`
 
 const MypageBlock = styled(Container)`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border: 1px solid magenta;
-  .mypage-article-container {
-    width: 100%;
-    height: 500px;
-    border: 1px solid black;
+  .mypage-left {
+    width: ${(props) => (props.windowWidth <= 960 ? "100%" : "70%")};
     display: flex;
-    flex-direction: ${(props) => (props.windowWidth <= 960 ? "column" : "row")};
-    div {
-      background-color: white;
-      width: ${(props) =>
-        props.windowWidth <= 960 ? "calc(100% - 20px)" : "calc(35% - 10px)"};
-      height: calc(100% - 20px);
-      box-shadow: 2px 5px 5px gray;
-      margin: 10px;
-      border-radius: 10px;
+    flex-direction: column;
+    .mypage-article {
+      width: 100%;
+      height: 400px;
+      display: flex;
+      margin-top: 10px;
+      flex-direction: ${(props) =>
+        props.windowWidth <= 960 ? "column" : "row"};
+      div {
+        background-color: white;
+        width: ${(props) =>
+          props.windowWidth <= 960 ? "calc(100% - 20px)" : "calc(50% - 10px);"};
+        height: calc(100% - 20px);
+        box-shadow: 2px 5px 5px gray;
+        margin: 10px;
+        border-radius: 10px;
+      }
     }
+  }
+  .mypage-right {
+    display: ${(props) => (props.windowWidth <= 960 ? "none" : "inline")};
+    width: calc(30% - 10px);
+    margin: 5px;
+    background-color: gray;
   }
 `;
 
