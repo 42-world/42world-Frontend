@@ -70,7 +70,7 @@ const MypageLinkSect = ({ links }) => {
 const Mypage = () => {
   //MypageData 대신 props로 데이터 받아와야 함 (아마도)
   return (
-    <MypageBlock>
+    <MypageBlock windowWidth={window.innerWidth}>
       <MypageContainer windowWidth={window.innerWidth}>
         <h1>마이페이지</h1>
         <hr />
@@ -82,7 +82,10 @@ const Mypage = () => {
           <MypageLinkSect links={MypageData.links} />
         </div>
       </MypageContainer>
-      <div>게시물 영역</div>
+      <div className="mypage-article-container">
+        {/*게시글 박스 컴포넌트 가져와서 심어야 할 부분*/}
+        <div>내 게시글</div> <div>내 댓글</div>
+      </div>
     </MypageBlock>
   );
 };
@@ -211,6 +214,22 @@ const MypageBlock = styled(Container)`
   display: flex;
   flex-direction: column;
   border: 1px solid magenta;
+  .mypage-article-container {
+    width: 100%;
+    height: 500px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: ${(props) => (props.windowWidth <= 960 ? "column" : "row")};
+    div {
+      background-color: white;
+      width: ${(props) =>
+        props.windowWidth <= 960 ? "calc(100% - 20px)" : "calc(35% - 10px)"};
+      height: calc(100% - 20px);
+      box-shadow: 2px 5px 5px gray;
+      margin: 10px;
+      border-radius: 10px;
+    }
+  }
 `;
 
 export default Mypage;
