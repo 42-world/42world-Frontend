@@ -12,13 +12,15 @@ const MypageProfileSect = ({ profileImg, userName }) => {
       windowHeight={window.innerHeight}>
       <div className="mypage-photo-sect">
         <img alt="테스트" src={profileImg} />
-        <MypageButton>사진 변경</MypageButton>
+        <MypageButton windowWidth={window.innerWidth}>사진 변경</MypageButton>
       </div>
       <div className="mypage-auth-sect">
         <h1>{userName}</h1>
         <div className="mypage-auth-button">
-          <MypageButton btnType="auth-42">42인증하기</MypageButton>
-          <MypageButton>로그아웃</MypageButton>
+          <MypageButton btnType="auth-42" windowWidth={window.innerWidth}>
+            42인증
+          </MypageButton>
+          <MypageButton windowWidth={window.innerWidth}>로그아웃</MypageButton>
         </div>
       </div>
     </MypageProfileContainer>
@@ -40,11 +42,19 @@ const MyPageLinkSect = ({ links }) => {
     ) : undefined;
   };
 
+  const handleOnClick = (e, linkHref) => {
+    e.preventDefault();
+    console.log("clicked");
+    console.log(linkHref); //링크 누르면 이동하도록 수정
+  };
+
   let arr = [];
   for (let i in links)
     arr.push(
-      <div className="mypage-link">
-        <a href={links[i][0]}>{GetIcon(i)}</a>
+      <div
+        className="mypage-link"
+        onClick={(e) => handleOnClick(e, links[i][0])}>
+        {GetIcon(i)}
         <span>{links[i][1]}</span>
       </div>
     );
@@ -78,10 +88,21 @@ const Mypage = () => {
 
 const MypageButton = styled.button`
   padding: 2pt 5pt;
-  margin: 3px 5px;
+  margin: 3px 0;
   border: none;
-  width: 60pt;
-  font-size: 10pt;
+  width: ${(props) =>
+    props.windowWidth <= 640
+      ? props.windowWidth <= 370
+        ? "100%"
+        : "80%"
+      : "40%"};
+  height: ${(props) => (props.windowWidth <= 960 ? "fit-content" : "25pt")};
+  font-size: ${(props) =>
+    props.windowWidth <= 960
+      ? "8pt"
+      : props.windowWidth <= 1280
+      ? "10pt"
+      : "15pt"};
   background-color: ${(props) =>
     props.btnType === "auth-42" ? "#53b7ba" : "#2a2d38"};
   color: white;
@@ -89,7 +110,6 @@ const MypageButton = styled.button`
 
 const MypageProfileContainer = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "65%" : "75%")};
-  border: 1px solid red;
   display: flex;
   align-items: center;
   .mypage-photo-sect {
@@ -102,7 +122,7 @@ const MypageProfileContainer = styled.div`
     overflow: auto;
     img {
       ${(props) =>
-        props.windowWidth < props.windowHeight ? "width: 70%" : "height: 70%"};
+        props.windowWidth < props.windowHeight ? "width: 70%" : "height: 50%"};
       border: 2px solid black;
       border-radius: 50%;
       margin-bottom: 5px;
@@ -111,13 +131,23 @@ const MypageProfileContainer = styled.div`
   .mypage-auth-sect {
     width: 60%;
     h1 {
-      font-size: ${(props) => (props.windowWidth <= 960 ? "20pt" : "30pt")};
+      display: flex;
+      align-items: center;
+      font-size: ${(props) => (props.windowWidth <= 960 ? "20px" : "30px")};
+      text-overflow: ellipsis;
       margin: ${(props) =>
-        props.windowWidth < props.windowHeight ? "10px 5px" : "20px 5px"};
-      padding: 0 0 0 5px;
+        props.windowWidth < props.windowHeight
+          ? "5px 5px 5px 8px"
+          : "20px 5px 20px 5px"};
     }
     .mypage-auth-button {
-      margin: 10px 5px;
+      margin: ${(props) =>
+        props.windowWidth < props.windowHeight
+          ? "5px 5px 5px 8px"
+          : "20px 5px 20px 5px"};
+      button {
+        margin-right: 5px;
+      }
     }
   }
 `;
@@ -126,15 +156,20 @@ const MyPageLinkContainer = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "35%" : "25%")};
   border: 1px solid black;
   font-size: 5%;
+  padding: 5px;
   .mypage-link {
+    border: 1px solid green;
     height: 20pt;
     padding: 0 0 0 5px;
+    margin-bottom: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    svg {
-      width: 10pt;
-      margin: 0 3px;
+    a {
+      height: fit-content;
+      svg {
+        width: ${(props) => (props.windowWidth <= 960 ? "10pt" : "20pt")};
+      }
     }
     span {
       overflow: auto;
@@ -154,6 +189,7 @@ const MypageContainer = styled.div`
   border-radius: 10px;
   h1 {
     margin: 5pt;
+    margin-left: ${(props) => (props.windowWidth <= 960 ? "10px" : "20px")};
     height: ${(props) => (props.windowWidth <= 960 ? "30pt" : "40pt")};
     font-size: ${(props) => (props.windowWidth <= 960 ? "20pt" : "30pt")};
   }
