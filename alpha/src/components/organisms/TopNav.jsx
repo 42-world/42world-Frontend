@@ -45,83 +45,90 @@ function TopNavTMP() {
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커뮤니티
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>커뮤니티</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>익명1</li>
-                        <li>연애게시판</li>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>익명1</li>
-                        <li>연애게시판</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
 
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커리어
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>커리어</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>스타벅스 오리가미</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                생활
+                일상생활
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>생활</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>연애게시판</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 프로젝트
               </Link>
-              <div className="nav-contents">
-                <div className="contents-menu">
-                  <ul className="inner">
-                    <li>
-                      <h4>프로젝트</h4>
-                      <ul>
-                        <li>자유게시판</li>
-                        <li>익명2</li>
-                        <li>스타벅스 오리가미</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
 
             <li>
@@ -193,64 +200,63 @@ const TopNavBlock = styled.nav`
   .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
+    grid-gap: 5px;
     list-style: none;
     text-align: center;
     width: 60vw;
     justify-content: end;
     margin-right: 2rem;
     .nav-item {
-      height: 80px;
+      width: 100px;
+      position: relative;
+      margin: 0 1px;
       .nav-links {
         color: #fff;
         display: flex;
         align-items: center;
+        justify-content: center;
         text-decoration: none;
-        padding: 0.5rem 1rem;
+        padding: 0 1rem;
         height: 100%;
       }
-      :hover {
+      &:hover {
+        color: black;
         transition: all 0.2s ease-out;
         background-color: var(--primary-point);
-        color: var(--primary-white);
+
         .nav-contents {
           display: block;
         }
       }
 
       .nav-contents {
-        width: 100%;
-        position: fixed;
+        width: 250px;
+        position: relative;
         left: 0;
         display: none;
-        align-items: center;
-        justify-content: center;
-        .contents-menu {
-          background-color: var(--primary-point);
-          .inner {
-            //display: flex;
-            padding: 10px 0;
-            li {
-              //width: 220px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              h4 {
-                display: block;
-                height: 100%;
-                margin-right: 10px;
-                font-size: 48px;
-                color: #fff;
-              }
-              ul {
-                li {
-                  padding: 5px 10px;
-                  font-size: 12px;
-                  color: var(--primary);
-                  cursor: pointer;
-                  border-left: 1px solid #fff;
-                }
-              }
+        background-color: var(--primary-point);
+        border-radius: 0 0 5px 5px;
+
+        li {
+          display: flex;
+          padding: 2px 0;
+
+          .contents-links {
+            padding: 3px 0;
+            font-size: 12px;
+            color: #000;
+            cursor: pointer;
+            text-decoration: none;
+          }
+          &:hover {
+            background-color: var(--primary-white);
+            color: black;
+            margin: 0;
+            + .contents-links {
+              font-weight: bold;
+              height: 35px;
+              overflow: visible;
+              padding: 0;
             }
           }
         }
