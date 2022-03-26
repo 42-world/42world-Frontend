@@ -53,6 +53,7 @@ const MypageLinkSect = ({ links }) => {
     arr.push(
       <div
         className="mypage-link"
+        key={i}
         onClick={(e) => handleOnClick(e, links[i][0])}>
         {GetIcon(i)}
         <span>{links[i][1]}</span>
@@ -154,19 +155,18 @@ const MypageProfileContainer = styled.div`
 
 const MypageLinkContainer = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "35%" : "25%")};
-  border: 1px solid black;
+  border-left: 1px solid #d8d8d8;
   font-size: 5%;
   padding: 5px;
   .mypage-link {
-    border: 1px solid green;
     height: 20pt;
     padding: 0 0 0 5px;
-    margin-bottom: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     svg {
-      width: ${(props) => (props.windowWidth <= 960 ? "10pt" : "20pt")};
+      margin-right: 3px;
+      width: ${(props) => (props.windowWidth <= 960 ? "10pt" : "15pt")};
     }
     span {
       overflow: auto;
