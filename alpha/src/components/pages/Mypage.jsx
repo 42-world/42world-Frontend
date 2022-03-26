@@ -27,7 +27,7 @@ const MypageProfileSect = ({ profileImg, userName }) => {
   );
 };
 
-const MyPageLinkSect = ({ links }) => {
+const MypageLinkSect = ({ links }) => {
   const GetIcon = (linkType) => {
     return linkType === "github" ? (
       <IconSet.IconGithub />
@@ -60,9 +60,9 @@ const MyPageLinkSect = ({ links }) => {
     );
 
   return (
-    <MyPageLinkContainer windowWidth={window.innerWidth}>
+    <MypageLinkContainer windowWidth={window.innerWidth}>
       {arr}
-    </MyPageLinkContainer>
+    </MypageLinkContainer>
   );
 };
 
@@ -78,7 +78,7 @@ const Mypage = () => {
             profileImg={MypageData.profilePhoto}
             userName={MypageData.userName}
           />
-          <MyPageLinkSect links={MypageData.links} />
+          <MypageLinkSect links={MypageData.links} />
         </div>
       </MypageContainer>
       <div>게시물 영역</div>
@@ -152,7 +152,7 @@ const MypageProfileContainer = styled.div`
   }
 `;
 
-const MyPageLinkContainer = styled.div`
+const MypageLinkContainer = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "35%" : "25%")};
   border: 1px solid black;
   font-size: 5%;
@@ -165,11 +165,8 @@ const MyPageLinkContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    a {
-      height: fit-content;
-      svg {
-        width: ${(props) => (props.windowWidth <= 960 ? "10pt" : "20pt")};
-      }
+    svg {
+      width: ${(props) => (props.windowWidth <= 960 ? "10pt" : "20pt")};
     }
     span {
       overflow: auto;
