@@ -10,13 +10,13 @@ export const PageWrapper = styled.div`
 export const Main = styled.main`
   width: 350px;
 `;
-export const Box = styled.div`
-  padding: 10px 0;
-  margin-bottom: 10px;
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  text-align: center;
-`;
+// export const Box = styled.div`
+//   padding: 10px 0;
+//   margin-bottom: 10px;
+//   background: #fff;
+//   border: 1px solid #dbdbdb;
+//   text-align: center;
+// `;
 export const Logo = styled.img`
   margin: 22px auto 12px;
   height: 60px;
@@ -58,12 +58,63 @@ export const SignupWrapper = styled.div`
   }
 `;
 
+export const Title = styled.div`
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+`;
+
+export const Alert = styled.div`
+  padding: 20px 5px;
+  p {
+    margin-top: 5px;
+    font-weight: 700;
+    .Important {
+      color: var(--primary-point);
+    }
+  }
+  @media screen and (min-width: 960px) {
+    font-size: 1.25rem;
+  }
+
+  @media screen and (max-width: 960px) {
+    font-size: 1rem;
+  }
+`;
+
+export const LoginTitle = styled.span`
+  display: block;
+  margin-top: 50px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  @media screen and (min-width: 960px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 960px) {
+    font-size: 1.5rem;
+  }
+`;
+
 export const BtnSeoul = styled.button`
   width: 77%;
-  padding: 6px 9px;
-  background: #2c2d2d;
+  padding: 13px 9px;
+  margin-bottom: 20px;
+  background: #2a2d38;
   color: #fff;
-  border: transparent;
-  border-radius: 4px;
+  border: 1px solid #d8d8d8;
+  box-sizing: border-box;
+  border-radius: 10px;
   font-weight: bold;
+  cursor: pointer;
+  @media screen and (min-width: 960px) {
+    font-size: 1.25rem;
+  }
+  @media screen and (max-width: 960px) {
+    font-size: 1rem;
+  }
 `;
