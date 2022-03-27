@@ -32,7 +32,7 @@ export const BoardLink = styled(Link)`
 `;
 //big
 export const Body = styled.div`
-  padding: 32px 0;
+  padding: 5px 0;
   width: 100%;
   max-width: 1100px;
   margin: auto;

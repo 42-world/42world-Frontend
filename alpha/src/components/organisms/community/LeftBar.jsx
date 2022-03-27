@@ -13,26 +13,43 @@ const LeftBar = () => {
   ];
   return (
     <CommunityBlock>
-      <text className="title">커뮤니티</text>
-      {categoryList.map((cate) => (
-        <text>{cate}</text>
-      ))}
+      <div className="title">커뮤니티</div>
+      <div className="category">
+        {categoryList.map((cate) => (
+          <div className="category-list">{cate}</div>
+        ))}
+      </div>
     </CommunityBlock>
   );
 };
 
 const CommunityBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  margin: 1em;
-  .title {
-    border-bottom: 1px solid black;
-    font-size: 18px;
+  @media screen and (min-width: 960px) {
+    width: 254px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 24px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .title {
+      padding: 5px 5px;
+      border-bottom: 1px solid #d8d8d8;
+      font-size: 18px;
+    }
+    .category {
+      margin: 5px 0;
+      .category-list {
+        padding: 5px 0px;
+        padding-left: 15px;
+        font-size: 12px;
+        line-height: 10px;
+        cursor: pointer;
+      }
+    }
   }
-  text {
-    margin: 0.3em;
-    font-weight: bold;
+  @media screen and (max-width: 960px) {
+    display: none;
   }
 `;
 

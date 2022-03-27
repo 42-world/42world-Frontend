@@ -50,34 +50,50 @@ const Board = () => {
     getArticles();
   }, []);
   return (
-    <CommunityBlock>
-      <Wrapper>
-        {/* <Head> */}
-        {/* <TitleSide> */}
-        <BoardHeader />
-        {/* </TitleSide> */}
-        {/* </Head> */}
-        <Body>
-          <ArticleList>
-            {Articles &&
-              Articles.map((article, id) => (
-                <PreviewArticles key={article.id} article={article} />
-              ))}
-          </ArticleList>
-        </Body>
-      </Wrapper>
-    </CommunityBlock>
+    <>
+      <CommunityBlock>
+        <Wrapper>
+          {/* <Head> */}
+          {/* <TitleSide> */}
+          <div className="BoardHeaderWrapper">
+            <BoardHeader />
+          </div>
+          {/* </TitleSide> */}
+          {/* </Head> */}
+          <Body>
+            <ArticleList>
+              {Articles &&
+                Articles.map((article, id) => (
+                  <PreviewArticles key={article.id} article={article} />
+                ))}
+            </ArticleList>
+          </Body>
+        </Wrapper>
+      </CommunityBlock>
+    </>
   );
 };
 
 const CommunityBlock = styled.div`
-  border: 1px solid black;
-  margin: 1em;
-  width: 90%;
-  .header {
-    display: flex;
-    flex-direction: row;
+  //@media screen and (min-width: 960px) {
+  //border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .BoardHeaderWrapper {
+    border-bottom: 1px solid #d8d8d8;
   }
+  /* .header {
+      display: flex;
+      flex-direction: row;
+    } */
+  //}
 `;
 
 export default Board;

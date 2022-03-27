@@ -16,18 +16,19 @@ const Community = () => {
 };
 
 const CommunityBlock = styled(Container)`
+  //background-color: royalblue;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  //height: 100%;
   .body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-grow: 4;
+    //flex-grow: 4;
   }
-  .page {
+  /* .page {
     flex-grow: 1;
-  }
+  } */
 `;
 
 export default Community;

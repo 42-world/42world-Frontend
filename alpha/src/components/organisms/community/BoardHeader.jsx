@@ -26,7 +26,7 @@ const BoardHeader = () => {
 
   return (
     <BoardHeaderDiv>
-      <h2>자유게시판</h2>
+      <h2 className="title">자유게시판</h2>
       <div className="side-box">
         <form onSubmit={handleSubmitSearch}>
           <div className="input-box">
@@ -49,37 +49,63 @@ const BoardHeader = () => {
 export default BoardHeader;
 
 const BoardHeaderDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  .side-box {
-    display: flex;
-    flex-direction: row;
-  }
-  .side-box > * {
-    margin: 0.2em;
-  }
-  h2 {
-    margin: 0.2em;
-  }
-
-  .input-box {
-    border: 1px solid gray;
-
-    display: flex;
-    padding: 0.2em;
-    border-radius: 1em;
-    input {
-      border: 0px;
-    }
-  }
-
   button {
     background: #53b7ba;
     color: #ffffff;
     border: 0px;
     padding: 0 0.7em 0 0.7em;
-    border-radius: 1em;
+    border-radius: 20px;
     cursor: pointer;
+  }
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    font-size: 18px;
+  }
+  .side-box {
+    display: flex;
+    flex-direction: row;
+    margin: 0.2em;
+    .input-box {
+      width: 40vw;
+      border: 1px solid #dbdbdb;
+      display: flex;
+      padding: 0.2em;
+      border-radius: 1em;
+      margin-right: 10px;
+      color: black;
+      input {
+        font-size: 14px;
+        width: 30vw;
+        border: 0px;
+        &::placeholder {
+          color: #dee2e6;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 960px) {
+    .side-box {
+      .input-box {
+        width: 20vw;
+        input {
+          font-size: 14px;
+          width: 16vw;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .side-box {
+      .input-box {
+        width: 40vw;
+        input {
+          font-size: 14px;
+          width: 30vw;
+        }
+      }
+    }
   }
 `;

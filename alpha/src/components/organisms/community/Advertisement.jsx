@@ -6,10 +6,17 @@ const Advertisement = () => {
 };
 
 const CommunityBlock = styled.div`
-  height: 100%;
-  width: 30%;
-  border: 1px solid red;
-  margin: 1em;
+  @media screen and (min-width: 960px) {
+    height: 840px;
+    width: 154px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--primary-point);
+  }
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export default Advertisement;
