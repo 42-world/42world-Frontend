@@ -225,7 +225,6 @@ const MypageProfile = styled.div`
 const MypageBlock = styled(Container)`
   display: flex;
   flex-direction: row;
-  border: 1px solid magenta;
   .mypage-left {
     width: ${(props) => (props.windowWidth <= 960 ? "100%" : "70%")};
     display: flex;
