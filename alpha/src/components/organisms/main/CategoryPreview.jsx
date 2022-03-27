@@ -40,7 +40,7 @@ const CategoryPreviewWrapper = styled.div`
   border-radius: ${rem(10)};
 
   .title {
-    padding: ${rem(8)} ${rem(16)};
+    padding: ${rem(8)} ${rem(8)};
     display: flex;
     justify-content: space-between;
 
