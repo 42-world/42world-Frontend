@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import ArticlePreview from "./ArticlePreview";
+import { HiThumbUp } from "react-icons/hi";
 
 import data from "../../../datas";
 
@@ -12,10 +13,10 @@ const CategoryPreview = ({ title }) => {
     <CategoryPreviewWrapper>
       <div className="title">
         <div className="title-left">
-          <div>아이콘</div>
+          <HiThumbUp />
           <h2>{title}</h2>
         </div>
-        <button>더 보기</button>
+        <button className="more">{"더 보기 >"}</button>
       </div>
       {articles.map((article) => (
         <ArticlePreview
@@ -32,23 +33,29 @@ const CategoryPreview = ({ title }) => {
 const CategoryPreviewWrapper = styled.div`
   background: white;
 
-  width: 38rem;
-  margin: 0.2rem;
-  box-shadow: 1px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  width: 36rem;
+  margin: 1rem;
+  // box-shadow: ${(props) => props.theme.boxShadow};
+  border-radius: 1rem;
 
   .title {
-    padding: 0.8rem;
+    padding: 0.8rem 1.6rem;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid red;
-  }
 
-  .title-left {
-    display: flex;
-    align-items: center;
+    .title-left {
+      display: flex;
+      align-items: center;
 
-    & > * {
-      margin: 0 0.2rem;
+      svg {
+        font-size: 1.6rem;
+        margin-right: 0.6rem;
+      }
+    }
+
+    button.more {
+      border: none;
+      background: transparent;
     }
   }
 

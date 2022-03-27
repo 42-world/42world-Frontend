@@ -6,7 +6,7 @@ import { BiCommentDots } from "react-icons/bi";
 const ArticlePreview = ({ title, likeCount, commentCount }) => {
   return (
     <ArticlePreviewWrapper>
-      <div>{title}</div>
+      <h3>{title}</h3>
       <ReactionWrapper>
         <span className="like">
           <AiOutlineHeart />
@@ -29,8 +29,12 @@ const ArticlePreviewWrapper = styled.div`
   align-items: center;
 
   font-size: 1.2rem;
-  padding: 0.5rem;
-  border-bottom: 0.1rem solid #ddd;
+  padding: 0.5rem 1rem;
+  border-top: 0.1rem solid ${(props) => props.theme.lineGray1};
+
+  h3 {
+    font-weight: normal;
+  }
 `;
 
 const ReactionWrapper = styled.div`
@@ -39,14 +43,15 @@ const ReactionWrapper = styled.div`
   & > span {
     display: flex;
     align-items: center;
+    padding: 0.4rem;
   }
 
   .like {
-    color: red;
+    color: ${(props) => props.theme.buttonRed1};
   }
 
   .comment {
-    color: blue;
+    color: ${(props) => props.theme.buttonBlue2};
   }
 `;
 

@@ -54,5 +54,5 @@ export const theme = {
   mobileSize: "@media screen and (max-width: 768px)",
 
   //shadow
-  boxShadow: "1px 2px 6px 0px rgba(0, 0, 0, 0.3)",
+  boxShadow: "0.1rem 0.1rem 0.1rem 0px rgba(0, 0, 0, 0.3)",
 };
