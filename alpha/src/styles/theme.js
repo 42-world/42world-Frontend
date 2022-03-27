@@ -18,6 +18,7 @@ export const theme = {
   backgroundBlue1: "#e4f3f3",
   backgroundBlue2: "#53b7ba",
   backgroundBlue3: "#4c5a66",
+  backgroundBlue4: "#4b7c99",
 
   //Text Color
   textWhite: "#fff",

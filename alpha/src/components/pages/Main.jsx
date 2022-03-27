@@ -1,10 +1,10 @@
 //import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/global";
-import CategoryPreview from "../organisms/main/CategoryPreview";
+import { CategoryPreview } from "../organisms/main";
 import { Searchbar } from "../organisms/main";
-import QuickLink from "../organisms/main/QuickLink";
-import ClusterStatus from "../organisms/main/ClusterStatus";
+import { QuickLink } from "../organisms/main";
+import { ClusterStatus } from "../organisms/main";
 
 const categories = [
   { id: 0, name: "인기글" },
@@ -50,6 +50,10 @@ const MainContainer = styled(Container)`
 
     @media screen and (max-width: 1100px) {
       display: none;
+      // opacity: 0;
+      // width: 0;
+      // padding-left: 0;
+      // transition: opacity 1s;
     }
   }
 
