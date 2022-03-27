@@ -103,7 +103,12 @@ const MypageButton = styled.button`
       : props.windowWidth <= 360
       ? "100%"
       : "40%"};
-  height: ${(props) => (props.windowWidth <= 960 ? "fit-content" : "25pt")};
+  height: ${(props) =>
+    props.windowWidth <= 640
+      ? "fit-content"
+      : props.windowWidth <= 960
+      ? "20pt"
+      : "25pt"};
   font-size: ${(props) =>
     props.windowWidth <= 960
       ? "8pt"
