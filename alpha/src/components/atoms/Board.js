@@ -6,6 +6,7 @@ export const Head = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   h2 {
     font-size: 18px;
     line-height: 43px;
@@ -15,6 +16,8 @@ export const TitleSide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+
   h2 {
     margin-left: 5px;
   }
@@ -29,7 +32,7 @@ export const BoardLink = styled(Link)`
 `;
 //big
 export const Body = styled.div`
-  padding: 32px 0;
+  padding: 5px 0;
   width: 100%;
   max-width: 1100px;
   margin: auto;
