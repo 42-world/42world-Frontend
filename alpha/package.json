@@ -12,6 +12,7 @@
     "jquery": "^3.6.0",
     "lodash.kebabcase": "^4.1.1",
     "memoize-one": "^6.0.0",
+    "dayjs": "^1.11.0",
     "qs": "^6.10.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.2",
