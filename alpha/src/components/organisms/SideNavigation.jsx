@@ -10,7 +10,6 @@ import {
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const SideNavigation = ({ handleClick }) => {
   // const [collapsed, setCollapsed] = useState(false);

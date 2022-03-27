@@ -4,7 +4,6 @@ import { Button } from "../atoms/Button.jsx";
 import { Link } from "react-router-dom";
 import styled from "../../../node_modules/styled-components/dist/styled-components.cjs";
 import { Outlet } from "../../../node_modules/react-router-dom/index.js";
-import SiteNav, { ContentGroup } from "../atoms/Navbar.js";
 import SideNavigation from "./SideNavigation.jsx";
 
 function TopNavTMP() {
