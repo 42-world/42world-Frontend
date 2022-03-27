@@ -27,6 +27,7 @@ const QuickLinkWrapper = styled.div`
   align-items: center;
 
   width: inherit;
+  // box-shadow: ${(props) => props.theme.boxShadow};
   background: ${(props) => props.theme.backgroundGray1};
   margin-top: ${rem(20)};
   border-radius: ${rem(10)};

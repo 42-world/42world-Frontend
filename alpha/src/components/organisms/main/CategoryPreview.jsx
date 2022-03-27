@@ -34,7 +34,7 @@ const CategoryPreview = ({ title }) => {
 const CategoryPreviewWrapper = styled.div`
   background: white;
 
-  width: ${rem(360)};
+  width: ${rem(362)};
   margin: ${rem(10)};
   // box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: ${rem(10)};

@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { rem } from "../../styles/rem";
 import { Container } from "../atoms/global";
-import { CategoryPreview } from "../organisms/main";
+import { CategoryPreview, PhotoCategoryPreview } from "../organisms/main";
 import { Searchbar } from "../organisms/main";
 import { QuickLink } from "../organisms/main";
 import { ClusterStatus } from "../organisms/main";
@@ -24,6 +24,9 @@ const Main = () => {
             <CategoryPreview key={category.id} title={category.name} />
           ))}
         </div>
+        <div>
+          <PhotoCategoryPreview />
+        </div>
       </main>
       <aside>
         <ClusterStatus />
@@ -43,6 +46,14 @@ const MainContainer = styled(Container)`
 
   main {
     max-width: ${rem(768)};
+
+    .category-preview-container {
+      display: flex;
+      flex-wrap: wrap;
+
+      margin-top: ${rem(20)};
+      max-width: ${rem(768)};
+    }
   }
 
   aside {
@@ -52,14 +63,6 @@ const MainContainer = styled(Container)`
     @media screen and (max-width: 1100px) {
       display: none;
     }
-  }
-
-  .category-preview-container {
-    display: flex;
-    flex-wrap: wrap;
-
-    margin-top: ${rem(20)};
-    max-width: ${rem(768)};
   }
 `;
 
