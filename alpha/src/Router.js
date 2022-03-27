@@ -6,6 +6,7 @@ import Main from "./components/pages/Main";
 import Mypage from "./components/pages/Mypage";
 import Signup from "./components/pages/Signup";
 import Writing from "./components/pages/Writing";
+import Article from "./components/pages/Article";
 
 const Router = () => {
   return (
@@ -18,9 +19,10 @@ const Router = () => {
           <Route path="/community" element={<Community />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/writing" element={<Writing />} />
+          <Route path="/article" element={<Article />} />
         </Route>
         {/* <Route path="/" element={<LoginCheck />}>
-          
+
             <Route path="/" element={<Main />} />
             <Route path="/topics/:slug" element={<_id />} />
             <Route path="/search/:query" element={<_query />} />
