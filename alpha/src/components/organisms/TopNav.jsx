@@ -1,10 +1,12 @@
+/* Develop By TonyHan(chahan) */
 import React, { useState, useEffect } from "react";
 import { Button } from "../atoms/Button.jsx";
 import { Link } from "react-router-dom";
 import styled from "../../../node_modules/styled-components/dist/styled-components.cjs";
 import { Outlet } from "../../../node_modules/react-router-dom/index.js";
+import SideNavigation from "./SideNavigation.jsx";
 
-function TopNav() {
+function TopNavTMP() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -38,26 +40,103 @@ function TopNav() {
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
+          {click ? (
+            <div className="Sidecontainer">
+              <SideNavigation handleClick={handleClick} />
+            </div>
+          ) : (
+            <></>
+          )}
+
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커뮤니티
               </Link>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
+
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커리어
               </Link>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                생활
+                일상생활
               </Link>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 프로젝트
               </Link>
+              <ul className="nav-contents">
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="contents-links">
+                    자유게시판
+                  </Link>
+                </li>
+              </ul>
             </li>
 
             <li>
@@ -129,30 +208,66 @@ const TopNavBlock = styled.nav`
   .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
+    grid-gap: 5px;
     list-style: none;
     text-align: center;
     width: 60vw;
     justify-content: end;
     margin-right: 2rem;
-  }
+    .nav-item {
+      width: 120px;
+      position: relative;
+      margin: 0 1px;
+      .nav-links {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        padding: 0 1rem;
+        height: 100%;
+      }
+      &:hover {
+        color: black;
+        transition: all 0.2s ease-out;
+        background-color: var(--primary-point);
 
-  .nav-item {
-    height: 80px;
-  }
+        .nav-contents {
+          display: block;
+        }
+      }
 
-  .nav-links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    height: 100%;
-  }
-
-  .nav-links:hover {
-    border-bottom: 4px solid #fff;
-    transition: all 0.2s ease-out;
+      .nav-contents {
+        width: 250px;
+        position: relative;
+        left: 0;
+        top: -18px;
+        display: none;
+        background-color: var(--primary-point);
+        border-radius: 0 0 5px 5px;
+        li {
+          display: flex;
+          .contents-links {
+            padding: 10px 10px;
+            font-size: 14px;
+            color: #000;
+            cursor: pointer;
+            text-decoration: none;
+          }
+          &:hover {
+            background-color: var(--primary-white);
+            color: black;
+            margin: 0;
+            + .contents-links {
+              font-weight: bold;
+              height: 35px;
+              overflow: visible;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
   }
 
   .fa-bars {
@@ -168,54 +283,42 @@ const TopNavBlock = styled.nav`
   }
 
   @media screen and (max-width: 960px) {
-    .NavbarItems {
+    /* .NavbarItems {
       position: relative;
+    } */
+    .Sidecontainer {
+      //display: flex;
+      //flex-direction: column;
+
+      position: absolute;
+      top: 80px;
+      right: 0%;
+      opacity: 1;
+      transition: all 0.5s ease;
     }
 
     .nav-menu {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 90vh;
-      position: absolute;
-      top: 80px;
-      left: -100%;
-      opacity: 1;
-      transition: all 0.5s ease;
+      display: none;
     }
 
     .nav-menu.active {
-      background: #242222;
-      left: 0;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
-
-    .nav-links {
-      text-align: center;
-      padding: 2rem;
-      width: 100%;
-      display: table;
+      display: none;
     }
 
     .nav-links:hover {
-      background-color: #fff;
-      color: #242424;
-      border-radius: 0;
     }
 
     .navbar-logo {
       position: absolute;
       top: 0;
-      left: 0;
+      left: -40px;
       transform: translate(25%, 50%);
     }
 
     .menu-icon {
       display: block;
       position: absolute;
-      top: 0;
+      top: 6px;
       right: 0;
       transform: translate(-100%, 60%);
       font-size: 1.8rem;
@@ -250,4 +353,4 @@ const TopNavBlock = styled.nav`
   }
 `;
 
-export default TopNav;
+export default TopNavTMP;
