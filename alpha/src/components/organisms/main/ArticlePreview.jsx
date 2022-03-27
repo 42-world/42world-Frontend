@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiCommentDots } from "react-icons/bi";
+import { rem } from "../../../styles/rem";
 
 const ArticlePreview = ({ title, likeCount, commentCount }) => {
   return (
@@ -28,9 +29,9 @@ const ArticlePreviewWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  border-top: 0.1rem solid ${(props) => props.theme.lineGray1};
+  font-size: ${rem(12)};
+  padding: ${rem(5)} ${rem(10)};
+  border-top: ${rem(1)} solid ${(props) => props.theme.lineGray1};
 
   h3 {
     font-weight: normal;
@@ -43,7 +44,7 @@ const ReactionWrapper = styled.div`
   & > span {
     display: flex;
     align-items: center;
-    padding: 0.4rem;
+    padding: ${rem(4)};
   }
 
   .like {

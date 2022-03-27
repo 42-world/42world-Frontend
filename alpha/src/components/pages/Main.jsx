@@ -1,5 +1,6 @@
 //import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { rem } from "../../styles/rem";
 import { Container } from "../atoms/global";
 import { CategoryPreview } from "../organisms/main";
 import { Searchbar } from "../organisms/main";
@@ -37,23 +38,19 @@ const MainContainer = styled(Container)`
 
   main,
   aside {
-    margin-top: 4rem;
+    margin-top: ${rem(40)};
   }
 
   main {
-    max-width: 76.8rem;
+    max-width: ${rem(768)};
   }
 
   aside {
-    width: 24rem;
-    padding-left: 2rem;
+    width: ${rem(240)};
+    padding-left: ${rem(20)};
 
     @media screen and (max-width: 1100px) {
       display: none;
-      // opacity: 0;
-      // width: 0;
-      // padding-left: 0;
-      // transition: opacity 1s;
     }
   }
 
@@ -61,8 +58,8 @@ const MainContainer = styled(Container)`
     display: flex;
     flex-wrap: wrap;
 
-    margin-top: 2rem;
-    max-width: 76.8rem;
+    margin-top: ${rem(20)};
+    max-width: ${rem(768)};
   }
 `;
 

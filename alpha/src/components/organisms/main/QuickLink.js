@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SITEMAP } from "../../../styles/const";
+import { rem } from "../../../styles/rem";
 
 function QuickLink() {
   return (
@@ -27,34 +28,38 @@ const QuickLinkWrapper = styled.div`
 
   width: inherit;
   background: ${(props) => props.theme.backgroundGray1};
-  margin-top: 2rem;
-  border-radius: 1rem;
+  margin-top: ${rem(20)};
+  border-radius: ${rem(10)};
+
+  h2 {
+    font-size: ${rem(16)};
+  }
 
   .title {
     width: 80%;
-    font-size: 1.6rem;
+    font-size: ${rem(16)};
     text-align: center;
-    padding: 1rem;
+    padding: ${rem(10)};
 
-    border-bottom: 1px solid black;
+    border-bottom: ${rem(1)} solid black;
   }
 
   .link {
-    width: 24rem;
+    width: ${rem(240)};
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
     & > img {
-      border-radius: 1rem;
-      margin: 1rem;
-      width: 6rem;
-      height: 6rem;
+      border-radius: ${rem(10)};
+      margin: ${rem(10)};
+      width: ${rem(60)};
+      height: ${rem(60)};
       background: white;
     }
 
     span {
-      font-size: 1rem;
+      font-size: ${rem(10)};
     }
   }
 `;

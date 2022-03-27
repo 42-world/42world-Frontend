@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { rem } from "../../../styles/rem";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -23,7 +24,7 @@ const SearchBar = () => {
 };
 
 const WrapSearchbar = styled.form`
-  width: 76.8rem;
+  width: ${rem(768)};
 
   & > input {
     display: block;

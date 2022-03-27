@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { rem } from "../../../styles/rem";
 
 const gaepo = {
   cluster: "개포",
@@ -38,20 +39,20 @@ const ClusterStatusWrapper = styled.div`
   align-items: center;
 
   width: inherit;
-  padding: 1rem;
+  padding: ${rem(10)};
 
-  border-radius: 1rem;
+  border-radius: ${rem(16)};
   background: ${(props) => props.theme.backgroundBlue1};
 
   .title {
     width: 90%;
-    font-size: 1.6rem;
+    font-size: ${rem(16)};
     font-weight: bold;
     text-align: left;
   }
 
   .progress-container {
-    margin: 2rem 0 0.5rem 0;
+    margin: ${rem(12)} 0 ${rem(5)} 0;
     width: 96%;
     display: flex;
     justify-content: space-between;
@@ -138,7 +139,7 @@ const ProgressBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: ${rem(12)};
     font-weight: bold;
   }
 `;

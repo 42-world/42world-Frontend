@@ -5,6 +5,7 @@ import ArticlePreview from "./ArticlePreview";
 import { HiThumbUp } from "react-icons/hi";
 
 import data from "../../../datas";
+import { rem } from "../../../styles/rem";
 
 const CategoryPreview = ({ title }) => {
   const [articles] = useState(data.articles.data);
@@ -33,13 +34,13 @@ const CategoryPreview = ({ title }) => {
 const CategoryPreviewWrapper = styled.div`
   background: white;
 
-  width: 36rem;
-  margin: 1rem;
+  width: ${rem(360)};
+  margin: ${rem(10)};
   // box-shadow: ${(props) => props.theme.boxShadow};
-  border-radius: 1rem;
+  border-radius: ${rem(10)};
 
   .title {
-    padding: 0.8rem 1.6rem;
+    padding: ${rem(8)} ${rem(16)};
     display: flex;
     justify-content: space-between;
 
@@ -48,8 +49,12 @@ const CategoryPreviewWrapper = styled.div`
       align-items: center;
 
       svg {
-        font-size: 1.6rem;
-        margin-right: 0.6rem;
+        font-size: ${rem(16)};
+        margin-right: ${rem(6)};
+      }
+
+      h2 {
+        font-size: ${rem(16)};
       }
     }
 
