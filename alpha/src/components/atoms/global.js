@@ -7,6 +7,5 @@ export const Container = styled.div`
   max-width: 1100px;
   main {
     width: 100%;
-    max-width: 736px;
   }
 `;

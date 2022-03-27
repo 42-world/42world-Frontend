@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { rem } from "../../../styles/rem";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -23,8 +24,8 @@ const SearchBar = () => {
 };
 
 const WrapSearchbar = styled.form`
-  margin: 40px 0 20px;
-  width: 100%;
+  width: ${rem(768)};
+
   & > input {
     display: block;
     padding: 0 10px 0 62px;
@@ -34,6 +35,10 @@ const WrapSearchbar = styled.form`
     border: 2px solid #222;
     border-radius: 30px;
     box-sizing: border-box;
+  }
+
+  ${(props) => props.theme.mobileSize} {
+    width: 100%;
   }
 `;
 //absolute는 margin으로 relative는 top,left등으로
