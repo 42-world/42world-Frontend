@@ -25,8 +25,10 @@ const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
       article={article}
     >
       <div className="top">
-        {isBestArticle && <img src="assets/hot.svg" />}
-        {isNewArticle(article.createdAt) && <img src="assets/new.svg" />}
+        {isBestArticle && <img alt="hot " src="assets/hot.svg" />}
+        {isNewArticle(article.createdAt) && (
+          <img alt="new" src="assets/new.svg" />
+        )}
         {article.title}
       </div>
       <div className="middle">asfasf</div>

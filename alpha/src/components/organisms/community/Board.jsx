@@ -5,7 +5,7 @@ import BoardHeader from "./BoardHeader";
 
 // import { AiOutlineEye } from "react-icons/ai";
 
-import { ArticleList, Body, Head, TitleSide, Wrapper } from "../../atoms/Board";
+import { ArticleList, Body, Wrapper } from "../../atoms/Board";
 import styled from "styled-components";
 
 const getData = () => {
