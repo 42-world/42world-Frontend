@@ -38,7 +38,7 @@ const Signin = ({ handleSignup }) => {
           <p>당신이 있기에 행복한 42</p>
         </Title>
         <div className="Box">
-          <Alert>
+          <Alert className="Alert">
             <p>42WORLD 커뮤니티는</p>
             <p>
               42서울인들과{" "}
@@ -48,8 +48,10 @@ const Signin = ({ handleSignup }) => {
             <p>여러분의 피드백을 받아</p>
             <p>지속적인 업데이트가 이루어 집니다.</p>
           </Alert>
-          <LoginTitle>로그인하기</LoginTitle>
-          <BtnSeoul onClick={handleSignup}>42Seoul로 로그인</BtnSeoul>
+          <LoginTitle className="LoginTitle">로그인하기</LoginTitle>
+          <BtnSeoul onClick={handleSignup} className="BtnSeoul">
+            42Seoul로 로그인
+          </BtnSeoul>
 
           {/* <ForgotPassword>비밀번호를 잊으셨나요?</ForgotPassword> */}
         </div>
@@ -66,88 +68,66 @@ const Signin = ({ handleSignup }) => {
 const SigninBlock = styled.div`
   background: url("/images/img-home.jpg") center center/cover no-repeat;
   @media screen and (min-width: 960px) {
-    .video-container {
-      position: fixed;
-      scrollbar-width: none;
-
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+    .main {
+      display: block;
       justify-content: center;
       align-items: center;
-      object-fit: contain;
-      video {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        z-index: -1;
-      }
-      .main {
-        display: block;
+
+      .Box {
+        width: 500px;
+        padding: 10px 0;
+        margin-bottom: 10px;
+        background: var(--primary-white);
+        border: 1px solid #dbdbdb;
+        text-align: center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        .Box {
-          width: 500px;
-          padding: 10px 0;
-          margin-bottom: 10px;
-          background: var(--primary-white);
-          border: 1px solid #dbdbdb;
-          text-align: center;
-          border-radius: 10px;
-          .Loginform {
-            margin-top: 24px;
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-          }
+        .Alert {
+          margin: 20px;
+        }
+        .LoginTitle {
+          margin-top: 30px;
+          margin-bottom: 20px;
+        }
+        .BtnSeoul {
+          margin-bottom: 20px;
         }
       }
     }
   }
 
   @media screen and (max-width: 960px) {
-    .video-container {
-      position: fixed;
-      scrollbar-width: none;
-
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+    .main {
+      position: relative;
+      width: 370px;
       justify-content: center;
       align-items: center;
-      object-fit: contain;
-      video {
-        object-fit: cover;
+
+      .Box {
         width: 100%;
-        height: 100%;
-        position: fixed;
-        z-index: -1;
-      }
-      .main {
-        position: relative;
-        width: 370px;
+        padding: 10px 4px;
+        margin-bottom: 10px;
+        background: var(--primary-white);
+        border: 1px solid #dbdbdb;
+        text-align: center;
+        border-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        .Box {
-          width: 100%;
-          padding: 10px 4px;
-          margin-bottom: 10px;
-          background: var(--primary-white);
-          border: 1px solid #dbdbdb;
-          text-align: center;
-          border-radius: 10px;
-
-          .Loginform {
-            margin-top: 24px;
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-          }
+        .Alert {
+          margin: 20px;
+        }
+        .LoginTitle {
+          margin-top: 30px;
+          margin-bottom: 20px;
+        }
+        .BtnSeoul {
+          margin-bottom: 20px;
         }
       }
     }

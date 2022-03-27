@@ -8,7 +8,7 @@ const Login = () => {
   const [signup, setSignup] = useState(false);
 
   const handleSignup = () => {
-    setSignup(!signup);
+    setSignup(true);
   };
   //const navigate = useNavigate();
   //const [loginInfo, setLoginInfo] = useState({});
@@ -117,66 +117,6 @@ const LoginBlock = styled.div`
         position: fixed;
         z-index: -1;
       }
-      .main {
-        display: block;
-        justify-content: center;
-        align-items: center;
-        .title {
-          width: 500px;
-          padding: 10px 0;
-          margin-bottom: 10px;
-          font-size: 1.5rem;
-          color: white;
-          text-align: center;
-          font-weight: bold;
-        }
-        .Box {
-          width: 500px;
-          padding: 10px 0;
-          margin-bottom: 10px;
-          background: var(--primary-white);
-          border: 1px solid #dbdbdb;
-          text-align: center;
-          border-radius: 10px;
-          .Alert {
-            padding: 20px 5px;
-            font-size: 1.25rem;
-            p {
-              margin-top: 5px;
-              font-weight: 700;
-              .Important {
-                color: var(--primary-point);
-              }
-            }
-          }
-          .LoginTitle {
-            display: block;
-            margin-top: 50px;
-            margin-bottom: 10px;
-            font-size: 2rem;
-            font-weight: bold;
-          }
-          .BtnSeoul {
-            width: 77%;
-            padding: 13px 9px;
-            margin-bottom: 20px;
-            font-size: 1.25rem;
-            background: #2a2d38;
-            color: #fff;
-            border: 1px solid #d8d8d8;
-            box-sizing: border-box;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-          }
-          .Loginform {
-            margin-top: 24px;
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-          }
-        }
-      }
     }
   }
 
@@ -198,68 +138,6 @@ const LoginBlock = styled.div`
         height: 100%;
         position: fixed;
         z-index: -1;
-      }
-      .main {
-        position: relative;
-        width: 370px;
-        justify-content: center;
-        align-items: center;
-
-        .title {
-          width: 100%;
-          padding: 10px 0;
-          margin-bottom: 10px;
-          font-size: 1.5rem;
-          color: white;
-          text-align: center;
-          font-weight: bold;
-        }
-        .Box {
-          width: 100%;
-          padding: 10px 4px;
-          margin-bottom: 10px;
-          background: var(--primary-white);
-          border: 1px solid #dbdbdb;
-          text-align: center;
-          border-radius: 10px;
-          .Alert {
-            padding: 20px 5px;
-            font-size: 1rem;
-            p {
-              margin-top: 5px;
-              font-weight: 700;
-              .Important {
-                color: var(--primary-point);
-              }
-            }
-          }
-          .LoginTitle {
-            display: block;
-            margin-top: 50px;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-          }
-          .BtnSeoul {
-            width: 77%;
-            padding: 13px 9px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            background: #2a2d38;
-            color: #fff;
-            border: 1px solid #d8d8d8;
-            box-sizing: border-box;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-          }
-          .Loginform {
-            margin-top: 24px;
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-          }
-        }
       }
     }
   }

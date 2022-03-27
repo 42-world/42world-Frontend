@@ -65,56 +65,53 @@ export const Title = styled.div`
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 24px;
+`;
+
+export const LoginTitle = styled.span`
+  display: block;
+  font-weight: bold;
+  @media screen and (min-width: 960px) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 960px) {
+    font-size: 24px;
+  }
 `;
 
 export const Alert = styled.div`
-  padding: 20px 5px;
   p {
-    margin-top: 5px;
+    margin: 10px;
     font-weight: 700;
     .Important {
       color: var(--primary-point);
     }
   }
   @media screen and (min-width: 960px) {
-    font-size: 1.25rem;
+    font-size: 16px;
   }
 
   @media screen and (max-width: 960px) {
-    font-size: 1rem;
-  }
-`;
-
-export const LoginTitle = styled.span`
-  display: block;
-  margin-top: 50px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  @media screen and (min-width: 960px) {
-    font-size: 2rem;
-  }
-
-  @media screen and (max-width: 960px) {
-    font-size: 1.5rem;
+    font-size: 14px;
   }
 `;
 
 export const BtnSeoul = styled.button`
   width: 77%;
-  padding: 13px 9px;
-  margin-bottom: 20px;
+  padding: 12px 9px;
+
   background: #2a2d38;
   color: #fff;
   border: 1px solid #d8d8d8;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
   @media screen and (min-width: 960px) {
-    font-size: 1.25rem;
+    font-size: 16px;
   }
   @media screen and (max-width: 960px) {
-    font-size: 1rem;
+    font-size: 16px;
   }
 `;

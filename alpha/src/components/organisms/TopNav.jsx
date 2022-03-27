@@ -319,7 +319,7 @@ const TopNavBlock = styled.nav`
     .menu-icon {
       display: block;
       position: absolute;
-      top: 0;
+      top: 6px;
       right: 0;
       transform: translate(-100%, 60%);
       font-size: 1.8rem;
