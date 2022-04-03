@@ -3,12 +3,19 @@ import { SITEMAP } from "../../../styles/const";
 import { rem } from "../../../styles/rem";
 
 function QuickLink() {
+  const handleClickLink = (url) => {
+    window.open(url);
+  };
   return (
     <QuickLinkWrapper>
       <div className="title">Quick Link</div>
       <div className="links">
         {SITEMAP.map((SITE) => (
-          <div className="link" key={SITE.name}>
+          <div
+            className="link"
+            key={SITE.name}
+            onClick={() => handleClickLink(SITE.link)}
+          >
             <img src={SITE.icon} alt="" />
             <div>
               <h2>{SITE.name}</h2>
@@ -61,6 +68,12 @@ const QuickLinkWrapper = styled.div`
 
     span {
       font-size: ${rem(10)};
+    }
+
+    &: hover {
+      background: ${(props) => props.theme.backgroundBlue1};
+      transition: background 1s;
+      cursor: pointer;
     }
   }
 `;
