@@ -14,8 +14,6 @@ const CategoryPreview = ({ category }) => {
     setArticles(response.data);
   };
 
-
-
   useEffect(() => {
     fetch();
     // eslint-disable-next-line
@@ -71,9 +69,13 @@ const CategoryPreviewWrapper = styled.div`
       }
     }
 
-    button.more {
+    .more {
       border: none;
       background: transparent;
+    }
+
+    .more: hover {
+      cursor: pointer;
     }
   }
 

@@ -15,9 +15,13 @@ function ClusterStatus() {
     fetch();
   }, []);
 
+  const handleClickClusterStatus = () => {
+    window.open("https://cluster.42seoul.io/");
+  };
+
   if (!status) return <></>;
   return (
-    <ClusterStatusWrapper>
+    <ClusterStatusWrapper onClick={handleClickClusterStatus}>
       <div className="title">클러스터 현황</div>
       <div className="progress-container">
         <ProgressBar
@@ -59,6 +63,10 @@ const ClusterStatusWrapper = styled.div`
     width: 96%;
     display: flex;
     justify-content: space-between;
+  }
+
+  &: hover {
+    cursor: pointer;
   }
 `;
 

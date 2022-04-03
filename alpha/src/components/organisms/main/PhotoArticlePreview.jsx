@@ -99,6 +99,10 @@ const PhotoArticlePreviewWrapper = styled.div`
       margin-right: ${rem(2)};
     }
   }
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 export default PhotoArticlePreview;

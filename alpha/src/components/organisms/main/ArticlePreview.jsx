@@ -36,6 +36,10 @@ const ArticlePreviewWrapper = styled.div`
   h3 {
     font-weight: normal;
   }
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 const ReactionWrapper = styled.div`

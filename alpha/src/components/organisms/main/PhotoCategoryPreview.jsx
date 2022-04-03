@@ -104,9 +104,13 @@ const PhotoCategoryPreviewWrapper = styled.div`
       }
     }
 
-    button.more {
+    .more {
       border: none;
       background: transparent;
+    }
+
+    .more: hover {
+      cursor: pointer;
     }
   }
 
