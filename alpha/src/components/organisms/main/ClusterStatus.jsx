@@ -1,32 +1,34 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { CheckInService } from "../../../network";
 import { rem } from "../../../styles/rem";
 
-const gaepo = {
-  cluster: "개포",
-  total: 429,
-  current: 120,
-};
-
-const seocho = {
-  cluster: "서초",
-  total: 429,
-  current: 60,
-};
-
 function ClusterStatus() {
+  const [status, setStatus] = useState();
+
+  const fetch = async () => {
+    const response = await CheckInService.getClusterStatus();
+    setStatus(response.data);
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
+  if (!status) return <></>;
   return (
     <ClusterStatusWrapper>
       <div className="title">클러스터 현황</div>
       <div className="progress-container">
         <ProgressBar
-          cluster={gaepo.cluster}
-          total={gaepo.total}
-          current={gaepo.current}
+          cluster="개포"
+          total={status.max.gaepo}
+          current={status.now.gaepo}
         />
         <ProgressBar
-          cluster={seocho.cluster}
-          total={seocho.total}
-          current={seocho.current}
+          cluster="서초"
+          total={status.max.seocho}
+          current={status.now.seocho}
         />
       </div>
     </ClusterStatusWrapper>
