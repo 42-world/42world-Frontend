@@ -194,11 +194,11 @@ const MypageLinkContainer = styled.div`
 
 const MypageProfile = styled.div`
   background-color: white;
-  box-shadow: 2px 5px 5px gray;
+  box-shadow: ${(props) => props.theme.boxShadow};
   margin: 10px;
   width: calc(100% - 20px)
   height: ${(props) => (props.windowWidth <= 960 ? "30vh" : "40vh")};
-  border-radius: 10px;
+  border-radius: ${(props) => props.theme.borderRadius};
   h1 {
     margin: 5pt;
     margin-left: ${(props) => (props.windowWidth <= 960 ? "10px" : "20px")};
@@ -241,9 +241,9 @@ const MypageBlock = styled(Container)`
         width: ${(props) =>
           props.windowWidth <= 960 ? "calc(100% - 20px)" : "calc(50% - 10px);"};
         height: calc(100% - 20px);
-        box-shadow: 2px 5px 5px gray;
+        box-shadow: ${(props) => props.theme.boxShadow};
         margin: 10px;
-        border-radius: 10px;
+        border-radius: ${(props) => props.theme.borderRadius};
       }
     }
   }
