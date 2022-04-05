@@ -47,7 +47,7 @@ const ArticleContent = () => {
 const ArticleContentBlock = styled.div`
   width: 100%;
   background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: 0.3rem;
 
   .header {
