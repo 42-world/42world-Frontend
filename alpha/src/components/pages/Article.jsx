@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/global";
-import { CommunityList } from "../organisms/community";
+import { CommunityList, Advertisement } from "../organisms/community";
 import { ArticleContent, Comment } from "../organisms/article";
 
 const Article = () => {
   return (
     <ArticleBlock>
-      <div className="community_block">
+      <div className="block community_block">
         <CommunityList />
       </div>
-      <div className="article_block">
+      <div className="block article_block">
         <ArticleContent />
         <Comment />
       </div>
+      <Advertisement />
     </ArticleBlock>
   );
 };
@@ -23,7 +24,7 @@ const ArticleBlock = styled(Container)`
   flex-direction: row;
   margin-top: 1.5rem;
 
-  & > div {
+  & > .block {
     margin: 0 0.8rem;
     width: 100%;
   }
