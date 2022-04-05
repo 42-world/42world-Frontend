@@ -31,11 +31,25 @@ const WritingBlock = styled(Container)`
     width: 100%;
   }
   .community_block {
-    width: 13rem;
+    width: 12rem;
+    min-width: 12rem;
   }
   .writing_block {
+    max-width: calc(100% - 15.2rem);
     & > div {
       margin-bottom: 1.5rem;
+    }
+  }
+
+  ${(props) => props.theme.mobileSize} {
+    margin-top: 0;
+    .community_block {
+      display: none;
+    }
+    .writing_block {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
     }
   }
 `;
