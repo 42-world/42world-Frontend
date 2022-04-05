@@ -193,6 +193,7 @@ const CheckInHeader = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1.2rem;
+  width: 100%;
   p {
     font-size: 1rem;
     font-weight: 600;
@@ -213,6 +214,7 @@ const CheckInBody = styled.div`
   justify-content: space-around;
   padding: 0.5rem 1.2rem 1.8rem;
   background-color: ${(props) => props.theme.backgroundBlue1};
+  width: 100%;
 
   .circular_progress_bar_div {
     width: 7.3rem;
@@ -222,13 +224,14 @@ const CheckInBody = styled.div`
     flex-direction: column;
 
     h2 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
       color: ${(props) => props.theme.textBlack};
     }
 
     .circular_progress_bar {
+      margin: 0.3rem;
       svg {
         path {
           stroke-linecap: butt;
