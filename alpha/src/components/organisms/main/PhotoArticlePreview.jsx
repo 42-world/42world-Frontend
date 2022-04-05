@@ -65,6 +65,7 @@ const PhotoArticlePreviewWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   color: ${(props) => props.theme.textWhite};
+  cursor: pointer;
 
   h3 {
     overflow: hidden;
@@ -98,10 +99,6 @@ const PhotoArticlePreviewWrapper = styled.div`
       vertical-align: middle;
       margin-right: ${rem(2)};
     }
-  }
-
-  &: hover {
-    cursor: pointer;
   }
 `;
 

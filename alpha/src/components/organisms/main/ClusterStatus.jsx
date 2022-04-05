@@ -50,6 +50,7 @@ const ClusterStatusWrapper = styled.div`
   border-radius: ${rem(16)};
   // box-shadow: ${(props) => props.theme.boxShadow};
   background: ${(props) => props.theme.backgroundBlue1};
+  cursor: pointer;
 
   .title {
     width: 90%;
@@ -63,10 +64,6 @@ const ClusterStatusWrapper = styled.div`
     width: 96%;
     display: flex;
     justify-content: space-between;
-  }
-
-  &: hover {
-    cursor: pointer;
   }
 `;
 

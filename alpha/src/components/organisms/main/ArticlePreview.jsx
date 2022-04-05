@@ -28,6 +28,7 @@ const ArticlePreviewWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
   font-size: ${rem(12)};
   padding: ${rem(5)} ${rem(10)};
@@ -35,10 +36,6 @@ const ArticlePreviewWrapper = styled.div`
 
   h3 {
     font-weight: normal;
-  }
-
-  &: hover {
-    cursor: pointer;
   }
 `;
 

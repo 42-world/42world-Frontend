@@ -72,9 +72,6 @@ const CategoryPreviewWrapper = styled.div`
     .more {
       border: none;
       background: transparent;
-    }
-
-    .more: hover {
       cursor: pointer;
     }
   }
