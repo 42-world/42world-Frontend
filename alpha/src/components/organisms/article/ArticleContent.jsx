@@ -101,6 +101,11 @@ const ArticleContentBlock = styled.div`
       }
     }
   }
+
+  ${(props) => props.theme.mobileSize} {
+    width: 100%;
+    box-shadow: none;
+  }
 `;
 
 export default ArticleContent;
