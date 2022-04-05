@@ -28,7 +28,8 @@ const ArticleBlock = styled(Container)`
     width: 100%;
   }
   .community_block {
-    width: 13rem;
+    width: 12rem;
+    min-width: 12rem;
   }
   .article_block {
     & > div {
