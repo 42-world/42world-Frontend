@@ -108,6 +108,11 @@ const CommentBlock = styled.div`
       }
     }
   }
+  ${(props) => props.theme.mobileSize} {
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
 `;
 
 const CreateCommentBlock = styled.div`

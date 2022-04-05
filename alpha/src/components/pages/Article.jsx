@@ -35,6 +35,18 @@ const ArticleBlock = styled(Container)`
       margin-bottom: 1.5rem;
     }
   }
+  ${(props) => props.theme.mobileSize} {
+    margin-top: 0;
+    .community_block {
+      display: none;
+    }
+    .article_block {
+      margin: 0;
+      & > div {
+        margin-bottom: 0;
+      }
+    }
+  }
 `;
 
 export default Article;
