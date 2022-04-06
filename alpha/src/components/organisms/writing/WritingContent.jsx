@@ -130,6 +130,10 @@ const WritingContentBlock = styled.div`
       border-radius: 0.3rem;
     }
   }
+
+  ${(props) => props.theme.mobileSize} {
+    box-shadow: none;
+  }
 `;
 
 export default WritingContent;
