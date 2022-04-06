@@ -6,7 +6,7 @@ const ProfileSection = ({ imgRef, userName }) => {
     <ProfileSectionDiv>
       <div className="mypage-photo-sect">
         <img alt="테스트" src={imgRef} />
-        <MypageButton>사진 변경</MypageButton>
+        <MypageButton btnType="change-photo">사진 변경</MypageButton>
       </div>
       <div className="mypage-auth-sect">
         <h1>{userName}</h1>
@@ -22,6 +22,7 @@ const ProfileSection = ({ imgRef, userName }) => {
 const ProfileSectionDiv = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "65%" : "75%")};
   border: 1px solid purple;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   .mypage-photo-sect {
@@ -37,6 +38,18 @@ const ProfileSectionDiv = styled.div`
       border: 2px solid black;
       border-radius: 50%;
       margin-bottom: 0.5rem;
+    }
+    button {
+      width: 5rem;
+    }
+    @media screen and (max-width: 319px) {
+      img {
+        width: 4rem;
+      }
+      button {
+        width: 4rem;
+        padding: 0.1rem 0.5rem;
+      }
     }
   }
   .mypage-auth-sect {
@@ -67,9 +80,9 @@ const MypageButton = styled.button`
   padding: 0.1rem 1rem;
   margin: 0.1rem;
   border: none;
-  width: 7rem;
-  height: 2rem;
-  font-size: 1rem;
+  width: 6rem;
+  height: 1.6rem;
+  font-size: 0.8rem;
   background-color: ${(props) =>
     props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
   color: white;

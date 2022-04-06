@@ -28,12 +28,12 @@ const MyProfileDiv = styled.div`
   border: 1px solid purple;
   box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
-  height: 30vh;
+  height: 30%;
   border-radius: ${(props) => props.theme.borderRadius};
   h1 {
-    margin: 0.2rem 0.1rem;
+    margin: 0.3rem 0.1rem;
     margin-left: 0.5rem;
-    height: 2rem;
+    height: fit-content;
     font-size: 1.6rem;
   }
   hr {
@@ -45,7 +45,9 @@ const MyProfileDiv = styled.div`
     height: calc(100% - 2rem - 0.6rem);
   }
   @media screen and (min-width: 769px) {
+    height: 40%;
     h1 {
+      margin: 0.5rem 0.1rem;
       margin-left: 1rem;
       height: 2.4rem;
       color: magenta;
