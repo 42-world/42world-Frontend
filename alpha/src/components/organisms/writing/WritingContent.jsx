@@ -71,7 +71,7 @@ const WritingContentBlock = styled.div`
   box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: 0.3rem;
 
-  .header {
+  & > .header {
     display: flex;
     flex-direction: column;
     select {
