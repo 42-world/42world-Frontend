@@ -9,7 +9,7 @@ import MypageData from "../../../datas/mypage";
 const MyProfile = () => {
   return (
     <MyProfileDiv>
-      <h1>마이페이지</h1>
+      <h1 className="profile-title">마이페이지</h1>
       <hr />
       <div className="profile-section">
         <ProfileSection
@@ -25,12 +25,12 @@ const MyProfile = () => {
 
 const MyProfileDiv = styled.div`
   background-color: white;
-  border: 1px solid purple;
   box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
   height: 30%;
+  padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
-  h1 {
+  .profile-title {
     margin: 0.3rem 0.1rem;
     margin-left: 0.5rem;
     height: fit-content;
@@ -40,7 +40,6 @@ const MyProfileDiv = styled.div`
     color: ${(props) => props.theme.LineGray1};
   }
   .profile-section {
-    border: 1px solid black;
     display: flex;
     height: calc(100% - 2rem - 0.6rem);
   }

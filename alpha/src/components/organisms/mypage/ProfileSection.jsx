@@ -28,13 +28,14 @@ const ProfileSectionDiv = styled.div`
   .mypage-photo-sect {
     width: 40%;
     height: 100%;
+    border: 1px solid green;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: auto;
+    overflow: hidden;
     img {
-      width: 5rem;
+      width: 4rem;
       border: 2px solid black;
       border-radius: 50%;
       margin-bottom: 0.5rem;
@@ -42,35 +43,22 @@ const ProfileSectionDiv = styled.div`
     button {
       width: 5rem;
     }
-    @media screen and (max-width: 319px) {
-      img {
-        width: 4rem;
-      }
-      button {
-        width: 4rem;
-        padding: 0.1rem 0.5rem;
-      }
-    }
   }
   .mypage-auth-sect {
+    padding: 0 0.3rem;
     width: 60%;
+    overflow: hidden;
     h1 {
-      display: flex;
-      align-items: center;
-      font-size: ${(props) => (props.windowWidth <= 960 ? "20px" : "30px")};
+      height: 2rem;
+      margin: 0.1rem;
+      font-size: 1.5rem;
       text-overflow: ellipsis;
-      margin: ${(props) =>
-        props.windowWidth < props.windowHeight
-          ? "5px 5px 5px 8px"
-          : "20px 5px 20px 5px"};
     }
-    .mypage-auth-button {
-      margin: ${(props) =>
-        props.windowWidth < props.windowHeight
-          ? "5px 5px 5px 8px"
-          : "20px 5px 20px 5px"};
-      button {
-        margin-right: 5px;
+  }
+  @media screen and (min-width: 769px) {
+    .mypage-photo-sect {
+      img {
+        width: 6rem;
       }
     }
   }
