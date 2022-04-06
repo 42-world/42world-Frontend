@@ -21,24 +21,25 @@ const ProfileSection = ({ imgRef, userName }) => {
 
 const ProfileSectionDiv = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "65%" : "75%")};
-  border: 1px solid purple;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   .mypage-photo-sect {
-    width: 40%;
+    width: 10rem;
     height: 100%;
-    border: 1px solid green;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     img {
-      width: 4rem;
+      width: 5rem;
       border: 2px solid black;
       border-radius: 50%;
       margin-bottom: 0.5rem;
+      @media screen and (max-width: 320px) {
+        width: 4rem;
+      }
     }
     button {
       width: 5rem;

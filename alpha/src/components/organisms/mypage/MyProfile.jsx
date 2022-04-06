@@ -27,7 +27,7 @@ const MyProfileDiv = styled.div`
   background-color: white;
   box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
-  height: 30%;
+  height: 15rem;
   padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
   .profile-title {
@@ -44,7 +44,6 @@ const MyProfileDiv = styled.div`
     height: calc(100% - 2rem - 0.6rem);
   }
   @media screen and (min-width: 769px) {
-    height: 40%;
     h1 {
       margin: 0.5rem 0.1rem;
       margin-left: 1rem;
