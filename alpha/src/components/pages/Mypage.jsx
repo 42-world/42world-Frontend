@@ -28,6 +28,7 @@ const Mypage = () => {
 const MypageBlock = styled(Container)`
   display: flex;
   flex-direction: row;
+  padding: 0.3rem;
   .mypage-left {
     width: 100%;
     display: flex;
@@ -39,11 +40,22 @@ const MypageBlock = styled(Container)`
       margin-top: 10px;
       flex-direction: column;
     }
-    @media screen and (width > 768) {
+  }
+  .mypage-right {
+    display: none;
+    background-color: gray;
+  }
+  @media screen and (min-width: 769px) {
+    .mypage-left {
       width: 70%;
       .mypage-article {
+        border: 1px solid black;
         flex-direction: row;
       }
+    }
+    .mypage-right {
+      display: block;
+      width: 30%;
     }
   }
 `;

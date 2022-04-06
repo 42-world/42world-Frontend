@@ -12,7 +12,10 @@ const MyProfile = () => {
       <h1>마이페이지</h1>
       <hr />
       <div className="profile-section">
-        <ProfileSection />
+        <ProfileSection
+          imgRef={MypageData.profilePhoto}
+          userName={MypageData.userName}
+        />
         {/*
         <LinkSection />*/}
       </div>
@@ -22,24 +25,35 @@ const MyProfile = () => {
 
 const MyProfileDiv = styled.div`
   background-color: white;
+  border: 1px solid purple;
   box-shadow: ${(props) => props.theme.boxShadow};
-  margin: 0.3rem;
-  width: calc(100% - 0.6rem);
-  height: 40vh; //PC에서 30vh
+  width: 100%;
+  height: 30vh;
   border-radius: ${(props) => props.theme.borderRadius};
   h1 {
-    margin: 0.1rem;
-    margin-left: 0.3rem;
-    height: 2.4rem;
-    font-size: 2.1rem;
+    margin: 0.2rem 0.1rem;
+    margin-left: 0.5rem;
+    height: 2rem;
+    font-size: 1.6rem;
   }
   hr {
     color: ${(props) => props.theme.LineGray1};
   }
+  .profile-section {
+    border: 1px solid black;
+    display: flex;
+    height: calc(100% - 2rem - 0.6rem);
+  }
   @media screen and (min-width: 769px) {
-    height: 30vh;
     h1 {
+      margin-left: 1rem;
+      height: 2.4rem;
       color: magenta;
+      font-size: 2rem;
+    }
+    .profile-section {
+      display: flex;
+      flex-direction: row;
     }
   }
 `;

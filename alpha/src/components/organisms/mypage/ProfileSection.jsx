@@ -1,22 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-import MypageButton from "./MypageButton";
-
 const ProfileSection = ({ imgRef, userName }) => {
   return (
     <ProfileSectionDiv>
       <div className="mypage-photo-sect">
         <img alt="테스트" src={imgRef} />
-        <MypageButton windowWidth={window.innerWidth}>사진 변경</MypageButton>
+        <MypageButton>사진 변경</MypageButton>
       </div>
       <div className="mypage-auth-sect">
         <h1>{userName}</h1>
         <div className="mypage-auth-button">
-          <MypageButton btnType="auth-42" windowWidth={window.innerWidth}>
-            42인증
-          </MypageButton>
-          <MypageButton windowWidth={window.innerWidth}>로그아웃</MypageButton>
+          <MypageButton btnType="auth-42">42인증</MypageButton>
+          <MypageButton>로그아웃</MypageButton>
         </div>
       </div>
     </ProfileSectionDiv>
@@ -25,6 +21,7 @@ const ProfileSection = ({ imgRef, userName }) => {
 
 const ProfileSectionDiv = styled.div`
   width: ${(props) => (props.windowWidth <= 960 ? "65%" : "75%")};
+  border: 1px solid purple;
   display: flex;
   align-items: center;
   .mypage-photo-sect {
@@ -36,15 +33,10 @@ const ProfileSectionDiv = styled.div`
     justify-content: center;
     overflow: auto;
     img {
-      ${(props) =>
-        props.windowWidth <= 450
-          ? "width: 55%"
-          : props.windowWidth <= 550
-          ? "width: 50%"
-          : "height: 50%"};
+      width: 5rem;
       border: 2px solid black;
       border-radius: 50%;
-      margin-bottom: 5px;
+      margin-bottom: 0.5rem;
     }
   }
   .mypage-auth-sect {
@@ -72,27 +64,12 @@ const ProfileSectionDiv = styled.div`
 `;
 
 const MypageButton = styled.button`
-  padding: 2pt 5pt;
-  margin: 3px 0;
+  padding: 0.1rem 1rem;
+  margin: 0.1rem;
   border: none;
-  width: ${(props) =>
-    props.windowWidth <= 640
-      ? "80%"
-      : props.windowWidth <= 360
-      ? "100%"
-      : "40%"};
-  height: ${(props) =>
-    props.windowWidth <= 640
-      ? "fit-content"
-      : props.windowWidth <= 960
-      ? "20pt"
-      : "25pt"};
-  font-size: ${(props) =>
-    props.windowWidth <= 960
-      ? "8pt"
-      : props.windowWidth <= 1280
-      ? "10pt"
-      : "15pt"};
+  width: 7rem;
+  height: 2rem;
+  font-size: 1rem;
   background-color: ${(props) =>
     props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
   color: white;
