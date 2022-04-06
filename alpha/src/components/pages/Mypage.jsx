@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Container } from "../atoms/global";
 
 import { MyProfile } from "../organisms/mypage";
-import { CategoryPreview } from "../organisms/main";
+import { CategoryPreview, ClusterStatus, QuickLink } from "../organisms/main";
 
 const Mypage = () => {
   //MypageData 대신 props로 데이터 받아와야 함 (아마도)
@@ -17,7 +17,10 @@ const Mypage = () => {
           <CategoryPreview title="내 댓글" />
         </div>
       </div>
-      <div className="mypage-right">나머지</div>
+      <aside>
+        <ClusterStatus />
+        <QuickLink />
+      </aside>
     </MypageBlock>
   );
 };
@@ -25,30 +28,30 @@ const Mypage = () => {
 const MypageBlock = styled(Container)`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  margin-top: 1.25rem;
   .mypage-left {
-    width: 100%;
     display: flex;
     flex-direction: column;
     .mypage-article {
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
     }
   }
-  .mypage-right {
+  aside {
     display: none;
-    background-color: gray;
   }
   @media screen and (min-width: 769px) {
     .mypage-left {
-      width: 70%;
-      .mypage-article {
-        border: 1px solid black;
-      }
+      max-width: 48rem;
     }
-    .mypage-right {
+  }
+  @media screen and (min-width: 1101px) {
+    aside {
       display: block;
-      width: 30%;
+      width: 15rem;
+      margin-top: 1.25rem;
+      margin-left: 1.25rem;
     }
   }
 `;
