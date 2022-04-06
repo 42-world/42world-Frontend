@@ -20,13 +20,12 @@ const ProfileSection = ({ imgRef, userName }) => {
 };
 
 const ProfileSectionDiv = styled.div`
-  width: ${(props) => (props.windowWidth <= 960 ? "65%" : "75%")};
   padding: 0.5rem;
   display: flex;
   align-items: center;
   .mypage-photo-sect {
-    width: 10rem;
-    height: 100%;
+    width: fit-content;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,27 +39,22 @@ const ProfileSectionDiv = styled.div`
       @media screen and (max-width: 320px) {
         width: 4rem;
       }
+      @media screen and (min-width: 769px) {
+        width: 6rem;
+      }
     }
     button {
       width: 5rem;
     }
   }
   .mypage-auth-sect {
-    padding: 0 0.3rem;
-    width: 60%;
+    padding: 0 0.5rem;
     overflow: hidden;
     h1 {
       height: 2rem;
       margin: 0.1rem;
       font-size: 1.5rem;
       text-overflow: ellipsis;
-    }
-  }
-  @media screen and (min-width: 769px) {
-    .mypage-photo-sect {
-      img {
-        width: 6rem;
-      }
     }
   }
 `;

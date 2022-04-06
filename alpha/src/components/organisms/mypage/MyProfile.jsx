@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import ProfileSection from "./ProfileSection";
+import LinkSection from "./LinkSection";
 
 import IconSet from "../../atoms/Mypage";
 import MypageData from "../../../datas/mypage";
@@ -16,8 +17,7 @@ const MyProfile = () => {
           imgRef={MypageData.profilePhoto}
           userName={MypageData.userName}
         />
-        {/*
-        <LinkSection />*/}
+        <LinkSection links={MypageData.links} />
       </div>
     </MyProfileDiv>
   );
@@ -41,7 +41,11 @@ const MyProfileDiv = styled.div`
   }
   .profile-section {
     display: flex;
+    flex-direction: column;
     height: calc(100% - 2rem - 0.6rem);
+    @media screen and (min-width: 481px) {
+      flex-direction: row;
+    }
   }
   @media screen and (min-width: 769px) {
     h1 {
@@ -50,10 +54,6 @@ const MyProfileDiv = styled.div`
       height: 2.4rem;
       color: magenta;
       font-size: 2rem;
-    }
-    .profile-section {
-      display: flex;
-      flex-direction: row;
     }
   }
 `;
