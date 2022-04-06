@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import ProfileSection from "./ProfileSection";
+
 import IconSet from "../../atoms/Mypage";
 import MypageData from "../../../datas/mypage";
 
@@ -10,7 +12,8 @@ const MyProfile = () => {
       <h1>마이페이지</h1>
       <hr />
       <div className="profile-section">
-        {/*<ProfileSection />
+        <ProfileSection />
+        {/*
         <LinkSection />*/}
       </div>
     </MyProfileDiv>
@@ -26,6 +29,18 @@ const MyProfileDiv = styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
   h1 {
     margin: 0.1rem;
+    margin-left: 0.3rem;
+    height: 2.4rem;
+    font-size: 2.1rem;
+  }
+  hr {
+    color: ${(props) => props.theme.LineGray1};
+  }
+  @media screen and (min-width: 769px) {
+    height: 30vh;
+    h1 {
+      color: magenta;
+    }
   }
 `;
 
