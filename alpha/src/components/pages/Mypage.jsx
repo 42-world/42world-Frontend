@@ -4,6 +4,7 @@ import { Container } from "../atoms/global";
 
 import IconSet from "../atoms/Mypage";
 import MypageData from "../../datas/mypage";
+import { CategoryPreview } from "../organisms/main";
 
 const MypageProfileSect = ({ profileImg, userName }) => {
   return (
@@ -85,7 +86,8 @@ const Mypage = () => {
         </MypageProfile>
         <div className="mypage-article">
           {/*게시글 박스 컴포넌트 가져와서 심어야 할 부분*/}
-          <div>내 게시글</div> <div>내 댓글</div>
+          <CategoryPreview title="내 게시글" />
+          <CategoryPreview title="내 댓글" />
         </div>
       </div>
       <div className="mypage-right">나머지</div>
@@ -116,7 +118,7 @@ const MypageButton = styled.button`
       ? "10pt"
       : "15pt"};
   background-color: ${(props) =>
-    props.btnType === "auth-42" ? "#53b7ba" : "#2a2d38"};
+    props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
   color: white;
 `;
 
@@ -208,7 +210,7 @@ const MypageProfile = styled.div`
   hr {
     margin: 0;
     padding: 0;
-    color: #d8d8d8;
+    color: ${(props) => props.theme.LineGray1};
   }
   .mypage-section {
     margin: 5px;
@@ -220,7 +222,6 @@ const MypageProfile = styled.div`
         : "calc(100% - 40pt - 25px)"};
   }
 `;
-//Line Color: lineGray3 (#d8d8d8)
 
 const MypageBlock = styled(Container)`
   display: flex;
@@ -236,15 +237,6 @@ const MypageBlock = styled(Container)`
       margin-top: 10px;
       flex-direction: ${(props) =>
         props.windowWidth <= 960 ? "column" : "row"};
-      div {
-        background-color: white;
-        width: ${(props) =>
-          props.windowWidth <= 960 ? "calc(100% - 20px)" : "calc(50% - 10px);"};
-        height: calc(100% - 20px);
-        box-shadow: ${(props) => props.theme.boxShadow};
-        margin: 10px;
-        border-radius: ${(props) => props.theme.borderRadius};
-      }
     }
   }
   .mypage-right {
