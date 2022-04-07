@@ -65,7 +65,6 @@ const WritingContent = ({ articleInfo }) => {
 };
 
 const WritingContentBlock = styled.div`
-  //width: 100%;
   padding: 1rem;
   background-color: #fff;
   box-shadow: ${(props) => props.theme.boxShadow};
