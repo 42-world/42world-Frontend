@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import ArticlePreview from "./ArticlePreview";
 import { HiThumbUp } from "react-icons/hi";
 
-import data from "../../../datas";
 import { rem } from "../../../styles/rem";
+import { ArticleService } from "../../../network";
 
-const CategoryPreview = ({ title }) => {
-  const [articles] = useState(data.articles.data);
+const CategoryPreview = ({ category }) => {
+  const [articles, setArticles] = useState(null);
+  const fetch = async () => {
+    const response = await ArticleService.getArticlesByCategoryId(category.id);
+    setArticles(response.data);
+  };
 
+  useEffect(() => {
+    fetch();
+    // eslint-disable-next-line
+  }, []);
+
+  if (!articles) return <></>;
   return (
     <CategoryPreviewWrapper>
       <div className="title">
         <div className="title-left">
           <HiThumbUp />
-          <h2>{title}</h2>
+          <h2>{category.name}</h2>
         </div>
         <button className="more">{"더 보기 >"}</button>
       </div>
@@ -36,7 +46,8 @@ const CategoryPreviewWrapper = styled.div`
 
   width: ${rem(362)};
   margin: ${rem(10)};
-  // box-shadow: ${(props) => props.theme.boxShadow};
+  height: ${rem(126)};
+  box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: ${rem(10)};
 
   .title {
@@ -58,9 +69,10 @@ const CategoryPreviewWrapper = styled.div`
       }
     }
 
-    button.more {
+    .more {
       border: none;
       background: transparent;
+      cursor: pointer;
     }
   }
 

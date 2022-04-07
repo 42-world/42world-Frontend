@@ -104,9 +104,10 @@ const PhotoCategoryPreviewWrapper = styled.div`
       }
     }
 
-    button.more {
+    .more {
       border: none;
       background: transparent;
+      cursor: pointer;
     }
   }
 
