@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Container } from "../atoms/global";
 
-import { MyProfile } from "../organisms/mypage";
+import { Container } from "../atoms/global";
 import { CategoryPreview, ClusterStatus, QuickLink } from "../organisms/main";
+import { MyProfile, MyArticlePreview } from "../organisms/mypage";
 
 const Mypage = () => {
   //MypageData 대신 props로 데이터 받아와야 함 (아마도)
@@ -12,9 +12,8 @@ const Mypage = () => {
       <main>
         <MyProfile />
         <div className="mypage-article">
-          {/*게시글 박스 컴포넌트 가져와서 심어야 할 부분*/}
-          <CategoryPreview title="내 게시글" />
-          <CategoryPreview title="내 댓글" />
+          <MyArticlePreview ifComment={false} />
+          <MyArticlePreview ifComment={true} />
         </div>
       </main>
       <aside>
@@ -34,6 +33,7 @@ const MypageBlock = styled(Container)`
     flex-direction: column;
     .mypage-article {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
     }
   }
