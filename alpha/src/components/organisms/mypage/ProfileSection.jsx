@@ -49,10 +49,12 @@ const ProfileSectionDiv = styled.div`
   }
   .mypage-auth-sect {
     padding: 0 0.5rem;
+    padding-left: 1rem;
     overflow: hidden;
     h1 {
       height: 2rem;
       margin: 0.1rem;
+      margin-bottom: 0.5rem;
       font-size: 1.5rem;
       text-overflow: ellipsis;
     }
