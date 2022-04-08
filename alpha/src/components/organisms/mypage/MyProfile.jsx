@@ -23,7 +23,7 @@ const MyProfile = () => {
 };
 
 const MyProfileDiv = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.white};
   box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
   height: fit-content;

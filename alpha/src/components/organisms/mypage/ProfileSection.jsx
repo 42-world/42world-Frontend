@@ -33,7 +33,7 @@ const ProfileSectionDiv = styled.div`
     overflow: hidden;
     img {
       width: 5rem;
-      border: 2px solid black;
+      border: 2px solid ${(props) => props.theme.black};
       border-radius: 50%;
       margin-bottom: 0.5rem;
       @media screen and (max-width: 320px) {
@@ -70,7 +70,7 @@ const MypageButton = styled.button`
   font-size: 0.8rem;
   background-color: ${(props) =>
     props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
-  color: white;
+  color: ${(props) => props.theme.white};
 `;
 
 export default ProfileSection;
