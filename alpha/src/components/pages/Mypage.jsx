@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Container } from "../atoms/global";
-import { CategoryPreview, ClusterStatus, QuickLink } from "../organisms/main";
+import { ClusterStatus, QuickLink } from "../organisms/main";
 import { MyProfile, MyArticlePreview } from "../organisms/mypage";
 
 const Mypage = () => {
