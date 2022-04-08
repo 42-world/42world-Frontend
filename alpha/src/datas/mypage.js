@@ -7,7 +7,7 @@ const MypageData = {
     linkedin: ["https://kr.linkedin.com/", "asd"],
     facebook: ["https://facebook.com", "123"],
     twitter: ["https://twitter.com", "asdasd"],
-    solvedac: ["https://solved.ac", "baekjoon"],
+    solvedac: ["https://solved.ac/profile/baekjoon", "baekjoon"],
   },
 };
 
