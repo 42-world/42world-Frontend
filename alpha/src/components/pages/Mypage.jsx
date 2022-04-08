@@ -9,14 +9,14 @@ const Mypage = () => {
   //MypageData 대신 props로 데이터 받아와야 함 (아마도)
   return (
     <MypageBlock>
-      <div className="mypage-left">
+      <main>
         <MyProfile />
         <div className="mypage-article">
           {/*게시글 박스 컴포넌트 가져와서 심어야 할 부분*/}
           <CategoryPreview title="내 게시글" />
           <CategoryPreview title="내 댓글" />
         </div>
-      </div>
+      </main>
       <aside>
         <ClusterStatus />
         <QuickLink />
@@ -26,10 +26,8 @@ const Mypage = () => {
 };
 
 const MypageBlock = styled(Container)`
-  display: flex;
   justify-content: center;
-  margin-top: 1.25rem;
-  .mypage-left {
+  main {
     width: calc(100% - 0.5rem);
     display: flex;
     flex-direction: column;
@@ -42,16 +40,19 @@ const MypageBlock = styled(Container)`
     display: none;
   }
   @media screen and (min-width: 769px) {
-    .mypage-left {
+    main {
       max-width: 48rem;
     }
   }
   @media screen and (min-width: 1101px) {
+    main,
+    aside {
+      margin-top: 2.5rem;
+    }
     aside {
       display: block;
       width: 15rem;
-      margin-top: 1.25rem;
-      margin-left: 1.25rem;
+      padding-left: 1.25rem;
     }
   }
 `;
