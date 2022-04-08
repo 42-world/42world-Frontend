@@ -28,6 +28,7 @@ const Mypage = () => {
 const MypageBlock = styled(Container)`
   justify-content: center;
   main {
+    margin-top: 1.5rem;
     width: calc(100% - 0.5rem);
     display: flex;
     flex-direction: column;
@@ -45,7 +46,6 @@ const MypageBlock = styled(Container)`
     }
   }
   @media screen and (min-width: 1101px) {
-    main,
     aside {
       margin-top: 2.5rem;
     }
