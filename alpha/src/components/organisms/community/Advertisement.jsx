@@ -6,14 +6,12 @@ const Advertisement = () => {
 };
 
 const CommunityBlock = styled.div`
-  @media screen and (min-width: 960px) {
-    height: 540px;
-    width: 9rem;
-    min-width: 9rem;
-    margin: 0 0.8rem;
-    border-radius: 5px;
-    background-color: var(--primary-point);
-  }
+  height: 540px;
+  width: 9rem;
+  min-width: 9rem;
+  margin: 0 0.8rem;
+  border-radius: 5px;
+  background-color: var(--primary-point);
   @media screen and (max-width: 1020px) {
     display: none;
   }
