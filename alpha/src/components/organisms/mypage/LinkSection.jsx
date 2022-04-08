@@ -16,6 +16,8 @@ const LinkSection = ({ links }) => {
       <IconSet.IconTwitter />
     ) : linkType === "facebook" ? (
       <IconSet.IconFacebook />
+    ) : linkType === "solvedac" ? (
+      <IconSet.IconSolvedAC />
     ) : undefined;
   };
 
@@ -41,8 +43,38 @@ const LinkSection = ({ links }) => {
 };
 
 const LinkSectionDiv = styled.div`
-  border: 1px solid black;
+  padding: 0.3rem;
+  padding-right: 15%;
   border-left: solid ${(props) => props.theme.lineGray1};
+  overflow: auto;
+  div {
+    display: flex;
+    align-items: center;
+    svg {
+      margin: 0.3rem;
+      margin-right: 0.6rem;
+      width: 1.3rem;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0.3rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    border: none;
+    border-top: solid ${(props) => props.theme.lineGray1};
+    svg {
+      margin: 0.3rem;
+    }
+    span {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 530px) {
+    padding-right: 5%;
+  }
+  @media screen and (min-width: 769px) {
+    padding-right: 20%;
+  }
 `;
 
 export default LinkSection;
