@@ -43,7 +43,7 @@ const LinkSection = ({ links }) => {
 
 const LinkSectionDiv = styled.div`
   padding: 0.3rem;
-  padding-right: 15%;
+  padding-right: 3rem;
   border-left: solid ${(props) => props.theme.lineGray1};
   overflow: auto;
   div {
@@ -53,6 +53,11 @@ const LinkSectionDiv = styled.div`
       margin: 0.3rem;
       margin-right: 0.6rem;
       width: 1.3rem;
+    }
+    span {
+      width: 8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   @media screen and (max-width: 480px) {
@@ -68,11 +73,16 @@ const LinkSectionDiv = styled.div`
       display: none;
     }
   }
-  @media screen and (max-width: 530px) {
-    padding-right: 5%;
+  @media screen and (max-width: 570px) {
+    padding-right: 1rem;
+    div > span {
+      width: 4rem;
+    }
   }
   @media screen and (min-width: 769px) {
-    padding-right: 20%;
+    div > span {
+      width: 13rem;
+    }
   }
 `;
 
