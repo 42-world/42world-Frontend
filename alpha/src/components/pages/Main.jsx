@@ -1,5 +1,6 @@
-//import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { CategoryService } from "../../network";
 import { rem } from "../../styles/rem";
 import { Container } from "../atoms/global";
 import { CategoryPreview, PhotoCategoryPreview } from "../organisms/main";
@@ -7,21 +8,25 @@ import { Searchbar } from "../organisms/main";
 import { QuickLink } from "../organisms/main";
 import { ClusterStatus } from "../organisms/main";
 
-const categories = [
-  { id: 0, name: "인기글" },
-  { id: 1, name: "자유게시판" },
-  { id: 2, name: "오늘 뭐 먹지" },
-];
-
 const Main = () => {
-  // 카테고리 종류랄 받아오면
+  const [categories, setCategories] = useState(null);
+  const fetch = async () => {
+    const response = await CategoryService.getCategories();
+    setCategories(response.data);
+  };
+
+  useEffect(() => {
+    fetch();
+    // eslint-disable-next-line
+  }, []);
+  if (!categories) return <></>;
   return (
     <MainContainer>
       <main>
         <Searchbar />
         <div className="category-preview-container">
           {categories.map((category) => (
-            <CategoryPreview key={category.id} title={category.name} />
+            <CategoryPreview key={category.id} category={category} />
           ))}
         </div>
         <div>
