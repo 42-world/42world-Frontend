@@ -6,15 +6,13 @@ const Advertisement = () => {
 };
 
 const CommunityBlock = styled.div`
-  @media screen and (min-width: 960px) {
-    height: 840px;
-    width: 154px;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: var(--primary-point);
-  }
-  @media screen and (max-width: 960px) {
+  height: 540px;
+  width: 9rem;
+  min-width: 9rem;
+  margin: 0 0.8rem;
+  border-radius: 5px;
+  background-color: var(--primary-point);
+  @media screen and (max-width: 1020px) {
     display: none;
   }
 `;
