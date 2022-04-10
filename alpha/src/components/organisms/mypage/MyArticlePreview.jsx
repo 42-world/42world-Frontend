@@ -73,7 +73,7 @@ const MyArticleDiv = styled.div`
     display: ${(props) => (props.ifComment ? "none" : "block")};
   }
   @media screen and (min-width: 769px) {
-    width: calc(50% - 0.5rem);
+    width: calc(50% - 0.8rem);
   }
 `;
 
