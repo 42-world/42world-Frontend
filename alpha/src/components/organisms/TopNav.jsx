@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 import styled from "../../../node_modules/styled-components/dist/styled-components.cjs";
 import { Outlet } from "../../../node_modules/react-router-dom/index.js";
 import SideNavigation from "./SideNavigation.jsx";
+import { useRecoilState } from "recoil";
+import { categoryState } from "../../store/category.js";
+import CategoryService from "../../network/CategoryService.js";
 
-function TopNavTMP() {
+function TopNav() {
+  const [category, setCategory] = useRecoilState(categoryState);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -23,6 +27,11 @@ function TopNavTMP() {
 
   useEffect(() => {
     showButton();
+    const fetchMyCategories = async () => {
+      const { data } = await CategoryService.getCategories();
+      setCategory(data);
+    };
+    fetchMyCategories();
   }, []);
 
   window.addEventListener("resize", showButton);
@@ -55,89 +64,64 @@ function TopNavTMP() {
               </Link>
               <ul className="nav-contents">
                 <li>
-                  <Link to="/" className="contents-links">
+                  <Link to="/category/1" className="contents-links">
                     자유게시판
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
+                  <Link to="/category/2" className="contents-links">
+                    자유게시판2
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
+                  <Link to="/category/3" className="contents-links">
+                    42born2code 공지
                   </Link>
                 </li>
               </ul>
             </li>
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 커리어
               </Link>
               <ul className="nav-contents">
                 <li>
                   <Link to="/" className="contents-links">
-                    자유게시판
+                    준비중
                   </Link>
                 </li>
                 <li>
                   <Link to="/" className="contents-links">
-                    자유게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
+                    준비중
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 일상생활
               </Link>
               <ul className="nav-contents">
                 <li>
                   <Link to="/" className="contents-links">
-                    자유게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
+                    준비중
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 프로젝트
               </Link>
               <ul className="nav-contents">
                 <li>
                   <Link to="/" className="contents-links">
-                    자유게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="contents-links">
-                    자유게시판
+                    준비중
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
             <li>
               <Link
@@ -353,4 +337,4 @@ const TopNavBlock = styled.nav`
   }
 `;
 
-export default TopNavTMP;
+export default TopNav;

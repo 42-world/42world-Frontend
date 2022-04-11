@@ -40,16 +40,25 @@ const SideNavigation = ({ handleClick }) => {
       <Menu iconShape="square">
         <SubMenu title="커뮤니티" icon={<FaHeart />}>
           <div onClick={handleClick}>
-            <MenuItem>자유게시판</MenuItem>
+            <MenuItem>
+              자유게시판1
+              <Link to="/category/1" />
+            </MenuItem>
           </div>
           <div onClick={handleClick}>
-            <MenuItem>익게1</MenuItem>
+            <MenuItem>
+              자유게시판2
+              <Link to="/category/2" />
+            </MenuItem>
           </div>
           <div onClick={handleClick}>
-            <MenuItem>익게2</MenuItem>
+            <MenuItem>
+              42born2code 공지
+              <Link to="/category/1" />
+            </MenuItem>
           </div>
         </SubMenu>
-        <SubMenu title="커리어" icon={<FaHeart />}>
+        {/* <SubMenu title="커리어" icon={<FaHeart />}>
           <div onClick={handleClick}>
             <MenuItem>고시</MenuItem>
           </div>
@@ -66,7 +75,7 @@ const SideNavigation = ({ handleClick }) => {
           <div onClick={handleClick}>
             <MenuItem>42DoProject</MenuItem>
           </div>
-        </SubMenu>
+        </SubMenu> */}
         <div onClick={handleClick}>
           <MenuItem icon={<FaGem />}>전체글</MenuItem>
         </div>

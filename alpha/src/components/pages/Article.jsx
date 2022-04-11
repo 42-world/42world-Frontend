@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/global";
-import { CommunityList, Advertisement } from "../organisms/community";
+import { CategoryList, Advertisement } from "../organisms/category";
 import { ArticleContent, Comment } from "../organisms/article";
 
 const Article = () => {
   return (
     <ArticleBlock>
       <div className="block community_block">
-        <CommunityList />
+        <CategoryList />
       </div>
       <div className="block article_block">
         <ArticleContent />

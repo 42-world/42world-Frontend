@@ -1,28 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import { Container } from "../atoms/global";
-import { CategoryList, Advertisement } from "../organisms/category";
-import { WritingContent } from "../organisms/writing";
-
-const Writing = () => {
-  const articleInfo = {
-    title: "",
-    content: "",
-  };
+import { Container } from "../../atoms/global";
+import { Board, Advertisement, CategoryList } from "../../organisms/category";
+const _id = () => {
   return (
-    <WritingBlock>
+    <CategoryBlock>
       <div className="block community_block">
         <CategoryList />
       </div>
       <div className="block writing_block">
-        <WritingContent articleInfo={articleInfo} />
+        <Board />
       </div>
       <Advertisement />
-    </WritingBlock>
+    </CategoryBlock>
+
+    // <CategoryBlock>
+    //   <div className="body">
+    //     <LeftBar />
+    //     <Board />
+    //     <Advertisement />
+    //   </div>
+    //   {/* <div className="page">밑에 페이지네이션</div> */}
+    // </CategoryBlock>
   );
 };
 
-const WritingBlock = styled(Container)`
+const CategoryBlock = styled(Container)`
   display: flex;
   flex-direction: row;
   margin-top: 1.5rem;
@@ -64,4 +67,4 @@ const WritingBlock = styled(Container)`
   }
 `;
 
-export default Writing;
+export default _id;
