@@ -1,13 +1,18 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import SearchIcon from "@mui/icons-material/Search";
 
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { categoryState } from "../../../store/category";
 
 const BoardHeader = () => {
   const [search, setSearch] = useState("");
   const navi = useNavigate();
+  const category = useRecoilValue(categoryState);
+  const loca = useLocation();
+  const categoryId = parseInt(loca.pathname.split("/")[2]);
 
   const handleSubmitSearch = (e) => {
     e.preventDefault();
@@ -21,12 +26,20 @@ const BoardHeader = () => {
     setSearch(e.currentTarget.value);
   };
   const handleCreateArticle = () => {
-    navi(`/write`);
+    navi(`/writing`);
   };
 
   return (
     <BoardHeaderDiv>
-      <h2 className="title">자유게시판</h2>
+      {category.map(({ id, name }, idx) => {
+        if (id === categoryId) {
+          return (
+            <h2 className="title" key={idx}>
+              {name}
+            </h2>
+          );
+        }
+      })}
       <div className="side-box">
         <form onSubmit={handleSubmitSearch}>
           <div className="input-box">
@@ -49,6 +62,10 @@ const BoardHeader = () => {
 export default BoardHeader;
 
 const BoardHeaderDiv = styled.div`
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   button {
     background: #53b7ba;
     color: #ffffff;
@@ -57,10 +74,7 @@ const BoardHeaderDiv = styled.div`
     border-radius: 20px;
     cursor: pointer;
   }
-  padding: 5px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
   .title {
     font-size: 18px;
   }

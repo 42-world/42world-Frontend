@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { categoryState } from "../../../store/category";
 
-const CommunityList = () => {
+const CategoryList = () => {
   const [curCommunity] = React.useState("자유게시판");
   const category = useRecoilValue(categoryState);
   const loca = useLocation();
@@ -61,4 +61,4 @@ const CategoryListBlock = styled.div`
   }
 `;
 
-export default CommunityList;
+export default CategoryList;

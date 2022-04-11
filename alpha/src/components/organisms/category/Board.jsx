@@ -9,7 +9,8 @@ import { ArticleList, Body, Wrapper } from "../../atoms/Board";
 import styled from "styled-components";
 // import ArticleService from "../../../network/AuthService";
 import { useLocation } from "react-router-dom";
-import ArticleService from "../../../network/ArticleService";
+import { ArticleService } from "../../../network";
+// import ArticleService from "../../../network/ArticleService";
 
 // const getData = () => {
 //   return new Promise((resolve, reject) => {
@@ -52,13 +53,16 @@ const Board = () => {
   //   const result = await getData();
   //   setArticles(result);
   // };
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await ArticleService.getArticles(categoryId, page);
-  //     console.log(data);
-  //     console.log(categoryId);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const data = await ArticleService.getArticlesByCategoryId(
+        categoryId,
+        page
+      );
+      // const data = await ArticleService.getArticles(categoryId, page);
+      console.log(data);
+    })();
+  }, []);
   return (
     <>
       <CommunityBlock>
