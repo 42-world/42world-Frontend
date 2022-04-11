@@ -35,6 +35,12 @@ const MyProfileDiv = styled.div`
     height: fit-content;
     font-size: 1.6rem;
   }
+  h1 {
+    margin: 0.5rem 0.1rem;
+    margin-left: 1rem;
+    height: 2.4rem;
+    font-size: 2rem;
+  }
   hr {
     color: ${(props) => props.theme.LineGray1};
   }
@@ -47,13 +53,11 @@ const MyProfileDiv = styled.div`
       flex-direction: row;
     }
   }
-  @media screen and (min-width: 769px) {
-    h1 {
-      margin: 0.5rem 0.1rem;
-      margin-left: 1rem;
-      height: 2.4rem;
-      font-size: 2rem;
-    }
+  ${(props) => props.theme.mobileSize} {
+    box-shadow: none;
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-radius: 0;
+    margin: 0;
   }
 `;
 

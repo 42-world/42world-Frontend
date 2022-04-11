@@ -28,7 +28,7 @@ const MypageBlock = styled(Container)`
   justify-content: center;
   main {
     margin-top: 1.5rem;
-    width: calc(100% - 0.5rem);
+    max-width: 48rem;
     display: flex;
     flex-direction: column;
     .mypage-article {
@@ -40,9 +40,10 @@ const MypageBlock = styled(Container)`
   aside {
     display: none;
   }
-  @media screen and (min-width: 769px) {
+  ${(props) => props.theme.mobileSize} {
     main {
-      max-width: 48rem;
+      width: 100%;
+      margin-top: 0;
     }
   }
   @media screen and (min-width: 1101px) {

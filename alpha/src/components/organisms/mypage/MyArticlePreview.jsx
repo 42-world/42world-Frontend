@@ -46,7 +46,7 @@ const MyArticleDiv = styled.div`
 
   margin: 0.5rem 0;
 
-  width: 100%;
+  width: calc(50% - 0.8rem);
   height: fit-content;
   .title {
     padding: 0.5rem;
@@ -72,8 +72,12 @@ const MyArticleDiv = styled.div`
   .comment {
     display: ${(props) => (props.ifComment ? "none" : "block")};
   }
-  @media screen and (min-width: 769px) {
-    width: calc(50% - 0.8rem);
+  ${(props) => props.theme.mobileSize} {
+    box-shadow: none;
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-radius: 0;
+    width: 100%;
+    margin: 0;
   }
 `;
 
