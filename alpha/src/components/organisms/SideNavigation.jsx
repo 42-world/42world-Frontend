@@ -41,20 +41,20 @@ const SideNavigation = ({ handleClick }) => {
         <SubMenu title="커뮤니티" icon={<FaHeart />}>
           <div onClick={handleClick}>
             <MenuItem>
-              자유게시판1
+              자유게시판
               <Link to="/category/1" />
             </MenuItem>
           </div>
           <div onClick={handleClick}>
             <MenuItem>
-              자유게시판2
+              익명게시판
               <Link to="/category/2" />
             </MenuItem>
           </div>
           <div onClick={handleClick}>
             <MenuItem>
               42born2code 공지
-              <Link to="/category/1" />
+              <Link to="/category/3" />
             </MenuItem>
           </div>
         </SubMenu>
