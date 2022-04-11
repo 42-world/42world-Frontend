@@ -11,8 +11,6 @@ const LinkSection = ({ links }) => {
       <IconSet.Icon42 />
     ) : linkType === "linkedin" ? (
       <IconSet.IconLinkedIn />
-    ) : linkType === "twitter" ? (
-      <IconSet.IconTwitter />
     ) : linkType === "facebook" ? (
       <IconSet.IconFacebook />
     ) : linkType === "solvedac" ? (
@@ -32,7 +30,8 @@ const LinkSection = ({ links }) => {
       <div
         className="mypage-link"
         key={i}
-        onClick={(e) => handleOnClick(e, links[i][0])}>
+        onClick={(e) => handleOnClick(e, links[i][0])}
+      >
         {GetIcon(i)}
         <span>{links[i][1]}</span>
       </div>
@@ -43,8 +42,10 @@ const LinkSection = ({ links }) => {
 
 const LinkSectionDiv = styled.div`
   padding: 0.3rem;
-  padding-right: 3rem;
+  padding-right: 1rem;
   border-left: solid ${(props) => props.theme.lineGray1};
+  flex-shrink: 1;
+  flex-grow: 1;
   overflow: auto;
   div {
     display: flex;
@@ -55,7 +56,8 @@ const LinkSectionDiv = styled.div`
       width: 1.3rem;
     }
     span {
-      width: 8rem;
+      max-width: 13rem;
+      width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -71,17 +73,6 @@ const LinkSectionDiv = styled.div`
     }
     span {
       display: none;
-    }
-  }
-  @media screen and (max-width: 570px) {
-    padding-right: 1rem;
-    div > span {
-      width: 4rem;
-    }
-  }
-  @media screen and (min-width: 769px) {
-    div > span {
-      width: 13rem;
     }
   }
 `;

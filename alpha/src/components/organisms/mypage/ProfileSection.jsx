@@ -22,6 +22,9 @@ const ProfileSection = ({ imgRef, userName }) => {
 const ProfileSectionDiv = styled.div`
   padding: 0.5rem;
   display: flex;
+  flex-grow: 3;
+  flex-shrink: 0;
+  min-width: 15rem;
   align-items: center;
   .mypage-photo-sect {
     width: fit-content;
