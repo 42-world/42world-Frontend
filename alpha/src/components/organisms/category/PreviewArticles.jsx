@@ -31,17 +31,19 @@ const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
         )}
         {article.title}
       </div>
-      <div className="middle">asfasf</div>
+      <div className="middle">{article.content}</div>
       <div className="bottom">
-        {article.writer && <h2>{article.writer}</h2>}
+        {article.writer && <h2>{article.writer.nickname}</h2>}
         <h2>{getArticleTime(article.createdAt)}</h2>
         <h2>조회수 {article.viewCount}</h2>
 
         <div className="liked_icon">
           <FavoriteBorderIcon />
+          {article.likeCount}
         </div>
         <div className="comment_icon">
           <SmsOutlined />
+          {article.commentCount}
         </div>
       </div>
     </PreviewArticleDiv>

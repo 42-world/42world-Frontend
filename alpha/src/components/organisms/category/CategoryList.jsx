@@ -16,16 +16,14 @@ const CategoryList = () => {
       {category.map(({ id, name }, idx) => {
         if (id === categoryId)
           return (
-            <Link to={`/category/${id}`} className="nav-links">
-              <li className="curCommunity" key={idx}>
-                {name}
-              </li>
+            <Link to={`/category/${id}`} className="nav-links" key={idx}>
+              <li className="curCommunity">{name}</li>
             </Link>
           );
         else
           return (
-            <Link to={`/category/${id}`} className="nav-links">
-              <li key={idx}>{name}</li>
+            <Link to={`/category/${id}`} className="nav-links" key={idx}>
+              <li>{name}</li>
             </Link>
           );
       })}

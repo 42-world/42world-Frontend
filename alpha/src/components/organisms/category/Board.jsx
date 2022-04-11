@@ -8,7 +8,7 @@ import BoardHeader from "./BoardHeader";
 import { ArticleList, Body, Wrapper } from "../../atoms/Board";
 import styled from "styled-components";
 // import ArticleService from "../../../network/AuthService";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArticleService } from "../../../network";
 // import ArticleService from "../../../network/ArticleService";
 
@@ -55,14 +55,14 @@ const Board = () => {
   // };
   useEffect(() => {
     (async () => {
-      const data = await ArticleService.getArticlesByCategoryId(
+      const { data } = await ArticleService.getArticlesByCategoryId(
         categoryId,
         page
       );
       // const data = await ArticleService.getArticles(categoryId, page);
-      console.log(data);
+      setArticles(data);
     })();
-  }, []);
+  }, [categoryId]);
   return (
     <>
       <CommunityBlock>
@@ -72,10 +72,16 @@ const Board = () => {
           </div>
           <Body>
             <ArticleList>
-              {/* {Articles &&
+              {Articles &&
                 Articles.map((article, id) => (
-                  <PreviewArticles key={article.id} article={article} />
-                ))} */}
+                  <Link
+                    to={`/article/${article.id}`}
+                    className="articleList_content"
+                    key={id}
+                  >
+                    <PreviewArticles article={article} />
+                  </Link>
+                ))}
             </ArticleList>
           </Body>
         </Wrapper>
@@ -93,6 +99,10 @@ const CommunityBlock = styled.div`
 
   .BoardHeaderWrapper {
     border-bottom: 0.1rem solid #d8d8d8;
+  }
+  .articleList_content {
+    text-decoration: none;
+    color: ${(props) => props.theme.black};
   }
 `;
 
