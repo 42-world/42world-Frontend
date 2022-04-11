@@ -70,7 +70,7 @@ function TopNav() {
                 </li>
                 <li>
                   <Link to="/category/2" className="contents-links">
-                    자유게시판2
+                    익명게시판
                   </Link>
                 </li>
                 <li>
