@@ -13,6 +13,8 @@ const LinkSection = ({ links }) => {
       <IconSet.IconLinkedIn />
     ) : linkType === "facebook" ? (
       <IconSet.IconFacebook />
+    ) : linkType === "twitter" ? (
+      <IconSet.IconTwitter />
     ) : linkType === "solvedac" ? (
       <IconSet.IconSolvedAC />
     ) : undefined;
@@ -53,6 +55,7 @@ const LinkSectionDiv = styled.div`
     svg {
       margin: 0.3rem;
       margin-right: 0.6rem;
+      min-width: 1.3rem;
       width: 1.3rem;
     }
     span {
