@@ -70,7 +70,7 @@ const BoardHeaderDiv = styled.div`
     background: #53b7ba;
     color: #ffffff;
     border: 0px;
-    padding: 0 0.7em 0 0.7em;
+    padding: 0 0.7rem 0 0.7rem;
     border-radius: 20px;
     cursor: pointer;
   }
@@ -81,43 +81,22 @@ const BoardHeaderDiv = styled.div`
   .side-box {
     display: flex;
     flex-direction: row;
-    margin: 0.2em;
+    margin: 0.2rem;
     .input-box {
-      width: 40vw;
+      max-width: 16rem;
       border: 1px solid #dbdbdb;
       display: flex;
-      padding: 0.2em;
-      border-radius: 1em;
-      margin-right: 10px;
+      padding: 0.2rem;
+      border-radius: 1rem;
+      margin-right: 0.7rem;
       color: black;
       input {
         font-size: 14px;
-        width: 30vw;
+        width: 100%;
+        margin-right: 0.5rem;
         border: 0px;
         &::placeholder {
           color: #dee2e6;
-        }
-      }
-    }
-  }
-  @media screen and (min-width: 960px) {
-    .side-box {
-      .input-box {
-        width: 20vw;
-        input {
-          font-size: 14px;
-          width: 16vw;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 960px) {
-    .side-box {
-      .input-box {
-        width: 40vw;
-        input {
-          font-size: 14px;
-          width: 30vw;
         }
       }
     }
