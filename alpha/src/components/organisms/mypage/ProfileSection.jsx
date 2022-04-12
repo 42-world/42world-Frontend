@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { MypageButton } from "../../atoms/Mypage";
+import AuthButton from "./AuthButton";
 
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
@@ -39,7 +40,7 @@ const ProfileSection = ({ imgID, userName }) => {
       <div className="mypage-auth-sect">
         <h1>{userName}</h1>
         <div className="mypage-auth-button">
-          <MypageButton btnType="auth-42">42인증</MypageButton>
+          <AuthButton />
           <MypageButton>로그아웃</MypageButton>
         </div>
       </div>
