@@ -4,7 +4,6 @@ import styled from "styled-components";
 import ProfileSection from "./ProfileSection";
 import LinkSection from "./LinkSection";
 
-import MypageData from "../../../datas/mypage";
 import { UserService } from "../../../network";
 
 const MyProfile = () => {
@@ -25,7 +24,7 @@ const MyProfile = () => {
       <hr />
       <div className="profile-section">
         <ProfileSection imgID={myInfo?.character} userName={myInfo?.nickname} />
-        <LinkSection links={MypageData.links} />
+        <LinkSection MyInfo={myInfo} />
         {/* MypageData에 아직 링크 구현 안됨 */}
       </div>
     </MyProfileDiv>
