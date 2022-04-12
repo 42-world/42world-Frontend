@@ -81,7 +81,11 @@ const MypageButton = styled.button`
   height: 1.6rem;
   font-size: 0.8rem;
   background-color: ${(props) =>
-    props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
+    props.btnType === "auth-42"
+      ? props.theme.primary
+      : props.btnType === "auth-42-done"
+      ? props.theme.buttonGray1
+      : props.theme.secondary};
   color: ${(props) => props.theme.white};
 `;
 
