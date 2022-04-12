@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Advertisement = () => {
-  return <CommunityBlock>광고</CommunityBlock>;
+  return <AdvertisementBlock>광고</AdvertisementBlock>;
 };
 
-const CommunityBlock = styled.div`
+const AdvertisementBlock = styled.div`
   height: 540px;
   width: 9rem;
   min-width: 9rem;

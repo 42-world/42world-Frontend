@@ -1,24 +1,21 @@
-/* Develop By TonyHan(chahan) */
 import React, { useState, useEffect } from "react";
-import { Button } from "../atoms/Button.jsx";
-import { Link } from "react-router-dom";
-import styled from "../../../node_modules/styled-components/dist/styled-components.cjs";
-import { Outlet } from "../../../node_modules/react-router-dom/index.js";
-import SideNavigation from "./SideNavigation.jsx";
+import { Button } from "../atoms/Button";
+import { Link, Outlet } from "react-router-dom";
+import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { categoryState } from "../../store/category.js";
-import CategoryService from "../../network/CategoryService.js";
+import { categoryState } from "../../store/category";
+import { CategoryService } from "../../network";
 
 function TopNav() {
-  const [category, setCategory] = useRecoilState(categoryState);
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+  const [button, setButton] = useState(false);
+  const [category, setCategory] = useRecoilState(categoryState);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
   const showButton = () => {
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 768) {
       setButton(false);
     } else {
       setButton(true);
@@ -27,120 +24,60 @@ function TopNav() {
 
   useEffect(() => {
     showButton();
-    const fetchMyCategories = async () => {
+    (async () => {
       const { data } = await CategoryService.getCategories();
+      console.log(data);
       setCategory(data);
-    };
-    fetchMyCategories();
+    })();
   }, []);
 
   window.addEventListener("resize", showButton);
+
   return (
     <>
       <TopNavBlock>
-        <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img
-              src="./assets/images/logo/Logo@05x.png"
-              alt=""
-              onClick={handleClick}
-            />
-          </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-          {click ? (
-            <div className="Sidecontainer">
-              <SideNavigation handleClick={handleClick} />
-            </div>
-          ) : (
-            <></>
-          )}
-
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                커뮤니티
-              </Link>
-              <ul className="nav-contents">
-                <li>
-                  <Link to="/category/1" className="contents-links">
-                    자유게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/category/2" className="contents-links">
-                    익명게시판
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/category/3" className="contents-links">
-                    42born2code 공지
-                  </Link>
-                </li>
-              </ul>
-            </li>
-
-            {/* <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                커리어
-              </Link>
-              <ul className="nav-contents">
-                <li>
-                  <Link to="/" className="contents-links">
-                    준비중
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="contents-links">
-                    준비중
-                  </Link>
-                </li>
-              </ul>
-            </li> */}
-            {/* <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                일상생활
-              </Link>
-              <ul className="nav-contents">
-                <li>
-                  <Link to="/" className="contents-links">
-                    준비중
-                  </Link>
-                </li>
-              </ul>
-            </li> */}
-            {/* <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                프로젝트
-              </Link>
-              <ul className="nav-contents">
-                <li>
-                  <Link to="/" className="contents-links">
-                    준비중
-                  </Link>
-                </li>
-              </ul>
-            </li> */}
-
-            <li>
-              <Link
-                to="/login"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                로그인
-              </Link>
-            </li>
-          </ul>
-          {button && (
-            <Link to="/login">
-              <Button buttonStyle="btn--outline">로그인</Button>
+        <nav className="navbar">
+          <div className="navbar-container">
+            <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+              <img
+                src={require("../../assets/images/logo/Logo@05x.png")}
+                alt=""
+                onClick={handleClick}
+              />
             </Link>
-          )}
-        </div>
-      </TopNavBlock>
+            <div className="menu-icon" onClick={handleClick}>
+              <i className={click ? "fas fa-times" : "fas fa-bars"} />
+            </div>
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <li className="nav-item">
+                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                  홈
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/category/1"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  커뮤니티
+                </Link>
+              </li>
 
+              <li>
+                <Link
+                  to="/login"
+                  className="nav-links-mobile"
+                  onClick={closeMobileMenu}
+                >
+                  로그인
+                </Link>
+              </li>
+            </ul>
+            {button && <Button buttonStyle="btn--outline">로그인</Button>}
+          </div>
+        </nav>
+      </TopNavBlock>
       <OutletWrapper>
         <Outlet />
       </OutletWrapper>
@@ -154,16 +91,18 @@ const OutletWrapper = styled.div`
   //background: #fafafa;
 `;
 
-const TopNavBlock = styled.nav`
-  background-color: #2a2d38;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+const TopNavBlock = styled.div`
+  .navbar {
+    background: ${(param) => param.theme.backgroundTheme3};
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
 
   .navbar-container {
     display: flex;
@@ -171,12 +110,12 @@ const TopNavBlock = styled.nav`
     align-items: center;
     height: 80px;
     max-width: 1100px;
+    margin: 0 5rem 0;
   }
 
   .navbar-logo {
     color: #fff;
     justify-self: start;
-    margin-left: 20px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
@@ -192,66 +131,30 @@ const TopNavBlock = styled.nav`
   .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 5px;
+    grid-gap: 10px;
     list-style: none;
     text-align: center;
     width: 60vw;
     justify-content: end;
     margin-right: 2rem;
-    .nav-item {
-      width: 120px;
-      position: relative;
-      margin: 0 1px;
-      .nav-links {
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        padding: 0 1rem;
-        height: 100%;
-      }
-      &:hover {
-        color: black;
-        transition: all 0.2s ease-out;
-        background-color: var(--primary-point);
+  }
 
-        .nav-contents {
-          display: block;
-        }
-      }
+  .nav-item {
+    height: 80px;
+  }
 
-      .nav-contents {
-        width: 250px;
-        position: relative;
-        left: 0;
-        top: -18px;
-        display: none;
-        background-color: var(--primary-point);
-        border-radius: 0 0 5px 5px;
-        li {
-          display: flex;
-          .contents-links {
-            padding: 10px 10px;
-            font-size: 14px;
-            color: #000;
-            cursor: pointer;
-            text-decoration: none;
-          }
-          &:hover {
-            background-color: var(--primary-white);
-            color: black;
-            margin: 0;
-            + .contents-links {
-              font-weight: bold;
-              height: 35px;
-              overflow: visible;
-              padding: 0;
-            }
-          }
-        }
-      }
-    }
+  .nav-links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    height: 100%;
+  }
+
+  .nav-links:hover {
+    border-bottom: 4px solid #fff;
+    transition: all 0.2s ease-out;
   }
 
   .fa-bars {
@@ -265,44 +168,55 @@ const TopNavBlock = styled.nav`
   .menu-icon {
     display: none;
   }
-
-  @media screen and (max-width: 960px) {
-    /* .NavbarItems {
+  @media screen and (max-width: 768px) {
+    .NavbarItems {
       position: relative;
-    } */
-    .Sidecontainer {
-      //display: flex;
-      //flex-direction: column;
+    }
 
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 90vh;
       position: absolute;
       top: 80px;
-      right: 0%;
+      left: -100%;
       opacity: 1;
       transition: all 0.5s ease;
     }
 
-    .nav-menu {
-      display: none;
+    .nav-menu.active {
+      background: #242222;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
     }
 
-    .nav-menu.active {
-      display: none;
+    .nav-links {
+      text-align: center;
+      padding: 2rem;
+      width: 100%;
+      display: table;
     }
 
     .nav-links:hover {
+      background-color: #fff;
+      color: #242424;
+      border-radius: 0;
     }
 
     .navbar-logo {
       position: absolute;
       top: 0;
-      left: -40px;
+      left: -1rem;
       transform: translate(25%, 50%);
     }
 
     .menu-icon {
       display: block;
       position: absolute;
-      top: 6px;
+      top: 0;
       right: 0;
       transform: translate(-100%, 60%);
       font-size: 1.8rem;

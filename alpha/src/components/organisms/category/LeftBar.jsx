@@ -12,18 +12,18 @@ const LeftBar = () => {
     "강아지 게시판",
   ];
   return (
-    <CommunityBlock>
+    <CategoryBlock>
       <div className="title">커뮤니티</div>
       <div className="category">
         {categoryList.map((cate) => (
           <div className="category-list">{cate}</div>
         ))}
       </div>
-    </CommunityBlock>
+    </CategoryBlock>
   );
 };
 
-const CommunityBlock = styled.div`
+const CategoryBlock = styled.div`
   @media screen and (min-width: 960px) {
     width: 254px;
     height: 100%;

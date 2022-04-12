@@ -65,7 +65,7 @@ const Board = () => {
   }, [categoryId]);
   return (
     <>
-      <CommunityBlock>
+      <CategoryBlock>
         <Wrapper>
           <div className="BoardHeaderWrapper">
             <BoardHeader />
@@ -85,12 +85,12 @@ const Board = () => {
             </ArticleList>
           </Body>
         </Wrapper>
-      </CommunityBlock>
+      </CategoryBlock>
     </>
   );
 };
 
-const CommunityBlock = styled.div`
+const CategoryBlock = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 0.3rem;

@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { categoryState } from "../../../store/category";
 
 const CategoryList = () => {
-  const [curCommunity] = React.useState("자유게시판");
   const category = useRecoilValue(categoryState);
   const loca = useLocation();
   const categoryId = parseInt(loca.pathname.split("/")[2]);
@@ -17,7 +16,7 @@ const CategoryList = () => {
         if (id === categoryId)
           return (
             <Link to={`/category/${id}`} className="nav-links" key={idx}>
-              <li className="curCommunity">{name}</li>
+              <li className="curCategory">{name}</li>
             </Link>
           );
         else
@@ -53,7 +52,7 @@ const CategoryListBlock = styled.div`
       margin: 0.3rem 0;
       font-weight: 600;
     }
-    .curCommunity {
+    .curCategory {
       color: #53b7ba;
     }
   }
