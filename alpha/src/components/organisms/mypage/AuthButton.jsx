@@ -1,14 +1,16 @@
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { MypageButton } from "../../atoms/Mypage";
 
 const AuthButton = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   //const auth = useContext(AuthContext);
 
+  /*
   const handleAuthClick = () => {
     //if (auth.state !== 200) navigate('/profile/auth');
     console.log("auth test");
   };
+  */
 
   return (
     /* auth.state !== 200 ?
