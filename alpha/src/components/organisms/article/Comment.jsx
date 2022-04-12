@@ -1,22 +1,15 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
 
-const Comment = () => {
-  const articleInfo = {
-    title: "제목",
-    viewCount: 100,
-    commentCount: 10,
-    writer: "글쓴이",
-  };
-
+const Comment = ({ comment }) => {
   return (
     <CommentBlock>
       <div className="comment_info">
-        <h3>댓글 {articleInfo.commentCount}개</h3>
-        <h3>조회 {articleInfo.viewCount}회</h3>
+        <h3>댓글 {comment.meta.totalCount}개</h3>
+        <h3>조회 {comment.meta.pageCount}회</h3>
       </div>
       <CreateComment />
-      <CommentList articleInfo={articleInfo} />
+      <CommentList articleInfo={comment.data} />
     </CommentBlock>
   );
 };
@@ -40,23 +33,9 @@ const CreateComment = () => {
 };
 
 const CommentList = ({ articleInfo }) => {
-  const commentList = [
-    {
-      nickname: "글쓴이",
-      content: "봉순이 이겨라",
-      createdAt: "02/15 10:01",
-    },
-    {
-      nickname: "익명",
-      content:
-        "봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라봉순이 이겨라",
-      createdAt: "02/14 03:01",
-    },
-  ];
-
   return (
     <CommentListBlock>
-      {commentList.map((comment) => (
+      {articleInfo.map((comment) => (
         <CommentItem commentData={comment} articleInfo={articleInfo} />
       ))}
     </CommentListBlock>
@@ -64,13 +43,16 @@ const CommentList = ({ articleInfo }) => {
 };
 
 const CommentItem = ({ commentData, articleInfo }) => {
+  console.log(commentData);
+  console.log(articleInfo);
+
   return (
     <CommentItemBlock>
       <div className="header">
-        {commentData.nickname === articleInfo.writer ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
-          <h3 className="writer">{commentData.nickname}</h3>
+        {commentData.writer.nickname === articleInfo.writer.nickname ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
+          <h3 className="writer">{commentData.writer.nickname}</h3>
         ) : (
-          <h3>{commentData.nickname}</h3>
+          <h3>{commentData.writer.nickname}</h3>
         )}
         <h4 className="created_at">{commentData.createdAt}</h4>
 
