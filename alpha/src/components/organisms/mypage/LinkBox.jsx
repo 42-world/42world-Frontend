@@ -51,7 +51,6 @@ const LinkBox = ({ userName, linkType }) => {
   return (
     <LinkBoxDiv
       className="mypage-link"
-      key={linkType}
       onClick={(e) => handleOnClick(e, getLink(linkType) + userName)}>
       {getIcon(linkType)}
       <span>{userName}</span>
