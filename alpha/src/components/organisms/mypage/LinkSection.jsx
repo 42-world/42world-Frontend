@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import IconSet from "../../atoms/Mypage";
 import LinkBox from "./LinkBox";
 
 const LinkSection = ({ MyInfo }) => {
