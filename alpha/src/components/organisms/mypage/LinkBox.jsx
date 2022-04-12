@@ -73,6 +73,9 @@ const LinkBoxDiv = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default LinkBox;
