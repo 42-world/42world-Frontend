@@ -19,7 +19,6 @@ const MyArticlePreview = ({ ifComment }) => {
     fetchMyArticles();
   }, [ifComment]);
 
-  console.log(articles);
   return (
     <MyArticleDiv ifComment={ifComment}>
       <div className="title">
