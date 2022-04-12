@@ -1,43 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import IconSet from "../../atoms/Mypage";
+import LinkBox from "./LinkBox";
 
-const LinkSection = ({ links }) => {
-  const GetIcon = (linkType) => {
-    return linkType === "github" ? (
-      <IconSet.IconGithub />
-    ) : linkType === "intra42" ? (
-      <IconSet.Icon42 />
-    ) : linkType === "linkedin" ? (
-      <IconSet.IconLinkedIn />
-    ) : linkType === "facebook" ? (
-      <IconSet.IconFacebook />
-    ) : linkType === "twitter" ? (
-      <IconSet.IconTwitter />
-    ) : linkType === "solvedac" ? (
-      <IconSet.IconSolvedAC />
-    ) : undefined;
-  };
+const LinkSection = ({ MyInfo }) => {
+  const [myLinks, setMyLinks] = useState(null);
 
-  const handleOnClick = (e, linkHref) => {
-    e.preventDefault();
-    console.log("clicked");
-    console.log(linkHref); //링크 누르면 이동하도록 수정
-  };
+  useEffect(() => {
+    setMyLinks({
+      intra42: MyInfo.nickname,
+      github: MyInfo.nickname,
+    });
+  }, [MyInfo]);
 
   let arr = [];
-  for (let i in links)
-    arr.push(
-      <div
-        className="mypage-link"
-        key={i}
-        onClick={(e) => handleOnClick(e, links[i][0])}
-      >
-        {GetIcon(i)}
-        <span>{links[i][1]}</span>
-      </div>
-    );
+  for (let i in myLinks)
+    arr.push(<LinkBox userName={myLinks[i]} linkType={i} />);
 
   return <LinkSectionDiv>{arr}</LinkSectionDiv>;
 };
@@ -49,22 +28,6 @@ const LinkSectionDiv = styled.div`
   flex-shrink: 1;
   flex-grow: 1;
   overflow: auto;
-  div {
-    display: flex;
-    align-items: center;
-    svg {
-      margin: 0.3rem;
-      margin-right: 0.6rem;
-      min-width: 1.3rem;
-      width: 1.3rem;
-    }
-    span {
-      max-width: 13rem;
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
   @media screen and (max-width: 480px) {
     padding: 0.3rem 0.5rem;
     display: flex;
