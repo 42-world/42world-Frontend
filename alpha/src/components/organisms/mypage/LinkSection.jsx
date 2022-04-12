@@ -8,14 +8,14 @@ const LinkSection = ({ MyInfo }) => {
 
   useEffect(() => {
     setMyLinks({
-      intra42: MyInfo.nickname,
-      github: MyInfo.nickname,
+      intra42: MyInfo?.nickname,
+      github: MyInfo?.nickname,
     });
   }, [MyInfo]);
 
   let arr = [];
   for (let i in myLinks)
-    arr.push(<LinkBox userName={myLinks[i]} linkType={i} />);
+    arr.push(<LinkBox userName={myLinks[i]} linkType={i} key={i} />);
 
   return <LinkSectionDiv>{arr}</LinkSectionDiv>;
 };
