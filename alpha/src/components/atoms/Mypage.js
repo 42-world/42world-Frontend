@@ -86,6 +86,10 @@ const MypageButton = styled.button`
       : props.btnType === "auth-42-done"
       ? props.theme.buttonGray1
       : props.theme.secondary};
+  &:hover {
+    cursor: ${(props) =>
+      props.btnType === "auth-42-done" ? "default" : "pointer"};
+  }
   color: ${(props) => props.theme.white};
 `;
 
