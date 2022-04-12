@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 const IconGithub = () => {
   return (
     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -71,6 +73,18 @@ const IconSolvedAC = () => {
   );
 };
 
+const MypageButton = styled.button`
+  padding: 0.1rem 1rem;
+  margin: 0.1rem;
+  border: none;
+  width: 6rem;
+  height: 1.6rem;
+  font-size: 0.8rem;
+  background-color: ${(props) =>
+    props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
+  color: ${(props) => props.theme.white};
+`;
+
 const IconSet = {
   Icon42,
   IconFacebook,
@@ -79,4 +93,4 @@ const IconSet = {
   IconTwitter,
   IconSolvedAC,
 };
-export default IconSet;
+export { IconSet, MypageButton };

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import { MypageButton } from "../../atoms/Mypage";
+
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -88,18 +90,6 @@ const ProfileSectionDiv = styled.div`
       text-overflow: ellipsis;
     }
   }
-`;
-
-const MypageButton = styled.button`
-  padding: 0.1rem 1rem;
-  margin: 0.1rem;
-  border: none;
-  width: 6rem;
-  height: 1.6rem;
-  font-size: 0.8rem;
-  background-color: ${(props) =>
-    props.btnType === "auth-42" ? props.theme.primary : props.theme.secondary};
-  color: ${(props) => props.theme.white};
 `;
 
 export default ProfileSection;
