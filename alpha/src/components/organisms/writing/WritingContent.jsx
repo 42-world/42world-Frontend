@@ -5,7 +5,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 
 const WritingContent = ({ articleInfo }) => {
-  const communityList = [
+  const categoryList = [
     "자유게시판",
     "익명게시판1",
     "익명게시판2",
@@ -38,9 +38,9 @@ const WritingContent = ({ articleInfo }) => {
   return (
     <WritingContentBlock>
       <div className="header">
-        <select name="community" id="community">
-          {communityList.map((community) => (
-            <option key={community}>{community}</option>
+        <select name="category" id="category">
+          {categoryList.map((category) => (
+            <option key={category}>{category}</option>
           ))}
         </select>
         <input
@@ -92,7 +92,7 @@ const WritingContentBlock = styled.div`
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    align-item: stretch;
+    align-items: stretch;
 
     .editor {
       flex-grow: 1;
