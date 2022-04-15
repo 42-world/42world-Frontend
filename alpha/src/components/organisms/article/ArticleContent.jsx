@@ -23,6 +23,7 @@ const ArticleContent = ({ article }) => {
           {article.writer.role} · {article.writer.nickname}
         </h3>
         <h3 className="article_info">
+          {/* TODO : commentCount를 실시간으로 업데이트 하는 로직 추가(아마 react-query 적용 시 해결할 수 있을듯) */}
           ⏱ 01:05 &nbsp; 👁‍ {article.viewCount} &nbsp; 💬 {article.commentCount}
         </h3>
         {isModifiable && (
