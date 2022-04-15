@@ -2,11 +2,11 @@ import React, { useCallback } from "react";
 import styled from "styled-components";
 
 const Comment = ({ comment }) => {
+  console.log(comment);
   return (
     <CommentBlock>
       <div className="comment_info">
         <h3>댓글 {comment.meta.totalCount}개</h3>
-        <h3>조회 {comment.meta.pageCount}회</h3>
       </div>
       <CreateComment />
       <CommentList commentDataList={comment.data} />
@@ -82,10 +82,10 @@ const CommentBlock = styled.div`
       font-size: 0.9rem;
       font-weight: bold;
       margin: 0.2rem 0.5rem 1rem 0;
-      &:first-child {
-        padding-right: 0.5rem;
-        border-right: 2px solid black;
-      }
+      // &:first-child {
+      //   padding-right: 0.5rem;
+      //   border-right: 2px solid black;
+      // }
     }
   }
   ${(props) => props.theme.mobileSize} {
