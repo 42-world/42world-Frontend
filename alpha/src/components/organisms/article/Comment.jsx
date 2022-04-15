@@ -33,16 +33,18 @@ const CreateComment = () => {
 };
 
 const CommentList = ({ commentDataList }) => {
+  // TODO : Comment 삭제 함수 추가
   return (
     <CommentListBlock>
       {commentDataList.map((commentData) => (
-        <CommentItem commentData={commentData} />
+        <CommentItem key={commentData.id} commentData={commentData} />
       ))}
     </CommentListBlock>
   );
 };
 
 const CommentItem = ({ commentData }) => {
+  // TODO : 현재 유저의 ID를 확인할 수 있는 전역 값 추가
   return (
     <CommentItemBlock>
       <div className="header">
