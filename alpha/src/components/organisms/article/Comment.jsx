@@ -9,7 +9,7 @@ const Comment = ({ comment }) => {
         <h3>조회 {comment.meta.pageCount}회</h3>
       </div>
       <CreateComment />
-      <CommentList articleInfo={comment.data} />
+      <CommentList commentDataList={comment.data} />
     </CommentBlock>
   );
 };
@@ -32,31 +32,27 @@ const CreateComment = () => {
   );
 };
 
-const CommentList = ({ articleInfo }) => {
+const CommentList = ({ commentDataList }) => {
   return (
     <CommentListBlock>
-      {articleInfo.map((comment) => (
-        <CommentItem commentData={comment} articleInfo={articleInfo} />
+      {commentDataList.map((commentData) => (
+        <CommentItem commentData={commentData} />
       ))}
     </CommentListBlock>
   );
 };
 
-const CommentItem = ({ commentData, articleInfo }) => {
-  console.log(commentData);
-  console.log(articleInfo);
-
+const CommentItem = ({ commentData }) => {
   return (
     <CommentItemBlock>
       <div className="header">
-        {commentData.writer.nickname === articleInfo.writer.nickname ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
+        {/* {commentData.writer.id === articleInfo.writer.id ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
           <h3 className="writer">{commentData.writer.nickname}</h3>
-        ) : (
-          <h3>{commentData.writer.nickname}</h3>
-        )}
+        ) : ( */}
+        <h3>{commentData.writer.nickname}</h3>
+        {/* } */}
         <h4 className="created_at">{commentData.createdAt}</h4>
-
-        {commentData.nickname === articleInfo.writer && ( // 자신의 댓글일 경우 삭제 버튼 추가, 추후 articleInfo.writer 말고 댓글 작성자와 비교
+        {/* {commentData.nickname === articleInfo.writer && ( // 자신의 댓글일 경우 삭제 버튼 추가, 추후 articleInfo.writer 말고 댓글 작성자와 비교
           <button
             onClick={() => {
               console.log("댓글 삭제");
@@ -64,7 +60,7 @@ const CommentItem = ({ commentData, articleInfo }) => {
           >
             삭제
           </button>
-        )}
+        )} */}
       </div>
       <div className="content">{commentData.content}</div>
     </CommentItemBlock>
