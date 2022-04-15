@@ -31,15 +31,15 @@ const BoardHeader = () => {
 
   return (
     <BoardHeaderDiv>
-      {category.map(({ id, name }, idx) => {
-        if (id === categoryId) {
-          return (
-            <h2 className="title" key={idx}>
-              {name}
-            </h2>
-          );
-        }
-      })}
+      {category.map(({ id, name }, idx) =>
+        id === categoryId ? (
+          <h2 className="title" key={idx}>
+            {name}
+          </h2>
+        ) : (
+          <></>
+        )
+      )}
       <div className="side-box">
         <form onSubmit={handleSubmitSearch}>
           <div className="input-box">

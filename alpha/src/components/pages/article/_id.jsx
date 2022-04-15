@@ -67,4 +67,4 @@ const ArticleBlock = styled(Container)`
   }
 `;
 
-export { _id as Article };
+export default _id;

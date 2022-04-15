@@ -62,6 +62,7 @@ const Board = () => {
       // const data = await ArticleService.getArticles(categoryId, page);
       setArticles(data);
     })();
+    // eslint-disable-next-line
   }, [categoryId]);
   return (
     <>

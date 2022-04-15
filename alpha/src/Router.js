@@ -4,9 +4,8 @@ import Login from "./components/pages/Login";
 import Main from "./components/pages/Main";
 import Mypage from "./components/pages/Mypage";
 import Writing from "./components/pages/Writing";
-// import Article from "./components/pages/article/_id";
-import _id from "./components/pages/category/_id"; //category 입니다
-import { Article } from "./components/pages/article/_id";
+import Category from "./components/pages/category/_id";
+import Article from "./components/pages/article/_id";
 
 const Router = () => {
   return (
@@ -15,7 +14,8 @@ const Router = () => {
         <Route path="/" element={<TopNav />}>
           <Route exact path="/" element={<Main />} />
           <Route exact path="/login" element={<Login />} />
-          <Route path="/category/:id" element={<_id />} />
+          {/* TODO : 다이나믹 라우팅 컴포넌트 이름 어떻게 수정할 것인지 논의 */}
+          <Route path="/category/:id" element={<Category />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/writing" element={<Writing />} />
           <Route path="/article/:id" element={<Article />} />

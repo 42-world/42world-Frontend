@@ -9,6 +9,8 @@ import { CategoryService } from "../../network";
 function TopNav() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(false);
+  // TODO : category 상태 어떻게 관리할 건지 논의 후 수정
+  // eslint-disable-next-line
   const [category, setCategory] = useRecoilState(categoryState);
 
   const handleClick = () => setClick(!click);
@@ -26,9 +28,9 @@ function TopNav() {
     showButton();
     (async () => {
       const { data } = await CategoryService.getCategories();
-      console.log(data);
       setCategory(data);
     })();
+    // eslint-disable-next-line
   }, []);
 
   window.addEventListener("resize", showButton);
