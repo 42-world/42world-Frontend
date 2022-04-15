@@ -4,8 +4,9 @@ import Login from "./components/pages/Login";
 import Main from "./components/pages/Main";
 import Mypage from "./components/pages/Mypage";
 import Writing from "./components/pages/Writing";
-import Article from "./components/pages/Article";
+// import Article from "./components/pages/article/_id";
 import _id from "./components/pages/category/_id"; //category 입니다
+import { Article } from "./components/pages/article/_id";
 
 const Router = () => {
   return (
@@ -17,7 +18,7 @@ const Router = () => {
           <Route path="/category/:id" element={<_id />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/writing" element={<Writing />} />
-          <Route path="/article" element={<Article />} />
+          <Route path="/article/:id" element={<Article />} />
         </Route>
         {/* <Route path="/" element={<LoginCheck />}>
 

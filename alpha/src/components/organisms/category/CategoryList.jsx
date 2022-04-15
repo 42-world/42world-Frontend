@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { categoryState } from "../../../store/category";
 
-const CategoryList = () => {
+const CategoryList = ({ sendedId }) => {
   const category = useRecoilValue(categoryState);
   const loca = useLocation();
   const categoryId = parseInt(loca.pathname.split("/")[2]);
@@ -13,7 +13,7 @@ const CategoryList = () => {
     <CategoryListBlock>
       <h2>커뮤니티</h2>
       {category.map(({ id, name }, idx) => {
-        if (id === categoryId)
+        if (id === categoryId || id === sendedId)
           return (
             <Link to={`/category/${id}`} className="nav-links" key={idx}>
               <li className="curCategory">{name}</li>
