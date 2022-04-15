@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import styled from "styled-components";
 
 const Comment = ({ comment }) => {
-  console.log(comment);
   return (
     <CommentBlock>
       <div className="comment_info">

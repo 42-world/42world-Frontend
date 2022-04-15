@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import PreviewArticles from "./PreviewArticles";
+import PreviewArticle from "./PreviewArticle";
 import BoardHeader from "./BoardHeader";
 
 // import { AiOutlineEye } from "react-icons/ai";
@@ -79,7 +79,7 @@ const Board = () => {
                     className="articleList_content"
                     key={id}
                   >
-                    <PreviewArticles article={article} />
+                    <PreviewArticle article={article} />
                   </Link>
                 ))}
             </ArticleList>

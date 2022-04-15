@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Container } from "../../atoms/global";
 import { CategoryList, Advertisement } from "../../organisms/category";
 import { ArticleContent, Comment } from "../../organisms/article";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ArticleService } from "../../../network";
 
 const _id = ({ id }) => {
@@ -16,11 +16,9 @@ const _id = ({ id }) => {
     const { id } = params;
     (async () => {
       let data = await ArticleService.getArticleByAritlceId(id);
-      console.log(data);
       setArticle(data);
       data = await ArticleService.getArticlesCommentsById(id);
       setComment(data);
-      console.log(data);
     })();
   }, [params]);
 
