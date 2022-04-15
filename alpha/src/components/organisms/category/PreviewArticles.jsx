@@ -1,5 +1,5 @@
 // import { getArticleTime, isNewArticle } from 'Utils/dayjsUtils';
-// import removeMarkdown from "remove-markdown";
+import removeMarkdown from "remove-markdown";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SmsOutlined from "@mui/icons-material/SmsOutlined";
@@ -15,7 +15,8 @@ const getArticleTime = (time) =>
 const isNewArticle = (time) => dayjs().isBefore(dayjs(time).add(12, "hour"));
 
 const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
-  // const getPlainText = (text) => removeMarkdown(text).replaceAll("\\", "");
+  const getPlainText = (text) => removeMarkdown(text).replaceAll("\\", "");
+
   return (
     <PreviewArticleDiv
       button
@@ -31,7 +32,7 @@ const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
         )}
         {article.title}
       </div>
-      <div className="middle">{article.content}</div>
+      <div className="middle">{getPlainText(article.content)}</div>
       <div className="bottom">
         {article.writer && <h2>{article.writer.nickname}</h2>}
         <h2>{getArticleTime(article.createdAt)}</h2>
@@ -125,12 +126,6 @@ const PreviewArticleDiv = styled.div`
       margin-left: auto;
       margin-bottom: 0.1rem;
       color: #df867d;
-      &::after {
-        content: "${(props) => {
-          if (props.article.likeCount > 0) return props.article.likeCount;
-          else return "";
-        }}";
-      }
     }
 
     .comment_icon {

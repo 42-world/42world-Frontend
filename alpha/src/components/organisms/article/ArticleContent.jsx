@@ -2,12 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 import { Viewer } from "@toast-ui/react-editor";
+import { ReactionService } from "../../../network";
 
 const ArticleContent = ({ article }) => {
+  // TODO : 현재 카테고리를 전역 상태로 관리해서 reactionPossible 불러오기
   const isModifiable = true;
   const isReactionPossible = true;
-  const [isLike, setIsLike] = React.useState(true);
+  const [isLike, setIsLike] = React.useState(article.isLike);
 
+  const handleClickLike = async () => {
+    const res = await ReactionService.createArticleReactionHeart(article.id);
+    setIsLike(res.isLike);
+  };
   return (
     <ArticleContentBlock>
       <div className="header">
@@ -21,6 +27,7 @@ const ArticleContent = ({ article }) => {
         </h3>
         {isModifiable && (
           <div className="edit_article">
+            {/* TODO : 현재 user의 id와 글 작성자의 id를 비교해서 조건부에 따라 수정,삭제를 렌더링하도록 수정 */}
             <button onClick={() => {}}>수정</button>
             <button onClick={() => {}}>삭제</button>
           </div>
@@ -29,11 +36,7 @@ const ArticleContent = ({ article }) => {
       <div className="content">
         <Viewer initialValue={article.content} />
         {isReactionPossible && (
-          <span
-            onClick={() => {
-              setIsLike(!isLike);
-            }}
-          >
+          <span onClick={handleClickLike}>
             {isLike ? (
               <img src="/assets/images/Icon/Favorite.svg" alt="" />
             ) : (
