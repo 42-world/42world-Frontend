@@ -3,10 +3,17 @@ import styled from "styled-components";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiCommentDots } from "react-icons/bi";
 import { rem } from "../../../styles/rem";
+import { useNavigate } from "react-router-dom";
 
-const ArticlePreview = ({ title, likeCount, commentCount }) => {
+const ArticlePreview = ({ id, title, likeCount, commentCount }) => {
+  const navigate = useNavigate();
+
+  const handleClickArticle = () => {
+    navigate(`/article/${id}`);
+  };
+
   return (
-    <ArticlePreviewWrapper>
+    <ArticlePreviewWrapper onClick={handleClickArticle}>
       <h3>{title}</h3>
       <ReactionWrapper>
         <span className="like">

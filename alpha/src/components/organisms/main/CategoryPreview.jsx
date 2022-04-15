@@ -40,6 +40,7 @@ const CategoryPreview = ({ category }) => {
       {articles.map((article) => (
         <ArticlePreview
           key={article.id}
+          id={article.id}
           title={article.title}
           likeCount={article.likeCount}
           commentCount={article.commentCount}
