@@ -130,12 +130,6 @@ const PreviewArticleDiv = styled.div`
 
     .comment_icon {
       color: #53b7ba;
-      &::after {
-        content: "${(props) => {
-          if (props.article.commentCount > 0) return props.article.commentCount;
-          else return "";
-        }}";
-      }
     }
   }
 `;

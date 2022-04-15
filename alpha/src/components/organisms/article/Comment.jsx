@@ -1,32 +1,66 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { ArticleService, CommentService } from "../../../network";
 
-const Comment = ({ comment }) => {
+const Comment = ({ articleId }) => {
+  const [comment, setComment] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const res = await ArticleService.getArticlesCommentsById(articleId);
+      setComment(res);
+    })();
+  }, [articleId]);
+
+  const handleCreateComment = async () => {
+    const res = await ArticleService.getArticlesCommentsById(articleId);
+    setComment(res);
+  };
+
+  if (!comment) return <></>;
   return (
     <CommentBlock>
       <div className="comment_info">
         <h3>댓글 {comment.meta.totalCount}개</h3>
       </div>
-      <CreateComment />
+      <CreateComment
+        articleId={articleId}
+        onCreateComment={handleCreateComment}
+      />
       <CommentList commentDataList={comment.data} />
     </CommentBlock>
   );
 };
 
-const CreateComment = () => {
-  const textAreaRef = React.useRef(null);
+const CreateComment = ({ articleId, onCreateComment }) => {
+  const [commentInput, setCommentInput] = useState("");
+  const textAreaRef = useRef(null);
   const handleTextAreaResizeHeight = useCallback(() => {
     textAreaRef.current.style.height = "auto";
     textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
   }, []);
+  const handleChangeComment = (e) => {
+    setCommentInput(e.target.value);
+  };
+  const handleSubmitComment = async () => {
+    await CommentService.createComment({
+      content: commentInput,
+      articleId: +articleId,
+    });
+    setCommentInput("");
+    textAreaRef.current.style.height = "auto";
+    onCreateComment();
+  };
   return (
     <CreateCommentBlock>
       <textarea
         ref={textAreaRef}
-        placeholder={"댓글을 입력하세요"}
+        value={commentInput}
+        placeholder="댓글을 입력하세요."
         onInput={handleTextAreaResizeHeight}
+        onChange={handleChangeComment}
       ></textarea>
-      <button>입력</button>
+      <button onClick={handleSubmitComment}>입력</button>
     </CreateCommentBlock>
   );
 };

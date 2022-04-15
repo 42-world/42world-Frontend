@@ -6,23 +6,21 @@ import { ArticleContent, Comment } from "../../organisms/article";
 import { useParams } from "react-router-dom";
 import { ArticleService } from "../../../network";
 
-const _id = ({ id }) => {
+const _id = () => {
   const params = useParams();
+  const { id } = params;
 
   const [article, setArticle] = useState();
-  const [comment, setComment] = useState();
 
   useEffect(() => {
-    const { id } = params;
     (async () => {
       let data = await ArticleService.getArticleByAritlceId(id);
       setArticle(data);
-      data = await ArticleService.getArticlesCommentsById(id);
-      setComment(data);
     })();
-  }, [params]);
+    // eslint-disable-next-line
+  }, []);
 
-  if (!article || !comment) return <></>;
+  if (!article) return <></>;
   return (
     <ArticleBlock>
       <div className="block category_block">
@@ -30,7 +28,7 @@ const _id = ({ id }) => {
       </div>
       <div className="block article_block">
         <ArticleContent article={article} />
-        <Comment comment={comment} />
+        <Comment articleId={id} />
       </div>
       <Advertisement />
     </ArticleBlock>
