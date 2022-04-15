@@ -3,28 +3,26 @@ import styled from "styled-components";
 import { Container } from "../../atoms/global";
 import { CategoryList, Advertisement } from "../../organisms/category";
 import { ArticleContent, Comment } from "../../organisms/article";
-import { useLocation } from "react-router-dom";
-import { ArticleService, CommentService } from "../../../network";
+import { useLocation, useParams } from "react-router-dom";
+import { ArticleService } from "../../../network";
 
 const _id = ({ id }) => {
-  const loca = useLocation();
-  const categoryId = parseInt(loca.pathname.split("/")[2]);
+  const params = useParams();
+
   const [article, setArticle] = useState();
   const [comment, setComment] = useState();
+
   useEffect(() => {
-    let param = id;
-    if (!param) {
-      param = categoryId;
-    }
+    const { id } = params;
     (async () => {
-      let data = await ArticleService.getArticleByAritlceId(param);
+      let data = await ArticleService.getArticleByAritlceId(id);
       console.log(data);
       setArticle(data);
-      data = await ArticleService.getArticlesCommentsById(param);
+      data = await ArticleService.getArticlesCommentsById(id);
       setComment(data);
       console.log(data);
     })();
-  }, [categoryId]);
+  }, [params]);
 
   if (!article || !comment) return <></>;
   return (
