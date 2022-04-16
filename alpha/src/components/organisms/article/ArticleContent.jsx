@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Viewer } from "@toast-ui/react-editor";
@@ -11,10 +11,16 @@ const ArticleContent = ({ article }) => {
   const isModifiable = true;
   const isReactionPossible = true;
   const [isLike, setIsLike] = React.useState(article.isLike);
+  const [likeCount, setLikeCount] = React.useState(article.likeCount);
 
   const handleClickLike = async () => {
     const res = await ReactionService.createArticleReactionHeart(article.id);
     setIsLike(res.isLike);
+    if (res.isLike) {
+      setLikeCount(likeCount + 1);
+    } else {
+      setLikeCount(likeCount - 1);
+    }
   };
   const getArticleTime = (time) =>
     dayjs(time).isSame(dayjs(), "day")
@@ -48,15 +54,18 @@ const ArticleContent = ({ article }) => {
       </div>
       <div className="content">
         <Viewer initialValue={article.content} />
-        {isReactionPossible && (
-          <span onClick={handleClickLike}>
-            {isLike ? (
-              <img src="/assets/images/Icon/Favorite.svg" alt="" />
-            ) : (
-              <img src="/assets/images/Icon/notFavorite.svg" alt="" />
-            )}
-          </span>
-        )}
+        <div className="likeContainer">
+          {isReactionPossible && (
+            <span onClick={handleClickLike}>
+              {isLike ? (
+                <img src="/assets/images/Icon/Favorite.svg" alt="" />
+              ) : (
+                <img src="/assets/images/Icon/notFavorite.svg" alt="" />
+              )}
+            </span>
+          )}
+          <span className="likeCount">{likeCount}</span>
+        </div>
       </div>
     </ArticleContentBlock>
   );
@@ -110,16 +119,32 @@ const ArticleContentBlock = styled.div`
     border-bottom: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    align-item: stretch;
-
-    span {
+    align-items: stretch;
+    .likeContainer {
       display: flex;
-      width: 70px;
-      margin: 2rem auto 1rem auto;
-      cursor: pointer;
-      img {
-        width: 100%;
-        margin-right: 1rem;
+      flex-direction: row-reverse;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      .likeCount {
+        display: flex;
+        width: 1.5rem;
+        height: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+        color: ${(props) => props.theme.white};
+        background-color: ${(props) => props.theme.backgroundTheme1};
+      }
+      span {
+        display: flex;
+        width: 70px;
+        margin: 1rem 0 1rem 0.5rem;
+        cursor: pointer;
+        img {
+          width: 100%;
+          margin-right: 1rem;
+        }
       }
     }
   }
