@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import { Viewer } from "@toast-ui/react-editor";
 import { ReactionService } from "../../../network";
+import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 const ArticleContent = ({ article }) => {
   // TODO : 현재 카테고리를 전역 상태로 관리해서 reactionPossible 불러오기
@@ -14,17 +16,27 @@ const ArticleContent = ({ article }) => {
     const res = await ReactionService.createArticleReactionHeart(article.id);
     setIsLike(res.isLike);
   };
+  const getArticleTime = (time) =>
+    dayjs(time).isSame(dayjs(), "day")
+      ? dayjs(time).format("HH:mm")
+      : dayjs(time).format("MM/DD");
+
+  console.log(article);
   return (
     <ArticleContentBlock>
       <div className="header">
-        <h2>{article.category.name}</h2>
+        <Link to={`/category/${article.category.id}`}>
+          <h2>{article.category.name}</h2>
+        </Link>
+
         <h1>{article.title}</h1>
         <h3 className="nickname">
           {article.writer.role} · {article.writer.nickname}
         </h3>
         <h3 className="article_info">
           {/* TODO : commentCount를 실시간으로 업데이트 하는 로직 추가(아마 react-query 적용 시 해결할 수 있을듯) */}
-          ⏱ 01:05 &nbsp; 👁‍ {article.viewCount} &nbsp; 💬 {article.commentCount}
+          ⏱ {getArticleTime(article.createdAt)} &nbsp; 👁‍ {article.viewCount}{" "}
+          &nbsp; 💬 {article.commentCount}
         </h3>
         {isModifiable && (
           <div className="edit_article">
@@ -59,6 +71,10 @@ const ArticleContentBlock = styled.div`
   .header {
     padding: 1rem;
     border-bottom: 1px solid #ddd;
+    a {
+      text-decoration: none;
+      color: black;
+    }
     h1 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
