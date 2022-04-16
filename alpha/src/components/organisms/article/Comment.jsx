@@ -57,6 +57,11 @@ const CreateComment = ({ articleId, onCreateComment }) => {
     textAreaRef.current.style.height = "auto";
     onCreateComment();
   };
+  const onKeyDown = (e) => {
+    if (e.key == "Enter") {
+      handleSubmitComment();
+    }
+  };
   return (
     <CreateCommentBlock>
       <textarea
@@ -65,6 +70,7 @@ const CreateComment = ({ articleId, onCreateComment }) => {
         placeholder="댓글을 입력하세요."
         onInput={handleTextAreaResizeHeight}
         onChange={handleChangeComment}
+        onKeyDown={onKeyDown}
       ></textarea>
       <button onClick={handleSubmitComment}>입력</button>
     </CreateCommentBlock>
