@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ArticleService, CommentService } from "../../../network";
+import dayjs from "dayjs";
 
-const Comment = ({ articleId }) => {
+const Comment = ({ articleId, writer }) => {
   const [comment, setComment] = useState(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Comment = ({ articleId }) => {
         articleId={articleId}
         onCreateComment={handleCreateComment}
       />
-      <CommentList commentDataList={comment.data} />
+      <CommentList commentDataList={comment.data} writer={writer} />
     </CommentBlock>
   );
 };
@@ -42,7 +43,12 @@ const CreateComment = ({ articleId, onCreateComment }) => {
   const handleChangeComment = (e) => {
     setCommentInput(e.target.value);
   };
-  const handleSubmitComment = async () => {
+  const handleSubmitComment = async (e) => {
+    //e.preventDefault();
+    if (commentInput === "") {
+      alert("입력된 댓글이 없습니다.");
+      return;
+    }
     await CommentService.createComment({
       content: commentInput,
       articleId: +articleId,
@@ -65,37 +71,53 @@ const CreateComment = ({ articleId, onCreateComment }) => {
   );
 };
 
-const CommentList = ({ commentDataList }) => {
+const CommentList = ({ commentDataList, writer }) => {
   // TODO : Comment 삭제 함수 추가
   return (
     <CommentListBlock>
       {commentDataList.map((commentData) => (
-        <CommentItem key={commentData.id} commentData={commentData} />
+        <CommentItem
+          key={commentData.id}
+          commentData={commentData}
+          writer={writer}
+        />
       ))}
     </CommentListBlock>
   );
 };
 
-const CommentItem = ({ commentData }) => {
+const CommentItem = ({ commentData, writer }) => {
   // TODO : 현재 유저의 ID를 확인할 수 있는 전역 값 추가
+  const getArticleTime = (time) =>
+    dayjs(time).isSame(dayjs(), "day")
+      ? dayjs(time).format("HH:mm")
+      : dayjs(time).format("MM/DD");
+
+  const deleteCommentById = async () => {
+    if (window.confirm("댓글을 삭제하시겠습니까?")) {
+      try {
+        await CommentService.deleteComments(commentData.id);
+        window.location.reload();
+        alert("삭제되었습니다");
+      } catch (e) {
+        console.log("삭제를 실패했습니다.");
+      }
+    } else {
+      alert("취소합니다");
+    }
+  };
   return (
     <CommentItemBlock>
       <div className="header">
-        {/* {commentData.writer.id === articleInfo.writer.id ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
+        {commentData.writer.id === writer.id ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
           <h3 className="writer">{commentData.writer.nickname}</h3>
-        ) : ( */}
-        <h3>{commentData.writer.nickname}</h3>
-        {/* } */}
-        <h4 className="created_at">{commentData.createdAt}</h4>
-        {/* {commentData.nickname === articleInfo.writer && ( // 자신의 댓글일 경우 삭제 버튼 추가, 추후 articleInfo.writer 말고 댓글 작성자와 비교
-          <button
-            onClick={() => {
-              console.log("댓글 삭제");
-            }}
-          >
-            삭제
-          </button>
-        )} */}
+        ) : (
+          <h3>{commentData.writer.nickname}</h3>
+        )}
+        <h4 className="created_at">{getArticleTime(commentData.createdAt)}</h4>
+        {commentData.writer.id === writer.id && ( // 자신의 댓글일 경우 삭제 버튼 추가, 추후 articleInfo.writer 말고 댓글 작성자와 비교
+          <button onClick={deleteCommentById}>삭제</button>
+        )}
       </div>
       <div className="content">{commentData.content}</div>
     </CommentItemBlock>

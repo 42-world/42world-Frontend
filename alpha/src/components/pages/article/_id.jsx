@@ -28,7 +28,7 @@ const _id = () => {
       </div>
       <div className="block article_block">
         <ArticleContent article={article} />
-        <Comment articleId={id} />
+        <Comment articleId={id} writer={article.writer} />
       </div>
       <Advertisement />
     </ArticleBlock>

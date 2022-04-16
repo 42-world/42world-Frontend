@@ -27,7 +27,6 @@ const ArticleContent = ({ article }) => {
       ? dayjs(time).format("HH:mm")
       : dayjs(time).format("MM/DD");
 
-  console.log(article);
   return (
     <ArticleContentBlock>
       <div className="header">
