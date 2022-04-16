@@ -58,7 +58,7 @@ const CreateComment = ({ articleId, onCreateComment }) => {
     onCreateComment();
   };
   const onKeyDown = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       handleSubmitComment();
     }
   };
