@@ -47,7 +47,6 @@ function TopNav() {
     }
   };
 
-  console.log(user[0]);
   useEffect(() => {
     showButton();
     (async () => {
@@ -65,86 +64,89 @@ function TopNav() {
 
   window.addEventListener("resize", showButton);
 
-  return (
-    <>
-      <TopNavBlock>
-        <nav className="navbar">
-          <div className="navbar-container">
-            <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-              <img
-                src={require("../../assets/images/logo/Logo@05x.png")}
-                alt=""
-                onClick={handleClick}
-              />
-            </Link>
-            <div className="menu-icon" onClick={handleClick}>
-              <i className={click ? "fas fa-times" : "fas fa-bars"} />
-            </div>
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
-              <li>
-                {user.length === 1 ? (
+  if (user.length === 0) return <></>;
+  else {
+    return (
+      <>
+        <TopNavBlock>
+          <nav className="navbar">
+            <div className="navbar-container">
+              <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                <img
+                  src={require("../../assets/images/logo/Logo@05x.png")}
+                  alt=""
+                  onClick={handleClick}
+                />
+              </Link>
+              <div className="menu-icon" onClick={handleClick}>
+                <i className={click ? "fas fa-times" : "fas fa-bars"} />
+              </div>
+              <ul className={click ? "nav-menu active" : "nav-menu"}>
+                <li>
+                  {user.length === 1 ? (
+                    <Link
+                      to="/mypage"
+                      className="nav-links-mobile-profile"
+                      onClick={closeMobileMenu}
+                    >
+                      <div className="text-area">
+                        <span>{user[0].nickname}님 안녕하세요!</span>
+                        <span>{user[0].role}</span>
+                      </div>
+
+                      <img
+                        alt={profilePhoto}
+                        src={`${PICTURE_DIR + profilePhoto}`}
+                      />
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/login"
+                      className="nav-links-mobile"
+                      onClick={closeMobileMenu}
+                    >
+                      로그인
+                    </Link>
+                  )}
+                </li>
+                <li className="nav-item">
+                  <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                    홈
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link
-                    to="/mypage"
-                    className="nav-links-mobile-profile"
+                    to="/category/1"
+                    className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    <div className="text-area">
-                      <span>{user[0].nickname}님 안녕하세요!</span>
-                      <span>{user[0].role}</span>
-                    </div>
-
+                    커뮤니티
+                  </Link>
+                </li>
+              </ul>
+              {button &&
+                (user.length === 1 ? (
+                  <Link to="/mypage" className="nav-links-profile">
                     <img
                       alt={profilePhoto}
                       src={`${PICTURE_DIR + profilePhoto}`}
                     />
+                    <span>{user[0].nickname}</span>
                   </Link>
                 ) : (
-                  <Link
-                    to="/login"
-                    className="nav-links-mobile"
-                    onClick={closeMobileMenu}
-                  >
-                    로그인
+                  <Link to="/login">
+                    <Button buttonStyle="btn--outline">로그인</Button>
                   </Link>
-                )}
-              </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  홈
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/category/1"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  커뮤니티
-                </Link>
-              </li>
-            </ul>
-            {button &&
-              (user.length === 1 ? (
-                <Link to="/mypage" className="nav-links-profile">
-                  <img
-                    alt={profilePhoto}
-                    src={`${PICTURE_DIR + profilePhoto}`}
-                  />
-                  <span>{user[0].nickname}</span>
-                </Link>
-              ) : (
-                <Link to="/login">
-                  <Button buttonStyle="btn--outline">로그인</Button>
-                </Link>
-              ))}
-          </div>
-        </nav>
-      </TopNavBlock>
-      <OutletWrapper>
-        <Outlet />
-      </OutletWrapper>
-    </>
-  );
+                ))}
+            </div>
+          </nav>
+        </TopNavBlock>
+        <OutletWrapper>
+          <Outlet />
+        </OutletWrapper>
+      </>
+    );
+  }
 }
 
 const OutletWrapper = styled.div`
