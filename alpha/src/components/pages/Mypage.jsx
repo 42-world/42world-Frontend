@@ -7,6 +7,7 @@ import { MyProfile, MyArticlePreview } from "../organisms/mypage";
 
 const Mypage = () => {
   //MypageData 대신 props로 데이터 받아와야 함 (아마도)
+
   return (
     <MypageBlock>
       <main>
