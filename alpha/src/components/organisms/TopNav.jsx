@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "../atoms/Button";
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { categoryState } from "../../store/category";
 import { CategoryService } from "../../network";
 import { userState } from "../../store/user";
@@ -10,9 +10,31 @@ import { userState } from "../../store/user";
 function TopNav() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(false);
+  const user = useRecoilValue(userState);
   // TODO : category 상태 어떻게 관리할 건지 논의 후 수정
   // eslint-disable-next-line
   const [category, setCategory] = useRecoilState(categoryState);
+  const PICTURE_DIR = "/assets/CharacterWhiteBG/";
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
+  const getProfilePhoto = (id) => {
+    const PROFILE_LIST = [
+      { id: 0, image: "bbo.png" },
+      { id: 1, image: "bora.png" },
+      { id: 2, image: "ddub.png" },
+      { id: 3, image: "nana.png" },
+      { id: 4, image: "bongsoon.png" },
+      { id: 5, image: "hyeonkim.png" },
+      { id: 6, image: "babybbo.png" },
+      { id: 7, image: "babynana.png" },
+      { id: 8, image: "babybora.png" },
+      { id: 9, image: "babyddub.png" },
+      { id: 10, image: "babyhyeonkim.png" },
+    ];
+
+    const profile = PROFILE_LIST.find((imgRef) => imgRef.id === id);
+    return profile?.image;
+  };
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -25,14 +47,21 @@ function TopNav() {
     }
   };
 
+  console.log(user[0]);
   useEffect(() => {
     showButton();
     (async () => {
       const { data } = await CategoryService.getCategories();
       setCategory(data);
     })();
+    setProfilePhoto(getProfilePhoto(user[0].character));
     // eslint-disable-next-line
   }, []);
+  useEffect(() => {
+    if (user[0].length === 1) {
+      setProfilePhoto(getProfilePhoto(user[0].character));
+    }
+  }, [user]);
 
   window.addEventListener("resize", showButton);
 
@@ -52,6 +81,33 @@ function TopNav() {
               <i className={click ? "fas fa-times" : "fas fa-bars"} />
             </div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <li>
+                {user.length === 1 ? (
+                  <Link
+                    to="/mypage"
+                    className="nav-links-mobile-profile"
+                    onClick={closeMobileMenu}
+                  >
+                    <div className="text-area">
+                      <span>{user[0].nickname}님 안녕하세요!</span>
+                      <span>{user[0].role}</span>
+                    </div>
+
+                    <img
+                      alt={profilePhoto}
+                      src={`${PICTURE_DIR + profilePhoto}`}
+                    />
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="nav-links-mobile"
+                    onClick={closeMobileMenu}
+                  >
+                    로그인
+                  </Link>
+                )}
+              </li>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                   홈
@@ -66,22 +122,21 @@ function TopNav() {
                   커뮤니티
                 </Link>
               </li>
-
-              <li>
-                <Link
-                  to="/login"
-                  className="nav-links-mobile"
-                  onClick={closeMobileMenu}
-                >
-                  로그인
-                </Link>
-              </li>
             </ul>
-            {button && (
-              <Link to="login">
-                <Button buttonStyle="btn--outline">로그인</Button>
-              </Link>
-            )}
+            {button &&
+              (user.length === 1 ? (
+                <Link to="/mypage" className="nav-links-profile">
+                  <img
+                    alt={profilePhoto}
+                    src={`${PICTURE_DIR + profilePhoto}`}
+                  />
+                  <span>{user[0].nickname}</span>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <Button buttonStyle="btn--outline">로그인</Button>
+                </Link>
+              ))}
           </div>
         </nav>
       </TopNavBlock>
@@ -143,7 +198,6 @@ const TopNavBlock = styled.div`
     text-align: center;
     width: 60vw;
     justify-content: end;
-    margin-right: 2rem;
   }
 
   .nav-item {
@@ -159,6 +213,31 @@ const TopNavBlock = styled.div`
     height: 100%;
   }
 
+  .nav-links-profile {
+    //width: 100%;
+    height: 80%;
+    color: ${(props) => props.theme.textGray2};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0rem 0.2rem;
+    border-radius: 4rem;
+    background-color: ${(props) => props.theme.backgroundTheme4};
+    img {
+      width: 3.5rem;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+    span {
+      padding-right: 1rem;
+    }
+    &:hover {
+      color: ${(props) => props.theme.textBlack};
+      background-color: ${(props) => props.theme.primary};
+    }
+  }
+
   .nav-links:hover {
     border-bottom: 4px solid #fff;
     transition: all 0.2s ease-out;
@@ -169,6 +248,9 @@ const TopNavBlock = styled.div`
   }
 
   .nav-links-mobile {
+    display: none;
+  }
+  .nav-links-mobile-profile {
     display: none;
   }
 
@@ -183,8 +265,10 @@ const TopNavBlock = styled.div`
     .nav-menu {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      height: 90vh;
+      height: 35vh;
       position: absolute;
       top: 80px;
       left: -100%;
@@ -193,7 +277,7 @@ const TopNavBlock = styled.div`
     }
 
     .nav-menu.active {
-      background: #242222;
+      background: ${(props) => props.theme.backgroundTheme4};
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
@@ -202,7 +286,7 @@ const TopNavBlock = styled.div`
 
     .nav-links {
       text-align: center;
-      padding: 2rem;
+      padding: 1.5rem;
       width: 100%;
       display: table;
     }
@@ -254,6 +338,34 @@ const TopNavBlock = styled.div`
       background: #fff;
       color: #242424;
       transition: 250ms;
+    }
+
+    .nav-links-mobile-profile {
+      width: 90vw;
+      height: 100%;
+      color: ${(props) => props.theme.textGray2};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 1rem 0 2rem 0;
+      border-radius: 0.1rem;
+      background-color: ${(props) => props.theme.backgroundTheme4};
+      border-bottom: 2px solid ${(props) => props.theme.backgroundTheme2};
+      transition: all 0.5s ease;
+      .text-area {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      img {
+        width: 4rem;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+      }
+      span {
+        padding-right: 0.5rem;
+      }
     }
   }
 `;

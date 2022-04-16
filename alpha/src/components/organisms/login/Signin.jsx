@@ -1,13 +1,14 @@
 //import React, { useState } from "react";
 import styled from "styled-components";
+import { AuthService } from "../../../network";
 import { Alert, BtnSeoul, LoginTitle, Title } from "../../atoms/Login";
-//import { useNavigate } from "../../../node_modules/react-router-dom/index";
+import { useNavigate } from "react-router-dom";
 
 const Signin = ({ handleSignup, isCallback }) => {
+  const navigate = useNavigate();
   const handleLoginButton = async () => {
-    window.location.href = "http://localhost:8888/auth/github";
-    //window.location.href = "https://api.42world.kr/auth/github";
-    //window.location.href = "https://api-alpha.42world.kr:8888/auth/github";
+    window.location.href = AuthService.getAuthUrl();
+    navigate("/");
   };
 
   return (
