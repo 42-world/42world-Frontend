@@ -11,8 +11,10 @@ const LoginCheck = () => {
     if (user.length === 0) {
       (async () => {
         try {
-          const userData = await UserService.getUser();
-          console.log(userData);
+          const { data } = await UserService.getUser();
+          //console.log(userData);
+          setUser([data]);
+          //navigate("/");
         } catch (e) {
           navigate("/login");
         }
@@ -21,7 +23,10 @@ const LoginCheck = () => {
     }
   }, [user, navigate, setUser]);
 
-  return <Outlet />;
+  if (user.length === 0) return <></>;
+  else {
+    return <Outlet />;
+  }
 };
 
 export default LoginCheck;
