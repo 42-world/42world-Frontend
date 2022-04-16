@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { MypageButton } from "../../atoms/Mypage";
 import AuthButton from "./AuthButton";
+import Logout from "./Logout";
 
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
@@ -41,7 +42,9 @@ const ProfileSection = ({ imgID, userName }) => {
         <h1>{userName}</h1>
         <div className="mypage-auth-button">
           <AuthButton />
-          <MypageButton>로그아웃</MypageButton>
+          <MypageButton>
+            <Logout>로그아웃</Logout>
+          </MypageButton>
         </div>
       </div>
     </ProfileSectionDiv>
