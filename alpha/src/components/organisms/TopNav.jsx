@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { categoryState } from "../../store/category";
 import { CategoryService } from "../../network";
+import { userState } from "../../store/user";
 
 function TopNav() {
   const [click, setClick] = useState(false);
@@ -76,7 +77,11 @@ function TopNav() {
                 </Link>
               </li>
             </ul>
-            {button && <Button buttonStyle="btn--outline">로그인</Button>}
+            {button && (
+              <Link to="login">
+                <Button buttonStyle="btn--outline">로그인</Button>
+              </Link>
+            )}
           </div>
         </nav>
       </TopNavBlock>
