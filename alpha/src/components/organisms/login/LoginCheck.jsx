@@ -7,33 +7,19 @@ import { userState } from "../../../store/user";
 const LoginCheck = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const user = await getUser();
-  //     console.log("user" + user);
-  //     console.log("user!" + !user);
-  //     console.log("user!!" + !!user);
-  //     setUser(!!user);
-
-  //     if (!user) {
-  //       navigate("/login");
-  //     }
-  //   })();
-  // }, [user, navigate]);
   useEffect(() => {
-    if (user.length == 0) {
+    if (user.length === 0) {
       (async () => {
         try {
-          const userData = await UserService.getNoviceProfile();
-          setUser(userData);
+          const userData = await UserService.getUser();
+          console.log(userData);
         } catch (e) {
           navigate("/login");
         }
       })();
     } else {
     }
-  }, [user, navigate]);
+  }, [user, navigate, setUser]);
 
   return <Outlet />;
 };

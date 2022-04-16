@@ -7,6 +7,7 @@ import Writing from "./components/pages/Writing";
 import Category from "./components/pages/category/_id";
 import Article from "./components/pages/article/_id";
 import { LoginCheck } from "./components/organisms/login";
+import ErrorPage from "./components/pages/Error";
 
 const Router = () => {
   return (
@@ -28,17 +29,7 @@ const Router = () => {
           path="/auth/github/callback"
           element={<Login isCallback={true} />}
         />
-        {/* <Route path="/" element={<LoginCheck />}>
-
-            <Route path="/" element={<Main />} />
-            <Route path="/topics/:slug" element={<_id />} />
-            <Route path="/search/:query" element={<_query />} />
-            <Route path="/article/:key" element={<_key />} />
-          </Route>
-          <Route path="/logout" element={<Logout />} />
-        </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} /> */}
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

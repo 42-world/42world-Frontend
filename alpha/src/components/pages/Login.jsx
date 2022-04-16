@@ -1,40 +1,46 @@
 //import React, { useState } from "react";
 import styled from "styled-components";
 import { Signin, Signup } from "../organisms/login";
-import { useState } from "react";
-//import { useNavigate } from "../../../node_modules/react-router-dom/index";
+import { useEffect, useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { userState } from "../../store/user";
+import qs from "qs";
+import { useNavigate } from "react-router-dom";
+import { AuthService, UserService } from "../../network";
 
-const Login = () => {
+const Login = ({ isCallback }) => {
   const [signup, setSignup] = useState(false);
+  const setUser = useSetRecoilState(userState);
+  const queryData = qs.parse(window.location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    (async () => {
+      if (isCallback) {
+        const github_code = queryData.code;
+        console.log(github_code);
+        if (!github_code) {
+          alert("다시 로그인 하세요!"); // 임시
+          navigate("/login");
+          return;
+        }
+        const result = await AuthService.getAuthAccessToken(github_code);
+        if (result.status != 200) {
+          alert("깃허브 로그인 오류! 다시 로그인 하세요!"); // 임시
+          navigate("/login");
+          return;
+        }
+        const userData = await UserService.getNoviceProfile();
+        setUser([userData]);
+        navigate("/");
+      }
+    })();
+  }, []);
   const handleSignup = () => {
     setSignup(true);
   };
-  //const navigate = useNavigate();
-  //const [loginInfo, setLoginInfo] = useState({});
-  //const { setIsLogin } = useContext(UserContext);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setLoginInfo({ ...loginInfo, [name]: value });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // const { error, token, msg } = await tryLogin(loginInfo);
-  //   // console.log(error, token, msg);
-  //   // if (!error) {
-  //   //   localStorage.setItem("token", token);
-  //   //   //localStorage.token = token;
-  //   //   //Instance.defaults.headers.common["Authorization"] = token;
-  //   //   axios.defaults.headers.common["Authorization"] = token;
-  //   //   setIsLogin(true);
-  //   //   navigate("/");
-  //   // } else {
-  //   //   localStorage.removeItem("token");
-  //   //   alert(msg);
-  //   // }
-  // };
 
   return (
     <LoginBlock>
