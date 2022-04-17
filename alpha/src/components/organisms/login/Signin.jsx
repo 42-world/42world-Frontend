@@ -1,34 +1,15 @@
 //import React, { useState } from "react";
 import styled from "styled-components";
+import { AuthService } from "../../../network";
 import { Alert, BtnSeoul, LoginTitle, Title } from "../../atoms/Login";
-//import { useNavigate } from "../../../node_modules/react-router-dom/index";
+import { useNavigate } from "react-router-dom";
 
-const Signin = ({ handleSignup }) => {
-  //const navigate = useNavigate();
-  //const [loginInfo, setLoginInfo] = useState({});
-  //const { setIsLogin } = useContext(UserContext);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setLoginInfo({ ...loginInfo, [name]: value });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // const { error, token, msg } = await tryLogin(loginInfo);
-  //   // console.log(error, token, msg);
-  //   // if (!error) {
-  //   //   localStorage.setItem("token", token);
-  //   //   //localStorage.token = token;
-  //   //   //Instance.defaults.headers.common["Authorization"] = token;
-  //   //   axios.defaults.headers.common["Authorization"] = token;
-  //   //   setIsLogin(true);
-  //   //   navigate("/");
-  //   // } else {
-  //   //   localStorage.removeItem("token");
-  //   //   alert(msg);
-  //   // }
-  // };
+const Signin = ({ handleSignup, isCallback }) => {
+  const navigate = useNavigate();
+  const handleLoginButton = async () => {
+    window.location.href = AuthService.getAuthUrl();
+    navigate("/");
+  };
 
   return (
     <SigninBlock>
@@ -49,7 +30,7 @@ const Signin = ({ handleSignup }) => {
             <p>지속적인 업데이트가 이루어 집니다.</p>
           </Alert>
           <LoginTitle className="LoginTitle">로그인하기</LoginTitle>
-          <BtnSeoul onClick={handleSignup} className="BtnSeoul">
+          <BtnSeoul onClick={handleLoginButton} className="BtnSeoul">
             42Seoul로 로그인
           </BtnSeoul>
 

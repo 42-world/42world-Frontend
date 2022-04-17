@@ -28,7 +28,7 @@ const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
       <div className="top">
         {isBestArticle && <img alt="hot " src="assets/hot.svg" />}
         {isNewArticle(article.createdAt) && (
-          <img alt="new" src="assets/new.svg" />
+          <img alt="new" src="../../assets/new.svg" />
         )}
         {article.title}
       </div>
