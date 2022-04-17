@@ -23,7 +23,7 @@ const LoginCheck = () => {
     }
   }, [user, navigate, setUser]);
 
-  if (user.length === 0) return <></>;
+  if (user === undefined || user.length === 0) return <></>;
   else {
     return <Outlet />;
   }

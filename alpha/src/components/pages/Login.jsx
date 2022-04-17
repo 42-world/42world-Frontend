@@ -20,14 +20,13 @@ const Login = ({ isCallback }) => {
     (async () => {
       if (isCallback) {
         const github_code = queryData.code;
-        console.log(github_code);
         if (!github_code) {
           alert("다시 로그인 하세요!"); // 임시
           navigate("/login");
           return;
         }
         const result = await AuthService.getAuthAccessToken(github_code);
-        if (result.status != 200) {
+        if (result.status !== 200) {
           alert("깃허브 로그인 오류! 다시 로그인 하세요!"); // 임시
           navigate("/login");
           return;
@@ -37,7 +36,7 @@ const Login = ({ isCallback }) => {
         navigate("/");
       }
     })();
-  }, []);
+  }, [isCallback, navigate, queryData.code, setUser]);
   const handleSignup = () => {
     setSignup(true);
   };

@@ -64,7 +64,7 @@ function TopNav() {
 
   window.addEventListener("resize", showButton);
 
-  if (user.length === 0) return <></>;
+  if (!user[0] || user === undefined || user.length === 0) return <></>;
   else {
     return (
       <>

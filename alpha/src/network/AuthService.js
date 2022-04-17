@@ -23,7 +23,6 @@ const AuthService = {
     const method = "GET";
     const url = authUrl("/github/callback");
     const params = { code };
-    console.log(params);
 
     let response;
     try {
