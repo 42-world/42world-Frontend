@@ -1,7 +1,7 @@
-import * as API from './APIType';
+import * as API from "./APIType";
 
-const commentUrl = path => {
-  return `${API.url('/comments')}${path}`;
+const commentUrl = (path) => {
+  return `${API.url("/comments")}${path}`;
 };
 
 const CommentService = {
@@ -31,10 +31,10 @@ const CommentService = {
    * `200` : success
    * `401` : fail
    */
-  createComments: async newComments => {
-    const method = 'POST';
-    const url = commentUrl('');
-    const body = newComments;
+  createComment: async (newComment) => {
+    const method = "POST";
+    const url = commentUrl("");
+    const body = newComment;
 
     let response;
     try {
@@ -76,7 +76,7 @@ const CommentService = {
    * `401` : fail
    */
   updateComments: async (updateComments, commentsId) => {
-    const method = 'PUT';
+    const method = "PUT";
     const url = commentUrl(`/${commentsId}`);
     const body = updateComments;
 
@@ -99,8 +99,8 @@ const CommentService = {
    * `200` : success
    * `401` : fail
    */
-  deleteComments: async commentsId => {
-    const method = 'DELETE';
+  deleteComments: async (commentsId) => {
+    const method = "DELETE";
     const url = commentUrl(`/${commentsId}`);
 
     let response;

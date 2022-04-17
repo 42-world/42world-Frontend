@@ -6,12 +6,18 @@ import { HiThumbUp } from "react-icons/hi";
 
 import { rem } from "../../../styles/rem";
 import { ArticleService } from "../../../network";
+import { useNavigate } from "react-router-dom";
 
 const CategoryPreview = ({ category }) => {
   const [articles, setArticles] = useState(null);
+  const navigate = useNavigate();
   const fetch = async () => {
     const response = await ArticleService.getArticlesByCategoryId(category.id);
     setArticles(response.data);
+  };
+
+  const handleClickCategory = () => {
+    navigate(`/category/${category.id}`);
   };
 
   useEffect(() => {
@@ -27,11 +33,14 @@ const CategoryPreview = ({ category }) => {
           <HiThumbUp />
           <h2>{category.name}</h2>
         </div>
-        <button className="more">{"더 보기 >"}</button>
+        <button className="more" onClick={handleClickCategory}>
+          {"더 보기 >"}
+        </button>
       </div>
       {articles.map((article) => (
         <ArticlePreview
           key={article.id}
+          id={article.id}
           title={article.title}
           likeCount={article.likeCount}
           commentCount={article.commentCount}

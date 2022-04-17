@@ -13,15 +13,6 @@ const _id = () => {
       </div>
       <Advertisement />
     </CategoryBlock>
-
-    // <CategoryBlock>
-    //   <div className="body">
-    //     <LeftBar />
-    //     <Board />
-    //     <Advertisement />
-    //   </div>
-    //   {/* <div className="page">밑에 페이지네이션</div> */}
-    // </CategoryBlock>
   );
 };
 

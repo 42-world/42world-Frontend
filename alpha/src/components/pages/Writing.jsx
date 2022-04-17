@@ -5,17 +5,13 @@ import { CategoryList, Advertisement } from "../organisms/category";
 import { WritingContent } from "../organisms/writing";
 
 const Writing = () => {
-  const articleInfo = {
-    title: "",
-    content: "",
-  };
   return (
     <WritingBlock>
       <div className="block category_block">
         <CategoryList />
       </div>
       <div className="block writing_block">
-        <WritingContent articleInfo={articleInfo} />
+        <WritingContent />
       </div>
       <Advertisement />
     </WritingBlock>

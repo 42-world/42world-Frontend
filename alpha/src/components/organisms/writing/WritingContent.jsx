@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 
-const WritingContent = ({ articleInfo }) => {
+import { ArticleService, ImageService } from "../../../network";
+import { useNavigate } from "react-router-dom";
+
+const WritingContent = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
+  // eslint-disable-next-line
+  const [isSending, setIsSending] = useState(false);
   const categoryList = [
     "자유게시판",
     "익명게시판1",
@@ -14,22 +22,58 @@ const WritingContent = ({ articleInfo }) => {
     "고양이게시판",
     "강아지게시판",
   ];
-  const editorRef = React.useRef(null);
+  const editorRef = useRef(null);
+  const titleRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
     editor.getRootElement().classList.add("editor");
     editor.getInstance().removeHook("addImageBlobHook");
-    //editor.getInstance().addHook("addImageBlobHook", (blob, callback) => {
-    //  (async () => {
-    //    ImageService.uploadImage(blob).then((res) => {
-    //      callback(res);
-    //    });
-    //  })();
-    //});   마크다운을 통한 이미지 업로드 시 필요한 기능
+    editor.getInstance().addHook("addImageBlobHook", (blob, callback) => {
+      (async () => {
+        ImageService.uploadImage(blob).then((res) => {
+          callback(res);
+        });
+      })();
+    }); // 마크다운을 통한 이미지 업로드 시 필요한 기능
   };
 
-  React.useEffect(() => {
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleChangeContent = (e) => {
+    setContent(editorRef.current.getInstance().getMarkdown());
+  };
+
+  const handleClickSubmit = async () => {
+    setContent(editorRef.current.getInstance().getMarkdown());
+
+    if (title === "") {
+      alert("제목을 입력하세요!");
+      return;
+    }
+    if (content === "") {
+      alert("내용을 입력하세요!");
+      return;
+    }
+
+    // 이동한 뒤에 API 실행됨
+    setIsSending(true);
+
+    await ArticleService.createArticles({
+      title: title,
+      content: content,
+      // TODO : 현재 카테고리를 관리하는 state 추가
+      categoryId: 1, // + 붙이면 number 타입
+    });
+    setIsSending(false);
+    navigate(-1);
+  };
+
+  useEffect(() => {
     if (editorRef.current) {
       markdownEditorSetting();
     }
@@ -47,18 +91,22 @@ const WritingContent = ({ articleInfo }) => {
           type="text"
           name="title"
           id="title"
-          value={articleInfo.title}
+          onChange={handleChangeTitle}
           placeholder="제목을 입력하세요"
+          ref={titleRef}
         />
       </div>
       <div className="content">
         <Editor
           previewStyle="vertical"
           initialEditType="wysiwyg"
-          onChange={() => {}}
+          placeholder="내용을 입력하세요"
+          onChange={handleChangeContent}
           ref={editorRef}
         />
-        <button className="submit">글쓰기</button>
+        <button className="submit" onClick={handleClickSubmit}>
+          글쓰기
+        </button>
       </div>
     </WritingContentBlock>
   );

@@ -1,69 +1,128 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { ArticleService, CommentService } from "../../../network";
+import dayjs from "dayjs";
 
-const Comment = ({ comment }) => {
+const Comment = ({ articleId, writer }) => {
+  const [comment, setComment] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const res = await ArticleService.getArticlesCommentsById(articleId);
+      setComment(res);
+    })();
+  }, [articleId]);
+
+  const handleCreateComment = async () => {
+    const res = await ArticleService.getArticlesCommentsById(articleId);
+    setComment(res);
+  };
+
+  if (!comment) return <></>;
   return (
     <CommentBlock>
       <div className="comment_info">
         <h3>댓글 {comment.meta.totalCount}개</h3>
-        <h3>조회 {comment.meta.pageCount}회</h3>
       </div>
-      <CreateComment />
-      <CommentList articleInfo={comment.data} />
+      <CreateComment
+        articleId={articleId}
+        onCreateComment={handleCreateComment}
+      />
+      <CommentList commentDataList={comment.data} writer={writer} />
     </CommentBlock>
   );
 };
 
-const CreateComment = () => {
-  const textAreaRef = React.useRef(null);
+const CreateComment = ({ articleId, onCreateComment }) => {
+  const [commentInput, setCommentInput] = useState("");
+  const textAreaRef = useRef(null);
   const handleTextAreaResizeHeight = useCallback(() => {
     textAreaRef.current.style.height = "auto";
     textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
   }, []);
+  const handleChangeComment = (e) => {
+    setCommentInput(e.target.value);
+  };
+  const handleSubmitComment = async (e) => {
+    //e.preventDefault();
+    if (commentInput === "") {
+      alert("입력된 댓글이 없습니다.");
+      return;
+    }
+    await CommentService.createComment({
+      content: commentInput,
+      articleId: +articleId,
+    });
+    setCommentInput("");
+    textAreaRef.current.style.height = "auto";
+    onCreateComment();
+  };
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmitComment();
+    }
+  };
   return (
     <CreateCommentBlock>
       <textarea
         ref={textAreaRef}
-        placeholder={"댓글을 입력하세요"}
+        value={commentInput}
+        placeholder="댓글을 입력하세요."
         onInput={handleTextAreaResizeHeight}
+        onChange={handleChangeComment}
+        onKeyDown={onKeyDown}
       ></textarea>
-      <button>입력</button>
+      <button onClick={handleSubmitComment}>입력</button>
     </CreateCommentBlock>
   );
 };
 
-const CommentList = ({ articleInfo }) => {
+const CommentList = ({ commentDataList, writer }) => {
+  // TODO : Comment 삭제 함수 추가
   return (
     <CommentListBlock>
-      {articleInfo.map((comment) => (
-        <CommentItem commentData={comment} articleInfo={articleInfo} />
+      {commentDataList.map((commentData) => (
+        <CommentItem
+          key={commentData.id}
+          commentData={commentData}
+          writer={writer}
+        />
       ))}
     </CommentListBlock>
   );
 };
 
-const CommentItem = ({ commentData, articleInfo }) => {
-  console.log(commentData);
-  console.log(articleInfo);
+const CommentItem = ({ commentData, writer }) => {
+  // TODO : 현재 유저의 ID를 확인할 수 있는 전역 값 추가
+  const getArticleTime = (time) =>
+    dayjs(time).isSame(dayjs(), "day")
+      ? dayjs(time).format("HH:mm")
+      : dayjs(time).format("MM/DD");
 
+  const deleteCommentById = async () => {
+    if (window.confirm("댓글을 삭제하시겠습니까?")) {
+      try {
+        await CommentService.deleteComments(commentData.id);
+        window.location.reload();
+        alert("삭제되었습니다");
+      } catch (e) {
+        console.log("삭제를 실패했습니다.");
+      }
+    } else {
+      alert("취소합니다");
+    }
+  };
   return (
     <CommentItemBlock>
       <div className="header">
-        {commentData.writer.nickname === articleInfo.writer.nickname ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
+        {commentData.writer.id === writer.id ? ( // 글작성자의 댓글일 경우 닉네임 색상 변경
           <h3 className="writer">{commentData.writer.nickname}</h3>
         ) : (
           <h3>{commentData.writer.nickname}</h3>
         )}
-        <h4 className="created_at">{commentData.createdAt}</h4>
-
-        {commentData.nickname === articleInfo.writer && ( // 자신의 댓글일 경우 삭제 버튼 추가, 추후 articleInfo.writer 말고 댓글 작성자와 비교
-          <button
-            onClick={() => {
-              console.log("댓글 삭제");
-            }}
-          >
-            삭제
-          </button>
+        <h4 className="created_at">{getArticleTime(commentData.createdAt)}</h4>
+        {commentData.writer.id === writer.id && ( // 자신의 댓글일 경우 삭제 버튼 추가, 추후 articleInfo.writer 말고 댓글 작성자와 비교
+          <button onClick={deleteCommentById}>삭제</button>
         )}
       </div>
       <div className="content">{commentData.content}</div>
@@ -84,10 +143,10 @@ const CommentBlock = styled.div`
       font-size: 0.9rem;
       font-weight: bold;
       margin: 0.2rem 0.5rem 1rem 0;
-      &:first-child {
-        padding-right: 0.5rem;
-        border-right: 2px solid black;
-      }
+      // &:first-child {
+      //   padding-right: 0.5rem;
+      //   border-right: 2px solid black;
+      // }
     }
   }
   ${(props) => props.theme.mobileSize} {
