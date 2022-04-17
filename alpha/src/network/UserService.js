@@ -238,6 +238,7 @@ const UserService = {
         method,
         url,
       });
+      console.log(response);
     } catch (error) {
       console.log("service : ", error);
     }
