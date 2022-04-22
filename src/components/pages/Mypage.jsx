@@ -3,15 +3,9 @@ import styled from "styled-components";
 
 import { Container } from "../atoms/global";
 import { ClusterStatus, QuickLink } from "../organisms/main";
-import {
-  MyProfile,
-  MyArticlePreview,
-  CharSelectModal,
-} from "../organisms/mypage";
+import { MyProfile, MyArticlePreview } from "../organisms/mypage";
 
 const Mypage = () => {
-  //MypageData 대신 props로 데이터 받아와야 함 (아마도)
-
   return (
     <>
       <MypageBlock>
@@ -27,7 +21,6 @@ const Mypage = () => {
           <QuickLink />
         </aside>
       </MypageBlock>
-      <CharSelectModal ifOpen={true} />
     </>
   );
 };
