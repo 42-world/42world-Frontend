@@ -4,32 +4,14 @@ import styled from "styled-components";
 import { MypageButton } from "../../atoms/Mypage";
 import AuthButton from "./AuthButton";
 import Logout from "./Logout";
+import profileUtils from "./utils/profileUtils";
 
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
   const [profilePhoto, setProfilePhoto] = useState(null);
 
-  const getProfilePhoto = (id) => {
-    const PROFILE_LIST = [
-      { id: 0, image: "bbo.png" },
-      { id: 1, image: "bora.png" },
-      { id: 2, image: "ddub.png" },
-      { id: 3, image: "nana.png" },
-      { id: 4, image: "bongsoon.png" },
-      { id: 5, image: "hyeonkim.png" },
-      { id: 6, image: "babybbo.png" },
-      { id: 7, image: "babynana.png" },
-      { id: 8, image: "babybora.png" },
-      { id: 9, image: "babyddub.png" },
-      { id: 10, image: "babyhyeonkim.png" },
-    ];
-
-    const profile = PROFILE_LIST.find((imgRef) => imgRef.id === id);
-    return profile?.image;
-  };
-
   useEffect(() => {
-    setProfilePhoto(getProfilePhoto(imgID));
+    setProfilePhoto(profileUtils.getProfilePhoto(imgID));
   }, [imgID]);
 
   return (
