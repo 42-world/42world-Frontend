@@ -110,10 +110,10 @@ const ArticleService = {
     }
     return response.data;
   },
-  getArticlesByCategoryId: async (categoryId, page) => {
+  getArticlesByCategoryId: async (categoryId, page, take = 10) => {
+    // 기본으로 가져오는 게시글 수는 10개
     const method = "GET";
     const url = articleUrl("");
-    const take = 3;
     const params = { categoryId, page, take };
 
     let response;
