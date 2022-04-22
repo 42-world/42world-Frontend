@@ -18,8 +18,9 @@ const CharSelectModal = ({ ifOpen, setIfOpen }) => {
   const handleOnClickChar = async (e, id) => {
     e.preventDefault();
     try {
-      await UserService.updateUser({ character: id });
+      const response = await UserService.updateUser({ character: id });
       window.alert("캐릭터 변경 완료");
+      console.log(response);
       setCharID(id);
       setUserInfo([{ ...userInfo[0], character: id }]);
       //auth.setIsLoading(true);
@@ -63,7 +64,7 @@ const CharSelectContainer = styled(ModalContainer)`
   height: fit-content;
 
   h1 {
-    margin: 0.3rem 0.1rem 0.6rem 0.5rem;
+    margin: 0.6rem 0.1rem 0.6rem 0.5rem;
     height: fit-content;
     font-size: 1.6rem;
   }
