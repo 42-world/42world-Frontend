@@ -1,16 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "@mui/material";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { ModalContainer } from "../../atoms/Modal";
 import profileUtils from "./utils/profileUtils";
 import { UserService } from "../../../network";
 import { MypageButton } from "../../atoms/Mypage";
+import { userState } from "../../../store/user";
 
 const CharSelectModal = ({ ifOpen, setIfOpen }) => {
   //const curUser = auth.curUser;
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
-  const [charID, setCharID] = useState(0);
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+  const [charID, setCharID] = useState(userInfo ? userInfo[0].character : 0);
 
   const handleOnClickChar = async (e, id) => {
     e.preventDefault();
@@ -18,6 +21,7 @@ const CharSelectModal = ({ ifOpen, setIfOpen }) => {
       await UserService.updateUser({ character: id });
       window.alert("캐릭터 변경 완료");
       setCharID(id);
+      setUserInfo([{ ...userInfo[0], character: id }]);
       //auth.setIsLoading(true);
     } catch (e) {
       console.log(e);
