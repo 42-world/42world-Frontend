@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "@mui/material";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 import { ModalContainer } from "../../atoms/Modal";
 import profileUtils from "./utils/profileUtils";
