@@ -3,13 +3,11 @@ import styled from "styled-components";
 
 import ProfileSection from "./ProfileSection";
 import LinkSection from "./LinkSection";
-import CharSelectModal from "./CharSelectModal";
 
 import { UserService } from "../../../network";
 
 const MyProfile = () => {
   const [myInfo, setMyInfo] = useState(null);
-  const [ifOpen, setIfOpen] = useState(false);
 
   useEffect(() => {
     const fetchMyInfo = async () => {
@@ -29,7 +27,6 @@ const MyProfile = () => {
         <LinkSection MyInfo={myInfo} />
         {/* MypageData에 아직 링크 구현 안됨 */}
       </div>
-      <CharSelectModal ifOpen={ifOpen} setIfOpen={setIfOpen} />
     </MyProfileDiv>
   );
 };

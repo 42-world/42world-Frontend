@@ -5,20 +5,31 @@ import { MypageButton } from "../../atoms/Mypage";
 import AuthButton from "./AuthButton";
 import Logout from "./Logout";
 import profileUtils from "./utils/profileUtils";
+import CharSelectModal from "./CharSelectModal";
 
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
   const [profilePhoto, setProfilePhoto] = useState(null);
+  const [ifOpen, setIfOpen] = useState(false);
 
   useEffect(() => {
     setProfilePhoto(profileUtils.getProfilePhoto(imgID));
   }, [imgID]);
 
+  const handleOnPhotoBtnClick = (e) => {
+    e.preventDefault();
+    setIfOpen(true);
+  };
+
   return (
     <ProfileSectionDiv>
       <div className="mypage-photo-sect">
         <img alt={profilePhoto} src={`${PICTURE_DIR + profilePhoto}`} />
-        <MypageButton btnType="change-photo">사진 변경</MypageButton>
+        <MypageButton
+          btnType="change-photo"
+          onClick={(e) => handleOnPhotoBtnClick(e)}>
+          사진 변경
+        </MypageButton>
       </div>
       <div className="mypage-auth-sect">
         <h1>{userName}</h1>
@@ -29,6 +40,7 @@ const ProfileSection = ({ imgID, userName }) => {
           </MypageButton>
         </div>
       </div>
+      <CharSelectModal ifOpen={ifOpen} setIfOpen={setIfOpen} />
     </ProfileSectionDiv>
   );
 };
