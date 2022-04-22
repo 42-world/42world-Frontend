@@ -3,7 +3,7 @@ const PROFILE_LIST = [
   { id: 1, image: "bora.png" },
   { id: 2, image: "ddub.png" },
   { id: 3, image: "nana.png" },
-  { id: 4, image: "bongsoon.png" },
+  { id: 4, image: "bongsuni.png" },
   { id: 5, image: "hyeonkim.png" },
   { id: 6, image: "babybbo.png" },
   { id: 7, image: "babynana.png" },
