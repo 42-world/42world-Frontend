@@ -12,7 +12,11 @@ const CategoryPreview = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const navigate = useNavigate();
   const fetch = async () => {
-    const response = await ArticleService.getArticlesByCategoryId(category.id);
+    const response = await ArticleService.getArticlesByCategoryId(
+      category.id,
+      1, // page
+      3 // article count
+    );
     setArticles(response.data);
   };
 
