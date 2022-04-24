@@ -109,6 +109,7 @@ const ArticleContentBlock = styled.div`
         font-size: 0.8rem;
         margin-right: 0.4rem;
         font-weight: bold;
+        cursor: pointer;
       }
     }
   }
