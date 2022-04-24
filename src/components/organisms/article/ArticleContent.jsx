@@ -26,7 +26,7 @@ const ArticleContent = ({ article }) => {
 
   const deleteArticle = () => {
     console.log(article);
-    if (confirm("삭제하시겠습니까?")) {
+    if (window.confirm("삭제하시겠습니까?")) {
       // TODO : 삭제 요청
       ArticleService.deleteArticles(article.id);
       navi(`/category/${article.category.id}`);

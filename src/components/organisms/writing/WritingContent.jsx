@@ -7,11 +7,11 @@ import { Editor } from "@toast-ui/react-editor";
 import { ArticleService, ImageService } from "../../../network";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const WritingContent = ({ articleContent, articleTitle, curCate = 1 }) => {
+const WritingContent = ({ articleContent, articleTitle }) => {
   const [title, setTitle] = useState(articleTitle);
   const [content, setContent] = useState(articleContent);
   const [articleId, setArticleId] = useState(null);
-  const [categoryId, setCategoryId] = useState(curCate);
+  const [categoryId, setCategoryId] = useState(1);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
@@ -21,6 +21,7 @@ const WritingContent = ({ articleContent, articleTitle, curCate = 1 }) => {
   ];
   const editorRef = useRef(null);
   const titleRef = useRef(null);
+  const categoryRef = useRef(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -79,13 +80,18 @@ const WritingContent = ({ articleContent, articleTitle, curCate = 1 }) => {
   };
 
   useEffect(() => {
-    if (location.state) {
+    if (location.state.categoryId) {
+      setCategoryId(location.state.categoryId);
+      categoryRef.current.value = location.state.categoryId;
+    }
+    if (location.state.article) {
       const { article } = location.state;
-      console.log(article);
+      console.log("test", article);
       setTitle(article.title);
       setContent(article.content);
       setCategoryId(article.categoryId);
       setArticleId(article.id);
+      categoryRef.current.value = article.categoryId;
       editorRef.current.getInstance().setMarkdown(article.content);
     }
     if (editorRef.current) {
@@ -102,6 +108,7 @@ const WritingContent = ({ articleContent, articleTitle, curCate = 1 }) => {
           onChange={(e) => {
             setCategoryId(e.target.value);
           }}
+          ref={categoryRef}
         >
           {categoryList.map((category) => (
             <option key={category.name} value={category.id}>
