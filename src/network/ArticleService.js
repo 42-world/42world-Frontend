@@ -1,3 +1,4 @@
+import { AiOutlineConsoleSql } from "react-icons/ai";
 import * as API from "./APIType";
 
 const articleUrl = (path) => {
@@ -127,6 +128,24 @@ const ArticleService = {
       alert(error);
     }
     return response.data;
+  },
+  getArticleMetaDataByCategoryId: async (categoryId, take = 10) => {
+    const method = "GET";
+    const url = articleUrl("");
+    const page = 1;
+    const params = { categoryId, page, take };
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        params,
+        method,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response.data.meta;
   },
   /**
    * **GET** One Articles By Articles ID
