@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
@@ -11,17 +11,6 @@ import { userState } from "../../../store/user";
 const MyProfile = () => {
   //const [myInfo, setMyInfo] = useState(null);
   const myInfo = useRecoilValue(userState);
-
-  useEffect(() => {
-    /*
-    const fetchMyInfo = async () => {
-      const response = await UserService.getUser();
-      setMyInfo(response.data);
-    };
-
-    fetchMyInfo();
-    */
-  }, [myInfo]);
 
   return (
     <MyProfileDiv>
