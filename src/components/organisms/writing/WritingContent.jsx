@@ -6,6 +6,8 @@ import { Editor } from "@toast-ui/react-editor";
 
 import { ArticleService, ImageService } from "../../../network";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { categoryState } from "../../../store/category";
 
 const WritingContent = () => {
   const [title, setTitle] = useState("");
@@ -13,15 +15,7 @@ const WritingContent = () => {
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
-  const categoryList = [
-    "자유게시판",
-    "익명게시판1",
-    "익명게시판2",
-    "지듣노[지최가 듣는 노래]",
-    "42Chelin",
-    "고양이게시판",
-    "강아지게시판",
-  ];
+  const category = useRecoilValue(categoryState);
   const editorRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -83,8 +77,8 @@ const WritingContent = () => {
     <WritingContentBlock>
       <div className="header">
         <select name="category" id="category">
-          {categoryList.map((category) => (
-            <option key={category}>{category}</option>
+          {category.map((item, idx) => (
+            <option key={idx}>{item.name}</option>
           ))}
         </select>
         <input
