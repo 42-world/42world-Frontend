@@ -80,6 +80,7 @@ const MypageButton = styled.button`
   width: 6rem;
   height: 1.6rem;
   font-size: 0.8rem;
+  white-space: nowrap;
   background-color: ${(props) =>
     props.btnType === "auth-42"
       ? props.theme.primary
