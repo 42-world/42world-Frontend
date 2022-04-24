@@ -9,7 +9,7 @@ import { UserService } from "../../../network";
 import { MypageButton } from "../../atoms/Mypage";
 import { userState } from "../../../store/user";
 
-const CharSelectModal = ({ ifOpen, setIfOpen }) => {
+const CharSelectModal = ({ isOpen, setIsOpen }) => {
   //const curUser = auth.curUser;
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
   const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -32,11 +32,11 @@ const CharSelectModal = ({ ifOpen, setIfOpen }) => {
 
   const handleOnClickBtn = (e) => {
     e.preventDefault();
-    setIfOpen(false);
+    setIsOpen(false);
   };
 
   return (
-    <Modal open={ifOpen}>
+    <Modal open={isOpen}>
       <CharSelectContainer>
         <h1>캐릭터 선택</h1>
         <hr />

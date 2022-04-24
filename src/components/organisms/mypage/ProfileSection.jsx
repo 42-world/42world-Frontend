@@ -10,7 +10,7 @@ import CharSelectModal from "./CharSelectModal";
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
   const [profilePhoto, setProfilePhoto] = useState(null);
-  const [ifOpen, setIfOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setProfilePhoto(profileUtils.getProfilePhoto(imgID));
@@ -18,7 +18,7 @@ const ProfileSection = ({ imgID, userName }) => {
 
   const handleOnPhotoBtnClick = (e) => {
     e.preventDefault();
-    setIfOpen(true);
+    setIsOpen(true);
   };
 
   return (
@@ -40,7 +40,7 @@ const ProfileSection = ({ imgID, userName }) => {
           </MypageButton>
         </div>
       </div>
-      <CharSelectModal ifOpen={ifOpen} setIfOpen={setIfOpen} />
+      <CharSelectModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </ProfileSectionDiv>
   );
 };
