@@ -92,6 +92,8 @@ const WritingContent = ({ articleContent, articleTitle }) => {
       setCategoryId(article.categoryId);
       setArticleId(article.id);
       categoryRef.current.value = article.categoryId;
+      categoryRef.current.disabled = true;
+      titleRef.current.disabled = true;
       editorRef.current.getInstance().setMarkdown(article.content);
     }
     if (editorRef.current) {
