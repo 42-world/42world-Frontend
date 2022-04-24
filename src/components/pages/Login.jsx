@@ -44,12 +44,10 @@ const Login = ({ isCallback }) => {
   return (
     <LoginBlock>
       <div className="video-container">
-        <video
-          src="assets/videos/video-1.mp4"
-          type="video/mp4"
-          autoPlay
-          loop
-          muted
+        <img
+          src="assets/videos/42seoul_login.jpg"
+          alt="..."
+          className="login_bg"
         />
         {signup ? (
           <Signup handleSignup={handleSignup} />
@@ -115,7 +113,7 @@ const LoginBlock = styled.div`
       justify-content: center;
       align-items: center;
       object-fit: contain;
-      video {
+      .login_bg {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -137,7 +135,7 @@ const LoginBlock = styled.div`
       justify-content: center;
       align-items: center;
       object-fit: contain;
-      video {
+      .login_bg {
         object-fit: cover;
         width: 100%;
         height: 100%;
