@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 import { Viewer } from "@toast-ui/react-editor";
-import { ReactionService } from "../../../network";
+import { ReactionService, ArticleService } from "../../../network";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ArticleContent = ({ article }) => {
   // TODO : 현재 카테고리를 전역 상태로 관리해서 reactionPossible 불러오기
   const isModifiable = true;
   const isReactionPossible = true;
+  const navi = useNavigate();
   const [isLike, setIsLike] = React.useState(article.isLike);
   const [likeCount, setLikeCount] = React.useState(article.likeCount);
 
@@ -22,6 +23,16 @@ const ArticleContent = ({ article }) => {
       setLikeCount(likeCount - 1);
     }
   };
+
+  const deleteArticle = () => {
+    console.log(article);
+    if (confirm("삭제하시겠습니까?")) {
+      // TODO : 삭제 요청
+      ArticleService.deleteArticles(article.id);
+      navi(`/category/${article.category.id}`);
+    }
+  };
+
   const getArticleTime = (time) =>
     dayjs(time).isSame(dayjs(), "day")
       ? dayjs(time).format("HH:mm")
@@ -47,7 +58,13 @@ const ArticleContent = ({ article }) => {
           <div className="edit_article">
             {/* TODO : 현재 user의 id와 글 작성자의 id를 비교해서 조건부에 따라 수정,삭제를 렌더링하도록 수정 */}
             <button onClick={() => {}}>수정</button>
-            <button onClick={() => {}}>삭제</button>
+            <button
+              onClick={() => {
+                deleteArticle();
+              }}
+            >
+              삭제
+            </button>
           </div>
         )}
       </div>
