@@ -65,6 +65,11 @@ const CategoryBlock = styled.div`
   .articleList_content {
     text-decoration: none;
     color: ${(props) => props.theme.black};
+    &:last-child {
+      div {
+        border: none;
+      }
+    }
   }
 `;
 
