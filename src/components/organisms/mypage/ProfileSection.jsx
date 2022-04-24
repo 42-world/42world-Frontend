@@ -16,7 +16,7 @@ const ProfileSection = ({ imgID, userName }) => {
     setProfilePhoto(profileUtils.getProfilePhoto(imgID));
   }, [imgID]);
 
-  const handleOnPhotoBtnClick = (e) => {
+  const handleClickPhotoBtn = (e) => {
     e.preventDefault();
     setIsOpen(true);
   };
@@ -27,7 +27,7 @@ const ProfileSection = ({ imgID, userName }) => {
         <img alt={profilePhoto} src={`${PICTURE_DIR + profilePhoto}`} />
         <MypageButton
           btnType="change-photo"
-          onClick={(e) => handleOnPhotoBtnClick(e)}>
+          onClick={(e) => handleClickPhotoBtn(e)}>
           사진 변경
         </MypageButton>
       </div>

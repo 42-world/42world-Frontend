@@ -15,7 +15,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const [charID, setCharID] = useState(userInfo ? userInfo[0].character : 0);
 
-  const handleOnClickChar = async (e, id) => {
+  const handleClickChar = async (e, id) => {
     e.preventDefault();
     try {
       const response = await UserService.updateUser({ character: id });
@@ -30,7 +30,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
     }
   };
 
-  const handleOnClickBtn = (e) => {
+  const handleClickBtn = (e) => {
     e.preventDefault();
     setIsOpen(false);
   };
@@ -43,7 +43,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
         <div>
           <div className="char-list">
             {profileUtils.PROFILE_LIST.map((char) => (
-              <div key={char.id} onClick={(e) => handleOnClickChar(e, char.id)}>
+              <div key={char.id} onClick={(e) => handleClickChar(e, char.id)}>
                 <img
                   className={char.id === charID ? "selected" : ""}
                   alt="profile"
@@ -52,7 +52,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
               </div>
             ))}
           </div>
-          <MypageButton onClick={handleOnClickBtn}>닫기</MypageButton>
+          <MypageButton onClick={handleClickBtn}>닫기</MypageButton>
         </div>
       </CharSelectContainer>
     </Modal>
