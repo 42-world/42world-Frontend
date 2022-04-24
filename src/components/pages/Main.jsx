@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { CategoryService } from "../../network";
 import { rem } from "../../styles/rem";
 import { Container } from "../atoms/global";
-import { CategoryPreview, PhotoCategoryPreview } from "../organisms/main";
-import { Searchbar } from "../organisms/main";
+import { CategoryPreview } from "../organisms/main";
 import { QuickLink } from "../organisms/main";
-import { ClusterStatus } from "../organisms/main";
 
 const Main = () => {
   const [categories, setCategories] = useState(null);
@@ -23,18 +21,18 @@ const Main = () => {
   return (
     <MainContainer>
       <main>
-        <Searchbar />
+        {/* TODO : 검색 바 구현되면 추가 */}
+        {/* <Searchbar /> */}
         <div className="category-preview-container">
           {categories.map((category) => (
             <CategoryPreview key={category.id} category={category} />
           ))}
         </div>
-        <div>
+        {/* <div>
           <PhotoCategoryPreview />
-        </div>
+        </div> */}
       </main>
       <aside>
-        <ClusterStatus />
         <QuickLink />
       </aside>
     </MainContainer>
@@ -56,14 +54,17 @@ const MainContainer = styled(Container)`
       display: flex;
       flex-wrap: wrap;
 
-      margin-top: ${rem(20)};
       max-width: ${rem(768)};
+    }
+
+    ${(props) => props.theme.mobileSize} {
+      margin-top: 0;
     }
   }
 
   aside {
     width: ${rem(240)};
-    padding-left: ${rem(20)};
+    padding: 0 ${rem(10)};
 
     @media screen and (max-width: 1100px) {
       display: none;

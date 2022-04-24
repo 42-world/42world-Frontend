@@ -82,7 +82,6 @@ const ClusterStatusWrapper = styled.div`
   padding: ${rem(10)};
 
   border-radius: ${rem(16)};
-  // box-shadow: ${(props) => props.theme.boxShadow};
   background: ${(props) => props.theme.backgroundBlue1};
   cursor: pointer;
 
