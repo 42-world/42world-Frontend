@@ -139,19 +139,14 @@ const ArticleContentBlock = styled.div`
     align-items: stretch;
     .likeContainer {
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: row;
       width: 100%;
       justify-content: center;
       align-items: center;
       .likeCount {
         display: flex;
-        width: 1.5rem;
-        height: 1.5rem;
-        justify-content: center;
-        align-items: center;
-        border-radius: 1rem;
-        color: ${(props) => props.theme.white};
-        background-color: ${(props) => props.theme.backgroundTheme1};
+        width: max-content;
+        color: ${(props) => props.theme.textGray4};
       }
       span {
         display: flex;
