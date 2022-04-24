@@ -33,6 +33,11 @@ const ArticleContent = ({ article }) => {
     }
   };
 
+  const editArticle = () => {
+    console.log(article);
+    navi(`/writing`, { state: { article } });
+  };
+
   const getArticleTime = (time) =>
     dayjs(time).isSame(dayjs(), "day")
       ? dayjs(time).format("HH:mm")
@@ -57,7 +62,13 @@ const ArticleContent = ({ article }) => {
         {isModifiable && (
           <div className="edit_article">
             {/* TODO : 현재 user의 id와 글 작성자의 id를 비교해서 조건부에 따라 수정,삭제를 렌더링하도록 수정 */}
-            <button onClick={() => {}}>수정</button>
+            <button
+              onClick={() => {
+                editArticle();
+              }}
+            >
+              수정
+            </button>
             <button
               onClick={() => {
                 deleteArticle();

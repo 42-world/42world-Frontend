@@ -5,11 +5,13 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 
 import { ArticleService, ImageService } from "../../../network";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const WritingContent = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const WritingContent = ({ articleContent, articleTitle, isEdit }) => {
+  const [title, setTitle] = useState(articleTitle);
+  const [content, setContent] = useState(articleContent);
+  const [articleId, setArticleId] = useState(null);
+  const [categoryId, setCategoryId] = useState(1);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
@@ -26,6 +28,7 @@ const WritingContent = () => {
   const titleRef = useRef(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
@@ -48,7 +51,7 @@ const WritingContent = () => {
     setContent(editorRef.current.getInstance().getMarkdown());
   };
 
-  const handleClickSubmit = async () => {
+  let handleClickSubmit = async () => {
     setContent(editorRef.current.getInstance().getMarkdown());
 
     if (title === "") {
@@ -62,18 +65,34 @@ const WritingContent = () => {
 
     // 이동한 뒤에 API 실행됨
     setIsSending(true);
-
-    await ArticleService.createArticles({
-      title: title,
-      content: content,
-      // TODO : 현재 카테고리를 관리하는 state 추가
-      categoryId: 1, // + 붙이면 number 타입
-    });
+    if (!articleId) {
+      await ArticleService.createArticles({
+        title: title,
+        content: content,
+        // TODO : 현재 카테고리를 관리하는 state 추가
+        categoryId: 1, // + 붙이면 number 타입
+      });
+    } else {
+      await ArticleService.editArticles(articleId, {
+        title: title,
+        content: content,
+        categoryId: categoryId,
+      });
+    }
     setIsSending(false);
     navigate(-1);
   };
 
   useEffect(() => {
+    if (location.state) {
+      const { article } = location.state;
+      console.log(article);
+      setTitle(article.title);
+      setContent(article.content);
+      setCategoryId(article.categoryId);
+      setArticleId(article.id);
+      editorRef.current.getInstance().setMarkdown(article.content);
+    }
     if (editorRef.current) {
       markdownEditorSetting();
     }
@@ -93,6 +112,7 @@ const WritingContent = () => {
           id="title"
           onChange={handleChangeTitle}
           placeholder="제목을 입력하세요"
+          value={title}
           ref={titleRef}
         />
       </div>
