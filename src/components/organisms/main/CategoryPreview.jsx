@@ -54,7 +54,7 @@ const CategoryPreviewWrapper = styled.div`
   background: white;
 
   width: ${rem(362)};
-  margin: 0 ${rem(10)} ${rem(10)} ${rem(10)};
+  margin: 0 ${rem(10)} ${rem(20)} ${rem(10)};
   height: ${rem(126)};
   box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: ${rem(10)};
