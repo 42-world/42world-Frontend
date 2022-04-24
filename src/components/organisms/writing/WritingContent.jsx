@@ -7,22 +7,17 @@ import { Editor } from "@toast-ui/react-editor";
 import { ArticleService, ImageService } from "../../../network";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const WritingContent = ({ articleContent, articleTitle, isEdit }) => {
+const WritingContent = ({ articleContent, articleTitle, curCate = 1 }) => {
   const [title, setTitle] = useState(articleTitle);
   const [content, setContent] = useState(articleContent);
   const [articleId, setArticleId] = useState(null);
-  const [categoryId, setCategoryId] = useState(1);
+  const [categoryId, setCategoryId] = useState(curCate);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
   const categoryList = [
-    "자유게시판",
-    "익명게시판1",
-    "익명게시판2",
-    "지듣노[지최가 듣는 노래]",
-    "42Chelin",
-    "고양이게시판",
-    "강아지게시판",
+    { name: "자유게시판", id: 1 },
+    { name: "익명게시판", id: 2 },
   ];
   const editorRef = useRef(null);
   const titleRef = useRef(null);
@@ -70,7 +65,7 @@ const WritingContent = ({ articleContent, articleTitle, isEdit }) => {
         title: title,
         content: content,
         // TODO : 현재 카테고리를 관리하는 state 추가
-        categoryId: 1, // + 붙이면 number 타입
+        categoryId: categoryId, // + 붙이면 number 타입
       });
     } else {
       await ArticleService.editArticles(articleId, {
@@ -101,9 +96,17 @@ const WritingContent = ({ articleContent, articleTitle, isEdit }) => {
   return (
     <WritingContentBlock>
       <div className="header">
-        <select name="category" id="category">
+        <select
+          name="category"
+          id="category"
+          onChange={(e) => {
+            setCategoryId(e.target.value);
+          }}
+        >
           {categoryList.map((category) => (
-            <option key={category}>{category}</option>
+            <option key={category.name} value={category.id}>
+              {category.name}
+            </option>
           ))}
         </select>
         <input
