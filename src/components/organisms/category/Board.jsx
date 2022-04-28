@@ -14,6 +14,8 @@ const Board = () => {
   const loca = useLocation();
 
   const categoryId = loca.pathname.split("/")[2];
+  let page = 1;
+  let articleCount = 10;
 
   useEffect(() => {
     (async () => {
