@@ -36,7 +36,7 @@ const QuickLinkWrapper = styled.div`
   width: inherit;
   // box-shadow: ${(props) => props.theme.boxShadow};
   background: ${(props) => props.theme.backgroundGray1};
-  margin-top: ${rem(20)};
+
   border-radius: ${rem(10)};
   padding: 0.7rem;
 
