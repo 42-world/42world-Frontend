@@ -5,8 +5,8 @@ export function url(path) {
 
   // return `https://api.42world.kr${path}`; // 실제 배포 API 서버
   return `http://api-alpha.42world.kr:8888${path}`; // 개발용 서버, 토큰 하드코딩으로 들어있어야 함.
-  //return `http://localhost:8888${path}`; // Live share 할 때 서버
-  //return `http://211.183.3.100:8888${path}`; // 가상머신 사용시 사용하는 서버
+  // return `http://localhost:8888${path}`; // Live share 할 때 서버
+  // return `http://211.183.3.100:8888${path}`; // 가상머신 사용시 사용하는 서버
 }
 
 export function AXIOS(option) {
