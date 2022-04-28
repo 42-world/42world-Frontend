@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Container } from "../atoms/global";
-import { ClusterStatus, QuickLink } from "../organisms/main";
+import { QuickLink } from "../organisms/main";
 import { MyProfile, MyArticlePreview } from "../organisms/mypage";
 
 const Mypage = () => {
@@ -17,7 +17,6 @@ const Mypage = () => {
           </div>
         </main>
         <aside>
-          <ClusterStatus />
           <QuickLink />
         </aside>
       </MypageBlock>

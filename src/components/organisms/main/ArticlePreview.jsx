@@ -39,10 +39,14 @@ const ArticlePreviewWrapper = styled.div`
 
   font-size: ${rem(12)};
   padding: ${rem(5)} ${rem(10)};
-  border-top: ${rem(1)} solid ${(props) => props.theme.lineGray1};
+  border-bottom: ${rem(1)} solid ${(props) => props.theme.lineGray1};
 
   h3 {
     font-weight: normal;
+  }
+
+  &:last-child {
+    border-bottom: none;
   }
 `;
 

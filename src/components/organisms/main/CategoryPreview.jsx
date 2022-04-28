@@ -54,7 +54,7 @@ const CategoryPreviewWrapper = styled.div`
   background: white;
 
   width: ${rem(362)};
-  margin: ${rem(10)};
+  margin: 0 ${rem(10)} ${rem(20)} ${rem(10)};
   height: ${rem(126)};
   box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: ${rem(10)};
@@ -63,7 +63,7 @@ const CategoryPreviewWrapper = styled.div`
     padding: ${rem(8)} ${rem(8)};
     display: flex;
     justify-content: space-between;
-
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
     .title-left {
       display: flex;
       align-items: center;
@@ -87,6 +87,10 @@ const CategoryPreviewWrapper = styled.div`
 
   ${(props) => props.theme.mobileSize} {
     width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
   }
 `;
 
