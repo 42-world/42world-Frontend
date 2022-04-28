@@ -151,7 +151,10 @@ const TopNavBlock = styled.div`
           text-decoration: none;
           padding: 0.5rem 1rem;
           height: 100%;
+          font-size: 1.1rem;
+          font-weight: 600;
           &:hover {
+            padding-bottom: calc(0.5rem - 4px);
             border-bottom: 4px solid #fff;
             transition: all 0.2s ease-out;
           }
@@ -256,6 +259,8 @@ const TopNavBlock = styled.div`
             &:hover {
               background-color: ${(props) => props.theme.primary};
               color: ${(props) => props.theme.white};
+              border: none;
+              padding: inherit;
               border-radius: 0;
             }
             img {
