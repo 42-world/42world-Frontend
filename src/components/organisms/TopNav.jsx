@@ -63,33 +63,6 @@ function TopNav() {
                 <i className={click ? "fas fa-times" : "fas fa-bars"} />
               </div>
               <ul className={click ? "nav-menu active" : "nav-menu"}>
-                <li className="nav-item item-profile">
-                  {user.length === 1 ? (
-                    <Link
-                      to="/mypage"
-                      className="nav-links"
-                      onClick={closeMobileMenu}
-                    >
-                      <div className="text-area">
-                        <span>{user[0].nickname}님 안녕하세요!</span>
-                        <span>{user[0].role}</span>
-                      </div>
-
-                      <img
-                        alt={profilePhoto}
-                        src={`${PICTURE_DIR + profilePhoto}`}
-                      />
-                    </Link>
-                  ) : (
-                    <Link
-                      to="/login"
-                      className="nav-links"
-                      onClick={closeMobileMenu}
-                    >
-                      로그인
-                    </Link>
-                  )}
-                </li>
                 <li className="nav-item">
                   <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                     홈
