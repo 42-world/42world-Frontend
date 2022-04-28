@@ -21,11 +21,7 @@ const PageSelector = ({ curPage, setCurPage, categoryId, articleCount }) => {
 
   const getPageList = () => {
     const pageList = [];
-    if (totalPageCount < 5) {
-      for (let i = 1; i <= totalPageCount; i++) {
-        pageList.push(i);
-      }
-    } else if (curPage > 2 && curPage < totalPageCount - 2) {
+    if (curPage > 2 && curPage < totalPageCount - 2) {
       for (let i = curPage - 2; i <= curPage + 2; i++) {
         pageList.push(i);
       }
