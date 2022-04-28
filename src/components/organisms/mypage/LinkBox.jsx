@@ -42,7 +42,7 @@ const LinkBox = ({ userName, linkType }) => {
     }
   };
 
-  const handleOnClick = (e, linkHref) => {
+  const handleClickLink = (e, linkHref) => {
     e.preventDefault();
     console.log("clicked");
     console.log(linkHref); //링크 누르면 이동하도록 수정
@@ -51,7 +51,7 @@ const LinkBox = ({ userName, linkType }) => {
   return (
     <LinkBoxDiv
       className="mypage-link"
-      onClick={(e) => handleOnClick(e, getLink(linkType) + userName)}>
+      onClick={(e) => handleClickLink(e, getLink(linkType) + userName)}>
       {getIcon(linkType)}
       <span>{userName}</span>
     </LinkBoxDiv>

@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { categoryState } from "../../store/category";
 import { CategoryService } from "../../network";
 import { userState } from "../../store/user";
+import profileUtils from "./mypage/utils/profileUtils";
 
 function TopNav() {
   const [click, setClick] = useState(false);
@@ -16,25 +17,6 @@ function TopNav() {
   const [category, setCategory] = useRecoilState(categoryState);
   const PICTURE_DIR = "/assets/CharacterWhiteBG/";
   const [profilePhoto, setProfilePhoto] = useState(null);
-
-  const getProfilePhoto = (id) => {
-    const PROFILE_LIST = [
-      { id: 0, image: "bbo.png" },
-      { id: 1, image: "bora.png" },
-      { id: 2, image: "ddub.png" },
-      { id: 3, image: "nana.png" },
-      { id: 4, image: "bongsoon.png" },
-      { id: 5, image: "hyeonkim.png" },
-      { id: 6, image: "babybbo.png" },
-      { id: 7, image: "babynana.png" },
-      { id: 8, image: "babybora.png" },
-      { id: 9, image: "babyddub.png" },
-      { id: 10, image: "babyhyeonkim.png" },
-    ];
-
-    const profile = PROFILE_LIST.find((imgRef) => imgRef.id === id);
-    return profile?.image;
-  };
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -54,12 +36,12 @@ function TopNav() {
       const { data } = await CategoryService.getCategories();
       setCategory(data);
     })();
-    setProfilePhoto(getProfilePhoto(user[0].character));
+    setProfilePhoto(profileUtils.getProfilePhoto(user[0].character));
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (user[0].length === 1) {
-      setProfilePhoto(getProfilePhoto(user[0].character));
+      setProfilePhoto(profileUtils.getProfilePhoto(user[0].character));
     }
   }, [user]);
 
@@ -88,8 +70,7 @@ function TopNav() {
                     <Link
                       to="/mypage"
                       className="nav-links-mobile-profile"
-                      onClick={closeMobileMenu}
-                    >
+                      onClick={closeMobileMenu}>
                       <div className="text-area">
                         <span>{user[0].nickname}님 안녕하세요!</span>
                         <span>{user[0].role}</span>
@@ -104,8 +85,7 @@ function TopNav() {
                     <Link
                       to="/login"
                       className="nav-links-mobile"
-                      onClick={closeMobileMenu}
-                    >
+                      onClick={closeMobileMenu}>
                       로그인
                     </Link>
                   )}
@@ -119,8 +99,7 @@ function TopNav() {
                   <Link
                     to="/category/1"
                     className="nav-links"
-                    onClick={closeMobileMenu}
-                  >
+                    onClick={closeMobileMenu}>
                     커뮤니티
                   </Link>
                 </li>

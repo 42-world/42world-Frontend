@@ -2,26 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 import { Container } from "../atoms/global";
-import { ClusterStatus, QuickLink } from "../organisms/main";
+import { QuickLink } from "../organisms/main";
 import { MyProfile, MyArticlePreview } from "../organisms/mypage";
 
 const Mypage = () => {
-  //MypageData 대신 props로 데이터 받아와야 함 (아마도)
-
   return (
-    <MypageBlock>
-      <main>
-        <MyProfile />
-        <div className="mypage-article">
-          <MyArticlePreview ifComment={false} />
-          <MyArticlePreview ifComment={true} />
-        </div>
-      </main>
-      <aside>
-        <ClusterStatus />
-        <QuickLink />
-      </aside>
-    </MypageBlock>
+    <>
+      <MypageBlock>
+        <main>
+          <MyProfile />
+          <div className="mypage-article">
+            <MyArticlePreview ifComment={false} />
+            <MyArticlePreview ifComment={true} />
+          </div>
+        </main>
+        <aside>
+          <QuickLink />
+        </aside>
+      </MypageBlock>
+    </>
   );
 };
 

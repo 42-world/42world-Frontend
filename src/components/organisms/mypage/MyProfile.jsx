@@ -1,30 +1,27 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 import ProfileSection from "./ProfileSection";
 import LinkSection from "./LinkSection";
+import { userState } from "../../../store/user";
 
-import { UserService } from "../../../network";
+//import { UserService } from "../../../network";
 
 const MyProfile = () => {
-  const [myInfo, setMyInfo] = useState(null);
-
-  useEffect(() => {
-    const fetchMyInfo = async () => {
-      const response = await UserService.getUser();
-      setMyInfo(response.data);
-    };
-
-    fetchMyInfo();
-  }, []);
+  //const [myInfo, setMyInfo] = useState(null);
+  const myInfo = useRecoilValue(userState);
 
   return (
     <MyProfileDiv>
       <h1 className="profile-title">마이페이지</h1>
       <hr />
       <div className="profile-section">
-        <ProfileSection imgID={myInfo?.character} userName={myInfo?.nickname} />
-        <LinkSection MyInfo={myInfo} />
+        <ProfileSection
+          imgID={myInfo[0]?.character}
+          userName={myInfo[0]?.nickname}
+        />
+        <LinkSection MyInfo={myInfo[0]} />
         {/* MypageData에 아직 링크 구현 안됨 */}
       </div>
     </MyProfileDiv>
