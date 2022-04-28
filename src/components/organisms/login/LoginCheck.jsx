@@ -12,9 +12,8 @@ const LoginCheck = () => {
       (async () => {
         try {
           const { data } = await UserService.getUser();
-          //console.log(userData);
+          console.log(data);
           setUser([data]);
-          //navigate("/");
         } catch (e) {
           navigate("/login");
         }
