@@ -153,10 +153,10 @@ const TopNavBlock = styled.div`
           height: 100%;
           font-size: 1.1rem;
           font-weight: 600;
+          transition: all 0.3s ease-out;
           &:hover {
             padding-bottom: calc(0.5rem - 4px);
             border-bottom: 4px solid #fff;
-            transition: all 0.2s ease-out;
           }
           .text-area {
             display: none;
@@ -233,12 +233,11 @@ const TopNavBlock = styled.div`
         top: 80px;
         left: -100%;
         opacity: 1;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
         &.active {
           background: ${(props) => props.theme.backgroundTheme4};
           left: 0;
           opacity: 1;
-          transition: all 0.5s ease;
           z-index: 1;
         }
         .nav-item {
