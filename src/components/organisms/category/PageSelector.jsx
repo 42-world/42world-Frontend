@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import PreviewArticle from "./PreviewArticle";
-import BoardHeader from "./BoardHeader";
-import { ArticleList, Body, Wrapper } from "../../atoms/Board";
+// import PreviewArticle from "./PreviewArticle";
+// import BoardHeader from "./BoardHeader";
+// import { ArticleList, Body, Wrapper } from "../../atoms/Board";
 import styled from "styled-components";
 import { ArticleService } from "../../../network";
 

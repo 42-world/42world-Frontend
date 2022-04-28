@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PreviewArticle from "./PreviewArticle";
 import BoardHeader from "./BoardHeader";
 import { ArticleList, Body, Wrapper } from "../../atoms/Board";
@@ -10,12 +10,10 @@ import { PageSelector } from "./";
 const Board = () => {
   const [Articles, setArticles] = useState(null);
   const [page, setPage] = useState(1);
-  const [articleCount, setArticleCount] = useState(10);
+  const articleCount = useRef(10);
   const loca = useLocation();
 
   const categoryId = loca.pathname.split("/")[2];
-  let page = 1;
-  let articleCount = 10;
 
   useEffect(() => {
     (async () => {
