@@ -1,7 +1,7 @@
 //import React, { useState } from "react";
 import styled from "styled-components";
-import { Signin, Signup } from "../organisms/login";
-import { useEffect, useState } from "react";
+import { Signin } from "../organisms/login";
+import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/user";
 import qs from "qs";
@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { AuthService, UserService } from "../../network";
 
 const Login = ({ isCallback }) => {
-  const [signup, setSignup] = useState(false);
   const setUser = useSetRecoilState(userState);
   const queryData = qs.parse(window.location.search, {
     ignoreQueryPrefix: true,
@@ -37,9 +36,6 @@ const Login = ({ isCallback }) => {
       }
     })();
   }, [isCallback, navigate, queryData.code, setUser]);
-  const handleSignup = () => {
-    setSignup(true);
-  };
 
   return (
     <LoginBlock>
@@ -51,11 +47,7 @@ const Login = ({ isCallback }) => {
           loop
           muted
         />
-        {signup ? (
-          <Signup handleSignup={handleSignup} />
-        ) : (
-          <Signin handleSignup={handleSignup} />
-        )}
+        <Signin />
       </div>
     </LoginBlock>
   );

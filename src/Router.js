@@ -17,15 +17,18 @@ const Router = () => {
         <Route path="/" element={<LoginCheck />}>
           <Route path="/" element={<TopNav />}>
             <Route exact path="/" element={<Main />} />
-            {/* TODO : 다이나믹 라우팅 컴포넌트 이름 어떻게 수정할 것인지 논의 */}
             <Route path="/category/:id" element={<Category />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/writing" element={<Writing />} />
             <Route path="/article/:id" element={<Article />} />
           </Route>
         </Route>
+        {/* topnav가 필요하지 않은 LoginCheck만 필요한 경우*/}
+        <Route path="/" element={<LoginCheck />}>
+          <Route exact path="/auth" element={<Auth />} />
+        </Route>
         <Route exact path="/login" element={<Login isCallback={false} />} />
-        <Route exact path="/auth" element={<Auth />} />
+
         <Route
           path="/auth/github/callback"
           element={<Login isCallback={true} />}
