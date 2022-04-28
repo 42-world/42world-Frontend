@@ -1,12 +1,12 @@
 //import React, { useState } from "react";
 import styled from "styled-components";
-import { Signup } from "../organisms/login";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/user";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { AuthService, UserService } from "../../network";
+import Seoul42 from "../organisms/auth/Seoul42";
 
 const Auth = ({ isCallback }) => {
   const setUser = useSetRecoilState(userState);
@@ -47,7 +47,7 @@ const Auth = ({ isCallback }) => {
           loop
           muted
         />
-        <Signup />
+        <Seoul42 />
       </div>
     </AuthBlock>
   );
