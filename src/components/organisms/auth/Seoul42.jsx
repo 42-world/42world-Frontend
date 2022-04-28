@@ -191,7 +191,7 @@ const fadeIn = keyframes`
 
 const Seoul42Block = styled.div`
   background: url("/images/img-home.jpg") center center/cover no-repeat;
-  @media screen and (min-width: 960px) {
+  @media screen and (min-width: 768px) {
     .main {
       display: block;
       justify-content: center;
@@ -240,6 +240,126 @@ const Seoul42Block = styled.div`
           }
           span {
             font-size: 1.125rem;
+            font-weight: bold;
+          }
+        }
+        .SendButton {
+          width: 77%;
+          padding: 12px 9px;
+          background: #2a2d38;
+          color: #fff;
+          border: 1px solid #d8d8d8;
+          box-sizing: border-box;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        .send_info {
+          display: flex;
+          flex-direction: column;
+          div {
+            margin-top: 2rem;
+            h2 {
+              font-size: 1.2rem;
+              color: ${(props) => props.theme.primary};
+              font-weight: 700;
+            }
+            h3 {
+              font-size: 1rem;
+              color: ${(props) => props.theme.textGray3};
+              font-weight: 400;
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          animation: ${fadeIn} 500ms ease-out 0ms;
+        }
+        .error_info {
+          display: flex;
+          flex-direction: column;
+          margin-top: 3rem;
+          padding: 1rem 0;
+          align-items: center;
+
+          h4 {
+            font-size: 0.8rem;
+            color: ${(props) => props.theme.textGray3};
+            font-weight: 400;
+            &:first-child {
+              margin-bottom: 1.5rem;
+            }
+            margin-bottom: 0.6rem;
+          }
+
+          button {
+            margin-top: 1rem;
+            width: max-content;
+            color: ${(props) => props.theme.backgroundBlack};
+            text-decoration: underline;
+            border: none;
+            background: none;
+            outline: none;
+            cursor: pointer;
+          }
+          animation: ${fadeIn} 500ms ease-out 1000ms;
+          animation-fill-mode: backwards;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main {
+      position: relative;
+      width: 370px;
+      justify-content: center;
+      align-items: center;
+
+      .Box {
+        width: 100%;
+        padding: 10px 4px;
+        margin-bottom: 10px;
+        background: var(--primary-white);
+        border: 1px solid #dbdbdb;
+        text-align: center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .LoginTitle {
+          display: block;
+          margin-top: 2rem;
+          font-size: 1.8rem;
+          font-weight: bold;
+        }
+
+        .InputBox {
+          margin-bottom: 8px;
+          padding: 5px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 77%;
+          .Input {
+            width: 80%;
+            background: white;
+            outline: none;
+            border-radius: 5px;
+            border: 1px #dee2e6 solid;
+            padding: 0.5rem 0.7rem;
+            margin-right: 5px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: black;
+            &::placeholder {
+              color: #dee2e6;
+            }
+            // 버튼을 제외한 영역을 모두 차지하기
+          }
+          span {
+            font-size: 0.8rem;
             font-weight: bold;
           }
         }
@@ -305,84 +425,6 @@ const Seoul42Block = styled.div`
           }
           animation: ${fadeIn} 500ms ease-out 1000ms;
           animation-fill-mode: backwards;
-        }
-        .Alert {
-          margin: 20px;
-        }
-
-        .Loginform {
-          margin-top: 24px;
-          padding: 0 40px;
-          display: flex;
-          flex-direction: column;
-        }
-      }
-    }
-  }
-
-  @media screen and (max-width: 960px) {
-    .main {
-      position: relative;
-      width: 370px;
-      justify-content: center;
-      align-items: center;
-
-      .Box {
-        width: 100%;
-        padding: 10px 4px;
-        margin-bottom: 10px;
-        background: var(--primary-white);
-        border: 1px solid #dbdbdb;
-        text-align: center;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .LoginTitle {
-          display: block;
-          margin: 30px;
-          font-size: 1.8rem;
-          font-weight: bold;
-        }
-
-        .InputBox {
-          margin-bottom: 8px;
-          padding: 5px 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 77%;
-          .Input {
-            width: 80%;
-            background: white;
-            outline: none;
-            border-radius: 5px;
-            border: 1px #dee2e6 solid;
-            padding: 0.5rem 0.7rem;
-            margin-right: 5px;
-            font-size: 0.8rem;
-            line-height: 1.5;
-            color: black;
-            &::placeholder {
-              color: #dee2e6;
-            }
-            // 버튼을 제외한 영역을 모두 차지하기
-          }
-          span {
-            font-size: 0.8rem;
-            font-weight: bold;
-          }
-        }
-        .Alert {
-          margin: 15px;
-        }
-
-        .Loginform {
-          margin-top: 24px;
-          padding: 0 40px;
-          display: flex;
-          flex-direction: column;
         }
       }
     }
