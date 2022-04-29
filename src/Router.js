@@ -19,7 +19,8 @@ const Router = () => {
             <Route exact path="/" element={<Main />} />
             <Route path="/category/:id" element={<Category />} />
             <Route path="/mypage" element={<Mypage />} />
-            <Route path="/mypage/:isarticle" element={<Mypage />} />
+            <Route path="/mypage/article" element={<Mypage />} />
+            <Route path="/mypage/comment" element={<Mypage />} />
             <Route path="/writing" element={<Writing />} />
             <Route path="/article/:id" element={<Article />} />
           </Route>

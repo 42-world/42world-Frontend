@@ -19,7 +19,7 @@ const Mypage = () => {
         <main>
           {isArticle ? (
             <MyArticleBoard
-              isComment={isArticle === "articles" ? false : true}
+              isComment={isArticle === "article" ? false : true}
             />
           ) : (
             <>
