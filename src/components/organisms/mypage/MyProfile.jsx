@@ -41,6 +41,7 @@ const MyProfileDiv = styled.div`
     font-size: 1.6rem;
   }
   h1 {
+    // TODO : 이부분 스타일이 적용되지 않는 것 같아 논의 필요
     margin: 0.5rem 0.1rem;
     margin-left: 1rem;
     height: 2.4rem;
