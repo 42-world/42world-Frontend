@@ -29,6 +29,7 @@ const MyArticlePreview = ({ ifComment }) => {
         articles.map((article) => (
           <ArticlePreview
             key={article.id}
+            id={article.id}
             title={ifComment ? article.content : article.title}
             likeCount={ifComment ? "" : article.commentCount}
             commentCount={ifComment ? "" : article.commentCount}
