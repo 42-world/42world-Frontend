@@ -12,8 +12,8 @@ const Mypage = () => {
         <main>
           <MyProfile />
           <div className="mypage-article">
-            <MyArticlePreview ifComment={false} />
-            <MyArticlePreview ifComment={true} />
+            <MyArticlePreview isComment={false} />
+            <MyArticlePreview isComment={true} />
           </div>
         </main>
         <aside>

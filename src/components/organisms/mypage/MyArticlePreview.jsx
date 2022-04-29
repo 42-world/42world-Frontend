@@ -5,24 +5,24 @@ import { ArticlePreview } from "../main";
 
 import { UserService } from "../../../network";
 
-const MyArticlePreview = ({ ifComment }) => {
+const MyArticlePreview = ({ isComment }) => {
   const [articles, setArticles] = useState(null);
 
   useEffect(() => {
     const fetchMyArticles = async () => {
-      const response = ifComment
+      const response = isComment
         ? await UserService.getMyComments()
         : await UserService.getMyArticles();
       setArticles(response.data.slice(0, 5));
     };
 
     fetchMyArticles();
-  }, [ifComment]);
+  }, [isComment]);
 
   return (
-    <MyArticleDiv ifComment={ifComment}>
+    <MyArticleDiv isComment={isComment}>
       <div className="title">
-        <h1>{ifComment ? "내 댓글" : "내 게시글"}</h1>
+        <h1>{isComment ? "내 댓글" : "내 게시글"}</h1>
         <button className="more">{"더 보기 >"}</button>
       </div>
       {articles &&
@@ -30,9 +30,9 @@ const MyArticlePreview = ({ ifComment }) => {
           <ArticlePreview
             key={article.id}
             id={article.id}
-            title={ifComment ? article.content : article.title}
-            likeCount={ifComment ? "" : article.commentCount}
-            commentCount={ifComment ? "" : article.commentCount}
+            title={isComment ? article.content : article.title}
+            likeCount={isComment ? "" : article.commentCount}
+            commentCount={isComment ? "" : article.commentCount}
           />
         ))}
     </MyArticleDiv>
@@ -70,7 +70,7 @@ const MyArticleDiv = styled.div`
   }
   .like,
   .comment {
-    display: ${(props) => (props.ifComment ? "none" : "block")};
+    display: ${(props) => (props.isComment ? "none" : "block")};
   }
   ${(props) => props.theme.mobileSize} {
     box-shadow: none;
