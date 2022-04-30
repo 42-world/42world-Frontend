@@ -20,7 +20,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
   const category = useRecoilValue(categoryState);
   const editorRef = useRef(null);
   const titleRef = useRef(null);
-  const categoryRef = useRef(null);
+  const categoryRef = useRef(1);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -80,8 +80,9 @@ const WritingContent = ({ articleContent, articleTitle }) => {
 
   useEffect(() => {
     if (location.state.categoryId) {
+      console.log(location.state.categoryId);
       setCategoryId(location.state.categoryId);
-      categoryRef.current.value = location.state.categoryId;
+      //categoryRef.current.value = location.state.categoryId;
     }
     if (location.state.article) {
       const { article } = location.state;
@@ -91,6 +92,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
       setCategoryId(article.categoryId);
       setArticleId(article.id);
       categoryRef.current.value = article.categoryId;
+      console.log(article.categoryId);
       categoryRef.current.disabled = true;
       titleRef.current.disabled = true;
       editorRef.current.getInstance().setMarkdown(article.content);
