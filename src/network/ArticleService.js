@@ -1,3 +1,4 @@
+// import { AiOutlineConsoleSql } from "react-icons/ai";
 import * as API from "./APIType";
 
 const articleUrl = (path) => {
@@ -110,10 +111,10 @@ const ArticleService = {
     }
     return response.data;
   },
-  getArticlesByCategoryId: async (categoryId, page) => {
+  getArticlesByCategoryId: async (categoryId, page, take) => {
+    // 기본으로 가져오는 게시글 수는 10개
     const method = "GET";
     const url = articleUrl("");
-    const take = 3;
     const params = { categoryId, page, take };
 
     let response;
@@ -127,6 +128,24 @@ const ArticleService = {
       alert(error);
     }
     return response.data;
+  },
+  getArticleMetaDataByCategoryId: async (categoryId, take) => {
+    const method = "GET";
+    const url = articleUrl("");
+    const page = 1;
+    const params = { categoryId, page, take };
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        params,
+        method,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response.data.meta;
   },
   /**
    * **GET** One Articles By Articles ID

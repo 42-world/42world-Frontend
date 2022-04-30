@@ -5,24 +5,29 @@ import { ArticleList, Body, Wrapper } from "../../atoms/Board";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { ArticleService } from "../../../network";
+import { PageSelector } from "./";
 
 const Board = () => {
   const [Articles, setArticles] = useState(null);
+  const [page, setPage] = useState(1);
+  const [articleCount, setArticleCount] = useState(10);
   const loca = useLocation();
+
   const categoryId = loca.pathname.split("/")[2];
-  let page = 1;
 
   useEffect(() => {
+    setArticleCount(10);
     (async () => {
       const { data } = await ArticleService.getArticlesByCategoryId(
         categoryId,
-        page
+        page,
+        articleCount
       );
       // const data = await ArticleService.getArticles(categoryId, page);
       setArticles(data);
     })();
     // eslint-disable-next-line
-  }, [categoryId]);
+  }, [categoryId, page, articleCount]);
   return (
     <>
       <CategoryBlock>
@@ -44,6 +49,12 @@ const Board = () => {
                 ))}
             </ArticleList>
           </Body>
+          <PageSelector
+            curPage={page}
+            setCurPage={setPage}
+            categoryId={categoryId}
+            articleCount={articleCount}
+          />
         </Wrapper>
       </CategoryBlock>
     </>
@@ -63,6 +74,11 @@ const CategoryBlock = styled.div`
   .articleList_content {
     text-decoration: none;
     color: ${(props) => props.theme.black};
+    &:last-child {
+      div {
+        border: none;
+      }
+    }
   }
 `;
 

@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 import { Viewer } from "@toast-ui/react-editor";
-import { ReactionService } from "../../../network";
+import { ReactionService, ArticleService } from "../../../network";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ArticleContent = ({ article }) => {
   // TODO : 현재 카테고리를 전역 상태로 관리해서 reactionPossible 불러오기
   const isModifiable = true;
   const isReactionPossible = true;
+  const navi = useNavigate();
   const [isLike, setIsLike] = React.useState(article.isLike);
   const [likeCount, setLikeCount] = React.useState(article.likeCount);
 
@@ -22,6 +23,21 @@ const ArticleContent = ({ article }) => {
       setLikeCount(likeCount - 1);
     }
   };
+
+  const deleteArticle = () => {
+    console.log(article);
+    if (window.confirm("삭제하시겠습니까?")) {
+      // TODO : 삭제 요청
+      ArticleService.deleteArticles(article.id);
+      navi(`/category/${article.category.id}`);
+    }
+  };
+
+  const editArticle = () => {
+    console.log(article);
+    navi(`/writing`, { state: { article } });
+  };
+
   const getArticleTime = (time) =>
     dayjs(time).isSame(dayjs(), "day")
       ? dayjs(time).format("HH:mm")
@@ -46,8 +62,20 @@ const ArticleContent = ({ article }) => {
         {isModifiable && (
           <div className="edit_article">
             {/* TODO : 현재 user의 id와 글 작성자의 id를 비교해서 조건부에 따라 수정,삭제를 렌더링하도록 수정 */}
-            <button onClick={() => {}}>수정</button>
-            <button onClick={() => {}}>삭제</button>
+            <button
+              onClick={() => {
+                editArticle();
+              }}
+            >
+              수정
+            </button>
+            <button
+              onClick={() => {
+                deleteArticle();
+              }}
+            >
+              삭제
+            </button>
           </div>
         )}
       </div>
@@ -109,6 +137,7 @@ const ArticleContentBlock = styled.div`
         font-size: 0.8rem;
         margin-right: 0.4rem;
         font-weight: bold;
+        cursor: pointer;
       }
     }
   }
@@ -121,19 +150,14 @@ const ArticleContentBlock = styled.div`
     align-items: stretch;
     .likeContainer {
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: row;
       width: 100%;
       justify-content: center;
       align-items: center;
       .likeCount {
         display: flex;
-        width: 1.5rem;
-        height: 1.5rem;
-        justify-content: center;
-        align-items: center;
-        border-radius: 1rem;
-        color: ${(props) => props.theme.white};
-        background-color: ${(props) => props.theme.backgroundTheme1};
+        width: max-content;
+        color: ${(props) => props.theme.textGray4};
       }
       span {
         display: flex;

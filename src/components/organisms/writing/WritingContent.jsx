@@ -5,27 +5,26 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 
 import { ArticleService, ImageService } from "../../../network";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const WritingContent = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const WritingContent = ({ articleContent, articleTitle }) => {
+  const [title, setTitle] = useState(articleTitle);
+  const [content, setContent] = useState(articleContent);
+  const [articleId, setArticleId] = useState(null);
+  const [categoryId, setCategoryId] = useState(1);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
   const categoryList = [
-    "자유게시판",
-    "익명게시판1",
-    "익명게시판2",
-    "지듣노[지최가 듣는 노래]",
-    "42Chelin",
-    "고양이게시판",
-    "강아지게시판",
+    { name: "자유게시판", id: 1 },
+    { name: "익명게시판", id: 2 },
   ];
   const editorRef = useRef(null);
   const titleRef = useRef(null);
+  const categoryRef = useRef(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
@@ -48,7 +47,7 @@ const WritingContent = () => {
     setContent(editorRef.current.getInstance().getMarkdown());
   };
 
-  const handleClickSubmit = async () => {
+  let handleClickSubmit = async () => {
     setContent(editorRef.current.getInstance().getMarkdown());
 
     if (title === "") {
@@ -62,18 +61,41 @@ const WritingContent = () => {
 
     // 이동한 뒤에 API 실행됨
     setIsSending(true);
-
-    await ArticleService.createArticles({
-      title: title,
-      content: content,
-      // TODO : 현재 카테고리를 관리하는 state 추가
-      categoryId: 1, // + 붙이면 number 타입
-    });
+    if (!articleId) {
+      await ArticleService.createArticles({
+        title: title,
+        content: content,
+        // TODO : 현재 카테고리를 관리하는 state 추가
+        categoryId: categoryId, // + 붙이면 number 타입
+      });
+    } else {
+      await ArticleService.editArticles(articleId, {
+        title: title,
+        content: content,
+        categoryId: categoryId,
+      });
+    }
     setIsSending(false);
     navigate(-1);
   };
 
   useEffect(() => {
+    if (location.state.categoryId) {
+      setCategoryId(location.state.categoryId);
+      categoryRef.current.value = location.state.categoryId;
+    }
+    if (location.state.article) {
+      const { article } = location.state;
+      console.log("test", article);
+      setTitle(article.title);
+      setContent(article.content);
+      setCategoryId(article.categoryId);
+      setArticleId(article.id);
+      categoryRef.current.value = article.categoryId;
+      categoryRef.current.disabled = true;
+      titleRef.current.disabled = true;
+      editorRef.current.getInstance().setMarkdown(article.content);
+    }
     if (editorRef.current) {
       markdownEditorSetting();
     }
@@ -82,9 +104,18 @@ const WritingContent = () => {
   return (
     <WritingContentBlock>
       <div className="header">
-        <select name="category" id="category">
+        <select
+          name="category"
+          id="category"
+          onChange={(e) => {
+            setCategoryId(e.target.value);
+          }}
+          ref={categoryRef}
+        >
           {categoryList.map((category) => (
-            <option key={category}>{category}</option>
+            <option key={category.name} value={category.id}>
+              {category.name}
+            </option>
           ))}
         </select>
         <input
@@ -93,6 +124,7 @@ const WritingContent = () => {
           id="title"
           onChange={handleChangeTitle}
           placeholder="제목을 입력하세요"
+          value={title}
           ref={titleRef}
         />
       </div>

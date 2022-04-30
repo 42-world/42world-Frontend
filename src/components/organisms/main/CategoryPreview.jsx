@@ -12,7 +12,11 @@ const CategoryPreview = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const navigate = useNavigate();
   const fetch = async () => {
-    const response = await ArticleService.getArticlesByCategoryId(category.id);
+    const response = await ArticleService.getArticlesByCategoryId(
+      category.id,
+      1, // page
+      3 // article count
+    );
     setArticles(response.data);
   };
 
@@ -54,6 +58,7 @@ const CategoryPreviewWrapper = styled.div`
   background: white;
 
   width: ${rem(362)};
+  //margin: ${rem(10)};
   margin: 0 ${rem(10)} ${rem(20)} ${rem(10)};
   height: ${rem(126)};
   box-shadow: ${(props) => props.theme.boxShadow};
