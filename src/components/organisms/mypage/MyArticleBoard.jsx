@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { UserService } from "../../../network";
-import PreviewArticle from "../category";
+import PreviewArticle from "../../organisms/category/PreviewArticle";
 
 const MyArticleBoard = ({ isComment }) => {
   const [articles, setArticles] = useState(null);
@@ -18,7 +18,7 @@ const MyArticleBoard = ({ isComment }) => {
       const response = isComment
         ? await UserService.getMyComments()
         : await UserService.getMyArticles();
-      setArticles(response.data.slice(0, 5));
+      setArticles(response.data);
     };
 
     fetchMyArticles();
@@ -33,7 +33,17 @@ const MyArticleBoard = ({ isComment }) => {
       <div className="go-back" onClick={handleClickGoBack}>
         {"< 돌아가기"}
       </div>
-      <div className="article-list">{/* map -> article 표시 */}</div>
+      <div className="article-list">
+        {articles &&
+          articles.map((article, id) => (
+            <Link
+              to={`/article/${article.id}`}
+              className="article-content"
+              key={id}>
+              <PreviewArticle article={article} />
+            </Link>
+          ))}
+      </div>
     </MyArticleWrapper>
   );
 };
