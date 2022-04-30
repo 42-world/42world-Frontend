@@ -55,6 +55,7 @@ function TopNav() {
               <img
                 src={require("../../assets/images/logo/Logo@05x.png")}
                 alt=""
+                onClick={handleClick}
               />
             </Link>
             <div className="menu-icon" onClick={handleClick}>
