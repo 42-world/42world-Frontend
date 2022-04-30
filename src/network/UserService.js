@@ -198,13 +198,15 @@ const UserService = {
     }
     return response.data;
   },
-  getMyArticles: async () => {
+  getMyArticles: async (page) => {
     const method = "GET";
     const url = userUrl("/me/articles");
+    const params = { page };
 
     let response;
     try {
       response = await API.AXIOS({
+        params,
         method,
         url,
       });
@@ -213,13 +215,15 @@ const UserService = {
     }
     return response.data;
   },
-  getMyComments: async () => {
+  getMyComments: async (page) => {
     const method = "GET";
     const url = userUrl("/me/comments");
+    const params = { page };
 
     let response;
     try {
       response = await API.AXIOS({
+        params,
         method,
         url,
       });
