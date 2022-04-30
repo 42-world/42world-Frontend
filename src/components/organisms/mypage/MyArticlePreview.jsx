@@ -55,7 +55,7 @@ const MyArticleDiv = styled.div`
   margin: 0.5rem 0;
 
   width: calc(50% - 0.8rem);
-  height: fit-content;
+  height: 13rem;
   .title {
     padding: 0.5rem;
     display: flex;
