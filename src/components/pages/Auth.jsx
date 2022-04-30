@@ -1,14 +1,14 @@
 //import React, { useState } from "react";
 import styled from "styled-components";
-import { Signin } from "../organisms/login";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/user";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { AuthService, UserService } from "../../network";
+import Seoul42 from "../organisms/auth/Seoul42";
 
-const Login = ({ isCallback }) => {
+const Auth = ({ isCallback }) => {
   const setUser = useSetRecoilState(userState);
   const queryData = qs.parse(window.location.search, {
     ignoreQueryPrefix: true,
@@ -38,7 +38,7 @@ const Login = ({ isCallback }) => {
   }, [isCallback, navigate, queryData.code, setUser]);
 
   return (
-    <LoginBlock>
+    <AuthBlock>
       <div className="video-container">
         <video
           src="assets/videos/video-1.mp4"
@@ -47,53 +47,13 @@ const Login = ({ isCallback }) => {
           loop
           muted
         />
-        <Signin />
+        <Seoul42 />
       </div>
-    </LoginBlock>
+    </AuthBlock>
   );
 };
 
-// export const Main = styled.main``;
-// export const PageWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-//   background-color: #fafafa;
-// `;
-
-// export const InputText = styled.input`
-//   padding-left: 8px;
-//   height: 36px;
-//   background: #fafafa;
-//   border: 1px solid #dbdbdb;
-//   border-radius: 3px;
-//   & + & {
-//     //인접형제결합자 : InputText(&는 현재 쓰는 성분)
-//     margin-top: 6px;
-//   }
-// `;
-// export const BtnSubmit = styled.button`
-//   margin: 8px 0;
-//   padding: 5px 9px;
-//   background: #ffc000;
-//   color: #000;
-//   border: transparent;
-//   border-radius: 4px;
-//   font-weight: bold;
-// `;
-
-// export const SignupWrapper = styled.div`
-//   padding: 15px 0;
-//   font-size: 14px;
-//   a {
-//     color: #ffc000;
-//     text-decoration: none;
-//     font-weight: bold;
-//   }
-// `;
-
-const LoginBlock = styled.div`
+const AuthBlock = styled.div`
   background: url("/images/img-home.jpg") center center/cover no-repeat;
   @media screen and (min-width: 960px) {
     .video-container {
@@ -140,4 +100,4 @@ const LoginBlock = styled.div`
   }
 `;
 
-export default Login;
+export default Auth;

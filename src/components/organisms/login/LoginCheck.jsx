@@ -8,13 +8,14 @@ const LoginCheck = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
   useEffect(() => {
-    if (user.length === 0) {
+    if (user.length === 0 || user[0] === null) {
       (async () => {
         try {
           const { data } = await UserService.getUser();
-          //console.log(userData);
+          if (data === null) {
+            navigate("/login");
+          }
           setUser([data]);
-          //navigate("/");
         } catch (e) {
           navigate("/login");
         }
