@@ -48,7 +48,9 @@ const MyProfileDiv = styled.div`
     font-size: 2rem;
   }
   hr {
-    color: ${(props) => props.theme.LineGray1};
+    border: 0;
+    height: 1px;
+    background-color: ${(props) => props.theme.lineGray1};
   }
   .profile-section {
     display: flex;

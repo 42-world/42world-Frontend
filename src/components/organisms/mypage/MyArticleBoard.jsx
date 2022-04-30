@@ -61,14 +61,22 @@ const MyArticleWrapper = styled.div`
     font-size: 1.6rem;
   }
   hr {
-    color: ${(props) => props.theme.LineGray1};
+    border: 0;
+    height: 1px;
+    background-color: ${(props) => props.theme.lineGray1};
   }
   .go-back {
     margin: 0.3rem 0;
     padding: 0.3rem;
+    line-height: 1.3rem;
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
     &:hover {
       cursor: pointer;
     }
+  }
+  .article-content {
+    text-decoration: none;
+    color: ${(props) => props.theme.black};
   }
   ${(props) => props.theme.mobileSize} {
     box-shadow: none;
