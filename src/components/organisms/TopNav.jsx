@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "../atoms/Button";
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -29,7 +28,6 @@ function TopNav() {
     }
   };
 
-  console.log(user);
   useEffect(() => {
     showButton();
     (async () => {
@@ -52,73 +50,52 @@ function TopNav() {
     return (
       <>
         <TopNavBlock>
-          <nav className="navbar">
-            <div className="navbar-container">
-              <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                <img
-                  src={require("../../assets/images/logo/Logo@05x.png")}
-                  alt=""
-                  onClick={handleClick}
-                />
-              </Link>
-              <div className="menu-icon" onClick={handleClick}>
-                <i className={click ? "fas fa-times" : "fas fa-bars"} />
-              </div>
-              <ul className={click ? "nav-menu active" : "nav-menu"}>
-                <li>
-                  {user.length === 1 ? (
-                    <Link
-                      to="/mypage"
-                      className="nav-links-mobile-profile"
-                      onClick={closeMobileMenu}>
-                      <div className="text-area">
-                        <span>{user[0].nickname}님 안녕하세요!</span>
-                        <span>{user[0].role}</span>
-                      </div>
-
-                      <img
-                        alt={profilePhoto}
-                        src={`${PICTURE_DIR + profilePhoto}`}
-                      />
-                    </Link>
-                  ) : (
-                    <Link
-                      to="/login"
-                      className="nav-links-mobile"
-                      onClick={closeMobileMenu}>
-                      로그인
-                    </Link>
-                  )}
-                </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                    홈
-                  </Link>
-                </li>
+          <nav>
+            <Link to="/" id="logo-btn">
+              <img
+                src={require("../../assets/images/logo/Logo@05x.png")}
+                alt=""
+              />
+            </Link>
+            <div className="menu-icon" onClick={handleClick}>
+              <i className={click ? "fas fa-times" : "fas fa-bars"} />
+            </div>
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <li className="nav-item">
+                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                  홈
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/category/1"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  커뮤니티
+                </Link>
+              </li>
+              {!button && (
                 <li className="nav-item">
                   <Link
-                    to="/category/1"
+                    to="/mypage"
                     className="nav-links"
-                    onClick={closeMobileMenu}>
-                    커뮤니티
+                    onClick={closeMobileMenu}
+                  >
+                    마이페이지
                   </Link>
                 </li>
-              </ul>
-              {button &&
-                (user.length === 1 ? (
-                  <Link to="/mypage" className="nav-links-profile">
-                    <img
-                      alt={profilePhoto}
-                      src={`${PICTURE_DIR + profilePhoto}`}
-                    />
-                    <span>{user[0].nickname}</span>
-                  </Link>
-                ) : (
-                  <Link to="/login">
-                    <Button buttonStyle="btn--outline">로그인</Button>
-                  </Link>
-                ))}
-            </div>
+              )}
+              {button && (
+                <Link to="/mypage" className="profile">
+                  <img
+                    alt={profilePhoto}
+                    src={`${PICTURE_DIR + profilePhoto}`}
+                  />
+                  <span>{user[0].nickname}</span>
+                </Link>
+              )}
+            </ul>
           </nav>
         </TopNavBlock>
         <OutletWrapper>
@@ -130,223 +107,179 @@ function TopNav() {
 }
 
 const OutletWrapper = styled.div`
-  //margin-top: 70px;
   height: 100vh;
-  //background: #fafafa;
 `;
 
 const TopNavBlock = styled.div`
-  .navbar {
-    background: ${(param) => param.theme.backgroundTheme3};
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+  background-color: ${(props) => props.theme.secondary};
+  a {
+    text-decoration: none;
   }
-
-  .navbar-container {
+  nav {
+    background-color: ${(props) => props.theme.secondary};
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 100%;
     height: 80px;
+    margin: auto;
+    padding: 0 20px;
     max-width: 1100px;
-    margin: 0 5rem 0;
-  }
-
-  .navbar-logo {
-    color: #fff;
-    justify-self: start;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
     display: flex;
-    align-items: center;
-  }
-
-  .fa-typo3 {
-    margin-left: 0.5rem;
-    font-size: 1.8rem;
-  }
-
-  .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
-    list-style: none;
-    text-align: center;
-    width: 60vw;
-    justify-content: end;
-  }
-
-  .nav-item {
-    height: 80px;
-  }
-
-  .nav-links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
     height: 100%;
-  }
-
-  .nav-links-profile {
-    //width: 100%;
-    height: 80%;
-    color: ${(props) => props.theme.textGray2};
-    display: flex;
+    width: 100%;
     align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    padding: 0rem 0.2rem;
-    border-radius: 4rem;
-    background-color: ${(props) => props.theme.backgroundTheme4};
-    img {
-      width: 3.5rem;
-      border-radius: 50%;
-      margin-right: 0.5rem;
+    #logo-btn {
+      margin-right: 60px;
     }
-    span {
-      padding-right: 1rem;
+    .menu-icon {
+      display: none;
     }
-    &:hover {
-      color: ${(props) => props.theme.textBlack};
-      background-color: ${(props) => props.theme.primary};
-    }
-  }
-
-  .nav-links:hover {
-    border-bottom: 4px solid #fff;
-    transition: all 0.2s ease-out;
-  }
-
-  .fa-bars {
-    color: #fff;
-  }
-
-  .nav-links-mobile {
-    display: none;
-  }
-  .nav-links-mobile-profile {
-    display: none;
-  }
-
-  .menu-icon {
-    display: none;
-  }
-  @media screen and (max-width: 768px) {
-    .NavbarItems {
-      position: relative;
-    }
-
     .nav-menu {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      list-style: none;
+      text-align: center;
       align-items: center;
-      width: 100%;
-      height: 35vh;
-      position: absolute;
-      top: 80px;
-      left: -100%;
-      opacity: 1;
-      transition: all 0.5s ease;
+      justify-content: end;
+      margin-left: auto;
+      .nav-item {
+        height: 80px;
+        .nav-links {
+          color: #fff;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          height: 100%;
+          font-size: 1.1rem;
+          font-weight: 600;
+          transition: all 0.3s ease-out;
+          &:hover {
+            padding-bottom: calc(0.5rem - 4px);
+            border-bottom: 4px solid #fff;
+          }
+          .text-area {
+            display: none;
+          }
+          img {
+            display: none;
+          }
+          span {
+            display: none;
+          }
+        }
+      }
     }
-
-    .nav-menu.active {
-      background: ${(props) => props.theme.backgroundTheme4};
-      left: 0;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
-
-    .nav-links {
-      text-align: center;
-      padding: 1.5rem;
-      width: 100%;
-      display: table;
-    }
-
-    .nav-links:hover {
-      background-color: #fff;
-      color: #242424;
-      border-radius: 0;
-    }
-
-    .navbar-logo {
-      position: absolute;
-      top: 0;
-      left: -1rem;
-      transform: translate(25%, 50%);
-    }
-
-    .menu-icon {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(-100%, 60%);
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    .fa-times {
-      color: #fff;
-      font-size: 2rem;
-    }
-
-    .nav-links-mobile {
-      display: block;
-      text-align: center;
-      margin: 2rem auto;
-      border-radius: 4px;
-      width: 80%;
-      text-decoration: none;
-      font-size: 1.5rem;
-      background-color: transparent;
-      color: #fff;
-      padding: 14px 20px;
-      border: 1px solid #fff;
-      transition: all 0.3s ease-out;
-    }
-
-    .nav-links-mobile:hover {
-      background: #fff;
-      color: #242424;
-      transition: 250ms;
-    }
-
-    .nav-links-mobile-profile {
-      width: 90vw;
-      height: 100%;
+    .profile {
+      height: 80%;
       color: ${(props) => props.theme.textGray2};
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      padding: 1rem 0 2rem 0;
-      border-radius: 0.1rem;
+      padding: 0rem 0.2rem;
+      margin: 0 15px;
+      border-radius: 4rem;
       background-color: ${(props) => props.theme.backgroundTheme4};
-      border-bottom: 2px solid ${(props) => props.theme.backgroundTheme2};
-      transition: all 0.5s ease;
-      .text-area {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
       img {
-        width: 4rem;
+        width: 3.5rem;
         border-radius: 50%;
         margin-right: 0.5rem;
       }
       span {
-        padding-right: 0.5rem;
+        padding-right: 1rem;
+      }
+      &:hover {
+        color: ${(props) => props.theme.textBlack};
+        background-color: ${(props) => props.theme.primary};
+      }
+    }
+  }
+
+  ${(props) => props.theme.mobileSize} {
+    nav {
+      background-color: ${(props) => props.theme.secondary};
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 80px;
+      margin: auto;
+      padding: 0 20px;
+      max-width: 1100px;
+      display: flex;
+      align-items: center;
+      #logo-btn {
+        margin-right: 60px;
+      }
+      .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: ${(props) => props.theme.white};
+        font-size: 2rem;
+      }
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.3s ease;
+        &.active {
+          background: ${(props) => props.theme.backgroundTheme4};
+          left: 0;
+          opacity: 1;
+          z-index: 1;
+        }
+        .nav-item {
+          height: 80px;
+          &.item-profile {
+            margin: 2rem 0;
+          }
+          .nav-links {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 100%;
+            text-align: center;
+            padding: 1.5rem;
+            width: 100vw;
+            justify-content: center;
+            &:hover {
+              background-color: ${(props) => props.theme.primary};
+              color: ${(props) => props.theme.white};
+              border: none;
+              padding: inherit;
+              border-radius: 0;
+            }
+            img {
+              width: 4rem;
+              border-radius: 50%;
+              margin-right: 0.5rem;
+            }
+            .text-area {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              span {
+                padding-right: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      .profile {
+        //display: none;
       }
     }
   }
