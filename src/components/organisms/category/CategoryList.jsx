@@ -3,26 +3,27 @@ import { Link, useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { categoryState } from "../../../store/category";
-import { currentState } from "../../../store/current";
+import { userCurrentPosState } from "../../../store/userCurrentPos";
 
 const CategoryList = ({ sendedId }) => {
   const category = useRecoilValue(categoryState);
   const loca = useLocation();
   const categoryPos = loca.pathname.split("/")[1];
   const categoryId = parseInt(loca.pathname.split("/")[2]);
-  const [current, setCurrent] = useRecoilState(currentState);
+  const [userCurrentPos, setUserCurrentPos] =
+    useRecoilState(userCurrentPosState);
 
   useEffect(() => {
     if (categoryPos === "category") {
-      setCurrent(categoryId);
+      setUserCurrentPos(categoryId);
     }
-  }, [categoryId, categoryPos, setCurrent]);
+  }, [categoryId, categoryPos, setUserCurrentPos]);
 
   return (
     <CategoryListBlock>
       <h2>커뮤니티</h2>
       {category.map(({ id, name }, idx) => {
-        if (id === current || id === sendedId)
+        if (id === userCurrentPos || id === sendedId)
           return (
             <Link to={`/category/${id}`} className="nav-links" key={idx}>
               <li className="curCategory">{name}</li>
