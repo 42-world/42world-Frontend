@@ -11,7 +11,7 @@ const MyArticlePreview = ({ isComment }) => {
   const navi = useNavigate();
 
   const handleClickMoreBtn = () => {
-    navi(`./${isComment ? "comments" : "articles"}`);
+    navi(`./${isComment ? "comment" : "article"}`);
   };
 
   useEffect(() => {
