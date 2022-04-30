@@ -66,7 +66,6 @@ const MyArticleWrapper = styled.div`
     background-color: ${(props) => props.theme.lineGray1};
   }
   .go-back {
-    margin: 0.3rem 0;
     padding: 0.3rem;
     line-height: 1.3rem;
     border-bottom: 1px solid ${(props) => props.theme.lineGray1};
