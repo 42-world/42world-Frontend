@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { UserService } from "../../../network";
-import PreviewArticle from "../../organisms/category/PreviewArticle";
+import PreviewArticle from "../category/PreviewArticle";
+import MyArticlePageSelector from "./MyArticlePageSelector";
 
 const MyArticleBoard = ({ isComment }) => {
   const [articles, setArticles] = useState(null);
+  const [page, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
   const navi = useNavigate();
 
   const handleClickGoBack = () => {
@@ -16,13 +19,14 @@ const MyArticleBoard = ({ isComment }) => {
   useEffect(() => {
     const fetchMyArticles = async () => {
       const response = isComment
-        ? await UserService.getMyComments()
-        : await UserService.getMyArticles();
+        ? await UserService.getMyComments(page)
+        : await UserService.getMyArticles(page);
       setArticles(response.data);
+      setPageCount(response.meta.pageCount);
     };
 
     fetchMyArticles();
-  }, [isComment]);
+  }, [isComment, page]);
 
   return (
     <MyArticleWrapper>
@@ -31,7 +35,7 @@ const MyArticleBoard = ({ isComment }) => {
       </div>
       <hr />
       <div className="go-back" onClick={handleClickGoBack}>
-        {"< 돌아가기"}
+        &lt; 돌아가기
       </div>
       <div className="article-list">
         {articles &&
@@ -44,6 +48,11 @@ const MyArticleBoard = ({ isComment }) => {
             </Link>
           ))}
       </div>
+      <MyArticlePageSelector
+        curPage={page}
+        setCurPage={setPage}
+        pageCount={pageCount}
+      />
     </MyArticleWrapper>
   );
 };
