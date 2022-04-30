@@ -26,7 +26,8 @@ const BoardHeader = () => {
     setSearch(e.currentTarget.value);
   };
   const handleCreateArticle = () => {
-    navi(`/writing`);
+    console.log("test", categoryId);
+    navi(`/writing`, { state: { categoryId } });
   };
 
   return (
