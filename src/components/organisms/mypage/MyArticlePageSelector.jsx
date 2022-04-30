@@ -64,6 +64,7 @@ const MyArticlePageSelectorWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 0.3rem;
+  margin-top: 0.3rem;
   background-color: ${(props) => props.theme.backgroundWhite};
 
   button {
