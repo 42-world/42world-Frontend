@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { categoryState } from "../../../store/category";
 
-const WritingContent = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const WritingContent = ({ articleContent, articleTitle }) => {
+  const [title, setTitle] = useState(articleTitle);
+  const [content, setContent] = useState(articleContent);
+  const [articleId, setArticleId] = useState(null);
+  const [categoryId, setCategoryId] = useState(1);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
