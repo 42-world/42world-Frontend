@@ -85,6 +85,7 @@ const MyArticleDiv = styled.div`
     border-bottom: 1px solid ${(props) => props.theme.lineGray1};
     border-radius: 0;
     width: 100%;
+    height: fit-content;
     margin: 0;
   }
 `;
