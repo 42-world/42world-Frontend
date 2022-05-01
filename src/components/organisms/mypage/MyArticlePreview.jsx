@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { ArticlePreview } from "../main";
@@ -7,6 +8,11 @@ import { UserService } from "../../../network";
 
 const MyArticlePreview = ({ isComment }) => {
   const [articles, setArticles] = useState(null);
+  const navi = useNavigate();
+
+  const handleClickMoreBtn = () => {
+    navi(`./${isComment ? "comments" : "articles"}`);
+  };
 
   useEffect(() => {
     const fetchMyArticles = async () => {
@@ -23,7 +29,9 @@ const MyArticlePreview = ({ isComment }) => {
     <MyArticleDiv isComment={isComment}>
       <div className="title">
         <h1>{isComment ? "내 댓글" : "내 게시글"}</h1>
-        <button className="more">{"더 보기 >"}</button>
+        <button className="more" onClick={handleClickMoreBtn}>
+          {"더 보기 >"}
+        </button>
       </div>
       {articles &&
         articles.map((article) => (

@@ -1,20 +1,35 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import { Container } from "../atoms/global";
 import { QuickLink } from "../organisms/main";
-import { MyProfile, MyArticlePreview } from "../organisms/mypage";
+import {
+  MyProfile,
+  MyArticlePreview,
+  MyArticleBoard,
+} from "../organisms/mypage";
 
 const Mypage = () => {
+  const loc = useLocation();
+  const isArticle = loc.pathname.split("/")[2];
   return (
     <>
       <MypageBlock>
         <main>
-          <MyProfile />
-          <div className="mypage-article">
-            <MyArticlePreview isComment={false} />
-            <MyArticlePreview isComment={true} />
-          </div>
+          {isArticle ? (
+            <MyArticleBoard
+              isComment={isArticle === "articles" ? false : true}
+            />
+          ) : (
+            <>
+              <MyProfile />
+              <div className="mypage-article">
+                <MyArticlePreview isComment={false} />
+                <MyArticlePreview isComment={true} />
+              </div>
+            </>
+          )}
         </main>
         <aside>
           <QuickLink />
