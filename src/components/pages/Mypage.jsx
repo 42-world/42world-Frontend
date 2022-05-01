@@ -12,21 +12,31 @@ import {
 
 const Mypage = () => {
   const loc = useLocation();
-  const isArticle = loc.pathname.split("/")[2];
+  const articleType = loc.pathname.split("/")[2];
+  const ARTICLE = 1,
+    COMMENT = 2,
+    LIKED = 3;
   return (
     <>
       <MypageBlock>
         <main>
-          {isArticle ? (
+          {articleType ? (
             <MyArticleBoard
-              isComment={isArticle === "article" ? false : true}
+              articleType={
+                articleType === "article"
+                  ? ARTICLE
+                  : articleType === "comment"
+                  ? COMMENT
+                  : LIKED
+              }
             />
           ) : (
             <>
               <MyProfile />
               <div className="mypage-article">
-                <MyArticlePreview isComment={false} />
-                <MyArticlePreview isComment={true} />
+                <MyArticlePreview articleType={ARTICLE} />
+                <MyArticlePreview articleType={COMMENT} />
+                <MyArticlePreview articleType={LIKED} />
               </div>
             </>
           )}

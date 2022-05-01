@@ -6,11 +6,14 @@ import { UserService } from "../../../network";
 import PreviewArticle from "../category/PreviewArticle";
 import MyArticlePageSelector from "./MyArticlePageSelector";
 
-const MyArticleBoard = ({ isComment }) => {
+const MyArticleBoard = ({ articleType }) => {
   const [articles, setArticles] = useState(null);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const navi = useNavigate();
+  const ARTICLE = 1,
+    COMMENT = 2,
+    LIKED = 3;
 
   const handleClickGoBack = () => {
     navi("/mypage");
@@ -18,20 +21,29 @@ const MyArticleBoard = ({ isComment }) => {
 
   useEffect(() => {
     const fetchMyArticles = async () => {
-      const response = isComment
-        ? await UserService.getMyComments(page)
-        : await UserService.getMyArticles(page);
+      const response =
+        articleType === ARTICLE
+          ? await UserService.getMyArticles(page)
+          : articleType === COMMENT
+          ? await UserService.getMyComments(page)
+          : await UserService.getLikeArticles(page);
       setArticles(response.data);
       setPageCount(response.meta.pageCount);
     };
 
     fetchMyArticles();
-  }, [isComment, page]);
+  }, [articleType, page]);
 
   return (
     <MyArticleWrapper>
       <div>
-        <h1>{isComment ? "내 댓글" : "내 게시글"}</h1>
+        <h1>
+          {articleType === ARTICLE
+            ? "내 게시글"
+            : articleType === COMMENT
+            ? "내 댓글"
+            : "좋아요한 글"}
+        </h1>
       </div>
       <hr />
       <div className="go-back" onClick={handleClickGoBack}>

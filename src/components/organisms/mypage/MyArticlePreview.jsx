@@ -6,29 +6,50 @@ import { ArticlePreview } from "../main";
 
 import { UserService } from "../../../network";
 
-const MyArticlePreview = ({ isComment }) => {
+const MyArticlePreview = ({ articleType }) => {
   const [articles, setArticles] = useState(null);
   const navi = useNavigate();
+  const ARTICLE = 1,
+    COMMENT = 2,
+    LIKED = 3;
 
   const handleClickMoreBtn = () => {
-    navi(`./${isComment ? "comment" : "article"}`);
+    navi(
+      `./${
+        articleType === ARTICLE
+          ? "article"
+          : articleType === COMMENT
+          ? "comment"
+          : "liked"
+      }`
+    );
   };
 
   useEffect(() => {
     const fetchMyArticles = async () => {
-      const response = isComment
-        ? await UserService.getMyComments()
-        : await UserService.getMyArticles();
-      setArticles(response.data.slice(0, 5));
+      const response =
+        articleType === ARTICLE
+          ? await UserService.getMyArticles(1)
+          : articleType === COMMENT
+          ? await UserService.getMyComments(1)
+          : await UserService.getLikeArticles(1);
+      console.log(response.data);
+      setArticles(response.data && response.data.slice(0, 5));
     };
 
     fetchMyArticles();
-  }, [isComment]);
+  }, [articleType]);
 
   return (
-    <MyArticleDiv isComment={isComment}>
+    <MyArticleDiv articleType={articleType}>
       <div className="title">
-        <h1>{isComment ? "내 댓글" : "내 게시글"}</h1>
+        <h1>
+          {articleType === ARTICLE
+            ? "내 게시글"
+            : articleType === COMMENT
+            ? "내 댓글"
+            : "좋아요한 글"}
+        </h1>
         <button className="more" onClick={handleClickMoreBtn}>
           {"더 보기 >"}
         </button>
@@ -38,9 +59,9 @@ const MyArticlePreview = ({ isComment }) => {
           <ArticlePreview
             key={article.id}
             id={article.id}
-            title={isComment ? article.content : article.title}
-            likeCount={isComment ? "" : article.commentCount}
-            commentCount={isComment ? "" : article.commentCount}
+            title={articleType === COMMENT ? article.content : article.title}
+            likeCount={articleType ? "" : article.commentCount}
+            commentCount={articleType ? "" : article.commentCount}
           />
         ))}
     </MyArticleDiv>
