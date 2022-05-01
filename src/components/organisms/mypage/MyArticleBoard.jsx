@@ -12,8 +12,8 @@ const MyArticleBoard = ({ articleType }) => {
   const [pageCount, setPageCount] = useState(1);
   const navi = useNavigate();
   const ARTICLE = 1,
-    COMMENT = 2,
-    LIKED = 3;
+    COMMENT = 2;
+  //LIKED = 3;
 
   const handleClickGoBack = () => {
     navi("/mypage");

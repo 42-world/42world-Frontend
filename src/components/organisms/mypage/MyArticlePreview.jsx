@@ -10,8 +10,8 @@ const MyArticlePreview = ({ articleType }) => {
   const [articles, setArticles] = useState(null);
   const navi = useNavigate();
   const ARTICLE = 1,
-    COMMENT = 2,
-    LIKED = 3;
+    COMMENT = 2;
+  //LIKED = 3;
 
   const handleClickMoreBtn = () => {
     navi(
