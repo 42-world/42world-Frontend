@@ -71,14 +71,12 @@ const MyArticleBoard = ({ articleType }) => {
 
 const MyArticleWrapper = styled.div`
   width: 100%;
-  height: fit-content;
   margin: 1rem 0;
   padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: ${(props) => props.theme.boxShadow};
   h1 {
     margin: 0.3rem 0.1rem 0.6rem 0.5rem;
-    height: fit-content;
     font-size: 1.6rem;
   }
   hr {

@@ -31,13 +31,11 @@ const MyProfileDiv = styled.div`
   background-color: ${(props) => props.theme.white};
   box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
-  height: fit-content;
   margin: 1rem 0;
   padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
   .profile-title {
     margin: 0.3rem 0.1rem 0.6rem 0.5rem;
-    height: fit-content;
     font-size: 1.6rem;
   }
   h1 {
