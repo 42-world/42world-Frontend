@@ -75,9 +75,9 @@ const MyArticleDiv = styled.div`
 
   margin: 0.5rem 0;
 
-  width: calc(50% - 0.8rem);
-  height: 13rem;
-  .title {
+  width: ${(props) =>
+      props.articleType === 3 ? "calc(100% - 0.4rem);" : "calc(50% - 0.8rem);"}
+    .title {
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -99,7 +99,7 @@ const MyArticleDiv = styled.div`
   }
   .like,
   .comment {
-    display: ${(props) => (props.isComment ? "none" : "block")};
+    display: ${(props) => (props.articleType === 2 ? "none" : "block")};
   }
   ${(props) => props.theme.mobileSize} {
     box-shadow: none;
