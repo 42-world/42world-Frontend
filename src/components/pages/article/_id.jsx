@@ -45,8 +45,8 @@ const ArticleBlock = styled(Container)`
     width: 100%;
   }
   .category_block {
-    width: 12rem;
-    min-width: 12rem;
+    width: 20rem;
+    min-width: 20rem;
   }
   .article_block {
     & > div {

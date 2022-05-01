@@ -37,6 +37,8 @@ const CategoryBlock = styled(Container)`
   }
 
   @media screen and (max-width: 1020px) {
+    display: flex;
+    flex-direction: column;
     .writing_block {
       max-width: calc(100% - 15.2rem);
       & > div {
@@ -48,7 +50,7 @@ const CategoryBlock = styled(Container)`
   ${(props) => props.theme.mobileSize} {
     margin-top: 0;
     .category_block {
-      display: none;
+      //display: none;
     }
     .writing_block {
       width: 100%;
