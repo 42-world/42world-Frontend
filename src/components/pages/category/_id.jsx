@@ -47,8 +47,10 @@ const CategoryBlock = styled(Container)`
 
   ${(props) => props.theme.mobileSize} {
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
     .category_block {
-      display: none;
+      //display: none;
     }
     .writing_block {
       width: 100%;
