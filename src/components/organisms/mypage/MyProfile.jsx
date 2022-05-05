@@ -31,29 +31,23 @@ const MyProfileDiv = styled.div`
   background-color: ${(props) => props.theme.white};
   box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
-  height: fit-content;
   margin: 1rem 0;
   padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
   .profile-title {
-    margin: 0.3rem 0.1rem 0.6rem 0.5rem;
-    height: fit-content;
-    font-size: 1.6rem;
-  }
-  h1 {
-    margin: 0.5rem 0.1rem;
-    margin-left: 1rem;
-    height: 2.4rem;
-    font-size: 2rem;
+    margin: 1rem 0.8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
   hr {
-    color: ${(props) => props.theme.LineGray1};
+    border: 0;
+    height: 1px;
+    background-color: ${(props) => props.theme.lineGray1};
   }
   .profile-section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 2rem - 0.6rem);
     @media screen and (min-width: 481px) {
       flex-direction: row;
     }

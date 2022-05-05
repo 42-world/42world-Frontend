@@ -183,13 +183,15 @@ const UserService = {
     return response.data;
   },
   // 내 글, 내 댓글, 좋아요한 글 불러오기 추가
-  getLikeArticles: async () => {
+  getLikeArticles: async (page) => {
     const method = "GET";
     const url = userUrl("/me/like-articles");
+    const params = { page };
 
     let response;
     try {
       response = await API.AXIOS({
+        params,
         method,
         url,
       });
@@ -198,13 +200,15 @@ const UserService = {
     }
     return response.data;
   },
-  getMyArticles: async () => {
+  getMyArticles: async (page) => {
     const method = "GET";
     const url = userUrl("/me/articles");
+    const params = { page };
 
     let response;
     try {
       response = await API.AXIOS({
+        params,
         method,
         url,
       });
@@ -213,13 +217,15 @@ const UserService = {
     }
     return response.data;
   },
-  getMyComments: async () => {
+  getMyComments: async (page) => {
     const method = "GET";
     const url = userUrl("/me/comments");
+    const params = { page };
 
     let response;
     try {
       response = await API.AXIOS({
+        params,
         method,
         url,
       });

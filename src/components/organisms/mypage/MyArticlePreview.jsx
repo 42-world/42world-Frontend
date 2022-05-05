@@ -1,37 +1,67 @@
-import { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { ArticlePreview } from "../main";
 
 import { UserService } from "../../../network";
 
-const MyArticlePreview = ({ ifComment }) => {
+const MyArticlePreview = ({ articleType }) => {
   const [articles, setArticles] = useState(null);
+  const navi = useNavigate();
+  const ARTICLE = 1,
+    COMMENT = 2;
+  //LIKED = 3;
+
+  const handleClickMoreBtn = () => {
+    navi(
+      `./${
+        articleType === ARTICLE
+          ? "article"
+          : articleType === COMMENT
+          ? "comment"
+          : "liked"
+      }`
+    );
+  };
 
   useEffect(() => {
     const fetchMyArticles = async () => {
-      const response = ifComment
-        ? await UserService.getMyComments()
-        : await UserService.getMyArticles();
-      setArticles(response.data.slice(0, 5));
+      const response =
+        articleType === ARTICLE
+          ? await UserService.getMyArticles(1)
+          : articleType === COMMENT
+          ? await UserService.getMyComments(1)
+          : await UserService.getLikeArticles(1);
+      console.log(response.data);
+      setArticles(response.data && response.data.slice(0, 5));
     };
 
     fetchMyArticles();
-  }, [ifComment]);
+  }, [articleType]);
 
   return (
-    <MyArticleDiv ifComment={ifComment}>
+    <MyArticleDiv articleType={articleType}>
       <div className="title">
-        <h1>{ifComment ? "내 댓글" : "내 게시글"}</h1>
-        <button className="more">{"더 보기 >"}</button>
+        <h1>
+          {articleType === ARTICLE
+            ? "내 게시글"
+            : articleType === COMMENT
+            ? "내 댓글"
+            : "좋아요한 글"}
+        </h1>
+        <button className="more" onClick={handleClickMoreBtn}>
+          {"더 보기 >"}
+        </button>
       </div>
       {articles &&
         articles.map((article) => (
           <ArticlePreview
             key={article.id}
-            title={ifComment ? article.content : article.title}
-            likeCount={ifComment ? "" : article.commentCount}
-            commentCount={ifComment ? "" : article.commentCount}
+            id={article.id}
+            title={articleType === COMMENT ? article.content : article.title}
+            likeCount={articleType ? "" : article.commentCount}
+            commentCount={articleType ? "" : article.commentCount}
           />
         ))}
     </MyArticleDiv>
@@ -45,18 +75,21 @@ const MyArticleDiv = styled.div`
 
   margin: 0.5rem 0;
 
-  width: calc(50% - 0.8rem);
-  height: fit-content;
+  width: ${(props) =>
+    props.articleType === 3 ? "calc(100%);" : "calc(50% - 0.8rem);"};
   .title {
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
     h1 {
       display: flex;
       align-items: center;
       font-weight: 700;
+      margin: 0.3rem;
     }
     button {
+      margin: 0.3rem;
       border: none;
       background: transparent;
       cursor: pointer;
@@ -69,7 +102,7 @@ const MyArticleDiv = styled.div`
   }
   .like,
   .comment {
-    display: ${(props) => (props.ifComment ? "none" : "block")};
+    display: ${(props) => (props.articleType === 2 ? "none" : "block")};
   }
   ${(props) => props.theme.mobileSize} {
     box-shadow: none;
@@ -77,6 +110,9 @@ const MyArticleDiv = styled.div`
     border-radius: 0;
     width: 100%;
     margin: 0;
+    .title {
+      background-color: ${(props) => props.theme.backgroundGray2};
+    }
   }
 `;
 

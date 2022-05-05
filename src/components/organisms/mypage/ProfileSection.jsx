@@ -53,7 +53,6 @@ const ProfileSectionDiv = styled.div`
   min-width: 15rem;
   align-items: center;
   .mypage-photo-sect {
-    width: fit-content;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;

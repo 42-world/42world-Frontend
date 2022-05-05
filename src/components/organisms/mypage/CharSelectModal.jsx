@@ -61,7 +61,6 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
 
 const CharSelectContainer = styled(ModalContainer)`
   width: 40%;
-  height: fit-content;
 
   &:focus {
     outline: none;
@@ -70,7 +69,6 @@ const CharSelectContainer = styled(ModalContainer)`
 
   h1 {
     margin: 0.6rem 0.1rem 0.6rem 0.5rem;
-    height: fit-content;
     font-size: 1.6rem;
   }
   hr {
