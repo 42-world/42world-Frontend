@@ -44,7 +44,9 @@ const CategoryBlock = styled(Container)`
     display: flex;
     flex-direction: column;
     .category_block {
-      //display: none;
+      margin: 0;
+      padding-left: 0.5rem;
+      width: 100%;
     }
     .writing_block {
       width: 100%;

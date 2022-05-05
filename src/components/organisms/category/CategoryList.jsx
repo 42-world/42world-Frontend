@@ -75,24 +75,26 @@ const CategoryListBlock = styled.div`
   }
   @media screen and (max-width: 768px) {
     padding: 5px 0;
-    width: 100vw;
+    width: 100%;
     margin: auto;
     h2 {
       display: none;
     }
     .category {
-      font-size: 14px;
+      font-size: 0.9rem;
       width: 100%;
-      margin: 9px 0;
-      //overflow-x: scroll;
+      font-weight: 600;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
       .nav-links {
-        color: rgb(148, 150, 155);
-        padding: 0 7px 0px;
-        border-bottom: 2px solid transparent;
+        margin: 0.3rem 0.5rem;
+        color: ${(props) => props.theme.black};
         text-decoration: none;
-        border-bottom: 2px solid #dbdee7;
         &.curCategory {
           color: #53b7ba;
+          transform: translateY(1px);
           border-bottom: 2px solid #53b7ba;
         }
       }
