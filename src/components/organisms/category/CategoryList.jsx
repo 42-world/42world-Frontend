@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { categoryState } from "../../../store/category";
 import { userCurrentPosState } from "../../../store/userCurrentPos";
+import { rem } from "../../../styles/rem";
 
 const CategoryList = ({ sendedId }) => {
   const category = useRecoilValue(categoryState);
@@ -74,23 +75,30 @@ const CategoryListBlock = styled.div`
     }
   }
   @media screen and (max-width: 768px) {
-    padding: 5px 0;
+    padding: ${rem(5)} 0;
     width: 100vw;
     margin: auto;
     h2 {
       display: none;
     }
     .category {
-      font-size: 14px;
+      font-size: 0.9rem;
       width: 100%;
-      margin: 9px 0;
-      //overflow-x: scroll;
+      font-weight: 600;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
       .nav-links {
+<<<<<<< HEAD
         color: rgb(148, 150, 155);
-        padding: 0 7px 0px;
+        padding: 0 ${rem(2)} 0px;
         border-bottom: 2px solid transparent;
+=======
+        margin: 0.3rem 0.5rem;
+        color: ${(props) => props.theme.black};
+>>>>>>> f7389d307fc94e52ec9eada0a508e21dc5cfed3c
         text-decoration: none;
-        border-bottom: 2px solid #dbdee7;
         &.curCategory {
           color: #53b7ba;
           border-bottom: 2px solid #53b7ba;

@@ -31,9 +31,6 @@ const CategoryBlock = styled(Container)`
   }
   .writing_block {
     max-width: calc(100% - 15.2rem - 9rem - 1.6rem);
-    & > div {
-      margin-bottom: 1.5rem;
-    }
   }
 
   @media screen and (max-width: 1020px) {
@@ -41,16 +38,17 @@ const CategoryBlock = styled(Container)`
     flex-direction: column;
     .writing_block {
       max-width: calc(100% - 15.2rem);
-      & > div {
-        margin-bottom: 1.5rem;
-      }
     }
   }
 
   ${(props) => props.theme.mobileSize} {
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
     .category_block {
-      //display: none;
+      margin: 0;
+      padding-left: 0.5rem;
+      width: 100%;
     }
     .writing_block {
       width: 100%;
