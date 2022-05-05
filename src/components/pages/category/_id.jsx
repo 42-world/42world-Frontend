@@ -31,17 +31,11 @@ const CategoryBlock = styled(Container)`
   }
   .writing_block {
     max-width: calc(100% - 15.2rem - 9rem - 1.6rem);
-    & > div {
-      margin-bottom: 1.5rem;
-    }
   }
 
   @media screen and (max-width: 1020px) {
     .writing_block {
       max-width: calc(100% - 15.2rem);
-      & > div {
-        margin-bottom: 1.5rem;
-      }
     }
   }
 
