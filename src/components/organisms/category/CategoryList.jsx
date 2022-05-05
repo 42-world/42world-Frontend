@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { categoryState } from "../../../store/category";
 import { userCurrentPosState } from "../../../store/userCurrentPos";
+import { rem } from "../../../styles/rem";
 
 const CategoryList = ({ sendedId }) => {
   const category = useRecoilValue(categoryState);
@@ -74,7 +75,7 @@ const CategoryListBlock = styled.div`
     }
   }
   @media screen and (max-width: 768px) {
-    padding: 5px 0;
+    padding: ${rem(5)} 0;
     width: 100vw;
     margin: auto;
     h2 {
@@ -87,7 +88,7 @@ const CategoryListBlock = styled.div`
       //overflow-x: scroll;
       .nav-links {
         color: rgb(148, 150, 155);
-        padding: 0 7px 0px;
+        padding: 0 ${rem(2)} 0px;
         border-bottom: 2px solid transparent;
         text-decoration: none;
         border-bottom: 2px solid #dbdee7;

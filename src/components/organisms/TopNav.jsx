@@ -208,7 +208,6 @@ const TopNavBlock = styled.div`
       padding: 0 20px;
       max-width: 1100px;
       display: flex;
-      align-items: center;
       #logo-btn {
         margin-right: 60px;
       }
@@ -218,10 +217,10 @@ const TopNavBlock = styled.div`
         top: 0;
         right: 0;
         transform: translate(-100%, 60%);
-        font-size: 1.8rem;
+        //font-size: 1.8rem;
         cursor: pointer;
         color: ${(props) => props.theme.white};
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
       .nav-menu {
         display: flex;
