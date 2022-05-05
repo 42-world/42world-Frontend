@@ -76,17 +76,20 @@ const MyArticleDiv = styled.div`
   margin: 0.5rem 0;
 
   width: ${(props) =>
-      props.articleType === 3 ? "calc(100%);" : "calc(50% - 0.8rem);"}
-    .title {
+    props.articleType === 3 ? "calc(100%);" : "calc(50% - 0.8rem);"};
+  .title {
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
     h1 {
       display: flex;
       align-items: center;
       font-weight: 700;
+      margin: 0.3rem;
     }
     button {
+      margin: 0.3rem;
       border: none;
       background: transparent;
       cursor: pointer;

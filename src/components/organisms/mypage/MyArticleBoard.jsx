@@ -44,9 +44,9 @@ const MyArticleBoard = ({ articleType }) => {
             ? "내 댓글"
             : "좋아요한 글"}
         </h1>
-        <span className="go-back" onClick={handleClickGoBack}>
-          &lt; 돌아가기
-        </span>
+        <button className="go-back" onClick={handleClickGoBack}>
+          {"< 돌아가기"}
+        </button>
       </div>
       <div className="article-list">
         {articles &&
@@ -87,8 +87,9 @@ const MyArticleWrapper = styled.div`
       font-weight: bold;
     }
     .go-back {
-      margin: 1rem 0.8rem;
-      font-size: 0.9rem;
+      margin: 0.5rem;
+      border: none;
+      background: transparent;
       cursor: pointer;
     }
   }
