@@ -110,6 +110,9 @@ const MyArticleDiv = styled.div`
     border-radius: 0;
     width: 100%;
     margin: 0;
+    .title {
+      background-color: ${(props) => props.theme.backgroundGray2};
+    }
   }
 `;
 
