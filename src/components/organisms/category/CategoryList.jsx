@@ -94,7 +94,6 @@ const CategoryListBlock = styled.div`
         text-decoration: none;
         &.curCategory {
           color: #53b7ba;
-          transform: translateY(1px);
           border-bottom: 2px solid #53b7ba;
         }
       }
