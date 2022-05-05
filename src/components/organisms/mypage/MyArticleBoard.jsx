@@ -36,7 +36,7 @@ const MyArticleBoard = ({ articleType }) => {
 
   return (
     <MyArticleWrapper>
-      <div>
+      <div className="title">
         <h1>
           {articleType === ARTICLE
             ? "내 게시글"
@@ -44,10 +44,9 @@ const MyArticleBoard = ({ articleType }) => {
             ? "내 댓글"
             : "좋아요한 글"}
         </h1>
-      </div>
-      <hr />
-      <div className="go-back" onClick={handleClickGoBack}>
-        &lt; 돌아가기
+        <span className="go-back" onClick={handleClickGoBack}>
+          &lt; 돌아가기
+        </span>
       </div>
       <div className="article-list">
         {articles &&
@@ -55,7 +54,8 @@ const MyArticleBoard = ({ articleType }) => {
             <Link
               to={`/article/${article.id}`}
               className="article-content"
-              key={id}>
+              key={id}
+            >
               <PreviewArticle article={article} />
             </Link>
           ))}
@@ -75,23 +75,24 @@ const MyArticleWrapper = styled.div`
   padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: ${(props) => props.theme.boxShadow};
-  h1 {
-    margin: 0.3rem 0.1rem 0.6rem 0.5rem;
-    font-size: 1.6rem;
-  }
-  hr {
-    border: 0;
-    height: 1px;
-    background-color: ${(props) => props.theme.lineGray1};
-  }
-  .go-back {
-    padding: 0.3rem;
-    line-height: 1.3rem;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid ${(props) => props.theme.lineGray1};
-    &:hover {
+    h1 {
+      margin: 1rem 0.8rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .go-back {
+      margin: 1rem 0.8rem;
+      font-size: 0.9rem;
       cursor: pointer;
     }
   }
+
   .article-content {
     text-decoration: none;
     color: ${(props) => props.theme.black};
