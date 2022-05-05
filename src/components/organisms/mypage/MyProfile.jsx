@@ -35,15 +35,9 @@ const MyProfileDiv = styled.div`
   padding: 0.3rem;
   border-radius: ${(props) => props.theme.borderRadius};
   .profile-title {
-    margin: 0.3rem 0.1rem 0.6rem 0.5rem;
-    font-size: 1.6rem;
-  }
-  h1 {
-    // TODO : 이부분 스타일이 적용되지 않는 것 같아 논의 필요
-    margin: 0.5rem 0.1rem;
-    margin-left: 1rem;
-    height: 2.4rem;
-    font-size: 2rem;
+    margin: 1rem 0.8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
   hr {
     border: 0;
@@ -54,7 +48,6 @@ const MyProfileDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 2rem - 0.6rem);
     @media screen and (min-width: 481px) {
       flex-direction: row;
     }
