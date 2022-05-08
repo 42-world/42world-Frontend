@@ -53,7 +53,9 @@ function TopNav() {
           <nav>
             <Link to="/" id="logo-btn">
               <img
-                src={require('../../assets/images/logo/Logo@05x.png')}
+                width="168px"
+                height="39px"
+                src="../../assets/images/logo/Logo@16x.png"
                 alt=""
                 onClick={handleClick}
               />
