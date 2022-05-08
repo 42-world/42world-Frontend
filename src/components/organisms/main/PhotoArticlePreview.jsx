@@ -1,12 +1,9 @@
-import React from "react";
-import dayjs from "dayjs";
-
-import styled from "styled-components";
-
-import { AiOutlineHeart } from "react-icons/ai";
-import { BiCommentDots } from "react-icons/bi";
-import { AiFillEye } from "react-icons/ai";
-import { rem } from "../../../styles/rem";
+import dayjs from 'dayjs';
+import React from 'react';
+import { AiFillEye, AiOutlineHeart } from 'react-icons/ai';
+import { BiCommentDots } from 'react-icons/bi';
+import styled from 'styled-components';
+import { rem } from '../../../styles/rem';
 
 const PhotoArticlePreview = ({
   title,
@@ -17,12 +14,12 @@ const PhotoArticlePreview = ({
   commentCount,
   url,
 }) => {
-  const getArticleTime = (time) =>
-    dayjs(time).isSame(dayjs(), "day")
-      ? dayjs(time).format("HH:mm")
-      : dayjs(time).format("MM/DD");
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
 
-  const handleHugeCount = (count) => {
+  const handleHugeCount = count => {
     const strCount = count.toString();
     if (strCount.length > 6) {
       return `${(count / 1000000).toFixed(0)}m`;
@@ -58,13 +55,13 @@ const PhotoArticlePreviewWrapper = styled.div`
   padding: ${rem(8)};
   margin: ${rem(2)};
   border-radius: ${rem(10)};
-  background-image: url(${(props) => props.imageUrl});
+  background-image: url(${props => props.imageUrl});
   background-size: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: ${(props) => props.theme.textWhite};
+  color: ${props => props.theme.textWhite};
   cursor: pointer;
 
   h3 {
@@ -88,11 +85,11 @@ const PhotoArticlePreviewWrapper = styled.div`
     }
 
     .like {
-      color: ${(props) => props.theme.buttonRed1};
+      color: ${props => props.theme.buttonRed1};
     }
 
     .comment {
-      color: ${(props) => props.theme.buttonBlue2};
+      color: ${props => props.theme.buttonBlue2};
     }
 
     .icon > svg {

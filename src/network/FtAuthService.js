@@ -1,7 +1,7 @@
-import * as API from "./APIType";
+import * as API from './APIType';
 
-const ftauthUrl = (path) => {
-  return `${API.url("/intra-auth")}${path}`;
+const ftauthUrl = path => {
+  return `${API.url('/intra-auth')}${path}`;
 };
 
 const FtAuthService = {
@@ -12,9 +12,9 @@ const FtAuthService = {
    * `200` : success \
    * `other` : fail
    */
-  createFtAuth: async (intraId) => {
-    const method = "POST";
-    const url = ftauthUrl("");
+  createFtAuth: async intraId => {
+    const method = 'POST';
+    const url = ftauthUrl('');
     const data = { intraId };
 
     let response;

@@ -1,9 +1,8 @@
-import { useRecoilValue } from "recoil";
-import styled from "styled-components";
-
-import ProfileSection from "./ProfileSection";
-import LinkSection from "./LinkSection";
-import { userState } from "../../../store/user";
+import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+import { userState } from '../../../store/user';
+import LinkSection from './LinkSection';
+import ProfileSection from './ProfileSection';
 
 //import { UserService } from "../../../network";
 
@@ -28,12 +27,12 @@ const MyProfile = () => {
 };
 
 const MyProfileDiv = styled.div`
-  background-color: ${(props) => props.theme.white};
-  box-shadow: ${(props) => props.theme.boxShadow};
+  background-color: ${props => props.theme.white};
+  box-shadow: ${props => props.theme.boxShadow};
   width: 100%;
   margin: 1rem 0;
   padding: 0.3rem;
-  border-radius: ${(props) => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius};
   .profile-title {
     margin: 1rem 0.8rem;
     font-size: 1.5rem;
@@ -42,7 +41,7 @@ const MyProfileDiv = styled.div`
   hr {
     border: 0;
     height: 1px;
-    background-color: ${(props) => props.theme.lineGray1};
+    background-color: ${props => props.theme.lineGray1};
   }
   .profile-section {
     display: flex;
@@ -52,9 +51,9 @@ const MyProfileDiv = styled.div`
       flex-direction: row;
     }
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     box-shadow: none;
-    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-bottom: 1px solid ${props => props.theme.lineGray1};
     border-radius: 0;
     margin: 0;
   }

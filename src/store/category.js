@@ -1,6 +1,6 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const categoryState = atom({
-  key: "categoryState",
+  key: 'categoryState',
   default: [],
 });

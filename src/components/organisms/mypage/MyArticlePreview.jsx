@@ -1,10 +1,8 @@
-import { React, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
-import { ArticlePreview } from "../main";
-
-import { UserService } from "../../../network";
+import { React, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { UserService } from '../../../network';
+import { ArticlePreview } from '../main';
 
 const MyArticlePreview = ({ articleType }) => {
   const [articles, setArticles] = useState(null);
@@ -17,11 +15,11 @@ const MyArticlePreview = ({ articleType }) => {
     navi(
       `./${
         articleType === ARTICLE
-          ? "article"
+          ? 'article'
           : articleType === COMMENT
-          ? "comment"
-          : "liked"
-      }`
+          ? 'comment'
+          : 'liked'
+      }`,
     );
   };
 
@@ -45,23 +43,23 @@ const MyArticlePreview = ({ articleType }) => {
       <div className="title">
         <h1>
           {articleType === ARTICLE
-            ? "내 게시글"
+            ? '내 게시글'
             : articleType === COMMENT
-            ? "내 댓글"
-            : "좋아요한 글"}
+            ? '내 댓글'
+            : '좋아요한 글'}
         </h1>
         <button className="more" onClick={handleClickMoreBtn}>
-          {"더 보기 >"}
+          {'더 보기 >'}
         </button>
       </div>
       {articles &&
-        articles.map((article) => (
+        articles.map(article => (
           <ArticlePreview
             key={article.id}
             id={article.id}
             title={articleType === COMMENT ? article.content : article.title}
-            likeCount={articleType ? "" : article.commentCount}
-            commentCount={articleType ? "" : article.commentCount}
+            likeCount={articleType ? '' : article.commentCount}
+            commentCount={articleType ? '' : article.commentCount}
           />
         ))}
     </MyArticleDiv>
@@ -69,19 +67,19 @@ const MyArticlePreview = ({ articleType }) => {
 };
 
 const MyArticleDiv = styled.div`
-  background: ${(props) => props.theme.white};
-  box-shadow: ${(props) => props.theme.boxShadow};
-  border-radius: ${(props) => props.theme.borderRadius};
+  background: ${props => props.theme.white};
+  box-shadow: ${props => props.theme.boxShadow};
+  border-radius: ${props => props.theme.borderRadius};
 
   margin: 0.5rem 0;
 
-  width: ${(props) =>
-    props.articleType === 3 ? "calc(100%);" : "calc(50% - 0.8rem);"};
+  width: ${props =>
+    props.articleType === 3 ? 'calc(100%);' : 'calc(50% - 0.8rem);'};
   .title {
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-bottom: 1px solid ${props => props.theme.lineGray1};
     h1 {
       display: flex;
       align-items: center;
@@ -102,16 +100,16 @@ const MyArticleDiv = styled.div`
   }
   .like,
   .comment {
-    display: ${(props) => (props.articleType === 2 ? "none" : "block")};
+    display: ${props => (props.articleType === 2 ? 'none' : 'block')};
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     box-shadow: none;
-    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-bottom: 1px solid ${props => props.theme.lineGray1};
     border-radius: 0;
     width: 100%;
     margin: 0;
     .title {
-      background-color: ${(props) => props.theme.backgroundGray2};
+      background-color: ${props => props.theme.backgroundGray2};
     }
   }
 `;

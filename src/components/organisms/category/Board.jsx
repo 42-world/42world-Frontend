@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import PreviewArticle from "./PreviewArticle";
-import BoardHeader from "./BoardHeader";
-import { ArticleList, Body, Wrapper } from "../../atoms/Board";
-import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
-import { ArticleService } from "../../../network";
-import { PageSelector } from "./";
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import { ArticleService } from '../../../network';
+import { ArticleList, Body, Wrapper } from '../../atoms/Board';
+import { PageSelector } from './';
+import BoardHeader from './BoardHeader';
+import PreviewArticle from './PreviewArticle';
 
 const Board = () => {
   const [Articles, setArticles] = useState(null);
@@ -13,7 +13,7 @@ const Board = () => {
   const [articleCount, setArticleCount] = useState(10);
   const loca = useLocation();
 
-  const categoryId = loca.pathname.split("/")[2];
+  const categoryId = loca.pathname.split('/')[2];
 
   useEffect(() => {
     setArticleCount(10);
@@ -21,7 +21,7 @@ const Board = () => {
       const { data } = await ArticleService.getArticlesByCategoryId(
         categoryId,
         page,
-        articleCount
+        articleCount,
       );
       // const data = await ArticleService.getArticles(categoryId, page);
       setArticles(data);
@@ -65,7 +65,7 @@ const CategoryBlock = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 0.3rem;
-  box-shadow: ${(props) => props.theme.boxShadow};
+  box-shadow: ${props => props.theme.boxShadow};
   background-color: #fff;
 
   .BoardHeaderWrapper {
@@ -73,7 +73,7 @@ const CategoryBlock = styled.div`
   }
   .articleList_content {
     text-decoration: none;
-    color: ${(props) => props.theme.black};
+    color: ${props => props.theme.black};
     &:last-child {
       div {
         border: none;

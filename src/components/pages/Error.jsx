@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const ErrorPage = () => {
   const navi = useNavigate();
@@ -9,7 +9,7 @@ const ErrorPage = () => {
       <img
         id="logo"
         src="/assets/error.png"
-        style={{ width: "300px" }}
+        style={{ width: '300px' }}
         alt="..."
       />
       <ErrorBox>
@@ -25,8 +25,8 @@ const ErrorPage = () => {
       <img
         id="button"
         src="/assets/42mainlogo.png"
-        style={{ width: "100px" }}
-        onClick={() => navi("/")}
+        style={{ width: '100px' }}
+        onClick={() => navi('/')}
         alt="..."
       />
     </ErrorBackground>

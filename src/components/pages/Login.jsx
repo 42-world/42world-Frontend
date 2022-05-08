@@ -1,12 +1,12 @@
 //import React, { useState } from "react";
-import styled from "styled-components";
-import { Signin } from "../organisms/login";
-import { useEffect } from "react";
-import { useSetRecoilState } from "recoil";
-import { userState } from "../../store/user";
-import qs from "qs";
-import { useNavigate } from "react-router-dom";
-import { AuthService, UserService } from "../../network";
+import qs from 'qs';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
+import { AuthService, UserService } from '../../network';
+import { userState } from '../../store/user';
+import { Signin } from '../organisms/login';
 
 const Login = ({ isCallback }) => {
   const setUser = useSetRecoilState(userState);
@@ -20,19 +20,19 @@ const Login = ({ isCallback }) => {
       if (isCallback) {
         const github_code = queryData.code;
         if (!github_code) {
-          alert("다시 로그인 하세요!"); // 임시
-          navigate("/login");
+          alert('다시 로그인 하세요!'); // 임시
+          navigate('/login');
           return;
         }
         const result = await AuthService.getAuthAccessToken(github_code);
         if (result.status !== 200) {
-          alert("깃허브 로그인 오류! 다시 로그인 하세요!"); // 임시
-          navigate("/login");
+          alert('깃허브 로그인 오류! 다시 로그인 하세요!'); // 임시
+          navigate('/login');
           return;
         }
         const userData = await UserService.getNoviceProfile();
         setUser([userData]);
-        navigate("/");
+        navigate('/');
       }
     })();
   }, [isCallback, navigate, queryData.code, setUser]);
@@ -92,7 +92,7 @@ const Login = ({ isCallback }) => {
 // `;
 
 const LoginBlock = styled.div`
-  background: url("/images/img-home.jpg") center center/cover no-repeat;
+  background: url('/images/img-home.jpg') center center/cover no-repeat;
   @media screen and (min-width: 960px) {
     .video-container {
       position: fixed;

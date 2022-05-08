@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
-import styled from "styled-components";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { categoryState } from "../../store/category";
-import { CategoryService } from "../../network";
-import { userState } from "../../store/user";
-import profileUtils from "./mypage/utils/profileUtils";
+import React, { useEffect, useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+import { CategoryService } from '../../network';
+import { categoryState } from '../../store/category';
+import { userState } from '../../store/user';
+import profileUtils from './mypage/utils/profileUtils';
 
 function TopNav() {
   const [click, setClick] = useState(false);
@@ -14,7 +14,7 @@ function TopNav() {
   // TODO : category 상태 어떻게 관리할 건지 논의 후 수정
   // eslint-disable-next-line
   const [category, setCategory] = useRecoilState(categoryState);
-  const PICTURE_DIR = "/assets/CharacterWhiteBG/";
+  const PICTURE_DIR = '/assets/CharacterWhiteBG/';
   const [profilePhoto, setProfilePhoto] = useState(null);
 
   const handleClick = () => setClick(!click);
@@ -43,7 +43,7 @@ function TopNav() {
     }
   }, [user]);
 
-  window.addEventListener("resize", showButton);
+  window.addEventListener('resize', showButton);
 
   if (!user[0] || user === undefined || user.length === 0) return <></>;
   else {
@@ -53,15 +53,15 @@ function TopNav() {
           <nav>
             <Link to="/" id="logo-btn">
               <img
-                src={require("../../assets/images/logo/Logo@05x.png")}
+                src={require('../../assets/images/logo/Logo@05x.png')}
                 alt=""
                 onClick={handleClick}
               />
             </Link>
             <div className="menu-icon" onClick={handleClick}>
-              <i className={click ? "fas fa-times" : "fas fa-bars"} />
+              <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                   홈
@@ -112,12 +112,12 @@ const OutletWrapper = styled.div`
 `;
 
 const TopNavBlock = styled.div`
-  background-color: ${(props) => props.theme.secondary};
+  background-color: ${props => props.theme.secondary};
   a {
     text-decoration: none;
   }
   nav {
-    background-color: ${(props) => props.theme.secondary};
+    background-color: ${props => props.theme.secondary};
     display: flex;
     align-items: center;
     width: 100%;
@@ -172,7 +172,7 @@ const TopNavBlock = styled.div`
     }
     .profile {
       height: 80%;
-      color: ${(props) => props.theme.textGray2};
+      color: ${props => props.theme.textGray2};
       display: flex;
       align-items: center;
       justify-content: center;
@@ -180,7 +180,7 @@ const TopNavBlock = styled.div`
       padding: 0rem 0.2rem;
       margin: 0 15px;
       border-radius: 4rem;
-      background-color: ${(props) => props.theme.backgroundTheme4};
+      background-color: ${props => props.theme.backgroundTheme4};
       img {
         width: 3.5rem;
         border-radius: 50%;
@@ -190,15 +190,15 @@ const TopNavBlock = styled.div`
         padding-right: 1rem;
       }
       &:hover {
-        color: ${(props) => props.theme.textBlack};
-        background-color: ${(props) => props.theme.primary};
+        color: ${props => props.theme.textBlack};
+        background-color: ${props => props.theme.primary};
       }
     }
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     nav {
-      background-color: ${(props) => props.theme.secondary};
+      background-color: ${props => props.theme.secondary};
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -219,7 +219,7 @@ const TopNavBlock = styled.div`
         transform: translate(-100%, 60%);
         //font-size: 1.8rem;
         cursor: pointer;
-        color: ${(props) => props.theme.white};
+        color: ${props => props.theme.white};
         font-size: 2.1rem;
       }
       .nav-menu {
@@ -234,7 +234,7 @@ const TopNavBlock = styled.div`
         opacity: 1;
         transition: all 0.3s ease;
         &.active {
-          background: ${(props) => props.theme.backgroundTheme4};
+          background: ${props => props.theme.backgroundTheme4};
           left: 0;
           opacity: 1;
           z-index: 1;
@@ -255,8 +255,8 @@ const TopNavBlock = styled.div`
             width: 100vw;
             justify-content: center;
             &:hover {
-              background-color: ${(props) => props.theme.primary};
-              color: ${(props) => props.theme.white};
+              background-color: ${props => props.theme.primary};
+              color: ${props => props.theme.white};
               border: none;
               padding: inherit;
               border-radius: 0;

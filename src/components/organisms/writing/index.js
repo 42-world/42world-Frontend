@@ -1,1 +1,1 @@
-export { default as WritingContent } from "./WritingContent";
+export { default as WritingContent } from './WritingContent';

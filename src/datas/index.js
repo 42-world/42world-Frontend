@@ -1,4 +1,4 @@
-import articles from "./articles";
+import articles from './articles';
 
 const data = { articles };
 

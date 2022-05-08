@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { CategoryService } from "../../network";
-import { rem } from "../../styles/rem";
-import { Container } from "../atoms/global";
-import { CategoryPreview } from "../organisms/main";
-import { QuickLink } from "../organisms/main";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { CategoryService } from '../../network';
+import { rem } from '../../styles/rem';
+import { Container } from '../atoms/global';
+import { CategoryPreview, QuickLink } from '../organisms/main';
 
 const Main = () => {
   const [categories, setCategories] = useState(null);
@@ -24,7 +23,7 @@ const Main = () => {
         {/* TODO : 검색 바 구현되면 추가 */}
         {/* <Searchbar /> */}
         <div className="category-preview-container">
-          {categories.map((category) => (
+          {categories.map(category => (
             <CategoryPreview key={category.id} category={category} />
           ))}
         </div>
@@ -57,7 +56,7 @@ const MainContainer = styled(Container)`
       max-width: ${rem(768)};
     }
 
-    ${(props) => props.theme.mobileSize} {
+    ${props => props.theme.mobileSize} {
       margin-top: 0;
     }
   }

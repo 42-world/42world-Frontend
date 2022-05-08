@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import styled, { keyframes, css } from "styled-components";
-import memoize from "memoize-one";
-import kebabCase from "lodash.kebabcase";
+import kebabCase from 'lodash.kebabcase';
+import memoize from 'memoize-one';
+import React, { Component } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 
-const defaultRootAlign = "center";
-const defaultColor = "#fff";
+const defaultRootAlign = 'center';
+const defaultColor = '#fff';
 const defaultColumnWidth = 150;
 const defaultRowHeight = 80;
-const defaultBackground = "#2a2d38";
+const defaultBackground = '#2a2d38';
 const defaultBreakpoint = 768;
-const defaultContentBackground = "#fff";
-const defaultContentColor = "#323232";
+const defaultContentBackground = '#fff';
+const defaultContentColor = '#323232';
 const defaultContentWidth = 320;
 const defaultContentHeight = 200;
 const defaultContentTop = 0;
@@ -26,8 +26,8 @@ const fadeOutContentSeconds = 0.29;
 const fadeInContentSeconds = 0.1;
 const OffScreenPadding = 10;
 
-const setFromProps = (camelCaseKey) => css`
-  ${(props) =>
+const setFromProps = camelCaseKey => css`
+  ${props =>
     props[camelCaseKey]
       ? `${kebabCase(camelCaseKey)}: ${props[camelCaseKey]}`
       : null}
@@ -42,7 +42,7 @@ const GridContainer = styled.div`
 
   @media (min-width: ${({ breakpoint }) => breakpoint}px) {
     display: grid;
-    ${setFromProps("justifyContent")};
+    ${setFromProps('justifyContent')};
     justify-items: stretch;
     grid-template-columns: repeat(
       ${({ columns }) => columns},
@@ -50,10 +50,10 @@ const GridContainer = styled.div`
     );
     grid-template-rows: ${({ rowHeight }) => rowHeight}px;
     position: relative;
-    ${setFromProps("background")};
-    ${setFromProps("color")};
-    ${setFromProps("fontFamily")};
-    ${setFromProps("fontSize")}px;
+    ${setFromProps('background')};
+    ${setFromProps('color')};
+    ${setFromProps('fontFamily')};
+    ${setFromProps('fontSize')}px;
   }
 `;
 const GridItemLink = styled.a`
@@ -64,10 +64,10 @@ const GridItemLink = styled.a`
   &:hover {
     opacity: 0.5;
   }
-  ${setFromProps("color")};
+  ${setFromProps('color')};
 
   &:visited {
-    ${setFromProps("color")};
+    ${setFromProps('color')};
   }
 `;
 const GridItem = styled.div`
@@ -128,8 +128,8 @@ const FadeOut = keyframes`
 `;
 const MovingDiv = styled.div`
   opacity: 1;
-  ${setFromProps("color")};
-  ${setFromProps("background")};
+  ${setFromProps('color')};
+  ${setFromProps('background')};
   position: absolute;
   top: ${({ top }) => top}px;
   left: ${({ fromData }) => (fromData ? fromData.left : 0)}px;
@@ -140,20 +140,20 @@ const MovingDiv = styled.div`
   box-shadow: 0 8px 28px 1px rgba(138, 126, 138, 0.67); // Ripped from: https://www.cssmatic.com/box-shadow
   animation: ${({ fadeOut, display, fromData, toData }) => {
       if (fadeOut) return FadeOut;
-      if (display === "block") {
+      if (display === 'block') {
         if (fromData.left === toData.left) return FadeIn;
         if (fromData) return Move(fromData, toData);
       }
-      return ""; // display: none; don't animate
+      return ''; // display: none; don't animate
     }}
     // fade out and in slower than moving sideways
     ${({ fadeOut, display, fromData, toData }) => {
       if (fadeOut) return `${fadeOutSeconds}s`;
-      if (display === "block") {
+      if (display === 'block') {
         if (fromData.left === toData.left) return `${fadeInSeconds}s`; // fade in
         if (fromData) return `${moveSeconds}s`; // move
       }
-      return "0s"; // display: none; don't animate
+      return '0s'; // display: none; don't animate
     }}
     forwards ease;
 `;
@@ -202,7 +202,7 @@ const Arrow = styled.div`
     calculateArrowMarginLeft(toData, leftOffset, rightOffset)}
   display: ${({ display, toData }) => {
     if (toData && toData.width === 0 && toData.height === 0) {
-      return "none";
+      return 'none';
     }
     return display;
   }};
@@ -220,21 +220,21 @@ const Arrow = styled.div`
       rightOffset,
     }) => {
       if (fadeOut) return FadeOutArrow;
-      if (display === "block") {
+      if (display === 'block') {
         if (fromData.left === toData.left) return FadeInArrow;
         if (fromData)
           return MoveArrow(fromData, toData, leftOffset, rightOffset);
       }
-      return ""; // display: none; don't animate
+      return ''; // display: none; don't animate
     }}
     // fade out and in slower than moving sideways
     ${({ fadeOut, display, fromData, toData }) => {
       if (fadeOut) return `${fadeOutSeconds}s`;
-      if (display === "block") {
+      if (display === 'block') {
         if (fromData.left === toData.left) return `${fadeInSeconds}s`; // fade in
         if (fromData) return `${moveArrowSeconds}s`; // move
       }
-      return "0s"; // display: none; don't animate
+      return '0s'; // display: none; don't animate
     }}
     forwards ease;
 `;
@@ -267,12 +267,12 @@ const ContentGroupContainer = styled.div`
   z-index: ${({ show }) => (show ? 1 : 0)};
   pointer-events: ${({ show }) =>
     show
-      ? "auto"
-      : "none"}; // disregard mouse event if content group is inactive
+      ? 'auto'
+      : 'none'}; // disregard mouse event if content group is inactive
   animation: ${({ show, fadeOut }) => {
       if (show) return FadeInContent;
       if (fadeOut) return FadeOutContent;
-      return ""; // cold start and everything else just show without animation
+      return ''; // cold start and everything else just show without animation
     }}
     ${({ show }) =>
       show ? `${fadeInContentSeconds}` : `${fadeOutContentSeconds}`}s
@@ -290,7 +290,7 @@ export const ContentGroup = ({ title, width, height, background }) => {
 
 export default class SiteNav extends Component {
   state = {
-    display: "none",
+    display: 'none',
     fadeOut: false,
     fromData: null,
     toData: null,
@@ -337,7 +337,7 @@ export default class SiteNav extends Component {
         index: i,
         left: (i + 1) * columnWidth - columnWidth / 2 - sanitisedWidth / 2,
       };
-    })
+    }),
   );
   memoizeGridItems = memoize((children, color) =>
     React.Children.map(children, (child, i) => {
@@ -349,7 +349,7 @@ export default class SiteNav extends Component {
             href={rootUrl}
             key={`menu-title-${i}`}
             index={i}
-            onMouseEnter={(e) => this.onMouseEnter(e.target, i)}
+            onMouseEnter={e => this.onMouseEnter(e.target, i)}
             color={color}
           >
             {title}
@@ -361,13 +361,13 @@ export default class SiteNav extends Component {
         <GridItem
           key={`menu-title-${i}`}
           index={i}
-          onMouseEnter={(e) => this.onMouseEnter(e.target, i)}
+          onMouseEnter={e => this.onMouseEnter(e.target, i)}
           color={color}
         >
           {title}
         </GridItem>
       );
-    })
+    }),
   );
   memoizeContent = memoize((children, fromData, toData) =>
     React.Children.map(children, (child, i) => (
@@ -378,34 +378,34 @@ export default class SiteNav extends Component {
       >
         {child.props.children}
       </ContentGroupContainer>
-    ))
+    )),
   );
-  memoizeColumns = memoize((children) => React.Children.count(children));
-  memoizeAlign = memoize((align) => {
+  memoizeColumns = memoize(children => React.Children.count(children));
+  memoizeAlign = memoize(align => {
     switch (align) {
-      case "left":
-        return "start";
-      case "right":
-        return "end";
+      case 'left':
+        return 'start';
+      case 'right':
+        return 'end';
       default:
-        return "center";
+        return 'center';
     }
   });
 
   close = () => {
     if (this.props.debug) return;
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       fadeOut: true,
       fromData: prevState.toData,
     }));
   };
   onMouseEnter = (target, menuDataIndex) => {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       const fadeOut = false;
-      const display = "block";
+      const display = 'block';
       const toDataOriginal = this.memoizeMenuData(
         this.props.columnWidth,
-        this.props.children
+        this.props.children,
       )[menuDataIndex];
       const toData = { ...toDataOriginal };
       let leftOffset = 0;

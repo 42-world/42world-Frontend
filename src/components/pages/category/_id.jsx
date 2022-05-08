@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Container } from "../../atoms/global";
-import { Board, Advertisement, CategoryList } from "../../organisms/category";
+import React from 'react';
+import styled from 'styled-components';
+import { Container } from '../../atoms/global';
+import { Advertisement, Board, CategoryList } from '../../organisms/category';
 const _id = () => {
   return (
     <CategoryBlock>
@@ -41,7 +41,7 @@ const CategoryBlock = styled(Container)`
     }
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     margin-top: 0;
     display: flex;
     flex-direction: column;

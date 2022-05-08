@@ -1,13 +1,13 @@
-import * as API from "./APIType";
+import * as API from './APIType';
 
-const checkInUrl = (path) => {
-  return `${API.url("/ft-checkin")}${path}`;
+const checkInUrl = path => {
+  return `${API.url('/ft-checkin')}${path}`;
 };
 
 const CheckInService = {
   getClusterStatus: async () => {
-    const method = "GET";
-    const url = checkInUrl("");
+    const method = 'GET';
+    const url = checkInUrl('');
 
     return await API.AXIOS({
       method,

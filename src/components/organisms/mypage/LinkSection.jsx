@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-
-import LinkBox from "./LinkBox";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import LinkBox from './LinkBox';
 
 const LinkSection = ({ MyInfo }) => {
   const [myLinks, setMyLinks] = useState(null);
@@ -23,7 +22,7 @@ const LinkSection = ({ MyInfo }) => {
 const LinkSectionDiv = styled.div`
   padding: 0.3rem;
   padding-right: 1rem;
-  border-left: solid ${(props) => props.theme.lineGray1};
+  border-left: solid ${props => props.theme.lineGray1};
   flex-shrink: 1;
   flex-grow: 1;
   overflow: auto;
@@ -32,7 +31,7 @@ const LinkSectionDiv = styled.div`
     display: flex;
     flex-direction: row;
     border: none;
-    border-top: solid ${(props) => props.theme.lineGray1};
+    border-top: solid ${props => props.theme.lineGray1};
     svg {
       margin: 0.3rem;
     }

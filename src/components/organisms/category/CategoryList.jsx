@@ -1,21 +1,21 @@
-import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import styled from "styled-components";
-import { categoryState } from "../../../store/category";
-import { userCurrentPosState } from "../../../store/userCurrentPos";
-import { rem } from "../../../styles/rem";
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+import { categoryState } from '../../../store/category';
+import { userCurrentPosState } from '../../../store/userCurrentPos';
+import { rem } from '../../../styles/rem';
 
 const CategoryList = ({ sendedId }) => {
   const category = useRecoilValue(categoryState);
   const loca = useLocation();
-  const categoryPos = loca.pathname.split("/")[1];
-  const categoryId = parseInt(loca.pathname.split("/")[2]);
+  const categoryPos = loca.pathname.split('/')[1];
+  const categoryId = parseInt(loca.pathname.split('/')[2]);
   const [userCurrentPos, setUserCurrentPos] =
     useRecoilState(userCurrentPosState);
 
   useEffect(() => {
-    if (categoryPos === "category") {
+    if (categoryPos === 'category') {
       setUserCurrentPos(categoryId);
     }
   }, [categoryId, categoryPos, setUserCurrentPos]);
@@ -52,7 +52,7 @@ const CategoryListBlock = styled.div`
     width: 100%;
     background-color: #fff;
     padding: 1rem;
-    box-shadow: ${(props) => props.theme.boxShadow};
+    box-shadow: ${props => props.theme.boxShadow};
     border-radius: 0.4rem;
 
     h2 {
@@ -64,7 +64,7 @@ const CategoryListBlock = styled.div`
     .nav-links {
       display: block;
       text-decoration: none;
-      color: ${(props) => props.theme.black};
+      color: ${props => props.theme.black};
       font-size: 0.8rem;
       list-style: none;
       margin: 0.3rem 0;
@@ -96,7 +96,7 @@ const CategoryListBlock = styled.div`
         border-bottom: 2px solid transparent;
 =======
         margin: 0.3rem 0.5rem;
-        color: ${(props) => props.theme.black};
+        color: ${props => props.theme.black};
 >>>>>>> f7389d307fc94e52ec9eada0a508e21dc5cfed3c
         text-decoration: none;
         &.curCategory {

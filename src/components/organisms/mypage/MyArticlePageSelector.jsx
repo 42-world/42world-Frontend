@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const MyArticlePageSelector = ({ curPage, setCurPage, pageCount }) => {
   const handleClickPrevBtn = () => {
@@ -35,13 +35,14 @@ const MyArticlePageSelector = ({ curPage, setCurPage, pageCount }) => {
   return (
     <MyArticlePageSelectorWrapper>
       <button onClick={handleClickPrevBtn}>&lt;</button>
-      {getPageList().map((page) => {
+      {getPageList().map(page => {
         if (page === curPage) {
           return (
             <button
               key={page}
               onClick={() => setCurPage(page)}
-              className="cur-page">
+              className="cur-page"
+            >
               {page}
             </button>
           );
@@ -65,19 +66,19 @@ const MyArticlePageSelectorWrapper = styled.div`
   justify-content: center;
   border-radius: 0.3rem;
   margin-top: 0.3rem;
-  background-color: ${(props) => props.theme.backgroundWhite};
+  background-color: ${props => props.theme.backgroundWhite};
 
   button {
     border: none;
-    background-color: ${(props) => props.theme.backgroundWhite};
-    color: ${(props) => props.theme.textBlack};
+    background-color: ${props => props.theme.backgroundWhite};
+    color: ${props => props.theme.textBlack};
     padding: 0.3rem 0.5rem;
     margin: 0.2rem;
     border-radius: 0.3rem;
   }
   .cur-page {
-    background-color: ${(props) => props.theme.primary};
-    color: ${(props) => props.theme.textWhite};
+    background-color: ${props => props.theme.primary};
+    color: ${props => props.theme.textWhite};
   }
 `;
 

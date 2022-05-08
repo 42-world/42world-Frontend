@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import { ArticleService, CommentService } from "../../../network";
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import { ArticleService, CommentService } from '../../../network';
 
 const Comment = ({ articleId, writer }) => {
   const [comment, setComment] = useState(null);
@@ -34,31 +34,31 @@ const Comment = ({ articleId, writer }) => {
 };
 
 const CreateComment = ({ articleId, onCreateComment }) => {
-  const [commentInput, setCommentInput] = useState("");
+  const [commentInput, setCommentInput] = useState('');
   const textAreaRef = useRef(null);
   const handleTextAreaResizeHeight = useCallback(() => {
-    textAreaRef.current.style.height = "auto";
-    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
+    textAreaRef.current.style.height = 'auto';
+    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
   }, []);
-  const handleChangeComment = (e) => {
+  const handleChangeComment = e => {
     setCommentInput(e.target.value);
   };
-  const handleSubmitComment = async (e) => {
+  const handleSubmitComment = async e => {
     //e.preventDefault();
-    if (commentInput === "") {
-      alert("입력된 댓글이 없습니다.");
+    if (commentInput === '') {
+      alert('입력된 댓글이 없습니다.');
       return;
     }
     await CommentService.createComment({
       content: commentInput,
       articleId: +articleId,
     });
-    setCommentInput("");
-    textAreaRef.current.style.height = "auto";
+    setCommentInput('');
+    textAreaRef.current.style.height = 'auto';
     onCreateComment();
   };
-  const onKeyDown = (e) => {
-    if (e.key === "Enter") {
+  const onKeyDown = e => {
+    if (e.key === 'Enter') {
       handleSubmitComment();
     }
   };
@@ -81,7 +81,7 @@ const CommentList = ({ commentDataList, writer }) => {
   // TODO : Comment 삭제 함수 추가
   return (
     <CommentListBlock>
-      {commentDataList.map((commentData) => (
+      {commentDataList.map(commentData => (
         <CommentItem
           key={commentData.id}
           commentData={commentData}
@@ -94,22 +94,22 @@ const CommentList = ({ commentDataList, writer }) => {
 
 const CommentItem = ({ commentData, writer }) => {
   // TODO : 현재 유저의 ID를 확인할 수 있는 전역 값 추가
-  const getArticleTime = (time) =>
-    dayjs(time).isSame(dayjs(), "day")
-      ? dayjs(time).format("HH:mm")
-      : dayjs(time).format("MM/DD");
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
 
   const deleteCommentById = async () => {
-    if (window.confirm("댓글을 삭제하시겠습니까?")) {
+    if (window.confirm('댓글을 삭제하시겠습니까?')) {
       try {
         await CommentService.deleteComments(commentData.id);
         window.location.reload();
-        alert("삭제되었습니다");
+        alert('삭제되었습니다');
       } catch (e) {
-        console.log("삭제를 실패했습니다.");
+        console.log('삭제를 실패했습니다.');
       }
     } else {
-      alert("취소합니다");
+      alert('취소합니다');
     }
   };
   return (
@@ -134,7 +134,7 @@ const CommentBlock = styled.div`
   width: 100%;
   padding: 1rem;
   background-color: #fff;
-  box-shadow: ${(props) => props.theme.boxShadow};
+  box-shadow: ${props => props.theme.boxShadow};
   border-radius: 0.3rem;
   .comment_info {
     display: flex;
@@ -149,7 +149,7 @@ const CommentBlock = styled.div`
       // }
     }
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     width: 100%;
     box-shadow: none;
     border-radius: 0;

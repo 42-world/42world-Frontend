@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
-import { UserService } from "../../../network";
-import PreviewArticle from "../category/PreviewArticle";
-import MyArticlePageSelector from "./MyArticlePageSelector";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { UserService } from '../../../network';
+import PreviewArticle from '../category/PreviewArticle';
+import MyArticlePageSelector from './MyArticlePageSelector';
 
 const MyArticleBoard = ({ articleType }) => {
   const [articles, setArticles] = useState(null);
@@ -16,7 +15,7 @@ const MyArticleBoard = ({ articleType }) => {
   //LIKED = 3;
 
   const handleClickGoBack = () => {
-    navi("/mypage");
+    navi('/mypage');
   };
 
   useEffect(() => {
@@ -39,13 +38,13 @@ const MyArticleBoard = ({ articleType }) => {
       <div className="title">
         <h1>
           {articleType === ARTICLE
-            ? "내 게시글"
+            ? '내 게시글'
             : articleType === COMMENT
-            ? "내 댓글"
-            : "좋아요한 글"}
+            ? '내 댓글'
+            : '좋아요한 글'}
         </h1>
         <button className="go-back" onClick={handleClickGoBack}>
-          {"< 돌아가기"}
+          {'< 돌아가기'}
         </button>
       </div>
       <div className="article-list">
@@ -73,14 +72,14 @@ const MyArticleWrapper = styled.div`
   width: 100%;
   margin: 1rem 0;
   padding: 0.3rem;
-  border-radius: ${(props) => props.theme.borderRadius};
-  box-shadow: ${(props) => props.theme.boxShadow};
+  border-radius: ${props => props.theme.borderRadius};
+  box-shadow: ${props => props.theme.boxShadow};
 
   .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-bottom: 1px solid ${props => props.theme.lineGray1};
     h1 {
       margin: 1rem 0.8rem;
       font-size: 1.4rem;
@@ -96,11 +95,11 @@ const MyArticleWrapper = styled.div`
 
   .article-content {
     text-decoration: none;
-    color: ${(props) => props.theme.black};
+    color: ${props => props.theme.black};
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     box-shadow: none;
-    border-bottom: 1px solid ${(props) => props.theme.lineGray1};
+    border-bottom: 1px solid ${props => props.theme.lineGray1};
     border-radius: 0;
     margin: 0;
   }

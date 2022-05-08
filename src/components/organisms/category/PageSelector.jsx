@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 // import PreviewArticle from "./PreviewArticle";
 // import BoardHeader from "./BoardHeader";
 // import { ArticleList, Body, Wrapper } from "../../atoms/Board";
-import styled from "styled-components";
-import { ArticleService } from "../../../network";
+import styled from 'styled-components';
+import { ArticleService } from '../../../network';
 
 const PageSelector = ({ curPage, setCurPage, categoryId, articleCount }) => {
   const [totalPageCount, setTotalPageCount] = useState(null);
@@ -12,7 +12,7 @@ const PageSelector = ({ curPage, setCurPage, categoryId, articleCount }) => {
     (async () => {
       const meta = await ArticleService.getArticleMetaDataByCategoryId(
         categoryId,
-        articleCount
+        articleCount,
       );
       setTotalPageCount(meta.pageCount);
     })();
@@ -45,7 +45,7 @@ const PageSelector = ({ curPage, setCurPage, categoryId, articleCount }) => {
   return (
     <PageSelectorBlock>
       <button onClick={() => setCurPage(1)}>&lt;</button>
-      {getPageList().map((page) => {
+      {getPageList().map(page => {
         if (page === curPage) {
           return (
             <button
@@ -77,19 +77,19 @@ const PageSelectorBlock = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 0.3rem;
-  background-color: ${(props) => props.theme.backgroundWhite};
+  background-color: ${props => props.theme.backgroundWhite};
 
   button {
     border: none;
-    background-color: ${(props) => props.theme.backgroundWhite};
-    color: ${(props) => props.theme.textBlack};
+    background-color: ${props => props.theme.backgroundWhite};
+    color: ${props => props.theme.textBlack};
     padding: 0.3rem 0.5rem;
     margin: 0.2rem;
     border-radius: 0.3rem;
   }
   .curPage {
-    background-color: ${(props) => props.theme.primary};
-    color: ${(props) => props.theme.textWhite};
+    background-color: ${props => props.theme.primary};
+    color: ${props => props.theme.textWhite};
   }
 `;
 

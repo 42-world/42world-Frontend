@@ -1,11 +1,11 @@
-import { LoadingButton } from "@mui/lab";
-import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import styled, { keyframes } from "styled-components";
-import { FtAuthService } from "../../../network";
-import { userState } from "../../../store/user";
-import { LoginTitle, Title } from "../../atoms/Login";
+import { LoadingButton } from '@mui/lab';
+import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import styled, { keyframes } from 'styled-components';
+import { FtAuthService } from '../../../network';
+import { userState } from '../../../store/user';
+import { LoginTitle, Title } from '../../atoms/Login';
 
 const AuthRequestInformation = ({ intraId }) => {
   return (
@@ -50,16 +50,16 @@ const Seoul42 = () => {
   const [isBlock, setIsBlock] = useState(false);
   const [isError, setIsError] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState({
-    text: "",
+    text: '',
   });
   const [input, setInput] = useState({
-    email: "",
+    email: '',
   });
   const [authInfo, setAuthInfo] = useState({
-    email: "",
+    email: '',
   });
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { name, value } = e.target;
     setInput({
       ...input,
@@ -67,7 +67,7 @@ const Seoul42 = () => {
     });
   };
   const handleAuthenticate = () => {
-    if (input.email === "" || !checkIntraId(input.email)) {
+    if (input.email === '' || !checkIntraId(input.email)) {
       setIsError(true);
       setTimeout(() => {
         setIsError(false);
@@ -87,13 +87,13 @@ const Seoul42 = () => {
     setIsBlock(false);
     setIsSend(false);
     setInput({
-      email: "",
+      email: '',
     });
   };
 
   const handleMessage = () => {
     let intervalId = setInterval(() => {
-      setLoadingMessage((prevState) => ({ text: prevState.text + "." }));
+      setLoadingMessage(prevState => ({ text: prevState.text + '.' }));
     }, 1000);
     setTimeout(() => {
       clearInterval(intervalId);
@@ -101,19 +101,19 @@ const Seoul42 = () => {
   };
 
   const errorMessage = useMemo(() => {
-    if (input.email === "") return "아이디를 입력하세요";
-    else return "영어/숫자/특수문자만 가능합니다";
+    if (input.email === '') return '아이디를 입력하세요';
+    else return '영어/숫자/특수문자만 가능합니다';
   }, [input.email]);
 
   useEffect(() => {
     if (isBlock) handleMessage();
     else {
-      setLoadingMessage({ text: "메일 전송 중" });
+      setLoadingMessage({ text: '메일 전송 중' });
     }
   }, [isBlock]);
 
   useEffect(() => {
-    if (user[0] === null || user[0].role !== "NOVICE") navigate("/");
+    if (user[0] === null || user[0].role !== 'NOVICE') navigate('/');
   }, [user, navigate]);
 
   return (
@@ -165,7 +165,7 @@ const ErrorSpan = styled.span`
   font-size: 1rem;
   color: #f00;
   transform: translateY(25px);
-  ${(props) => {
+  ${props => {
     if (!props.isError)
       return `
       opacity: 0;
@@ -190,7 +190,7 @@ const fadeIn = keyframes`
 `;
 
 const Seoul42Block = styled.div`
-  background: url("/images/img-home.jpg") center center/cover no-repeat;
+  background: url('/images/img-home.jpg') center center/cover no-repeat;
   @media screen and (min-width: 768px) {
     .main {
       display: block;
@@ -262,12 +262,12 @@ const Seoul42Block = styled.div`
             margin-top: 2rem;
             h2 {
               font-size: 1.2rem;
-              color: ${(props) => props.theme.primary};
+              color: ${props => props.theme.primary};
               font-weight: 700;
             }
             h3 {
               font-size: 1rem;
-              color: ${(props) => props.theme.textGray3};
+              color: ${props => props.theme.textGray3};
               font-weight: 400;
               margin-bottom: 0.5rem;
             }
@@ -284,7 +284,7 @@ const Seoul42Block = styled.div`
 
           h4 {
             font-size: 0.8rem;
-            color: ${(props) => props.theme.textGray3};
+            color: ${props => props.theme.textGray3};
             font-weight: 400;
             &:first-child {
               margin-bottom: 1.5rem;
@@ -295,7 +295,7 @@ const Seoul42Block = styled.div`
           button {
             margin-top: 1rem;
             width: max-content;
-            color: ${(props) => props.theme.backgroundBlack};
+            color: ${props => props.theme.backgroundBlack};
             text-decoration: underline;
             border: none;
             background: none;
@@ -383,12 +383,12 @@ const Seoul42Block = styled.div`
             margin-top: 2rem;
             h2 {
               font-size: 1.2rem;
-              color: ${(props) => props.theme.primary};
+              color: ${props => props.theme.primary};
               font-weight: 700;
             }
             h3 {
               font-size: 1rem;
-              color: ${(props) => props.theme.textGray3};
+              color: ${props => props.theme.textGray3};
               font-weight: 400;
               margin-bottom: 0.5rem;
             }
@@ -405,7 +405,7 @@ const Seoul42Block = styled.div`
 
           h4 {
             font-size: 0.8rem;
-            color: ${(props) => props.theme.textGray3};
+            color: ${props => props.theme.textGray3};
             font-weight: 400;
             &:first-child {
               margin-bottom: 1.5rem;
@@ -416,7 +416,7 @@ const Seoul42Block = styled.div`
           button {
             margin-top: 1rem;
             width: max-content;
-            color: ${(props) => props.theme.backgroundBlack};
+            color: ${props => props.theme.backgroundBlack};
             text-decoration: underline;
             border: none;
             background: none;

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Container } from "../atoms/global";
-import { CategoryList, Advertisement } from "../organisms/category";
-import { WritingContent } from "../organisms/writing";
+import React from 'react';
+import styled from 'styled-components';
+import { Container } from '../atoms/global';
+import { Advertisement, CategoryList } from '../organisms/category';
+import { WritingContent } from '../organisms/writing';
 
 const Writing = () => {
   return (
@@ -47,7 +47,7 @@ const WritingBlock = styled(Container)`
     }
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     margin-top: 0;
     .category_block {
       display: none;

@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-
-import "@toast-ui/editor/dist/toastui-editor.css";
-import { Editor } from "@toast-ui/react-editor";
-
-import { ArticleService, ImageService } from "../../../network";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { categoryState } from "../../../store/category";
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+import { ArticleService, ImageService } from '../../../network';
+import { categoryState } from '../../../store/category';
 
 const WritingContent = ({ articleContent, articleTitle }) => {
   const [title, setTitle] = useState(articleTitle);
@@ -27,34 +25,34 @@ const WritingContent = ({ articleContent, articleTitle }) => {
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
-    editor.getRootElement().classList.add("editor");
-    editor.getInstance().removeHook("addImageBlobHook");
-    editor.getInstance().addHook("addImageBlobHook", (blob, callback) => {
+    editor.getRootElement().classList.add('editor');
+    editor.getInstance().removeHook('addImageBlobHook');
+    editor.getInstance().addHook('addImageBlobHook', (blob, callback) => {
       (async () => {
-        ImageService.uploadImage(blob).then((res) => {
+        ImageService.uploadImage(blob).then(res => {
           callback(res);
         });
       })();
     }); // 마크다운을 통한 이미지 업로드 시 필요한 기능
   };
 
-  const handleChangeTitle = (e) => {
+  const handleChangeTitle = e => {
     setTitle(e.target.value);
   };
 
-  const handleChangeContent = (e) => {
+  const handleChangeContent = e => {
     setContent(editorRef.current.getInstance().getMarkdown());
   };
 
   let handleClickSubmit = async () => {
     setContent(editorRef.current.getInstance().getMarkdown());
 
-    if (title === "") {
-      alert("제목을 입력하세요!");
+    if (title === '') {
+      alert('제목을 입력하세요!');
       return;
     }
-    if (content === "") {
-      alert("내용을 입력하세요!");
+    if (content === '') {
+      alert('내용을 입력하세요!');
       return;
     }
 
@@ -86,7 +84,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
     }
     if (location.state.article) {
       const { article } = location.state;
-      console.log("test", article);
+      console.log('test', article);
       setTitle(article.title);
       setContent(article.content);
       setCategoryId(article.categoryId);
@@ -139,7 +137,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
 const WritingContentBlock = styled.div`
   padding: 1rem;
   background-color: #fff;
-  box-shadow: ${(props) => props.theme.boxShadow};
+  box-shadow: ${props => props.theme.boxShadow};
   border-radius: 0.3rem;
 
   & > .header {
@@ -202,7 +200,7 @@ const WritingContentBlock = styled.div`
     }
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     box-shadow: none;
   }
 `;
