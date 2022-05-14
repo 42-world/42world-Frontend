@@ -34,19 +34,20 @@ function TopNav() {
       const { data } = await CategoryService.getCategories();
       setCategory(data);
     })();
-    setProfilePhoto(profileUtils.getProfilePhoto(user.character));
+    setProfilePhoto(profileUtils.getProfilePhoto(user?.character));
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
-    if (user.length === 1) {
-      setProfilePhoto(profileUtils.getProfilePhoto(user.character));
+    console.log(!user);
+    if (user) {
+      setProfilePhoto(profileUtils.getProfilePhoto(user?.character));
     }
   }, [user]);
 
   window.addEventListener('resize', showButton);
 
-  if (!user || user === undefined || user.length === 0) return <></>;
-  else {
+  //if (!user || user === undefined || user?.length === 0) return <></>;
+  //else {
     return (
       <>
         <TopNavBlock>
@@ -78,7 +79,12 @@ function TopNav() {
                   커뮤니티
                 </Link>
               </li>
-              {!button && (
+              {!user && (
+                <Link to="/login" className="profile">
+                  <span>로그인</span>
+                </Link>
+              )}
+              {user && !button && (
                 <li className="nav-item">
                   <Link
                     to="/mypage"
@@ -89,13 +95,13 @@ function TopNav() {
                   </Link>
                 </li>
               )}
-              {button && (
+              {user && button && (
                 <Link to="/mypage" className="profile">
                   <img
                     alt={profilePhoto}
                     src={`${PICTURE_DIR + profilePhoto}`}
                   />
-                  <span>{user.nickname}</span>
+                  <span>{user?.nickname}</span>
                 </Link>
               )}
             </ul>
@@ -106,7 +112,7 @@ function TopNav() {
         </OutletWrapper>
       </>
     );
-  }
+  //}
 }
 
 const OutletWrapper = styled.div`
