@@ -8,22 +8,19 @@ const LoginCheck = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
   useEffect(() => {
-    if (user.length === 0 || user[0] === null) {
+    if (!user) {
       (async () => {
         try {
           const { data } = await UserService.getUser();
-          if (data === null) {
-            navigate('/login');
-          }
-          setUser([data]);
+          setUser(data);
         } catch (e) {
-          navigate('/login');
+          setUser(null);
         }
       })();
     }
-  }, [user, navigate, setUser]);
+  }, [user, navigate]);
 
-  if (user === undefined || user.length === 0) return <></>;
+  if (!user) return <></>;
   else {
     return <Outlet />;
   }

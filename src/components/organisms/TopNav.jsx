@@ -34,18 +34,18 @@ function TopNav() {
       const { data } = await CategoryService.getCategories();
       setCategory(data);
     })();
-    setProfilePhoto(profileUtils.getProfilePhoto(user[0].character));
+    setProfilePhoto(profileUtils.getProfilePhoto(user.character));
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
-    if (user[0].length === 1) {
-      setProfilePhoto(profileUtils.getProfilePhoto(user[0].character));
+    if (user.length === 1) {
+      setProfilePhoto(profileUtils.getProfilePhoto(user.character));
     }
   }, [user]);
 
   window.addEventListener('resize', showButton);
 
-  if (!user[0] || user === undefined || user.length === 0) return <></>;
+  if (!user || user === undefined || user.length === 0) return <></>;
   else {
     return (
       <>
@@ -95,7 +95,7 @@ function TopNav() {
                     alt={profilePhoto}
                     src={`${PICTURE_DIR + profilePhoto}`}
                   />
-                  <span>{user[0].nickname}</span>
+                  <span>{user.nickname}</span>
                 </Link>
               )}
             </ul>

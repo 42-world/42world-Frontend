@@ -113,7 +113,7 @@ const Seoul42 = () => {
   }, [isBlock]);
 
   useEffect(() => {
-    if (user[0] === null || user[0].role !== 'NOVICE') navigate('/');
+    if (user === null || user.role !== 'NOVICE') navigate('/');
   }, [user, navigate]);
 
   return (

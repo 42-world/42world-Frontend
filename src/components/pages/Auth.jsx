@@ -21,21 +21,21 @@ const Auth = ({ isCallback }) => {
         const github_code = queryData.code;
         if (!github_code) {
           alert('다시 로그인 하세요!'); // 임시
-          navigate('/login');
+          navigate('/');
           return;
         }
         const result = await AuthService.getAuthAccessToken(github_code);
         if (result.status !== 200) {
           alert('깃허브 로그인 오류! 다시 로그인 하세요!'); // 임시
-          navigate('/login');
+          navigate('/');
           return;
         }
         const userData = await UserService.getNoviceProfile();
-        setUser([userData]);
+        setUser(userData);
         navigate('/');
       }
     })();
-  }, [isCallback, navigate, queryData.code, setUser]);
+  }, [isCallback, navigate, queryData.code]);
 
   return (
     <AuthBlock>

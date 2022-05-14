@@ -11,11 +11,11 @@ const AuthButton = () => {
 
   const handleAuthClick = () => {
     console.log('auth test');
-    if (user[0].role === 'NOVICE') navigate('/auth');
+    if (user.role === 'NOVICE') navigate('/auth');
     //if (auth.state !== 200) navigate("/mypage/auth");
   };
 
-  return user[0].role === 'NOVICE' ? (
+  return user.role === 'NOVICE' ? (
     <MypageButton btnType="auth-42" onClick={handleAuthClick}>
       42인증
     </MypageButton>

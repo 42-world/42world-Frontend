@@ -7,10 +7,10 @@ const Logout = () => {
   const setUser = useSetRecoilState(userState);
   const navi = useNavigate();
   const handleSignOut = async () => {
-    setUser([]);
+    setUser(null);
     await AuthService.signOut();
 
-    navi('/login');
+    navi('/');
   };
   return <div onClick={handleSignOut}>로그아웃</div>;
 };

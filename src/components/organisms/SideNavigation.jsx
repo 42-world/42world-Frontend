@@ -87,7 +87,7 @@ const SideNavigation = ({ handleClick }) => {
         <div onClick={handleClick}>
           <MenuItem icon={<AiOutlineLogin />}>
             로그인
-            <Link to="/login" />
+            <Link to="/" />
           </MenuItem>
         </div>
       </Menu>
