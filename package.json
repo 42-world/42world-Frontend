@@ -23,6 +23,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "cp .env.dev .env && react-scripts start",
+    "start:prod": "cp .env.prod .env && react-scripts start",
+    "start:local": "cp .env.local .env && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
