@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-
-import { MypageButton } from "../../atoms/Mypage";
-import AuthButton from "./AuthButton";
-import Logout from "./Logout";
-import profileUtils from "./utils/profileUtils";
-import CharSelectModal from "./CharSelectModal";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { MypageButton } from '../../atoms/Mypage';
+import AuthButton from './AuthButton';
+import CharSelectModal from './CharSelectModal';
+import Logout from './Logout';
+import profileUtils from './utils/profileUtils';
 
 const ProfileSection = ({ imgID, userName }) => {
-  const PICTURE_DIR = "/assets/CharacterWhiteBG/";
+  const PICTURE_DIR = '/assets/CharacterWhiteBG/';
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,7 +15,7 @@ const ProfileSection = ({ imgID, userName }) => {
     setProfilePhoto(profileUtils.getProfilePhoto(imgID));
   }, [imgID]);
 
-  const handleClickPhotoBtn = (e) => {
+  const handleClickPhotoBtn = e => {
     e.preventDefault();
     setIsOpen(true);
   };
@@ -27,7 +26,8 @@ const ProfileSection = ({ imgID, userName }) => {
         <img alt={profilePhoto} src={`${PICTURE_DIR + profilePhoto}`} />
         <MypageButton
           btnType="change-photo"
-          onClick={(e) => handleClickPhotoBtn(e)}>
+          onClick={e => handleClickPhotoBtn(e)}
+        >
           사진 변경
         </MypageButton>
       </div>
@@ -61,7 +61,7 @@ const ProfileSectionDiv = styled.div`
     overflow: hidden;
     img {
       width: 5rem;
-      border: 2px solid ${(props) => props.theme.black};
+      border: 2px solid ${props => props.theme.black};
       border-radius: 50%;
       margin-bottom: 0.5rem;
       @media screen and (max-width: 320px) {

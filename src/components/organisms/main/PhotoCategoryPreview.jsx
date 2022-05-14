@@ -1,51 +1,50 @@
-import React from "react";
-import styled from "styled-components";
-import { PhotoArticlePreview } from ".";
-import { rem } from "../../../styles/rem";
-
-import { HiThumbUp } from "react-icons/hi";
+import React from 'react';
+import { HiThumbUp } from 'react-icons/hi';
+import styled from 'styled-components';
+import { PhotoArticlePreview } from '.';
+import { rem } from '../../../styles/rem';
 
 const data = [
   {
     id: 0,
-    title: "이거 지최 저녁임",
-    writer: "뱅글뱅글뱅",
+    title: '이거 지최 저녁임',
+    writer: '뱅글뱅글뱅',
     time: Date.now(),
     viewCount: 100,
     likeCount: 2,
     commentCount: 2,
-    url: "/assets/images/img-1.jpg",
+    url: '/assets/images/img-1.jpg',
   },
   {
     id: 1,
     title:
-      "긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 ",
-    writer: "긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 ",
+      '긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 긴 제목 ',
+    writer: '긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 긴 이름 ',
     time: Date.now(),
     viewCount: 10000,
     likeCount: 2000,
     commentCount: 2000,
-    url: "/assets/images/img-2.jpg",
+    url: '/assets/images/img-2.jpg',
   },
   {
     id: 2,
-    title: "이거 지최 저녁임",
-    writer: "뱅글뱅글뱅",
+    title: '이거 지최 저녁임',
+    writer: '뱅글뱅글뱅',
     time: Date.now(),
     viewCount: 100,
     likeCount: 2,
     commentCount: 2,
-    url: "/assets/images/img-3.jpg",
+    url: '/assets/images/img-3.jpg',
   },
   {
     id: 3,
-    title: "이거 지최 저녁임",
-    writer: "뱅글뱅글뱅",
+    title: '이거 지최 저녁임',
+    writer: '뱅글뱅글뱅',
     time: Date.now(),
     viewCount: 100,
     likeCount: 2,
     commentCount: 2,
-    url: "/assets/images/img-4.jpg",
+    url: '/assets/images/img-4.jpg',
   },
 ];
 
@@ -57,10 +56,10 @@ const PhotoCategoryPreview = () => {
           <HiThumbUp />
           <h2>오늘 뭐 먹지</h2>
         </div>
-        <button className="more">{"더 보기 >"}</button>
+        <button className="more">{'더 보기 >'}</button>
       </div>
       <div className="preview-container">
-        {data.map((article) => (
+        {data.map(article => (
           <PhotoArticlePreview
             key={article.id}
             title={article.title}
@@ -83,7 +82,7 @@ const PhotoCategoryPreviewWrapper = styled.div`
   margin-top: ${rem(20)};
   padding: ${rem(4)} ${rem(8)};
   border-radius: ${rem(10)};
-  box-shadow: ${(props) => props.theme.boxShadow};
+  box-shadow: ${props => props.theme.boxShadow};
 
   .title {
     padding: ${rem(8)} ${rem(8)};
@@ -115,14 +114,14 @@ const PhotoCategoryPreviewWrapper = styled.div`
     display: flex;
     flex-wrap: nowrap;
     overflow: auto;
-    border-top: ${rem(1)} solid ${(props) => props.theme.lineGray1};
+    border-top: ${rem(1)} solid ${props => props.theme.lineGray1};
 
     & > div {
       flex: 0 0 auto;
     }
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     width: 100%;
   }
 `;

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { CheckInService } from "../../../network";
-import { rem } from "../../../styles/rem";
-
-import Button from "@mui/material/Button";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import styled from 'styled-components';
+import { CheckInService } from '../../../network';
+import { rem } from '../../../styles/rem';
 
 function ClusterStatus() {
   const [checkInStatus, setCheckInStatus] = useState({
@@ -19,7 +18,7 @@ function ClusterStatus() {
     },
   });
 
-  const getCheckInText = (now, max) => (now ? now + "/" + max : "No Data");
+  const getCheckInText = (now, max) => (now ? now + '/' + max : 'No Data');
 
   const fetch = async () => {
     const response = await CheckInService.getClusterStatus();
@@ -47,7 +46,7 @@ function ClusterStatus() {
               maxValue={checkInStatus.max.gaepo ? checkInStatus.max.gaepo : 1}
               text={getCheckInText(
                 checkInStatus.now.gaepo,
-                checkInStatus.max.gaepo
+                checkInStatus.max.gaepo,
               )}
               value={checkInStatus.now.gaepo}
               strokeWidth={12}
@@ -61,7 +60,7 @@ function ClusterStatus() {
               maxValue={checkInStatus.max.seocho ? checkInStatus.max.seocho : 1}
               text={getCheckInText(
                 checkInStatus.now.seocho,
-                checkInStatus.max.seocho
+                checkInStatus.max.seocho,
               )}
               value={checkInStatus.now.seocho}
               strokeWidth={12}
@@ -82,7 +81,7 @@ const ClusterStatusWrapper = styled.div`
   padding: ${rem(10)};
 
   border-radius: ${rem(16)};
-  background: ${(props) => props.theme.backgroundBlue1};
+  background: ${props => props.theme.backgroundBlue1};
   cursor: pointer;
 
   .title {
@@ -103,7 +102,7 @@ const ClusterStatusWrapper = styled.div`
 const CheckInHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.backgroundBlue1};
+  background-color: ${props => props.theme.backgroundBlue1};
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1.2rem;
@@ -119,7 +118,7 @@ const CheckInHeader = styled.div`
   }
   button {
     padding: 0.2rem 0.5rem;
-    background-color: ${(props) => props.theme.buttonBlue2};
+    background-color: ${props => props.theme.buttonBlue2};
   }
 `;
 
@@ -127,7 +126,7 @@ const CheckInBody = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 0.5rem 1.2rem 1.8rem;
-  background-color: ${(props) => props.theme.backgroundBlue1};
+  background-color: ${props => props.theme.backgroundBlue1};
   width: 100%;
 
   .circular_progress_bar_div {
@@ -141,7 +140,7 @@ const CheckInBody = styled.div`
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
-      color: ${(props) => props.theme.textBlack};
+      color: ${props => props.theme.textBlack};
     }
 
     .circular_progress_bar {
@@ -160,27 +159,27 @@ const CheckInBody = styled.div`
 
   .gaepo {
     .CircularProgressbar-trail {
-      stroke: ${(props) => props.theme.backgroundGray3}80;
+      stroke: ${props => props.theme.backgroundGray3}80;
     }
     .CircularProgressbar-path {
-      stroke: ${(props) => props.theme.primary};
+      stroke: ${props => props.theme.primary};
     }
     .CircularProgressbar-text {
-      fill: ${(props) => props.theme.textBlack};
-      //fill: ${(props) => props.theme.primary};
+      fill: ${props => props.theme.textBlack};
+      //fill: ${props => props.theme.primary};
     }
   }
 
   .seocho {
     .CircularProgressbar-trail {
-      stroke: ${(props) => props.theme.backgroundGray3}80;
+      stroke: ${props => props.theme.backgroundGray3}80;
     }
     .CircularProgressbar-path {
-      stroke: ${(props) => props.theme.primaryEcole};
+      stroke: ${props => props.theme.primaryEcole};
     }
     .CircularProgressbar-text {
-      fill: ${(props) => props.theme.textBlack};
-      //fill: ${(props) => props.theme.primaryEcole};
+      fill: ${props => props.theme.textBlack};
+      //fill: ${props => props.theme.primaryEcole};
     }
   }
 `;

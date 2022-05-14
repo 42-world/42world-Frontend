@@ -1,17 +1,16 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { Modal } from "@mui/material";
-import { useRecoilState } from "recoil";
-
-import { ModalContainer } from "../../atoms/Modal";
-import profileUtils from "./utils/profileUtils";
-import { UserService } from "../../../network";
-import { MypageButton } from "../../atoms/Mypage";
-import { userState } from "../../../store/user";
+import { Modal } from '@mui/material';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
+import { UserService } from '../../../network';
+import { userState } from '../../../store/user';
+import { ModalContainer } from '../../atoms/Modal';
+import { MypageButton } from '../../atoms/Mypage';
+import profileUtils from './utils/profileUtils';
 
 const CharSelectModal = ({ isOpen, setIsOpen }) => {
   //const curUser = auth.curUser;
-  const PICTURE_DIR = "/assets/CharacterWhiteBG/";
+  const PICTURE_DIR = '/assets/CharacterWhiteBG/';
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const [charID, setCharID] = useState(userInfo ? userInfo[0].character : 0);
 
@@ -19,18 +18,18 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
     e.preventDefault();
     try {
       const response = await UserService.updateUser({ character: id });
-      window.alert("캐릭터 변경 완료");
+      window.alert('캐릭터 변경 완료');
       console.log(response);
       setCharID(id);
       setUserInfo([{ ...userInfo[0], character: id }]);
       //auth.setIsLoading(true);
     } catch (e) {
       console.log(e);
-      window.alert("캐릭터 변경 실패, 관리자에게 문의하세요");
+      window.alert('캐릭터 변경 실패, 관리자에게 문의하세요');
     }
   };
 
-  const handleClickBtn = (e) => {
+  const handleClickBtn = e => {
     e.preventDefault();
     setIsOpen(false);
   };
@@ -42,10 +41,10 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
         <hr />
         <div>
           <div className="char-list">
-            {profileUtils.PROFILE_LIST.map((char) => (
-              <div key={char.id} onClick={(e) => handleClickChar(e, char.id)}>
+            {profileUtils.PROFILE_LIST.map(char => (
+              <div key={char.id} onClick={e => handleClickChar(e, char.id)}>
                 <img
-                  className={char.id === charID ? "selected" : ""}
+                  className={char.id === charID ? 'selected' : ''}
                   alt="profile"
                   src={PICTURE_DIR + char.image}
                 />
@@ -72,7 +71,7 @@ const CharSelectContainer = styled(ModalContainer)`
     font-size: 1.6rem;
   }
   hr {
-    color: ${(props) => props.theme.LineGray1};
+    color: ${props => props.theme.LineGray1};
   }
   & > div {
     display: flex;
@@ -103,7 +102,7 @@ const CharSelectContainer = styled(ModalContainer)`
       }
     }
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     width: 70%;
   }
 `;

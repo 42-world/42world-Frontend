@@ -1,6 +1,6 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const userCurrentPosState = atom({
-  key: "userCurrentPos",
-  default: "",
+  key: 'userCurrentPos',
+  default: '',
 });

@@ -1,7 +1,7 @@
-import * as API from "./APIType";
+import * as API from './APIType';
 
-const authUrl = (path) => {
-  return `${API.url("/auth")}${path}`;
+const authUrl = path => {
+  return `${API.url('/auth')}${path}`;
 };
 
 const AuthService = {
@@ -11,7 +11,7 @@ const AuthService = {
    * github login url
    */
   getAuthUrl: () => {
-    return authUrl("/github");
+    return authUrl('/github');
   },
   /**
    * **GET** User Auth Access Token
@@ -19,9 +19,9 @@ const AuthService = {
    * `200` : success \
    * `other` : fail
    */
-  getAuthAccessToken: async (code) => {
-    const method = "GET";
-    const url = authUrl("/github/callback");
+  getAuthAccessToken: async code => {
+    const method = 'GET';
+    const url = authUrl('/github/callback');
     const params = { code };
 
     let response;
@@ -44,8 +44,8 @@ const AuthService = {
    * `other` : fail
    */
   signOut: async () => {
-    const method = "DELETE";
-    const url = authUrl("/signout");
+    const method = 'DELETE';
+    const url = authUrl('/signout');
 
     let response;
     try {

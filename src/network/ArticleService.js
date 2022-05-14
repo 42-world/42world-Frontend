@@ -1,8 +1,8 @@
 // import { AiOutlineConsoleSql } from "react-icons/ai";
-import * as API from "./APIType";
+import * as API from './APIType';
 
-const articleUrl = (path) => {
-  return `${API.url("/articles")}${path}`;
+const articleUrl = path => {
+  return `${API.url('/articles')}${path}`;
 };
 
 const ArticleService = {
@@ -41,9 +41,9 @@ const ArticleService = {
    * `200` : success
    * `401` : fail
    */
-  createArticles: async (newArticles) => {
-    const method = "POST";
-    const url = articleUrl("");
+  createArticles: async newArticles => {
+    const method = 'POST';
+    const url = articleUrl('');
     const body = newArticles;
     let response;
     try {
@@ -93,8 +93,8 @@ const ArticleService = {
    * `401` : fail
    */
   getAllArticles: async (categoryId, page) => {
-    const method = "GET";
-    const url = articleUrl("");
+    const method = 'GET';
+    const url = articleUrl('');
     const take = 1000;
     // const take = 3;
     const params = { categoryId, page, take };
@@ -113,8 +113,8 @@ const ArticleService = {
   },
   getArticlesByCategoryId: async (categoryId, page, take) => {
     // 기본으로 가져오는 게시글 수는 10개
-    const method = "GET";
-    const url = articleUrl("");
+    const method = 'GET';
+    const url = articleUrl('');
     const params = { categoryId, page, take };
 
     let response;
@@ -130,8 +130,8 @@ const ArticleService = {
     return response.data;
   },
   getArticleMetaDataByCategoryId: async (categoryId, take) => {
-    const method = "GET";
-    const url = articleUrl("");
+    const method = 'GET';
+    const url = articleUrl('');
     const page = 1;
     const params = { categoryId, page, take };
 
@@ -182,8 +182,8 @@ const ArticleService = {
    * `200` : success
    * `401` : fail
    */
-  getArticleByAritlceId: async (articleId) => {
-    const method = "GET";
+  getArticleByAritlceId: async articleId => {
+    const method = 'GET';
     const url = articleUrl(`/${articleId}`);
 
     const response = await API.AXIOS({
@@ -208,7 +208,7 @@ const ArticleService = {
    * `401` : fail
    */
   updateArticles: async (articlesId, newArticles) => {
-    const method = "PUT";
+    const method = 'PUT';
     const url = articleUrl(`/${articlesId}`);
     const body = newArticles;
 
@@ -231,8 +231,8 @@ const ArticleService = {
    * `200` : success
    * `401` : fail
    */
-  deleteArticles: async (articlesId) => {
-    const method = "DELETE";
+  deleteArticles: async articlesId => {
+    const method = 'DELETE';
     const url = articleUrl(`/${articlesId}`);
 
     const response = await API.AXIOS({
@@ -268,7 +268,7 @@ const ArticleService = {
    * `401` : fail
    */
   getArticlesCommentsById: async (articlesId, order, page, take) => {
-    const method = "GET";
+    const method = 'GET';
     const url = articleUrl(`/${articlesId}/comments`);
     const params = { order, page, take };
 
@@ -292,7 +292,7 @@ const ArticleService = {
   //   );
   // },
   editArticles: async (articlesId, articles) => {
-    const method = "PUT";
+    const method = 'PUT';
     const url = articleUrl(`/${articlesId}`);
     const body = articles;
     let response;

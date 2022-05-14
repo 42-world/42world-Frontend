@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import { SITEMAP } from "../../../styles/const";
-import { rem } from "../../../styles/rem";
+import styled from 'styled-components';
+import { SITEMAP } from '../../../styles/const';
+import { rem } from '../../../styles/rem';
 
 function QuickLink() {
-  const handleClickLink = (url) => {
+  const handleClickLink = url => {
     window.open(url);
   };
   return (
     <QuickLinkWrapper>
       <div className="title">Quick Link</div>
       <div className="links">
-        {SITEMAP.map((SITE) => (
+        {SITEMAP.map(SITE => (
           <div
             className="link"
             key={SITE.name}
@@ -34,8 +34,8 @@ const QuickLinkWrapper = styled.div`
   align-items: center;
 
   width: inherit;
-  // box-shadow: ${(props) => props.theme.boxShadow};
-  background: ${(props) => props.theme.backgroundGray1};
+  // box-shadow: ${props => props.theme.boxShadow};
+  background: ${props => props.theme.backgroundGray1};
 
   border-radius: ${rem(10)};
   padding: 0.7rem;
@@ -75,7 +75,7 @@ const QuickLinkWrapper = styled.div`
     }
 
     &: hover {
-      background: ${(props) => props.theme.backgroundBlue2};
+      background: ${props => props.theme.backgroundBlue2};
     }
   }
 `;

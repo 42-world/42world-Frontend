@@ -5,10 +5,10 @@ import CategoryService from './CategoryService';
 import CheckInService from './CheckInService';
 import CommentService from './CommentService';
 import FtAuthService from './FtAuthService';
+import ImageService from './ImageService';
 import NotificationService from './NotificationService';
 import ReactionService from './ReactionService';
 import UserService from './UserService';
-import ImageService from './ImageService';
 
 export {
   ArticleService,

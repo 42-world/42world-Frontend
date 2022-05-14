@@ -1,21 +1,19 @@
 // import { getArticleTime, isNewArticle } from 'Utils/dayjsUtils';
-import removeMarkdown from "remove-markdown";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SmsOutlined from '@mui/icons-material/SmsOutlined';
+import dayjs from 'dayjs';
+import removeMarkdown from 'remove-markdown';
+import styled from 'styled-components';
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import SmsOutlined from "@mui/icons-material/SmsOutlined";
+const getArticleTime = time =>
+  dayjs(time).isSame(dayjs(), 'day')
+    ? dayjs(time).format('HH:mm')
+    : dayjs(time).format('MM/DD');
 
-import styled from "styled-components";
-import dayjs from "dayjs";
-
-const getArticleTime = (time) =>
-  dayjs(time).isSame(dayjs(), "day")
-    ? dayjs(time).format("HH:mm")
-    : dayjs(time).format("MM/DD");
-
-const isNewArticle = (time) => dayjs().isBefore(dayjs(time).add(12, "hour"));
+const isNewArticle = time => dayjs().isBefore(dayjs(time).add(12, 'hour'));
 
 const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
-  const getPlainText = (text) => removeMarkdown(text).replaceAll("\\", "");
+  const getPlainText = text => removeMarkdown(text).replaceAll('\\', '');
 
   return (
     <PreviewArticleDiv

@@ -1,14 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TopNav from "./components/organisms/TopNav";
-import Login from "./components/pages/Login";
-import Main from "./components/pages/Main";
-import Mypage from "./components/pages/Mypage";
-import Writing from "./components/pages/Writing";
-import Category from "./components/pages/category/_id";
-import Article from "./components/pages/article/_id";
-import { LoginCheck } from "./components/organisms/login";
-import ErrorPage from "./components/pages/Error";
-import Auth from "./components/pages/Auth";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { LoginCheck } from './components/organisms/login';
+import TopNav from './components/organisms/TopNav';
+import Article from './components/pages/article/_id';
+import Auth from './components/pages/Auth';
+import Category from './components/pages/category/_id';
+import ErrorPage from './components/pages/Error';
+import Login from './components/pages/Login';
+import Main from './components/pages/Main';
+import Mypage from './components/pages/Mypage';
+import Writing from './components/pages/Writing';
 
 const Router = () => {
   return (

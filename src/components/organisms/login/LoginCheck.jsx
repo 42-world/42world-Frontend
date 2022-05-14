@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { UserService } from "../../../network";
-import { userState } from "../../../store/user";
+import React, { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { UserService } from '../../../network';
+import { userState } from '../../../store/user';
 
 const LoginCheck = () => {
   const navigate = useNavigate();
@@ -13,14 +13,13 @@ const LoginCheck = () => {
         try {
           const { data } = await UserService.getUser();
           if (data === null) {
-            navigate("/login");
+            navigate('/login');
           }
           setUser([data]);
         } catch (e) {
-          navigate("/login");
+          navigate('/login');
         }
       })();
-    } else {
     }
   }, [user, navigate, setUser]);
 

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Container } from "../../atoms/global";
-import { CategoryList, Advertisement } from "../../organisms/category";
-import { ArticleContent, Comment } from "../../organisms/article";
-import { useParams } from "react-router-dom";
-import { ArticleService } from "../../../network";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { ArticleService } from '../../../network';
+import { Container } from '../../atoms/global';
+import { ArticleContent, Comment } from '../../organisms/article';
+import { Advertisement, CategoryList } from '../../organisms/category';
 
 const _id = () => {
   const params = useParams();
@@ -53,7 +53,7 @@ const ArticleBlock = styled(Container)`
       margin-bottom: 1.5rem;
     }
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     margin-top: 0;
     .category_block {
       display: none;

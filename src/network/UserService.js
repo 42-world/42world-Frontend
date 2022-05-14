@@ -1,7 +1,7 @@
-import * as API from "./APIType";
+import * as API from './APIType';
 
-const userUrl = (path) => {
-  return `${API.url("/users")}${path}`;
+const userUrl = path => {
+  return `${API.url('/users')}${path}`;
 };
 
 const UserService = {
@@ -23,8 +23,8 @@ const UserService = {
    * `401` : fail
    */
   getUser: async () => {
-    const method = "GET";
-    const url = userUrl("/me");
+    const method = 'GET';
+    const url = userUrl('/me');
 
     let response;
     try {
@@ -50,8 +50,8 @@ const UserService = {
    * `401` : fail
    */
   deleteUser: async () => {
-    const method = "DELETE";
-    const url = userUrl("");
+    const method = 'DELETE';
+    const url = userUrl('');
 
     let response;
     try {
@@ -82,8 +82,8 @@ const UserService = {
    * `200` : success \
    * `401` : fail
    */
-  getUserById: async (id) => {
-    const method = "GET";
+  getUserById: async id => {
+    const method = 'GET';
     const url = userUrl(`/profile/${id}`);
 
     let response;
@@ -112,8 +112,8 @@ const UserService = {
    * `401` : fail
    */
   getNotification: async () => {
-    const method = "GET";
-    const url = userUrl("/notification");
+    const method = 'GET';
+    const url = userUrl('/notification');
 
     let response;
     try {
@@ -133,8 +133,8 @@ const UserService = {
    * `401` : fail
    */
   updateNotificationStatus: async () => {
-    const method = "PUT";
-    const url = userUrl("/notification/readall");
+    const method = 'PUT';
+    const url = userUrl('/notification/readall');
 
     let response;
     try {
@@ -165,9 +165,9 @@ const UserService = {
    * `200` : success \
    * `401` : fail
    */
-  updateUser: async (changedProfile) => {
-    const method = "PUT";
-    const url = userUrl("/");
+  updateUser: async changedProfile => {
+    const method = 'PUT';
+    const url = userUrl('/');
     const body = changedProfile;
 
     let response;
@@ -183,9 +183,9 @@ const UserService = {
     return response.data;
   },
   // 내 글, 내 댓글, 좋아요한 글 불러오기 추가
-  getLikeArticles: async (page) => {
-    const method = "GET";
-    const url = userUrl("/me/like-articles");
+  getLikeArticles: async page => {
+    const method = 'GET';
+    const url = userUrl('/me/like-articles');
     const params = { page };
 
     let response;
@@ -196,13 +196,13 @@ const UserService = {
         url,
       });
     } catch (error) {
-      console.log("service : ", error);
+      console.log('service : ', error);
     }
     return response.data;
   },
-  getMyArticles: async (page) => {
-    const method = "GET";
-    const url = userUrl("/me/articles");
+  getMyArticles: async page => {
+    const method = 'GET';
+    const url = userUrl('/me/articles');
     const params = { page };
 
     let response;
@@ -213,13 +213,13 @@ const UserService = {
         url,
       });
     } catch (error) {
-      console.log("service : ", error);
+      console.log('service : ', error);
     }
     return response.data;
   },
-  getMyComments: async (page) => {
-    const method = "GET";
-    const url = userUrl("/me/comments");
+  getMyComments: async page => {
+    const method = 'GET';
+    const url = userUrl('/me/comments');
     const params = { page };
 
     let response;
@@ -230,13 +230,13 @@ const UserService = {
         url,
       });
     } catch (error) {
-      console.log("service : ", error);
+      console.log('service : ', error);
     }
     return response.data;
   },
   getNoviceProfile: async () => {
-    const method = "GET";
-    const url = userUrl("/profile");
+    const method = 'GET';
+    const url = userUrl('/profile');
 
     let response;
     try {
@@ -246,7 +246,7 @@ const UserService = {
       });
       console.log(response);
     } catch (error) {
-      console.log("service : ", error);
+      console.log('service : ', error);
     }
     return response.data;
   },

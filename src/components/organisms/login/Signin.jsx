@@ -1,14 +1,14 @@
 //import React, { useState } from "react";
-import styled from "styled-components";
-import { AuthService } from "../../../network";
-import { Alert, BtnSeoul, LoginTitle, Title } from "../../atoms/Login";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { AuthService } from '../../../network';
+import { Alert, BtnSeoul, LoginTitle, Title } from '../../atoms/Login';
 
 const Signin = ({ handleSignup, isCallback }) => {
   const navigate = useNavigate();
   const handleLoginButton = async () => {
     window.location.href = AuthService.getAuthUrl();
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -22,7 +22,7 @@ const Signin = ({ handleSignup, isCallback }) => {
           <Alert className="Alert">
             <p>42WORLD 커뮤니티는</p>
             <p>
-              42서울인들과{" "}
+              42서울인들과{' '}
               <span className="Important">취업자/창업자/알럼나이/카뎃</span>을
             </p>
             <p>아우르느 통합 커뮤니티입니다.</p>
@@ -47,7 +47,7 @@ const Signin = ({ handleSignup, isCallback }) => {
 };
 
 const SigninBlock = styled.div`
-  background: url("/images/img-home.jpg") center center/cover no-repeat;
+  background: url('/images/img-home.jpg') center center/cover no-repeat;
   @media screen and (min-width: 960px) {
     .main {
       display: block;

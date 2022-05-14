@@ -1,15 +1,15 @@
-import { AiOutlineLogin } from "react-icons/ai";
+import { AiOutlineLogin } from 'react-icons/ai';
 // import { Button } from "bootstrap";
-import { FaGem, FaHeart } from "react-icons/fa";
+import { FaGem, FaHeart } from 'react-icons/fa';
 import {
   Menu,
   MenuItem,
   ProSidebar,
   //SidebarHeader,
   SubMenu,
-} from "react-pro-sidebar";
-import "react-pro-sidebar/dist/css/styles.css";
-import { Link } from "react-router-dom";
+} from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
+import { Link } from 'react-router-dom';
 
 const SideNavigation = ({ handleClick }) => {
   // const [collapsed, setCollapsed] = useState(false);
@@ -17,12 +17,12 @@ const SideNavigation = ({ handleClick }) => {
   // added styles
   const styles = {
     sideBarHeight: {
-      height: "50vh",
-      width: "100vw",
+      height: '50vh',
+      width: '100vw',
     },
     menuIcon: {
-      float: "right",
-      margin: "10px",
+      float: 'right',
+      margin: '10px',
     },
   };
   // const onClickMenuIcon = () => {

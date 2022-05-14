@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { AiOutlineSearch } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-import { rem } from "../../../styles/rem";
+import React, { useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { rem } from '../../../styles/rem';
 
 const SearchBar = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const handleSearch = () => {
     navigate(`/search/${search}`);
@@ -16,7 +16,7 @@ const SearchBar = () => {
       <input
         type="text"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={e => setSearch(e.target.value)}
         placeholder="관심있는 내용을 검색해보세요"
       />
     </WrapSearchbar>
@@ -37,7 +37,7 @@ const WrapSearchbar = styled.form`
     box-sizing: border-box;
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     width: 100%;
   }
 `;

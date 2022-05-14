@@ -1,32 +1,30 @@
-import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-
-import SearchIcon from "@mui/icons-material/Search";
-
-import styled from "styled-components";
-import { useRecoilValue } from "recoil";
-import { categoryState } from "../../../store/category";
+import SearchIcon from '@mui/icons-material/Search';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+import { categoryState } from '../../../store/category';
 
 const BoardHeader = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const navi = useNavigate();
   const category = useRecoilValue(categoryState);
   const loca = useLocation();
-  const categoryId = parseInt(loca.pathname.split("/")[2]);
+  const categoryId = parseInt(loca.pathname.split('/')[2]);
 
-  const handleSubmitSearch = (e) => {
+  const handleSubmitSearch = e => {
     e.preventDefault();
-    if (search === "") return;
+    if (search === '') return;
     // console.log(search); // 검색 창으로 이동해야 함.
     navi(`/search?keyword=${search}`);
-    setSearch("");
+    setSearch('');
   };
 
-  const handleChangeSearch = (e) => {
+  const handleChangeSearch = e => {
     setSearch(e.currentTarget.value);
   };
   const handleCreateArticle = () => {
-    console.log("test", categoryId);
+    console.log('test', categoryId);
     navi(`/writing`, { state: { categoryId } });
   };
 
@@ -39,7 +37,7 @@ const BoardHeader = () => {
           </h2>
         ) : (
           <></>
-        )
+        ),
       )}
       <div className="side-box">
         <form onSubmit={handleSubmitSearch}>

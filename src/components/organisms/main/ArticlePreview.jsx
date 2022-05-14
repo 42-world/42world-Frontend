@@ -1,9 +1,8 @@
-import styled from "styled-components";
-
-import { AiOutlineHeart } from "react-icons/ai";
-import { BiCommentDots } from "react-icons/bi";
-import { rem } from "../../../styles/rem";
-import { useNavigate } from "react-router-dom";
+import { AiOutlineHeart } from 'react-icons/ai';
+import { BiCommentDots } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { rem } from '../../../styles/rem';
 
 const ArticlePreview = ({ id, title, likeCount, commentCount }) => {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const ArticlePreviewWrapper = styled.div`
 
   font-size: ${rem(12)};
   padding: ${rem(5)} ${rem(10)};
-  border-bottom: ${rem(1)} solid ${(props) => props.theme.lineGray1};
+  border-bottom: ${rem(1)} solid ${props => props.theme.lineGray1};
 
   h3 {
     font-weight: normal;
@@ -60,11 +59,11 @@ const ReactionWrapper = styled.div`
   }
 
   .like {
-    color: ${(props) => props.theme.buttonRed1};
+    color: ${props => props.theme.buttonRed1};
   }
 
   .comment {
-    color: ${(props) => props.theme.buttonBlue2};
+    color: ${props => props.theme.buttonBlue2};
   }
 `;
 

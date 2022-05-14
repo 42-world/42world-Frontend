@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const IconGithub = () => {
   return (
@@ -46,7 +46,7 @@ const IconFacebook = () => {
 };
 
 const IconSolvedAC = () => {
-  const colorStyle = ".cls-2{fill:#fff;}";
+  const colorStyle = '.cls-2{fill:#fff;}';
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <defs>
@@ -81,17 +81,17 @@ const MypageButton = styled.button`
   height: 1.6rem;
   font-size: 0.8rem;
   white-space: nowrap;
-  background-color: ${(props) =>
-    props.btnType === "auth-42"
+  background-color: ${props =>
+    props.btnType === 'auth-42'
       ? props.theme.primary
-      : props.btnType === "auth-42-done"
+      : props.btnType === 'auth-42-done'
       ? props.theme.buttonGray1
       : props.theme.secondary};
   &:hover {
-    cursor: ${(props) =>
-      props.btnType === "auth-42-done" ? "default" : "pointer"};
+    cursor: ${props =>
+      props.btnType === 'auth-42-done' ? 'default' : 'pointer'};
   }
-  color: ${(props) => props.theme.white};
+  color: ${props => props.theme.white};
 `;
 
 const IconSet = {

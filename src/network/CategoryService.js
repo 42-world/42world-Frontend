@@ -1,7 +1,7 @@
-import * as API from "./APIType";
+import * as API from './APIType';
 
-const categoryUrl = (path) => {
-  return `${API.url("/categories")}${path}`;
+const categoryUrl = path => {
+  return `${API.url('/categories')}${path}`;
 };
 
 const CategoryService = {
@@ -17,8 +17,8 @@ const CategoryService = {
    * `401` : fail
    */
   getCategories: async () => {
-    const method = "GET";
-    const url = categoryUrl("");
+    const method = 'GET';
+    const url = categoryUrl('');
 
     return await API.AXIOS({
       method,

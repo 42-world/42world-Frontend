@@ -1,18 +1,17 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import styled from "styled-components";
-
-import { Container } from "../atoms/global";
-import { QuickLink } from "../organisms/main";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import { Container } from '../atoms/global';
+import { QuickLink } from '../organisms/main';
 import {
-  MyProfile,
-  MyArticlePreview,
   MyArticleBoard,
-} from "../organisms/mypage";
+  MyArticlePreview,
+  MyProfile,
+} from '../organisms/mypage';
 
 const Mypage = () => {
   const loc = useLocation();
-  const articleType = loc.pathname.split("/")[2];
+  const articleType = loc.pathname.split('/')[2];
   const ARTICLE = 1,
     COMMENT = 2,
     LIKED = 3;
@@ -23,9 +22,9 @@ const Mypage = () => {
           {articleType ? (
             <MyArticleBoard
               articleType={
-                articleType === "article"
+                articleType === 'article'
                   ? ARTICLE
-                  : articleType === "comment"
+                  : articleType === 'comment'
                   ? COMMENT
                   : LIKED
               }
@@ -65,7 +64,7 @@ const MypageBlock = styled(Container)`
   aside {
     display: none;
   }
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     main {
       width: 100%;
       margin-top: 0;

@@ -1,10 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-
-import { Viewer } from "@toast-ui/react-editor";
-import { ReactionService, ArticleService } from "../../../network";
-import dayjs from "dayjs";
-import { Link, useNavigate } from "react-router-dom";
+import { Viewer } from '@toast-ui/react-editor';
+import dayjs from 'dayjs';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { ArticleService, ReactionService } from '../../../network';
 
 const ArticleContent = ({ article }) => {
   // TODO : 현재 카테고리를 전역 상태로 관리해서 reactionPossible 불러오기
@@ -26,7 +25,7 @@ const ArticleContent = ({ article }) => {
 
   const deleteArticle = () => {
     console.log(article);
-    if (window.confirm("삭제하시겠습니까?")) {
+    if (window.confirm('삭제하시겠습니까?')) {
       // TODO : 삭제 요청
       ArticleService.deleteArticles(article.id);
       navi(`/category/${article.category.id}`);
@@ -38,10 +37,10 @@ const ArticleContent = ({ article }) => {
     navi(`/writing`, { state: { article } });
   };
 
-  const getArticleTime = (time) =>
-    dayjs(time).isSame(dayjs(), "day")
-      ? dayjs(time).format("HH:mm")
-      : dayjs(time).format("MM/DD");
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
 
   return (
     <ArticleContentBlock>
@@ -56,7 +55,7 @@ const ArticleContent = ({ article }) => {
         </h3>
         <h3 className="article_info">
           {/* TODO : commentCount를 실시간으로 업데이트 하는 로직 추가(아마 react-query 적용 시 해결할 수 있을듯) */}
-          ⏱ {getArticleTime(article.createdAt)} &nbsp; 👁‍ {article.viewCount}{" "}
+          ⏱ {getArticleTime(article.createdAt)} &nbsp; 👁‍ {article.viewCount}{' '}
           &nbsp; 💬 {article.commentCount}
         </h3>
         {isModifiable && (
@@ -101,7 +100,7 @@ const ArticleContent = ({ article }) => {
 const ArticleContentBlock = styled.div`
   width: 100%;
   background-color: #fff;
-  box-shadow: ${(props) => props.theme.boxShadow};
+  box-shadow: ${props => props.theme.boxShadow};
   border-radius: 0.3rem;
 
   .header {
@@ -157,7 +156,7 @@ const ArticleContentBlock = styled.div`
       .likeCount {
         display: flex;
         width: max-content;
-        color: ${(props) => props.theme.textGray4};
+        color: ${props => props.theme.textGray4};
       }
       span {
         display: flex;
@@ -172,7 +171,7 @@ const ArticleContentBlock = styled.div`
     }
   }
 
-  ${(props) => props.theme.mobileSize} {
+  ${props => props.theme.mobileSize} {
     width: 100%;
     box-shadow: none;
   }
