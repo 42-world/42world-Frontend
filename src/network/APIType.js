@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function url(path) {
-  return `${process.env.REACT_BASE_URL}${path}`;
+  return `${process.env.REACT_APP_BASE_URL}${path}`;
 }
 
 export function AXIOS(option) {
@@ -9,7 +9,7 @@ export function AXIOS(option) {
     ...option,
     withCredentials: true,
     headers: {
-      Authorization: process.env.REACT_ACCESS_TOKEN,
+      Authorization: process.env.REACT_APP_ACCESS_TOKEN,
     },
   });
 }
