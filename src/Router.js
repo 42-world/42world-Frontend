@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LoginCheck } from './components/organisms/login';
-import TopNav from './components/organisms/TopNav';
+import TopNav from 'common/components/navigator/TopNav';
 import Article from './components/pages/article/_id';
 import Auth from './components/pages/Auth';
 import Category from './components/pages/category/_id';
@@ -15,17 +15,17 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/*<Route path="/" element={<LoginCheck />}>*/}
-          <Route path="/" element={<TopNav />}>
-            <Route exact path="/" element={<Main />} />
-            <Route path="/category/:id" element={<Category />} />
-            <Route path="/mypage" element={<Mypage />} />
-            <Route path="/mypage/article" element={<Mypage />} />
-            <Route path="/mypage/comment" element={<Mypage />} />
-            <Route path="/mypage/liked" element={<Mypage />} />
-            <Route path="/writing" element={<Writing />} />
-            <Route path="/article/:id" element={<Article />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
+        <Route path="/" element={<TopNav />}>
+          <Route exact path="/" element={<Main />} />
+          <Route path="/category/:id" element={<Category />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/mypage/article" element={<Mypage />} />
+          <Route path="/mypage/comment" element={<Mypage />} />
+          <Route path="/mypage/liked" element={<Mypage />} />
+          <Route path="/writing" element={<Writing />} />
+          <Route path="/article/:id" element={<Article />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
         {/*</Route>*/}
         {/* topnav가 필요하지 않은 LoginCheck만 필요한 경우*/}
         {/*<Route path="/" el ement={<LoginCheck />}>

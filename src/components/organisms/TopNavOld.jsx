@@ -7,7 +7,7 @@ import { categoryState } from '../../store/category';
 import { userState } from '../../store/user';
 import profileUtils from './mypage/utils/profileUtils';
 
-function TopNav() {
+function TopNavOld() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(false);
   const user = useRecoilValue(userState);
@@ -48,70 +48,67 @@ function TopNav() {
 
   //if (!user || user === undefined || user?.length === 0) return <></>;
   //else {
-    return (
-      <>
-        <TopNavBlock>
-          <nav>
-            <Link to="/" id="logo-btn">
-              <img
-                width="168px"
-                height="39px"
-                src="../../assets/images/logo/Logo@16x.png"
-                alt=""
-                onClick={handleClick}
-              />
-            </Link>
-            <div className="menu-icon" onClick={handleClick}>
-              <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-            </div>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  홈
-                </Link>
-              </li>
+  return (
+    <>
+      <TopNavBlock>
+        <nav>
+          <Link to="/" id="logo-btn">
+            <img
+              width="168px"
+              height="39px"
+              src="../../assets/images/logo/Logo@16x.png"
+              alt=""
+              onClick={handleClick}
+            />
+          </Link>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          </div>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <li className="nav-item">
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                홈
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/category/1"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                커뮤니티
+              </Link>
+            </li>
+            {!user && (
+              <Link to="/login" className="profile">
+                <span>로그인</span>
+              </Link>
+            )}
+            {user && !button && (
               <li className="nav-item">
                 <Link
-                  to="/category/1"
+                  to="/mypage"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
-                  커뮤니티
+                  마이페이지
                 </Link>
               </li>
-              {!user && (
-                <Link to="/login" className="profile">
-                  <span>로그인</span>
-                </Link>
-              )}
-              {user && !button && (
-                <li className="nav-item">
-                  <Link
-                    to="/mypage"
-                    className="nav-links"
-                    onClick={closeMobileMenu}
-                  >
-                    마이페이지
-                  </Link>
-                </li>
-              )}
-              {user && button && (
-                <Link to="/mypage" className="profile">
-                  <img
-                    alt={profilePhoto}
-                    src={`${PICTURE_DIR + profilePhoto}`}
-                  />
-                  <span>{user?.nickname}</span>
-                </Link>
-              )}
-            </ul>
-          </nav>
-        </TopNavBlock>
-        <OutletWrapper>
-          <Outlet />
-        </OutletWrapper>
-      </>
-    );
+            )}
+            {user && button && (
+              <Link to="/mypage" className="profile">
+                <img alt={profilePhoto} src={`${PICTURE_DIR + profilePhoto}`} />
+                <span>{user?.nickname}</span>
+              </Link>
+            )}
+          </ul>
+        </nav>
+      </TopNavBlock>
+      <OutletWrapper>
+        <Outlet />
+      </OutletWrapper>
+    </>
+  );
   //}
 }
 
@@ -293,4 +290,4 @@ const TopNavBlock = styled.div`
   }
 `;
 
-export default TopNav;
+export default TopNavOld;
