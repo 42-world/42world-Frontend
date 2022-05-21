@@ -1,5 +1,5 @@
-import Account from 'common/components/navigator/Account';
-import { StyledMenuButton } from 'common/components/navigator/styled';
+import Account from './Account';
+import { StyledMenuButton } from '../styled';
 
 const dummy_user = {
   nickname: '아이린',

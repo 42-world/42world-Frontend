@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { StyledMenuButton } from 'common/components/navigator/styled';
+
+import { StyledMenuButton } from '../styled/MenuItems.styled';
 
 const categories = [
   { name: '인기글', url: '/' },

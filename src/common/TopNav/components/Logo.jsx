@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { StyledTopNavLogo } from '../styled';
 
 const Logo = () => {
   return (
@@ -13,10 +12,5 @@ const Logo = () => {
     </StyledTopNavLogo>
   );
 };
-
-const StyledTopNavLogo = styled(Link)`
-  display: flex;
-  align-items: center;
-`;
 
 export default Logo;

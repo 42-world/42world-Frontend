@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import TopNav from 'common/TopNav';
 import { LoginCheck } from './components/organisms/login';
-import TopNav from 'common/components/navigator/TopNav';
 import Article from './components/pages/article/_id';
 import Auth from './components/pages/Auth';
 import Category from './components/pages/category/_id';
