@@ -1,17 +1,15 @@
 import Account from './Account';
 import { StyledMenuButton } from '../styled';
+import { useRecoilValue } from 'recoil';
+import { userState } from 'store/user';
 
-const dummy_user = {
-  nickname: '아이린',
-};
 
 const UserItems = () => {
-  //  const user = useRecoilValue(userState);
-  const user = dummy_user;
+   const user = useRecoilValue(userState);
 
   return (
     <div className="user">
-      {/* TODO : 모달 적용 */}
+      {/* TODO : 아이콘 및 모달 적용 */}
       <StyledMenuButton>알람</StyledMenuButton>
       <Account user={user} />
     </div>

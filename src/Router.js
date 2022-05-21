@@ -15,7 +15,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/*<Route path="/" element={<LoginCheck />}>*/}
+        <Route path="/" element={<LoginCheck />}>
         <Route element={<PageLayout />}>
           <Route exact path="/" element={<Main />} />
           <Route path="/category/:id" element={<Category />} />
@@ -27,11 +27,11 @@ const Router = () => {
           <Route path="/article/:id" element={<Article />} />
         </Route>
         <Route path="/login" element={<Login />} />
-        {/*</Route>*/}
+        </Route>
         {/* topnav가 필요하지 않은 LoginCheck만 필요한 경우*/}
-        {/*<Route path="/" el ement={<LoginCheck />}>
+        <Route path="/" el ement={<LoginCheck />}>
           <Route exact path="/auth" element={<Auth />} />
-        </Route>*/}
+        </Route>
         <Route exact path="/" element={<Login isCallback={false} />} />
 
         <Route
