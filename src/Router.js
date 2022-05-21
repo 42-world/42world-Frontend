@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import TopNav from 'common/TopNav';
+import { PageLayout } from 'common/PageLayout'
 import { LoginCheck } from './components/organisms/login';
 import Article from './components/pages/article/_id';
 import Auth from './components/pages/Auth';
@@ -16,7 +16,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/*<Route path="/" element={<LoginCheck />}>*/}
-        <Route path="/" element={<TopNav />}>
+        <Route element={<PageLayout />}>
           <Route exact path="/" element={<Main />} />
           <Route path="/category/:id" element={<Category />} />
           <Route path="/mypage" element={<Mypage />} />

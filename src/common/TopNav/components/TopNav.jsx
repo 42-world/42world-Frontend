@@ -1,5 +1,4 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 
 import Logo from './Logo';
 import MenuItems from './MenuItems';
@@ -7,6 +6,7 @@ import UserItems from './UserItems';
 import { StyledTopNav } from '../styled';
 
 const TopNav = () => {
+
   return (
     <>
       <StyledTopNav>
@@ -16,7 +16,6 @@ const TopNav = () => {
           <UserItems />
         </div>
       </StyledTopNav>
-      <Outlet />
     </>
   );
 };
