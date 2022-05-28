@@ -4,22 +4,20 @@ import { userState } from '../../../store/user';
 import LinkSection from './LinkSection';
 import ProfileSection from './ProfileSection';
 
-//import { UserService } from "../../../network";
 
 const MyProfile = () => {
-  //const [myInfo, setMyInfo] = useState(null);
-  const myInfo = useRecoilValue(userState);
-
+  const user = useRecoilValue(userState);
+  console.log(user)
   return (
     <MyProfileDiv>
       <h1 className="profile-title">마이페이지</h1>
       <hr />
       <div className="profile-section">
         <ProfileSection
-          imgID={myInfo[0]?.character}
-          userName={myInfo[0]?.nickname}
+          imgID={user?.character}
+          userName={user?.nickname}
         />
-        <LinkSection MyInfo={myInfo[0]} />
+        <LinkSection MyInfo={user} />
         {/* MypageData에 아직 링크 구현 안됨 */}
       </div>
     </MyProfileDiv>

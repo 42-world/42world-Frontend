@@ -15,6 +15,7 @@ const Mypage = () => {
   const ARTICLE = 1,
     COMMENT = 2,
     LIKED = 3;
+
   return (
     <>
       <MypageBlock>

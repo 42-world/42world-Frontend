@@ -12,7 +12,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
   //const curUser = auth.curUser;
   const PICTURE_DIR = '/assets/CharacterWhiteBG/';
   const [userInfo, setUserInfo] = useRecoilState(userState);
-  const [charID, setCharID] = useState(userInfo ? userInfo[0].character : 0);
+  const [charID, setCharID] = useState(userInfo ? userInfo.character : 0);
 
   const handleClickChar = async (e, id) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
       window.alert('캐릭터 변경 완료');
       console.log(response);
       setCharID(id);
-      setUserInfo([{ ...userInfo[0], character: id }]);
+      setUserInfo([{ ...userInfo, character: id }]);
       //auth.setIsLoading(true);
     } catch (e) {
       console.log(e);
