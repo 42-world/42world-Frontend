@@ -51,10 +51,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.15.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.0",
-    "prettier-plugin-organize-imports": "^2.3.4"
+    "prettier": "^2.5.1"
   }
 }
