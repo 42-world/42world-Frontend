@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
-import { StyledUserName, StyledProfileImage, StyledMenuButton } from '../styled';
+import { useRecoilValue } from 'recoil';
+import { userState } from 'store/user';
+import {
+  StyledUserName,
+  StyledProfileImage,
+  StyledMenuButton,
+} from '../styled';
 
-const Account = ({ user }) => {
+const Account = () => {
+  const user = useRecoilValue(userState);
+
   return (
     <StyledMenuButton>
       {user ? <UserName user={user} /> : <LoginButton />}
