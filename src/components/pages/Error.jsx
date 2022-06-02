@@ -10,7 +10,7 @@ const ErrorPage = () => {
         id="logo"
         src="/assets/error.png"
         style={{ width: '300px' }}
-        alt="..."
+        alt="에러"
       />
       <ErrorBox>
         <div>
@@ -27,7 +27,7 @@ const ErrorPage = () => {
         src="/assets/42mainlogo.png"
         style={{ width: '100px' }}
         onClick={() => navi('/')}
-        alt="..."
+        alt="42로고"
       />
     </ErrorBackground>
   );

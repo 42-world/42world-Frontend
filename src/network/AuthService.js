@@ -31,7 +31,6 @@ const AuthService = {
         method,
         url,
       });
-      //console.log(response);
     } catch (error) {
       alert(error);
     }
