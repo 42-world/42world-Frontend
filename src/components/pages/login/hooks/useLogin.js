@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import qs from 'qs';
+import { useSetRecoilState } from 'recoil';
 
-import { AuthService } from 'network';
+import { AuthService, UserService } from 'network';
+import { userState } from 'store/user';
 
 const LOGIN_ERROR_MESSAGE = '로그인 실패하였습니다. 다시 시도해주세요';
 
@@ -10,6 +12,7 @@ const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
+  const setUser = useSetRecoilState(userState);
 
   const onClickButton = () => {
     try {
@@ -35,7 +38,10 @@ const useLogin = () => {
   const getAccessToken = async code => {
     const res = await AuthService.getAuthAccessToken(code);
     if (res.status == 200) {
-      // TODO: set user
+      // TODO: refoctoring set user by react query
+      // TODO: merging get user api in backend
+      const user = await UserService.getNoviceProfile();
+      setUser(user);
       navigate('/');
     } else {
       throw new Error(LOGIN_ERROR_MESSAGE);
