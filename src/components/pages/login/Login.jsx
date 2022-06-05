@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import { CircularProgress } from '@mui/material';
+
 import useLogin from './hooks/useLogin';
 
 const Login = () => {
-  const { onClickButton } = useLogin();
+  const { onClickButton, isAuthCallbackProcess } = useLogin();
 
   return (
     <div>
@@ -22,7 +25,11 @@ const Login = () => {
           <p>지속적인 업데이트가 이루어 집니다.</p>
         </div>
         <div>
-          <button onClick={onClickButton}>Github Login</button>
+          {isAuthCallbackProcess() ? (
+            <CircularProgress />
+          ) : (
+            <button onClick={onClickButton}>Github Login</button>
+          )}
         </div>
       </div>
     </div>
