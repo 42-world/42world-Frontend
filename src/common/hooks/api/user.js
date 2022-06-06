@@ -7,6 +7,5 @@ export const USERS_ME_URL = '/users/me';
 
 export const getUser = () => {
   const { isError, data } = useQuery([USERS_ME_URL], UserService.getUser);
-  const user = data?.data ?? {};
-  return { isError, user };
+  return { isError, user: data?.data ?? {} };
 };
