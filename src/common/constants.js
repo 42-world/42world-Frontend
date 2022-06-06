@@ -1,3 +1,5 @@
+export const PICTURE_DIR = '/assets/CharacterWhiteBG/';
+
 // TODO: file naming을 인덱스로 관리하면 좀 더 편할 것 같음
 export const PROFILE_LIST = {
   0: 'bbo.png',
