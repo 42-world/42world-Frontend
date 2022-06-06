@@ -7,14 +7,14 @@ const CommentCount = ({ count }) => {
   return (
     <StyledCommentCount>
       <BiCommentDots color={theme.textBlue} />
-      {count}
+      <div>{count}</div>
     </StyledCommentCount>
   );
 };
 
 const StyledCommentCount = styled.div`
+  display: flex;
   color: ${theme.textBlue};
-  text-decoration: none;
 `;
 
 export default CommentCount;

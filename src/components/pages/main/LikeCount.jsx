@@ -5,15 +5,18 @@ import { theme } from 'styles/theme';
 const LikeCount = ({ count }) => {
   return (
     <StyledLikeCount>
-      <HiOutlineHeart color={theme.textRed} />
-      {count}
+      <div>
+        <HiOutlineHeart color={theme.textRed} />
+      </div>
+      <div>{count}</div>
     </StyledLikeCount>
   );
 };
 
 const StyledLikeCount = styled.div`
+  display: flex;
   color: ${theme.textRed};
-  text-decoration: none;
+  margin-right: 10px;
 `;
 
 export default LikeCount;

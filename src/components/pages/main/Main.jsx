@@ -1,5 +1,6 @@
 import { getCategory } from 'common/hooks/api/category';
 import { isEmpty } from 'common/utils';
+import styled from 'styled-components';
 import PreviewBoard from './PreviewBoard';
 
 const Main = () => {
@@ -11,7 +12,7 @@ const Main = () => {
       <div>
         <div>
           <div>검색</div>
-          <div>
+          <StyledPreviewBoard>
             {isEmpty(categories) ? (
               <></>
             ) : (
@@ -25,7 +26,7 @@ const Main = () => {
                   />
                 ))
             )}
-          </div>
+          </StyledPreviewBoard>
         </div>
         <div>우측</div>
       </div>
@@ -33,5 +34,13 @@ const Main = () => {
     </>
   );
 };
+
+const StyledPreviewBoard = styled.div`
+  width: 75%;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  margin: auto;
+`;
 
 export default Main;
