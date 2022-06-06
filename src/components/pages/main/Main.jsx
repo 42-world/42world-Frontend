@@ -1,16 +1,28 @@
+import { getCategory } from 'common/hooks/api/category';
+import { isEmpty } from 'common/utils';
 import PreviewBoard from './PreviewBoard';
 
 const Main = () => {
+  const { isError, categories } = getCategory();
+  console.log(categories);
   return (
     <>
       <div>
         <div>
           <div>검색</div>
           <div>
-            <PreviewBoard categoryName={'공지'} />
-            <PreviewBoard categoryName={'인기글'} />
-            <PreviewBoard categoryName={'자유게시판'} />
-            <PreviewBoard categoryName={'익명게시판'} />
+            {isEmpty(categories) ? (
+              <></>
+            ) : (
+              categories
+                .filter(category => category.isArticleReadable)
+                .map(category => (
+                  <PreviewBoard
+                    key={category.id}
+                    categoryName={category.name}
+                  />
+                ))
+            )}
           </div>
         </div>
         <div>우측</div>
