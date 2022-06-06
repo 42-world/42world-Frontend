@@ -1,42 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IoMdThumbsUp } from 'react-icons/io';
-import { getArticles } from 'common/hooks/api/article';
 import PreviewItems from './PreviewItems';
-import { useNavigate } from 'react-router-dom';
 import { theme } from 'styles/theme';
 
-const PreviewBoard = ({ categoryId, categoryName }) => {
-  const navigate = useNavigate();
-  const { articles } = getArticles(categoryId);
-  const onClick = categoryId => {
-    navigate(`/category/${categoryId}`);
-  };
+const PreviewBoard = ({ categoryName, onClickHandler, param, items }) => {
   return (
-    <>
-      <StyledPrivewContainer>
-        <StyledPrivewHeader onClick={() => onClick(categoryId)}>
-          <StyledCategoryName>
-            <IoMdThumbsUp />
-            <div>{categoryName}</div>
-          </StyledCategoryName>
-          <StyledMoreText>더보기{'>'}</StyledMoreText>
-        </StyledPrivewHeader>
-        <PreviewItems articles={articles} />
-      </StyledPrivewContainer>
-    </>
+    <StyledPreviewContainer>
+      <StyledPreviewHeader onClick={() => onClickHandler(param)}>
+        <StyledCategoryName>
+          <IoMdThumbsUp />
+          <div>{categoryName}</div>
+        </StyledCategoryName>
+        <StyledMoreText>더보기{'>'}</StyledMoreText>
+      </StyledPreviewHeader>
+      <PreviewItems items={items} />
+    </StyledPreviewContainer>
   );
 };
 
-const StyledPrivewContainer = styled.div`
-  border: 1px solid #424242;
-  color: black;
+const StyledPreviewContainer = styled.div`
   width: 400px;
   height: 300px;
   border-radius: 10px;
+  box-shadow: 0px 1px 5px ${theme.shadowGray};
 `;
 
-const StyledPrivewHeader = styled.div`
+const StyledPreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   height: 40px;

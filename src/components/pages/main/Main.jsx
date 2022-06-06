@@ -1,7 +1,7 @@
 import { getCategory } from 'common/hooks/api/category';
 import { isEmpty } from 'common/utils';
 import styled from 'styled-components';
-import PreviewBoard from './PreviewBoard';
+import MainPreviewBoard from './MainPreviewBoard';
 
 const Main = () => {
   const { categories } = getCategory();
@@ -19,7 +19,7 @@ const Main = () => {
               categories
                 .filter(category => category.isArticleReadable)
                 .map(category => (
-                  <PreviewBoard
+                  <MainPreviewBoard
                     key={category.id}
                     categoryId={category.id}
                     categoryName={category.name}

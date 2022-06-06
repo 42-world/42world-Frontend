@@ -1,10 +1,8 @@
-import PreviewItem from './PreviewItem';
+import PreviewArticleItem from './PreviewArticleItem';
 
-const PreviewItems = ({ articles }) => {
+const PreviewItems = ({ items }) => {
   return (
-    <div>
-      {articles && articles.map(article => <PreviewItem article={article} />)}
-    </div>
+    <div>{items && items.map(item => <PreviewArticleItem item={item} />)}</div>
   );
 };
 
