@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IoMdThumbsUp } from 'react-icons/io';
-import PreviewItems from './PreviewItems';
 import { theme } from 'styles/theme';
+import PreviewArticleItems from './PreviewArticleItems';
 
-const PreviewBoard = ({ categoryName, onClickHandler, param, items }) => {
+const PreviewBoard = ({ categoryName, onClickHandler, path, items }) => {
   return (
     <StyledPreviewContainer>
-      <StyledPreviewHeader onClick={() => onClickHandler(param)}>
+      <StyledPreviewHeader onClick={() => onClickHandler(path)}>
         <StyledCategoryName>
           <IoMdThumbsUp />
           <div>{categoryName}</div>
         </StyledCategoryName>
         <StyledMoreText>더보기{'>'}</StyledMoreText>
       </StyledPreviewHeader>
-      <PreviewItems items={items} />
+      <PreviewArticleItems items={items} />
     </StyledPreviewContainer>
   );
 };
