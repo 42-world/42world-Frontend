@@ -3,7 +3,8 @@ import { isEmpty } from 'common/utils';
 import PreviewBoard from './PreviewBoard';
 
 const Main = () => {
-  const { isError, categories } = getCategory();
+  const { categories } = getCategory();
+
   console.log(categories);
   return (
     <>
@@ -19,6 +20,7 @@ const Main = () => {
                 .map(category => (
                   <PreviewBoard
                     key={category.id}
+                    categoryId={category.id}
                     categoryName={category.name}
                   />
                 ))
