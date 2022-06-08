@@ -1,11 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { theme } from 'styles/theme';
 import CommentCount from './CommentCount';
 import LikeCount from './LikeCount';
 
-const PreviewItem = ({ onClickHandler, item }) => {
+const PreviewArticleItem = ({ item }) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/article/${item.id}`);
+  };
   return (
-    <StyledPreviewItemContainer onClick={onClickHandler}>
+    <StyledPreviewItemContainer onClick={onClick}>
       <StyledPreviewArticleTitle>{item?.title}</StyledPreviewArticleTitle>
       <StyledIcons>
         <LikeCount count={item.likeCount} />
@@ -37,4 +42,5 @@ const StyledIcons = styled.div`
   justify-content: space-between;
   padding: 3px 10px;
 `;
-export default PreviewItem;
+
+export default PreviewArticleItem;

@@ -1,3 +1,4 @@
+import { getUser } from 'common/hooks/api/user';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userState } from '../../../store/user';
@@ -7,7 +8,8 @@ import { MypageButton } from '../../atoms/Mypage';
 const AuthButton = () => {
   const navigate = useNavigate();
   //const auth = useRecoilValue(authState);
-  const user = useRecoilValue(userState);
+  // const user = useRecoilValue(userState);
+  const { user } = getUser();
 
   const handleAuthClick = () => {
     console.log('auth test');

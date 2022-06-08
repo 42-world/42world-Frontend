@@ -1,7 +1,7 @@
 import React from 'react';
 import { getArticles } from 'common/hooks/api/article';
 import { useNavigate } from 'react-router-dom';
-import PreviewArticleBoard from './PreviewArticleBoard';
+import PreviewArticleBoard from 'common/Preview/PreviewArticleBoard';
 
 const MainPreviewBoard = ({ categoryId, categoryName }) => {
   const navigate = useNavigate();
