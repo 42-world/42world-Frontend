@@ -25,7 +25,7 @@ const StyledPreviewItemContainer = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid ${theme.buttonGray1};
 
-  padding: 10px 15px 6px 15px;
+  padding: 10px 15px 4px 15px;
   font-size: 16px;
   cursor: pointer;
   &:hover {
