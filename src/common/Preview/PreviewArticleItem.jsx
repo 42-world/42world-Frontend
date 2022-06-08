@@ -11,7 +11,7 @@ const PreviewArticleItem = ({ item }) => {
   };
   return (
     <StyledPreviewItemContainer onClick={onClick}>
-      <StyledPreviewArticleTitle>{item?.title}</StyledPreviewArticleTitle>
+      <StyledPreviewArticleTitle>{item.title}</StyledPreviewArticleTitle>
       <StyledIcons>
         <LikeCount count={item.likeCount} />
         <CommentCount count={item?.commentCount} />
