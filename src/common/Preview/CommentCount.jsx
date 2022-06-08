@@ -3,7 +3,6 @@ import { theme } from 'styles/theme';
 import styled from 'styled-components';
 
 const CommentCount = ({ count }) => {
-  console.log(count);
   return (
     <StyledCommentCount>
       <BiCommentDots color={theme.textBlue} />
