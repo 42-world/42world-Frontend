@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { IoMdThumbsUp } from 'react-icons/io';
-import { theme } from 'styles/theme';
 
 const PreviewHeader = ({ categoryName, onClickHandler, path }) => {
   return (
@@ -19,12 +18,12 @@ const StyledPreviewHeader = styled.div`
   justify-content: space-between;
   height: 40px;
   padding: 12.5px 10px 35px 10px;
-  border-bottom: 1px solid ${theme.buttonGray2};
+  border-bottom: 1px solid ${props => props.theme.buttonGray2};
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   &:hover {
-    background-color: ${theme.buttonGray2};
+    background-color: ${props => props.theme.buttonGray2};
     border-radius: 10px 10px 0 0;
   }
 `;
