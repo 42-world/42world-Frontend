@@ -22,6 +22,7 @@ const StyledPreviewContainer = styled.div`
   height: 300px;
   border-radius: 10px;
   box-shadow: 0px 1px 5px ${theme.shadowGray};
+  margin: 10px;
 `;
 
 export default PreviewArticleBoard;

@@ -26,10 +26,7 @@ const MainPreviewBoards = () => {
 };
 
 const StyledPreviewBoard = styled.div`
-  width: 75%;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  display: flex;
   margin: auto;
 `;
 
