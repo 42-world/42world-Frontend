@@ -15,7 +15,7 @@ const LikeCount = ({ count }) => {
 
 const StyledLikeCount = styled.div`
   display: flex;
-  color: ${theme.textRed};
+  color: ${props => props.theme.textRed};
   margin-right: 10px;
 `;
 

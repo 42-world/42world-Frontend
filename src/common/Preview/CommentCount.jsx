@@ -13,7 +13,7 @@ const CommentCount = ({ count }) => {
 
 const StyledCommentCount = styled.div`
   display: flex;
-  color: ${theme.textBlue};
+  color: ${props => props.theme.textBlue};
 `;
 
 export default CommentCount;
