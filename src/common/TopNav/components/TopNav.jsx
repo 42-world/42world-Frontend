@@ -9,8 +9,7 @@ import Popover from '@mui/material/Popover';
 import { StyledTopNav } from '../styled';
 
 const TopNav = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState(false);
 
   const handleClick = e => {
     setAnchorEl(e.currentTarget);
@@ -29,7 +28,6 @@ const TopNav = () => {
       </StyledTopNav>
 
       <Popover
-        className="rootElement"
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right',
@@ -38,7 +36,7 @@ const TopNav = () => {
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={open}
+        open={anchorEl}
         anchorEl={anchorEl}
         onClose={handleClose}
       >
