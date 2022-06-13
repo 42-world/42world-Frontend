@@ -13,3 +13,16 @@ export function AXIOS(option) {
     },
   });
 }
+
+export const apiClient = axios.create({
+  header: {
+    cache: 'no-cache',
+    referrer: 'no-referrer',
+    'Content-Type': 'application/json',
+    accept: 'application/json',
+  },
+  withCredentials: true,
+  data: {},
+  baseURL: process.env.REACT_APP_BASE_URL ?? '/',
+  timeout: 1000 * 60 * 3, // 3분
+});
