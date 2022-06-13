@@ -1,17 +1,28 @@
-import Account from './Account';
 import { StyledMenuButton } from '../styled';
-import { useRecoilValue } from 'recoil';
-import { userState } from 'store/user';
-
+import { getUser } from 'common/hooks/api/user';
+import { isEmpty } from 'common/utils';
+import LoginButton from './LoginButton';
+import UserName from './UserName';
 
 const UserItems = () => {
-   const user = useRecoilValue(userState);
-
+  const { user } = getUser();
   return (
     <div className="user">
-      {/* TODO : 아이콘 및 모달 적용 */}
-      <StyledMenuButton>알람</StyledMenuButton>
-      <Account user={user} />
+      {isEmpty(user) ? (
+        <>
+          <StyledMenuButton>
+            <LoginButton />
+          </StyledMenuButton>
+        </>
+      ) : (
+        <>
+          {/* TODO : 아이콘 및 모달 적용 */}
+          <StyledMenuButton>알람</StyledMenuButton>
+          <StyledMenuButton>
+            <UserName user={user} />
+          </StyledMenuButton>
+        </>
+      )}
     </div>
   );
 };

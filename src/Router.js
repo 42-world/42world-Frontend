@@ -1,9 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { PageLayout } from 'common/PageLayout'
-import { LoginCheck } from './components/organisms/login';
+import { PageLayout } from 'common/PageLayout';
 import Article from './components/pages/article/_id';
-import Auth from './components/pages/Auth';
 import Category from './components/pages/category/_id';
 import ErrorPage from './components/pages/Error';
 import Login from './components/pages/login/Login';
@@ -25,14 +23,10 @@ const Router = () => {
           <Route path="/writing" element={<Writing />} />
           <Route path="/article/:id" element={<Article />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route exact path="/auth" element={<Auth />} />
-        <Route exact path="/" element={<Login isCallback={false} />} />
 
-        <Route
-          path="/auth/github/callback"
-          element={<Login isCallback={true} />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/auth/github/callback" element={<Login />} />
+
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

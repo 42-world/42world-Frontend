@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import qs from 'qs';
-import { useSetRecoilState } from 'recoil';
 
-import { AuthService, UserService } from 'network';
-import { userState } from 'store/user';
+import { AuthService } from 'network';
+import { getUser } from 'common/hooks/api/user';
+import { isEmpty } from 'common/utils';
 
 const LOGIN_ERROR_MESSAGE = '로그인 실패하였습니다. 다시 시도해주세요';
 
@@ -12,7 +12,7 @@ const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
-  const setUser = useSetRecoilState(userState);
+  const { user } = getUser();
 
   const onClickButton = () => {
     try {
@@ -24,7 +24,11 @@ const useLogin = () => {
   };
 
   const isLoggedIn = () => {
-    return pathname.match(/\/auth*/);
+    return !isEmpty(user);
+  };
+
+  const isAuthCallbackProcess = () => {
+    return pathname.startsWith('/auth');
   };
 
   const getCode = () => {
@@ -38,10 +42,6 @@ const useLogin = () => {
   const getAccessToken = async code => {
     const res = await AuthService.getAuthAccessToken(code);
     if (res.status == 200) {
-      // TODO: refoctoring set user by react query
-      // TODO: merging get user api in backend
-      const user = await UserService.getNoviceProfile();
-      setUser(user);
       navigate('/');
     } else {
       throw new Error(LOGIN_ERROR_MESSAGE);
@@ -50,7 +50,7 @@ const useLogin = () => {
 
   useEffect(() => {
     (async () => {
-      if (isLoggedIn()) {
+      if (isAuthCallbackProcess()) {
         try {
           const code = getCode();
 
@@ -63,11 +63,14 @@ const useLogin = () => {
           window.location.href = '/login';
         }
       }
+      if (isLoggedIn()) {
+        navigate('/');
+      }
     })(),
       [];
   });
 
-  return { onClickButton };
+  return { onClickButton, isAuthCallbackProcess };
 };
 
 export default useLogin;
