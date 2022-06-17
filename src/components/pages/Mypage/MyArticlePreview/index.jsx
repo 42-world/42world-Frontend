@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { UserService } from '../../../network';
-import { ArticlePreview } from '../main';
+import { UserService } from 'network';
+import { ArticlePreview } from 'components/organisms/main';
 
 const MyArticlePreview = ({ articleType }) => {
   const [articles, setArticles] = useState(null);

@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { userState } from '../../../store/user';
+import { userState } from 'store/user';
 import LinkSection from './LinkSection';
 import ProfileSection from './ProfileSection';
 

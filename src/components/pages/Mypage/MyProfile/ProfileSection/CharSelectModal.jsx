@@ -2,10 +2,10 @@ import { Modal } from '@mui/material';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { UserService } from '../../../../../network';
-import { userState } from '../../../../../store/user';
-import { ModalContainer } from '../../../../atoms/Modal';
-import { MypageButton } from '../../_common';
+import { UserService } from 'network';
+import { userState } from 'store/user';
+import { ModalContainer } from 'components/atoms/Modal';
+import { MypageButton } from 'components/pages/Mypage/_common';
 import profileUtils from '../utils/profileUtils';
 
 const CharSelectModal = ({ isOpen, setIsOpen }) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { UserService } from 'network';
-import PreviewArticle from '../category/PreviewArticle';
+import PreviewArticle from 'components/organisms/category/PreviewArticle';
 import MyArticlePageSelector from './MyArticlePageSelector';
 
 const MyArticleBoard = ({ articleType }) => {
