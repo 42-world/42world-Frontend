@@ -2,11 +2,11 @@ import { Modal } from '@mui/material';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { UserService } from '../../../network';
-import { userState } from '../../../store/user';
-import { ModalContainer } from '../../atoms/Modal';
-import { MypageButton } from '../../atoms/Mypage';
-import profileUtils from './utils/profileUtils';
+import { UserService } from '../../../../../network';
+import { userState } from '../../../../../store/user';
+import { ModalContainer } from '../../../../atoms/Modal';
+import { MypageButton } from '../../_common';
+import profileUtils from '../utils/profileUtils';
 
 const CharSelectModal = ({ isOpen, setIsOpen }) => {
   //const curUser = auth.curUser;

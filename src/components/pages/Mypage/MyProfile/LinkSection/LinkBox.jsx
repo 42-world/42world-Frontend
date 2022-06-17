@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconSet } from '../../atoms/Mypage';
+import { IconSet } from './IconSet';
 
 const LinkBox = ({ userName, linkType }) => {
   const getIcon = linkType => {

@@ -4,7 +4,6 @@ import { userState } from '../../../store/user';
 import LinkSection from './LinkSection';
 import ProfileSection from './ProfileSection';
 
-
 const MyProfile = () => {
   const user = useRecoilValue(userState);
   console.log(user)

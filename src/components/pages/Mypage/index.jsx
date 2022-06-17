@@ -1,13 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { Container } from '../atoms/global';
-import { QuickLink } from '../organisms/main';
-import {
-  MyArticleBoard,
-  MyArticlePreview,
-  MyProfile,
-} from '../organisms/mypage';
+
+import { Container } from 'components/atoms/global';
+import { QuickLink } from 'components/organisms/main';
+import MyArticlePreview from './MyArticlePreview';
+import MyArticleBoard from './MyArticleBoard';
+import MyProfile from './MyProfile';
 
 const Mypage = () => {
   const loc = useLocation();

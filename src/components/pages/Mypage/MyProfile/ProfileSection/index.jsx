@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MypageButton } from '../../atoms/Mypage';
+import { MypageButton } from '../../_common';
 import AuthButton from './AuthButton';
 import CharSelectModal from './CharSelectModal';
 import Logout from './Logout';
-import profileUtils from './utils/profileUtils';
+import profileUtils from '../utils/profileUtils';
 
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = '/assets/CharacterWhiteBG/';

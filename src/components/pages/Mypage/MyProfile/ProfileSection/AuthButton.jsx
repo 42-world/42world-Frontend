@@ -1,9 +1,9 @@
 import { getUser } from 'common/hooks/api/user';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { userState } from '../../../store/user';
+import { userState } from '../../../../../store/user';
 // import { authState } from "../../../store/auth";
-import { MypageButton } from '../../atoms/Mypage';
+import { MypageButton } from '../../_common';
 
 const AuthButton = () => {
   const navigate = useNavigate();

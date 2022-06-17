@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { AuthService } from '../../../network';
-import { userState } from '../../../store/user';
+import { AuthService } from '../../../../../network';
+import { userState } from '../../../../../store/user';
 
 const Logout = () => {
   const setUser = useSetRecoilState(userState);
