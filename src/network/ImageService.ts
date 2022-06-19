@@ -1,11 +1,8 @@
 import { apiClient } from './APIType';
 import axios from 'axios';
+import { GetUploadUrlResponse } from './types/Image';
 
 const IMAGE_API_URL = '/image';
-
-interface GetUploadUrlResponse {
-  uploadUrl: string;
-}
 
 const getUploadUrl = async (): Promise<string> => {
   const { data } = await apiClient.post<GetUploadUrlResponse>(IMAGE_API_URL);
