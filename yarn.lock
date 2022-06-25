@@ -8478,6 +8478,11 @@ styled-components@^5.3.3:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
+styled-reset@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-4.4.1.tgz#c7b3aa247d4f8c5d14f1dc72fde9d02b8bee1758"
+  integrity sha512-7j99JIwzotNQmoS8MQJu8OTBDE48gaMEr6SYvuH8xfL0K/a5vNHSRaccTfAiGBs9D3mjLDPxg5iLh3HqFvefPQ==
+
 stylehacks@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/stylehacks/-/stylehacks-5.1.0.tgz#a40066490ca0caca04e96c6b02153ddc39913520"

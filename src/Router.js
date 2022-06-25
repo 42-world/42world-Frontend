@@ -5,7 +5,7 @@ import Article from './components/pages/article/_id';
 import Category from './components/pages/category/_id';
 import ErrorPage from './components/pages/Error';
 import Login from './components/pages/login/Login';
-import Main from './components/pages/Main';
+import Main from 'components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
 import Writing from './components/pages/Writing';
 

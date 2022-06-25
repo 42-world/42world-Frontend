@@ -21,7 +21,8 @@
     "react-scripts": "^5.0.1",
     "recoil": "^0.7.0",
     "remove-markdown": "^0.5.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "styled-reset": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
