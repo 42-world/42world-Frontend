@@ -31,5 +31,6 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'react/prop-types': 'off',
     'react/jsx-key': 'off',
+    'no-undef': 'off',
   },
 };
