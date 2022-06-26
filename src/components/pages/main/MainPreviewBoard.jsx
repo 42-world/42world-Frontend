@@ -12,7 +12,7 @@ const MainPreviewBoard = ({ categoryId, categoryName }) => {
   return (
     <PreviewArticleBoard
       categoryName={categoryName}
-      onClickHandler={onClick}
+      onClick={onClick}
       path={categoryId}
       items={articles}
     />

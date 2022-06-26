@@ -4,11 +4,11 @@ import { theme } from 'styles/theme';
 import PreviewArticleItems from './PreviewArticleItems';
 import PreviewHeader from './PreviewHeader';
 
-const PreviewArticleBoard = ({ categoryName, onClickHandler, path, items }) => {
+const PreviewArticleBoard = ({ categoryName, onClick, path, items }) => {
   return (
     <StyledPreviewContainer>
       <PreviewHeader
-        onClickHandler={onClickHandler}
+        onClick={onClick}
         path={path}
         categoryName={categoryName}
       />

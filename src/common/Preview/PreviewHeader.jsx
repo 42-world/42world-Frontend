@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { IoMdThumbsUp } from 'react-icons/io';
 
-const PreviewHeader = ({ categoryName, onClickHandler, path }) => {
+const PreviewHeader = ({ categoryName, onClick, path }) => {
   return (
-    <StyledPreviewHeader onClick={() => onClickHandler(path)}>
+    <StyledPreviewHeader onClick={() => onClick(path)}>
       <StyledCategoryName>
         <IoMdThumbsUp />
         <div>{categoryName}</div>
