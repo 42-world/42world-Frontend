@@ -8,6 +8,7 @@ import Login from './components/pages/login/Login';
 import Main from 'components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
 import Writing from './components/pages/Writing';
+import SearchResults from './components/pages/search/SearchResults';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
           <Route path="/mypage/liked" element={<Mypage />} />
           <Route path="/writing" element={<Writing />} />
           <Route path="/article/:id" element={<Article />} />
+          <Route path="/search" element={<SearchResults />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

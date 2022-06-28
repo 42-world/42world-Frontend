@@ -1,21 +1,36 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
-import QuickLink from 'common/QuickLink/QuickLink';
-import MainPreviewBoards from './MainPreviewBoards';
 import { FaSearch } from 'react-icons/fa';
 
+import QuickLink from 'common/QuickLink/QuickLink';
+import MainPreviewBoards from './MainPreviewBoards';
+
 const Main = () => {
+  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState('');
+
+  const onSubmit = () => {
+    // TODO: 빈문자열 엔터치면 기부페이지로 이동
+    navigate(`/search?q=${inputValue}`);
+  };
+
+  const onChange = e => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <>
       <StyledMain>
         <StyledMainContent>
           <StyledMainSection>
-            <SearchForm>
+            <SearchForm onSubmit={onSubmit}>
               <FaSearch />
-              <StyledInput type="text" placeholder="검색어를 입력해주세요" />
+              <StyledInput type="text" placeholder="검색어를 입력해주세요" onChange={onChange} value={inputValue} />
             </SearchForm>
             <MainPreviewBoards />
           </StyledMainSection>
-
           <StyledMainSection>
             <QuickLink />
           </StyledMainSection>
