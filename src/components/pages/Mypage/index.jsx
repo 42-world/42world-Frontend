@@ -5,7 +5,7 @@ import { QuickLink } from 'components/organisms/main';
 import { MyArticlePreview, MyArticleBoard, MyProfile } from './components';
 import constants from './components/constants';
 
-import StyledMypage from './styles/Mypage.styles';
+import { StyledMypage } from './styles';
 
 const Mypage = () => {
   const loc = useLocation();
