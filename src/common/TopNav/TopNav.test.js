@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import TopNav from './components/TopNav';
 import LoginButton from './components/LoginButton';
 import { BrowserRouter } from 'react-router-dom';
