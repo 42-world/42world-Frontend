@@ -9,7 +9,5 @@ export const getArticles = categoryId => {
     ArticleService.getArticlesByCategoryId(categoryId, 1, 10),
   );
 
-  console.log(data);
-
   return { isError, articles: data?.data ?? [] };
 };

@@ -1,4 +1,5 @@
 import ArticleService from './ArticleService';
+import ArticleService2 from './ArticleService2';
 import AuthService from './AuthService';
 import BestService from './BestService';
 import CategoryService from './CategoryService';
@@ -12,6 +13,7 @@ import UserService from './UserService';
 
 export {
   ArticleService,
+  ArticleService2,
   AuthService,
   BestService,
   CategoryService,
