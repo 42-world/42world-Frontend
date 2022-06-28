@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userState } from '../../../../../../store/user';
 // import { authState } from "../../../store/auth";
-import { MypageButton } from '../../MypageButton';
+import MypageButton from 'components/pages/Mypage/components/MypageButton';
 
 const AuthButton = () => {
   const navigate = useNavigate();

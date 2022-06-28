@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MypageButton } from '../../_common';
+import MypageButton from 'components/pages/Mypage/components/MypageButton';
 import AuthButton from './AuthButton';
 import CharSelectModal from './CharSelectModal';
 import Logout from './Logout';
