@@ -1,12 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
 
-import { Container } from 'components/atoms/global';
 import { QuickLink } from 'components/organisms/main';
-import MyArticlePreview from './MyArticlePreview';
-import MyArticleBoard from './MyArticleBoard';
-import MyProfile from './MyProfile';
+import { MyArticlePreview, MyArticleBoard, MyProfile } from './components';
+import StyledMypage from './styles/Mypage.styles';
 
 const Mypage = () => {
   const loc = useLocation();
@@ -17,17 +14,11 @@ const Mypage = () => {
 
   return (
     <>
-      <MypageBlock>
+      <StyledMypage>
         <main>
           {articleType ? (
             <MyArticleBoard
-              articleType={
-                articleType === 'article'
-                  ? ARTICLE
-                  : articleType === 'comment'
-                  ? COMMENT
-                  : LIKED
-              }
+              articleType={articleType === 'article' ? ARTICLE : articleType === 'comment' ? COMMENT : LIKED}
             />
           ) : (
             <>
@@ -43,43 +34,9 @@ const Mypage = () => {
         <aside>
           <QuickLink />
         </aside>
-      </MypageBlock>
+      </StyledMypage>
     </>
   );
 };
-
-const MypageBlock = styled(Container)`
-  justify-content: center;
-  main {
-    margin-top: 1.5rem;
-    max-width: 48rem;
-    display: flex;
-    flex-direction: column;
-    .mypage-article {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-  }
-  aside {
-    display: none;
-  }
-  ${props => props.theme.mobileSize} {
-    main {
-      width: 100%;
-      margin-top: 0;
-    }
-  }
-  @media screen and (min-width: 1101px) {
-    aside {
-      margin-top: 2.5rem;
-    }
-    aside {
-      display: block;
-      width: 15rem;
-      padding-left: 1.25rem;
-    }
-  }
-`;
 
 export default Mypage;

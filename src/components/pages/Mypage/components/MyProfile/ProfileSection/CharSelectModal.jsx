@@ -6,7 +6,7 @@ import { UserService } from 'network';
 import { userState } from 'store/user';
 import { ModalContainer } from 'components/atoms/Modal';
 import { MypageButton } from 'components/pages/Mypage/_common';
-import profileUtils from '../utils/profileUtils';
+import profileUtils from '../../../utils/profileUtils';
 
 const CharSelectModal = ({ isOpen, setIsOpen }) => {
   //const curUser = auth.curUser;
@@ -43,11 +43,7 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
           <div className="char-list">
             {profileUtils.PROFILE_LIST.map(char => (
               <div key={char.id} onClick={e => handleClickChar(e, char.id)}>
-                <img
-                  className={char.id === charID ? 'selected' : ''}
-                  alt="profile"
-                  src={PICTURE_DIR + char.image}
-                />
+                <img className={char.id === charID ? 'selected' : ''} alt="profile" src={PICTURE_DIR + char.image} />
               </div>
             ))}
           </div>

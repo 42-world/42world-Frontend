@@ -4,7 +4,7 @@ import { MypageButton } from '../../_common';
 import AuthButton from './AuthButton';
 import CharSelectModal from './CharSelectModal';
 import Logout from './Logout';
-import profileUtils from '../utils/profileUtils';
+import profileUtils from '../../../utils/profileUtils';
 
 const ProfileSection = ({ imgID, userName }) => {
   const PICTURE_DIR = '/assets/CharacterWhiteBG/';
@@ -24,10 +24,7 @@ const ProfileSection = ({ imgID, userName }) => {
     <ProfileSectionDiv>
       <div className="mypage-photo-sect">
         <img alt={profilePhoto} src={`${PICTURE_DIR + profilePhoto}`} />
-        <MypageButton
-          btnType="change-photo"
-          onClick={e => handleClickPhotoBtn(e)}
-        >
+        <MypageButton btnType="change-photo" onClick={e => handleClickPhotoBtn(e)}>
           사진 변경
         </MypageButton>
       </div>
