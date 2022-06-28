@@ -3,30 +3,32 @@ import { useLocation } from 'react-router-dom';
 
 import { QuickLink } from 'components/organisms/main';
 import { MyArticlePreview, MyArticleBoard, MyProfile } from './components';
+import constants from './components/constants';
+
 import StyledMypage from './styles/Mypage.styles';
 
 const Mypage = () => {
   const loc = useLocation();
-  const articleType = loc.pathname.split('/')[2];
-  const ARTICLE = 1,
-    COMMENT = 2,
-    LIKED = 3;
+  const articleType =
+    {
+      article: constants.ARTICLE,
+      comment: constants.COMMENT,
+      liked: constants.LIKED,
+    }[loc.pathname.split('/')[2]] || 0;
 
   return (
     <>
       <StyledMypage>
         <main>
           {articleType ? (
-            <MyArticleBoard
-              articleType={articleType === 'article' ? ARTICLE : articleType === 'comment' ? COMMENT : LIKED}
-            />
+            <MyArticleBoard articleType={articleType} />
           ) : (
             <>
               <MyProfile />
               <div className="mypage-article">
-                <MyArticlePreview articleType={ARTICLE} />
-                <MyArticlePreview articleType={COMMENT} />
-                <MyArticlePreview articleType={LIKED} />
+                <MyArticlePreview articleType={constants.ARTICLE} />
+                <MyArticlePreview articleType={constants.COMMENT} />
+                <MyArticlePreview articleType={constants.LIKED} />
               </div>
             </>
           )}
