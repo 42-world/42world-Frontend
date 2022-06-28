@@ -1,5 +1,5 @@
 import StyledMypage from './Mypage.styles';
-import StyledMyPageButton from './MypageBtton.styles';
+import StyledMyPageButton from './MypageButton.styles';
 import StyledMyArticlePreview from './MyArticlePreview.styles';
 
 import StyledLinkBox from './Linkbox.styles';
