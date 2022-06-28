@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import TopNav from './components/TopNav';
-import LoginButton from './components/LoginButton';
+import LoginButton from '../common/TopNav/components/LoginButton';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('TopNav Component', () => {
+describe('LoginButton Component', () => {
   test('renders LoginButton Component', () => {
     // Arrange
     render(<LoginButton />, { wrapper: BrowserRouter });
