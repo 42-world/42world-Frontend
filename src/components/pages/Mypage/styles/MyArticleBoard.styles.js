@@ -31,6 +31,30 @@ const StyledMyArticleBoard = styled.div`
     text-decoration: none;
     color: ${props => props.theme.black};
   }
+
+  .page-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    margin-top: 0.3rem;
+    background-color: ${props => props.theme.backgroundWhite};
+
+    button {
+      border: none;
+      background-color: ${props => props.theme.backgroundWhite};
+      color: ${props => props.theme.textBlack};
+      padding: 0.3rem 0.5rem;
+      margin: 0.2rem;
+      border-radius: 0.3rem;
+    }
+    .cur-page {
+      background-color: ${props => props.theme.primary};
+      color: ${props => props.theme.textWhite};
+    }
+  }
+
   ${props => props.theme.mobileSize} {
     box-shadow: none;
     border-bottom: 1px solid ${props => props.theme.lineGray1};

@@ -32,7 +32,7 @@ const MyArticleBoard = ({ articleType }) => {
           </Link>
         ))}
       </div>
-      <StyledMyArticlePageSelector>
+      <div className="page-selector">
         <button onClick={handleClickPrev}>&lt;</button>
         {pageList.map(page => (
           <button key={page} className={page === curPage ? 'cur-page' : ''} onClick={() => handleClickPageNum(page)}>
@@ -40,7 +40,7 @@ const MyArticleBoard = ({ articleType }) => {
           </button>
         ))}
         <button onClick={handleClickNext}>&gt;</button>
-      </StyledMyArticlePageSelector>
+      </div>
     </StyledMyArticleBoard>
   );
 };
