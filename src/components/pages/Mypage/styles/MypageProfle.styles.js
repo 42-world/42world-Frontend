@@ -25,6 +25,19 @@ const StyledMypageProfile = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
+    @media screen and (min-width: 481px) {
+      flex-direction: row;
+    }
+  }
+
+  .link-section {
+    padding: 0.3rem;
+    padding-right: 1rem;
+    border-left: solid ${props => props.theme.lineGray1};
+    flex-shrink: 1;
+    flex-grow: 1;
+    overflow: auto;
+
     .profile-link-box {
       display: flex;
       align-items: center;
@@ -48,19 +61,6 @@ const StyledMypageProfile = styled.div`
       }
     }
 
-    @media screen and (min-width: 481px) {
-      flex-direction: row;
-    }
-  }
-
-  .link-section {
-    padding: 0.3rem;
-    padding-right: 1rem;
-    border-left: solid ${props => props.theme.lineGray1};
-    flex-shrink: 1;
-    flex-grow: 1;
-    overflow: auto;
-
     @media screen and (max-width: 480px) {
       padding: 0.3rem 0.5rem;
       display: flex;
@@ -77,6 +77,7 @@ const StyledMypageProfile = styled.div`
       }
     }
   }
+
   ${props => props.theme.mobileSize} {
     box-shadow: none;
     border-bottom: 1px solid ${props => props.theme.lineGray1};
