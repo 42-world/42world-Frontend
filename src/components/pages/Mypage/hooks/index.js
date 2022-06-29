@@ -1,3 +1,4 @@
 import useMypageProfile from './useMypageProfile';
+import useProfileSection from './useProfileSection';
 
-export { useMypageProfile };
+export { useMypageProfile, useProfileSection };

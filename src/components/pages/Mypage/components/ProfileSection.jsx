@@ -1,44 +1,15 @@
-import { useEffect, useState } from 'react';
-
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
-import { getUser } from 'common/hooks/api/user';
 
+import { useProfileSection } from '../hooks';
 import CharSelectModal from './CharSelectModal';
-import { AuthService } from 'network';
-import { profileUtils } from '../utils';
 
 import { StyledProfileSection } from '../styles';
-import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { userState } from 'store/user';
 
 const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 
 const ProfileSection = ({ user }) => {
-  const profilePhoto = profileUtils.getProfilePhoto(user.character ?? 1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const setUserState = useSetRecoilState(userState);
-  const navigate = useNavigate();
-
-  const authButtonProps =
-    user.role === 'NOVICE'
-      ? { btnType: 'auth-42', onClick: handleAuthClick, string: '42인증' }
-      : { btnType: 'auth-42-done', onClick: undefined, string: '인증완료' };
-
-  const handlePhotoChangeClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleAuthClick = () => {
-    if (user.role === 'NOVICE') navigate('/auth');
-  };
-
-  const handleLogoutClick = async () => {
-    setUserState(null);
-    await AuthService.signOut();
-
-    navigate('/');
-  };
+  const { profilePhoto, authButtonProps, isModalOpen, setIsModalOpen, handlePhotoChangeClick, handleLogoutClick } =
+    useProfileSection(user);
 
   return (
     <StyledProfileSection>
