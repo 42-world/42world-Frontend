@@ -1,5 +1,5 @@
-import MyProfile from './MyProfile';
+import MypageProfile from './MypageProfile';
 import MyArticlePreview from './MyArticlePreview';
 import MyArticleBoard from './MyArticleBoard';
 
-export { MyProfile, MyArticleBoard, MyArticlePreview };
+export { MypageProfile, MyArticleBoard, MyArticlePreview };
