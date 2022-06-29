@@ -43,6 +43,10 @@ const useMypageProfile = () => {
     solvedac: 'https://solved.ac/profile/',
   };
 
+  const handleClickLinkBox = linkType => {
+    console.log(linkHref[linkType]); // TODO: 링크 누르면 이동하도록 수정
+  };
+
   useEffect(() => {
     setMyLinks([
       { linkType: 'intra42', linkValue: userInfo.nickname ?? 'undefined' },
@@ -50,11 +54,7 @@ const useMypageProfile = () => {
     ]);
   }, [userInfo]);
 
-  const handleLinkBoxClick = linkType => {
-    console.log(linkHref[linkType]); // TODO: 링크 누르면 이동하도록 수정
-  };
-
-  return { myLinks, userInfo, setUserInfo, linkIcon, handleLinkBoxClick };
+  return { myLinks, userInfo, setUserInfo, linkIcon, handleClickLinkBox };
 };
 
 export default useMypageProfile;

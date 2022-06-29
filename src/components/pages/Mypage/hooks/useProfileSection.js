@@ -10,24 +10,24 @@ const useProfileSection = (userInfo, setUserInfo) => {
   const profilePhoto = profilePhotoUtils.getProfilePhoto(userInfo.character ?? 0);
   const authButtonProps =
     userInfo.role === 'NOVICE'
-      ? { btnType: 'auth-42', onClick: handleAuthClick, string: '42인증' }
+      ? { btnType: 'auth-42', onClick: handleClickAuth, string: '42인증' }
       : { btnType: 'auth-42-done', onClick: undefined, string: '인증완료' };
 
-  const handlePhotoChangeClick = () => {
+  const handleClickPhotoChange = () => {
     setIsModalOpen(true);
   };
 
-  const handleAuthClick = () => {
+  const handleClickAuth = () => {
     if (user.role === 'NOVICE') navigate('/auth');
   };
 
-  const handleLogoutClick = async () => {
+  const handleClickLogout = async () => {
     setUserInfo(null);
     await AuthService.signOut();
     navigate('/');
   };
 
-  const handleCharClick = async id => {
+  const handleClickChar = async id => {
     try {
       await UserService.updateUser({ character: id });
       window.alert('캐릭터 변경 완료');
@@ -37,7 +37,7 @@ const useProfileSection = (userInfo, setUserInfo) => {
     }
   };
 
-  const handleCloseClick = () => {
+  const handleClickClose = () => {
     setIsModalOpen(false);
   };
 
@@ -45,11 +45,10 @@ const useProfileSection = (userInfo, setUserInfo) => {
     profilePhoto,
     authButtonProps,
     isModalOpen,
-    handleCharClick,
-    handleCloseClick,
-    handlePhotoChangeClick,
-    handleAuthClick,
-    handleLogoutClick,
+    handleClickChar,
+    handleClickClose,
+    handleClickPhotoChange,
+    handleClickLogout,
   };
 };
 

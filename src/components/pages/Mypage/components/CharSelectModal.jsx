@@ -3,7 +3,7 @@ import { ModalPortal, profilePhotoUtils } from 'components/pages/Mypage/utils';
 
 import { StyledCharSelectModal } from 'components/pages/Mypage/styles';
 
-const CharSelectModal = ({ userInfo, handleCharClick, handleCloseClick }) => {
+const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
   return (
     <ModalPortal>
       <StyledCharSelectModal>
@@ -14,7 +14,7 @@ const CharSelectModal = ({ userInfo, handleCharClick, handleCloseClick }) => {
             <ul className="char-list">
               {profilePhotoUtils.PROFILE_LIST.map(char => (
                 <li key={char.id}>
-                  <button onClick={() => handleCharClick(char.id)}>
+                  <button onClick={() => handleClickChar(char.id)}>
                     <img
                       className={char.id === userInfo.character ? 'selected' : ''}
                       alt="profile"
@@ -24,7 +24,7 @@ const CharSelectModal = ({ userInfo, handleCharClick, handleCloseClick }) => {
                 </li>
               ))}
             </ul>
-            <MypageButton onClick={handleCloseClick}>닫기</MypageButton>
+            <MypageButton onClick={handleClickClose}>닫기</MypageButton>
           </div>
         </div>
       </StyledCharSelectModal>

@@ -9,17 +9,17 @@ const ProfileSection = ({ userInfo, setUserInfo }) => {
     profilePhoto,
     authButtonProps,
     isModalOpen,
-    handleCharClick,
-    handleCloseClick,
-    handlePhotoChangeClick,
-    handleLogoutClick,
+    handleClickChar,
+    handleClickClose,
+    handleClickPhotoChange,
+    handleClickLogout,
   } = useProfileSection(userInfo, setUserInfo);
 
   return (
     <StyledProfileSection>
       <div className="mypage-photo-sect">
         <img alt={profilePhoto} src={'/assets/CharacterWhiteBG/' + profilePhoto} />
-        <MypageButton btnType="change-photo" onClick={handlePhotoChangeClick}>
+        <MypageButton btnType="change-photo" onClick={handleClickPhotoChange}>
           사진 변경
         </MypageButton>
       </div>
@@ -29,11 +29,11 @@ const ProfileSection = ({ userInfo, setUserInfo }) => {
           <MypageButton btnType={authButtonProps.btnType} onClick={authButtonProps.onClick}>
             {authButtonProps.string}
           </MypageButton>
-          <MypageButton onClick={handleLogoutClick}>로그아웃</MypageButton>
+          <MypageButton onClick={handleClickLogout}>로그아웃</MypageButton>
         </div>
       </div>
       {isModalOpen && (
-        <CharSelectModal userInfo={userInfo} handleCharClick={handleCharClick} handleCloseClick={handleCloseClick} />
+        <CharSelectModal userInfo={userInfo} handleClickChar={handleClickChar} handleClickClose={handleClickClose} />
       )}
     </StyledProfileSection>
   );

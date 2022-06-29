@@ -4,7 +4,7 @@ import { useMypageProfile } from 'components/pages/Mypage/hooks';
 import { StyledMypageProfile, StyledLinkBox } from 'components/pages/Mypage/styles';
 
 const MypageProfile = () => {
-  const { myLinks, userInfo, setUserInfo, linkIcon, handleLinkboxClick } = useMypageProfile();
+  const { myLinks, userInfo, setUserInfo, linkIcon, handleClickLinkbox } = useMypageProfile();
 
   return (
     <StyledMypageProfile>
@@ -14,7 +14,7 @@ const MypageProfile = () => {
         <ProfileSection userInfo={userInfo} setUserInfo={setUserInfo} />
         <ul className="link-section">
           {myLinks.map(({ linkType, linkValue }) => (
-            <li key={`link-${linkType}`} className="profile-link-box" onClick={() => handleLinkboxClick(linkType)}>
+            <li key={`link-${linkType}`} className="profile-link-box" onClick={() => handleClickLinkbox(linkType)}>
               {linkIcon[linkType] ?? <></>}
               <span>{linkValue}</span>
             </li>
