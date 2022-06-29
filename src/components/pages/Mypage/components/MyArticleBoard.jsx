@@ -1,37 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { UserService } from 'network';
+import { Link } from 'react-router-dom';
 
 import PreviewArticle from 'components/organisms/category/PreviewArticle';
-import MyArticlePageSelector from './MyArticlePageSelector';
-import constants from './constants';
+import { useMyArticleBoard } from 'components/pages/Mypage/hooks';
 
-import { StyledMyArticleBoard } from '../styles';
+import { StyledMyArticleBoard, StyledMyArticlePageSelector } from 'components/pages/Mypage/styles';
 
 const MyArticleBoard = ({ articleType }) => {
-  const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(1);
-  const navi = useNavigate();
-  const articleInfo = {
-    [constants.ARTICLE]: { fetchFunc: UserService.getMyArticles(1), title: '내 게시글' },
-    [constants.COMMENT]: { fetchFunc: UserService.getMyComments(1), title: '내 댓글' },
-    [constants.LIKED]: { fetchFunc: UserService.getLikeArticles(1), title: '좋아요한 글' },
-  };
-
-  const handleClickGoBack = () => {
-    navi('/mypage');
-  };
-
-  useEffect(() => {
-    const fetchMyArticles = async () => {
-      const response = await articleInfo.fetchFunc;
-      setArticles(response.data);
-      setPageCount(response.meta.pageCount);
-    };
-
-    fetchMyArticles();
-  }, [articleType, page]);
+  const {
+    articles,
+    articleInfo,
+    curPage,
+    pageList,
+    handleClickGoBack,
+    handleClickPrev,
+    handleClickNext,
+    handleClickPageNum,
+  } = useMyArticleBoard(articleType);
 
   return (
     <StyledMyArticleBoard>
@@ -48,7 +32,15 @@ const MyArticleBoard = ({ articleType }) => {
           </Link>
         ))}
       </div>
-      <MyArticlePageSelector curPage={page} setCurPage={setPage} pageCount={pageCount} />
+      <StyledMyArticlePageSelector>
+        <button onClick={handleClickPrev}>&lt;</button>
+        {pageList.map(page => (
+          <button key={page} className={page === curPage ? 'cur-page' : ''} onClick={() => handleClickPageNum(page)}>
+            {page}
+          </button>
+        ))}
+        <button onClick={handleClickNext}>&gt;</button>
+      </StyledMyArticlePageSelector>
     </StyledMyArticleBoard>
   );
 };

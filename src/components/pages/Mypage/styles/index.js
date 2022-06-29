@@ -1,7 +1,8 @@
 import StyledMypage from './Mypage.styles';
 import StyledMypageButton from './MypageButton.styles';
 import StyledMyArticlePreview from './MyArticlePreview.styles';
-import StyledMyArticleBoard from './MyArticleBoard';
+import StyledMyArticleBoard from './MyArticleBoard.styles';
+import StyledMyArticlePageSelector from './MyArticlePageSelector.styles';
 
 import StyledLinkBox from './Linkbox.styles';
 import StyledMypageProfile from './MypageProfle.styles';
@@ -13,6 +14,7 @@ export {
   StyledMypageButton,
   StyledMyArticlePreview,
   StyledMyArticleBoard,
+  StyledMyArticlePageSelector,
   StyledLinkBox,
   StyledMypageProfile,
   StyledProfileSection,
