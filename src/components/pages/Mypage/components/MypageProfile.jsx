@@ -1,8 +1,9 @@
-import { useMypageProfile } from '../hooks';
-import LinkBox from './LinkBox';
-import ProfileSection from './ProfileSection';
+import LinkBox from 'components/pages/Mypage/components/LinkBox';
+import ProfileSection from 'components/pages/Mypage/components/ProfileSection';
 
-import { StyledMypageProfile } from '../styles';
+import { useMypageProfile } from 'components/pages/Mypage/hooks';
+
+import { StyledMypageProfile } from 'components/pages/Mypage/styles';
 
 const MypageProfile = () => {
   const { myLinks, userInfo, setUserInfo } = useMypageProfile();

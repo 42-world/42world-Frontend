@@ -1,11 +1,9 @@
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
+import CharSelectModal from 'components/pages/Mypage/components/CharSelectModal';
 
-import { useProfileSection } from '../hooks';
-import CharSelectModal from './CharSelectModal';
+import { useProfileSection } from 'components/pages/Mypage/hooks';
 
-import { StyledProfileSection } from '../styles';
-
-const PICTURE_DIR = '/assets/CharacterWhiteBG/';
+import { StyledProfileSection } from 'components/pages/Mypage/styles';
 
 const ProfileSection = ({ userInfo, setUserInfo }) => {
   const {
@@ -21,7 +19,7 @@ const ProfileSection = ({ userInfo, setUserInfo }) => {
   return (
     <StyledProfileSection>
       <div className="mypage-photo-sect">
-        <img alt={profilePhoto} src={`${PICTURE_DIR + profilePhoto}`} />
+        <img alt={profilePhoto} src={'/assets/CharacterWhiteBG/' + profilePhoto} />
         <MypageButton btnType="change-photo" onClick={handlePhotoChangeClick}>
           사진 변경
         </MypageButton>
