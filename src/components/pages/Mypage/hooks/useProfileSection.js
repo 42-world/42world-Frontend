@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { userState } from '../../../../store/user';
+
 import { profileUtils } from '../utils';
 
-const useProfileSection = user => {
+const useProfileSection = (userInfo, setUserInfo) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const setUserState = useSetRecoilState(userState);
   const navigate = useNavigate();
-
-  const profilePhoto = profileUtils.getProfilePhoto(user.character ?? 1);
+  const profilePhoto = profileUtils.getProfilePhoto(userInfo.character ?? 0);
   const authButtonProps =
-    user.role === 'NOVICE'
+    userInfo.role === 'NOVICE'
       ? { btnType: 'auth-42', onClick: handleAuthClick, string: '42인증' }
       : { btnType: 'auth-42-done', onClick: undefined, string: '인증완료' };
 
@@ -24,7 +21,7 @@ const useProfileSection = user => {
   };
 
   const handleLogoutClick = async () => {
-    setUserState(null);
+    setUserInfo(null);
     await AuthService.signOut();
 
     navigate('/');

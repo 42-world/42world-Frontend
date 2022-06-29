@@ -5,14 +5,14 @@ import ProfileSection from './ProfileSection';
 import { StyledMypageProfile } from '../styles';
 
 const MypageProfile = () => {
-  const { myLinks, user } = useMypageProfile();
+  const { myLinks, userInfo, setUserInfo } = useMypageProfile();
 
   return (
     <StyledMypageProfile>
       <h1 className="profile-title">마이페이지</h1>
       <hr />
       <div className="profile-section">
-        <ProfileSection user={user} />
+        <ProfileSection userInfo={userInfo} setUserInfo={setUserInfo} />
         <ul className="link-section">
           {myLinks.map(linkInfo => (
             <LinkBox key={`link-${linkInfo.linkType}`} linkInfo={linkInfo} />
