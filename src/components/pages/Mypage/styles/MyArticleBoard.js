@@ -12,13 +12,15 @@ const StyledMyArticleBoard = styled.div`
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid ${props => props.theme.lineGray1};
+
     h1 {
-      margin: 1rem 0.8rem;
+      padding: 1rem 0.8rem;
       font-size: 1.4rem;
       font-weight: bold;
     }
+
     .go-back {
-      margin: 0.5rem;
+      padding: 0.5rem;
       border: none;
       background: transparent;
       cursor: pointer;

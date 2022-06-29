@@ -31,7 +31,7 @@ const ProfileSection = ({ imgID, userName }) => {
   }, [imgID]);
 
   const handlePhotoChangeClick = () => {
-    setIsOpen(true);
+    setIsModalOpen(true);
   };
 
   const handleAuthClick = () => {

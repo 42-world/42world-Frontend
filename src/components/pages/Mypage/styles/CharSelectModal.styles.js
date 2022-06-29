@@ -1,21 +1,45 @@
 import styled from 'styled-components';
 
 const StyledCharSelectModal = styled.div`
-  width: 40%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 30%);
+  backdrop-filter: blur(4px);
 
-  &:focus {
-    outline: none;
-    border: none;
+  .char-select-modal-container {
+    position: fixed;
+    width: 35rem;
+    height: 25rem;
+    top: calc(50% - 12.5rem);
+    left: calc(50% - 17.5rem);
+    background-color: ${props => props.theme.white};
+    border: 2px solid ${props => props.theme.lineGray1};
+    border-radius: ${props => props.theme.borderRadius};
+
+    h2 {
+      padding: 1rem 0.8rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    hr {
+      color: ${props => props.theme.lineGray1};
+    }
+
+    ${props => props.theme.mobileSize} {
+      width: 70%;
+      height: 25rem;
+      top: calc(50% - 12.5rem);
+      left: 15%;
+      width: 70%;
+    }
   }
 
-  h2 {
-    margin: 0.6rem 0.1rem 0.6rem 0.5rem;
-    font-size: 1.6rem;
-  }
-  hr {
-    color: ${props => props.theme.LineGray1};
-  }
-  & > div {
+  .char-select-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,9 +69,6 @@ const StyledCharSelectModal = styled.div`
         }
       }
     }
-  }
-  ${props => props.theme.mobileSize} {
-    width: 70%;
   }
 `;
 

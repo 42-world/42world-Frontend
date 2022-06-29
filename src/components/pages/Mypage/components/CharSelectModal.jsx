@@ -29,25 +29,31 @@ const CharSelectModal = ({ setIsModalOpen }) => {
   };
 
   const handleCloseClick = () => {
-    setIsOpen(false);
+    setIsModalOpen(false);
   };
 
   return (
     <ModalPortal>
       <StyledCharSelectModal>
-        <h2>캐릭터 선택</h2>
-        <hr />
-        <div>
-          <ul className="char-list">
-            {profileUtils.PROFILE_LIST.map(char => (
-              <li key={char.id}>
-                <button onClick={() => handleCharClick(char.id)}>
-                  <img className={char.id === charID ? 'selected' : ''} alt="profile" src={PICTURE_DIR + char.image} />
-                </button>
-              </li>
-            ))}
-          </ul>
-          <MypageButton onClick={handleCloseClick}>닫기</MypageButton>
+        <div className="char-select-modal-container">
+          <h2>캐릭터 선택</h2>
+          <hr />
+          <div className="char-select-inner">
+            <ul className="char-list">
+              {profileUtils.PROFILE_LIST.map(char => (
+                <li key={char.id}>
+                  <button onClick={() => handleCharClick(char.id)}>
+                    <img
+                      className={char.id === charID ? 'selected' : ''}
+                      alt="profile"
+                      src={PICTURE_DIR + char.image}
+                    />
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <MypageButton onClick={handleCloseClick}>닫기</MypageButton>
+          </div>
         </div>
       </StyledCharSelectModal>
     </ModalPortal>
