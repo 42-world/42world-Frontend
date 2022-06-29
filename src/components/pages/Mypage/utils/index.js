@@ -1,3 +1,4 @@
 import profileUtils from './profileUtils';
+import ModalPortal from './ModalPortal';
 
-export { profileUtils };
+export { profileUtils, ModalPortal };
