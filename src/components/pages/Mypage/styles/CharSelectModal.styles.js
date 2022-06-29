@@ -53,8 +53,11 @@ const StyledCharSelectModal = styled.div`
       padding: 0.3rem;
 
       button {
-        display: block;
+        border: none;
+        background: none;
+        padding: none;
         margin: 0.3rem;
+
         &:hover {
           cursor: pointer;
         }
