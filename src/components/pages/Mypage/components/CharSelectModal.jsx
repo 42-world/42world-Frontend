@@ -1,16 +1,14 @@
-import { Modal } from '@mui/material';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { UserService } from 'network';
 import { userState } from 'store/user';
-import profileUtils from '../utils/profileUtils';
-
+import { ModalPortal, profileUtils } from '../utils';
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
 
 import { StyledCharSelectModal } from '../styles';
 
-const CharSelectModal = ({ isOpen, setIsOpen }) => {
+const CharSelectModal = ({ setIsModalOpen }) => {
   //const curUser = auth.curUser;
   const PICTURE_DIR = '/assets/CharacterWhiteBG/';
   const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -35,22 +33,24 @@ const CharSelectModal = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <Modal open={isOpen}>
+    <ModalPortal>
       <StyledCharSelectModal>
         <h2>캐릭터 선택</h2>
         <hr />
         <div>
-          <div className="char-list">
+          <ul className="char-list">
             {profileUtils.PROFILE_LIST.map(char => (
-              <div key={char.id} onClick={() => handleCharClick(char.id)}>
-                <img className={char.id === charID ? 'selected' : ''} alt="profile" src={PICTURE_DIR + char.image} />
-              </div>
+              <li key={char.id}>
+                <button onClick={() => handleCharClick(char.id)}>
+                  <img className={char.id === charID ? 'selected' : ''} alt="profile" src={PICTURE_DIR + char.image} />
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
           <MypageButton onClick={handleCloseClick}>닫기</MypageButton>
         </div>
       </StyledCharSelectModal>
-    </Modal>
+    </ModalPortal>
   );
 };
 
