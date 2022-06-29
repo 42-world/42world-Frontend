@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledMyProfile = styled.div`
+const StyledMypageProfile = styled.div`
   background-color: ${props => props.theme.white};
   box-shadow: ${props => props.theme.boxShadow};
   width: 100%;
@@ -54,4 +54,4 @@ const StyledMyProfile = styled.div`
   }
 `;
 
-export default StyledMyProfile;
+export default StyledMypageProfile;
