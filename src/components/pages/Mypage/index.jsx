@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { QuickLink } from 'components/organisms/main';
 import { MyArticlePreview, MyArticleBoard, MypageProfile } from './components';
-import constants from './components/constants';
+import constants from 'components/pages/Mypage/constants';
 
 import { StyledMypage } from './styles';
 
