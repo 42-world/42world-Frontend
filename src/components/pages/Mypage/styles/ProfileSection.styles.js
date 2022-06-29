@@ -43,3 +43,5 @@ const StyledProfileSection = styled.div`
     }
   }
 `;
+
+export default StyledProfileSection;
