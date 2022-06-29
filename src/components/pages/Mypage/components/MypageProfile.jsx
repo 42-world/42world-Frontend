@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { userState } from 'store/user';
@@ -16,7 +16,7 @@ const MypageProfile = () => {
       { linkType: 'intra42', linkValue: user?.nickname },
       { linkType: 'github', linkValue: user?.nickname },
     ]);
-  });
+  }, [user]);
 
   return (
     <StyledMypageProfile>
