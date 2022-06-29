@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-
-import { userState } from 'store/user';
+import { useMypageProfile } from '../hooks';
 import LinkBox from './LinkBox';
 import ProfileSection from './ProfileSection';
 
 import { StyledMypageProfile } from '../styles';
 
 const MypageProfile = () => {
-  const [myLinks, setMyLinks] = useState([]);
-  const user = useRecoilValue(userState);
-
-  useEffect(() => {
-    setMyLinks([
-      { linkType: 'intra42', linkValue: user?.nickname },
-      { linkType: 'github', linkValue: user?.nickname },
-    ]);
-  }, [user]);
+  const { myLinks, user } = useMypageProfile();
 
   return (
     <StyledMypageProfile>
       <h1 className="profile-title">마이페이지</h1>
       <hr />
       <div className="profile-section">
-        <ProfileSection imgID={user?.character} userName={user?.nickname} />
+        <ProfileSection user={user} />
         <ul className="link-section">
           {myLinks.map(linkInfo => (
             <LinkBox key={`link-${linkInfo.linkType}`} linkInfo={linkInfo} />

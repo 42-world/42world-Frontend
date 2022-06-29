@@ -14,21 +14,16 @@ import { userState } from 'store/user';
 
 const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 
-const ProfileSection = ({ imgID, userName }) => {
-  const [profilePhoto, setProfilePhoto] = useState('bora.png');
+const ProfileSection = ({ user }) => {
+  const profilePhoto = profileUtils.getProfilePhoto(user.character ?? 1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const setUserState = useSetRecoilState(userState);
   const navigate = useNavigate();
-  const { user } = getUser();
 
   const authButtonProps =
     user.role === 'NOVICE'
       ? { btnType: 'auth-42', onClick: handleAuthClick, string: '42인증' }
       : { btnType: 'auth-42-done', onClick: undefined, string: '인증완료' };
-
-  useEffect(() => {
-    setProfilePhoto(profileUtils.getProfilePhoto(imgID));
-  }, [imgID]);
 
   const handlePhotoChangeClick = () => {
     setIsModalOpen(true);
@@ -54,7 +49,7 @@ const ProfileSection = ({ imgID, userName }) => {
         </MypageButton>
       </div>
       <div className="mypage-auth-sect">
-        <h1>{userName}</h1>
+        <h1>{user.nickname}</h1>
         <div className="mypage-auth-button">
           <MypageButton btnType={authButtonProps.btnType} onClick={authButtonProps.onClick}>
             {authButtonProps.string}
