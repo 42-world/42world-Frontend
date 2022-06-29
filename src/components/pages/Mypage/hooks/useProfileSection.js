@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserService } from 'network';
 
 import { profileUtils } from '../utils';
 
@@ -23,15 +24,29 @@ const useProfileSection = (userInfo, setUserInfo) => {
   const handleLogoutClick = async () => {
     setUserInfo(null);
     await AuthService.signOut();
-
     navigate('/');
+  };
+
+  const handleCharClick = async id => {
+    try {
+      await UserService.updateUser({ character: id });
+      window.alert('캐릭터 변경 완료');
+      setUserInfo({ ...userInfo, character: id });
+    } catch {
+      window.alert('캐릭터 변경 실패, 관리자에게 문의하세요');
+    }
+  };
+
+  const handleCloseClick = () => {
+    setIsModalOpen(false);
   };
 
   return {
     profilePhoto,
     authButtonProps,
     isModalOpen,
-    setIsModalOpen,
+    handleCharClick,
+    handleCloseClick,
     handlePhotoChangeClick,
     handleAuthClick,
     handleLogoutClick,

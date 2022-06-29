@@ -8,8 +8,15 @@ import { StyledProfileSection } from '../styles';
 const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 
 const ProfileSection = ({ userInfo, setUserInfo }) => {
-  const { profilePhoto, authButtonProps, isModalOpen, setIsModalOpen, handlePhotoChangeClick, handleLogoutClick } =
-    useProfileSection(userInfo, setUserInfo);
+  const {
+    profilePhoto,
+    authButtonProps,
+    isModalOpen,
+    handleCharClick,
+    handleCloseClick,
+    handlePhotoChangeClick,
+    handleLogoutClick,
+  } = useProfileSection(userInfo, setUserInfo);
 
   return (
     <StyledProfileSection>
@@ -28,7 +35,9 @@ const ProfileSection = ({ userInfo, setUserInfo }) => {
           <MypageButton onClick={handleLogoutClick}>로그아웃</MypageButton>
         </div>
       </div>
-      {isModalOpen && <CharSelectModal userInfo={userInfo} setUserInfo={setUserInfo} setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && (
+        <CharSelectModal userInfo={userInfo} handleCharClick={handleCharClick} handleCloseClick={handleCloseClick} />
+      )}
     </StyledProfileSection>
   );
 };
