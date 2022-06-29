@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { UserService } from 'network';
 import { ArticlePreview } from 'components/organisms/main';
-import constants from './constants';
+import constants from 'components/pages/Mypage/constants';
 
-import { StyledMyArticlePreview } from '../styles';
+import { StyledMyArticlePreview } from 'components/pages/Mypage/styles';
 
 const MyArticlePreview = ({ articleType }) => {
   const [articles, setArticles] = useState([]);

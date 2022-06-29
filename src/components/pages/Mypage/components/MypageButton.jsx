@@ -1,4 +1,4 @@
-import { StyledMypageButton } from '../styles';
+import { StyledMypageButton } from 'components/pages/Mypage/styles';
 
 const MypageButton = ({ btnType, onClick, children }) => {
   return (

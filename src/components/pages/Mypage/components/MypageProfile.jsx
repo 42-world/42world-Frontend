@@ -1,5 +1,4 @@
 import ProfileSection from 'components/pages/Mypage/components/ProfileSection';
-
 import { useMypageProfile } from 'components/pages/Mypage/hooks';
 
 import { StyledMypageProfile, StyledLinkBox } from 'components/pages/Mypage/styles';

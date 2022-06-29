@@ -1,6 +1,5 @@
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
 import CharSelectModal from 'components/pages/Mypage/components/CharSelectModal';
-
 import { useProfileSection } from 'components/pages/Mypage/hooks';
 
 import { StyledProfileSection } from 'components/pages/Mypage/styles';

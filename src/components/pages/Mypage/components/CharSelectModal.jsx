@@ -1,7 +1,7 @@
-import { ModalPortal, profilePhotoUtils } from '../utils';
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
+import { ModalPortal, profilePhotoUtils } from 'components/pages/Mypage/utils';
 
-import { StyledCharSelectModal } from '../styles';
+import { StyledCharSelectModal } from 'components/pages/Mypage/styles';
 
 const CharSelectModal = ({ userInfo, handleCharClick, handleCloseClick }) => {
   return (
