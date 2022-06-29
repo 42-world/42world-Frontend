@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { QuickLink } from 'components/organisms/main';
-import { MyArticlePreview, MyArticleBoard, MyProfile } from './components';
+import { MyArticlePreview, MyArticleBoard, MypageProfile } from './components';
 import constants from './components/constants';
 
 import { StyledMypage } from './styles';
@@ -24,7 +24,7 @@ const Mypage = () => {
             <MyArticleBoard articleType={articleType} />
           ) : (
             <>
-              <MyProfile />
+              <MypageProfile />
               <div className="mypage-article">
                 <MyArticlePreview articleType={constants.ARTICLE} />
                 <MyArticlePreview articleType={constants.COMMENT} />
