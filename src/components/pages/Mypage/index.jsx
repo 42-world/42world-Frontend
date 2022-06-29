@@ -1,20 +1,12 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-
 import { QuickLink } from 'components/organisms/main';
-import { MyArticlePreview, MyArticleBoard, MypageProfile } from './components';
+import { MyArticlePreview, MyArticleBoard, MypageProfile } from 'components/pages/Mypage/components';
 import constants from 'components/pages/Mypage/constants';
+import { useMypage } from 'components/pages/Mypage/hooks';
 
-import { StyledMypage } from './styles';
+import { StyledMypage } from 'components/pages/Mypage/styles';
 
 const Mypage = () => {
-  const loc = useLocation();
-  const articleType =
-    {
-      article: constants.ARTICLE,
-      comment: constants.COMMENT,
-      liked: constants.LIKED,
-    }[loc.pathname.split('/')[2]] || 0;
+  const { articleType } = useMypage();
 
   return (
     <>
