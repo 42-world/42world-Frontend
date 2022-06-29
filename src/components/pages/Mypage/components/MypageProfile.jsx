@@ -15,14 +15,10 @@ const MypageProfile = () => {
         <ProfileSection userInfo={userInfo} setUserInfo={setUserInfo} />
         <ul className="link-section">
           {myLinks.map(({ linkType, linkValue }) => (
-            <StyledLinkBox
-              key={`link-${linkType}`}
-              className="mypage-link"
-              onClick={() => handleLinkboxClick(linkType)}
-            >
+            <li key={`link-${linkType}`} className="profile-link-box" onClick={() => handleLinkboxClick(linkType)}>
               {linkIcon[linkType] ?? <></>}
               <span>{linkValue}</span>
-            </StyledLinkBox>
+            </li>
           ))}
         </ul>
         {/* TODO: MypageData에 아직 링크 구현 안됨 */}
