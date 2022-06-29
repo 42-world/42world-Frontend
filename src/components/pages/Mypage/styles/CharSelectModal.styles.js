@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledCharSelectModal = styled(ModalContainer)`
+const StyledCharSelectModal = styled.div`
   width: 40%;
 
   &:focus {
@@ -27,13 +27,15 @@ const StyledCharSelectModal = styled(ModalContainer)`
       flex-wrap: wrap;
       justify-content: center;
       padding: 0.3rem;
-      & > div {
+
+      button {
         display: block;
         margin: 0.3rem;
         &:hover {
           cursor: pointer;
         }
       }
+
       img {
         width: 5rem;
         border: 2px solid black;
