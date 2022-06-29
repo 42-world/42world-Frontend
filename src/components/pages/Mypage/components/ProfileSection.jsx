@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
-import AuthButton from './AuthButton';
 import { getUser } from 'common/hooks/api/user';
 
 import CharSelectModal from './CharSelectModal';
-import Logout from './Logout';
 import { AuthService } from 'network';
-import profileUtils from '../../../utils/profileUtils';
+import { profileUtils } from '../utils';
 
 import { StyledProfileSection } from '../styles';
 import { useNavigate } from 'react-router-dom';
