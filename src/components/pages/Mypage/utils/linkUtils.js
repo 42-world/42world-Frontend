@@ -1,8 +1,6 @@
 import { IconGithub, Icon42, IconFacebook, IconLinkedin, IconSolvedac, IconTwitter } from '../assets';
 
-import { StyledLinkBox } from '../styles';
-
-const LinkBox = ({ linkInfo }) => {
+const getLinkIconHref = linkInfo => {
   const linkIcon = {
     github: <IconGithub />,
     intra42: <Icon42 />,
@@ -22,16 +20,7 @@ const LinkBox = ({ linkInfo }) => {
       solvedac: 'https://solved.ac/profile/',
     }[linkInfo.linkType] || '';
 
-  const handleClickLink = () => {
-    console.log(linkHref); // TODO: 링크 누르면 이동하도록 수정
-  };
-
-  return (
-    <StyledLinkBox className="mypage-link" onClick={handleClickLink}>
-      {linkIcon}
-      <span>{linkInfo.linkValue}</span>
-    </StyledLinkBox>
-  );
+  return { linkIcon, linkHref };
 };
 
-export default LinkBox;
+export default getLinkIconHref;

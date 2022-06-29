@@ -1,12 +1,11 @@
-import LinkBox from 'components/pages/Mypage/components/LinkBox';
 import ProfileSection from 'components/pages/Mypage/components/ProfileSection';
 
 import { useMypageProfile } from 'components/pages/Mypage/hooks';
 
-import { StyledMypageProfile } from 'components/pages/Mypage/styles';
+import { StyledMypageProfile, StyledLinkBox } from 'components/pages/Mypage/styles';
 
 const MypageProfile = () => {
-  const { myLinks, userInfo, setUserInfo } = useMypageProfile();
+  const { myLinks, userInfo, setUserInfo, linkIcon, handleLinkboxClick } = useMypageProfile();
 
   return (
     <StyledMypageProfile>
@@ -15,8 +14,15 @@ const MypageProfile = () => {
       <div className="profile-section">
         <ProfileSection userInfo={userInfo} setUserInfo={setUserInfo} />
         <ul className="link-section">
-          {myLinks.map(linkInfo => (
-            <LinkBox key={`link-${linkInfo.linkType}`} linkInfo={linkInfo} />
+          {myLinks.map(({ linkType, linkValue }) => (
+            <StyledLinkBox
+              key={`link-${linkType}`}
+              className="mypage-link"
+              onClick={() => handleLinkboxClick(linkType)}
+            >
+              {linkIcon[linkType] ?? <></>}
+              <span>{linkValue}</span>
+            </StyledLinkBox>
           ))}
         </ul>
         {/* TODO: MypageData에 아직 링크 구현 안됨 */}
