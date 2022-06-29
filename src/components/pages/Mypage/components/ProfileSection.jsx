@@ -16,7 +16,7 @@ const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 
 const ProfileSection = ({ imgID, userName }) => {
   const [profilePhoto, setProfilePhoto] = useState('bora.png');
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const setUserState = useSetRecoilState(userState);
   const navigate = useNavigate();
   const { user } = getUser();
@@ -62,7 +62,7 @@ const ProfileSection = ({ imgID, userName }) => {
           <MypageButton onClick={handleLogoutClick}>로그아웃</MypageButton>
         </div>
       </div>
-      <CharSelectModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      {isModalOpen && <CharSelectModal setIsModalOpen={setIsModalOpen} />}
     </StyledProfileSection>
   );
 };
