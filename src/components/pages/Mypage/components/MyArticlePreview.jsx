@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { UserService } from 'network';
 import { ArticlePreview } from 'components/organisms/main';
-import { StyledMyArticlePreview } from '../styles';
-
 import constants from './constants';
 
+import { StyledMyArticlePreview } from '../styles';
+
 const MyArticlePreview = ({ articleType }) => {
-  const [articles, setArticles] = useState(null);
+  const [articles, setArticles] = useState([]);
   const navi = useNavigate();
   const articleInfo =
     {
@@ -23,7 +23,7 @@ const MyArticlePreview = ({ articleType }) => {
 
   useEffect(() => {
     const fetchMyArticles = async () => {
-      await articleInfo.fetchFunc;
+      const response = await articleInfo.fetchFunc;
       setArticles(response.data && response.data.slice(0, 5));
     };
 
@@ -38,16 +38,15 @@ const MyArticlePreview = ({ articleType }) => {
           {'더 보기 >'}
         </button>
       </div>
-      {articles &&
-        articles.map(article => (
-          <ArticlePreview
-            key={article.id}
-            id={article.id}
-            title={articleType === COMMENT ? article.content : article.title}
-            likeCount={articleType ? '' : article.commentCount}
-            commentCount={articleType ? '' : article.commentCount}
-          /> /* TODO: articleType 들어간 삼항연산자 (47 ~ 48번째 줄) 테스트 필요 */
-        ))}
+      {articles.map(article => (
+        <ArticlePreview
+          key={article.id}
+          id={article.id}
+          title={articleType === COMMENT ? article.content : article.title}
+          likeCount={articleType ? '' : article.commentCount}
+          commentCount={articleType ? '' : article.commentCount}
+        /> /* TODO: articleType 들어간 삼항연산자 (47 ~ 48번째 줄) 테스트 필요 */
+      ))}
     </StyledMyArticlePreview>
   );
 };
