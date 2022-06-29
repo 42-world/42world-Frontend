@@ -8,22 +8,16 @@ import MypageButton from 'components/pages/Mypage/components/MypageButton';
 
 import { StyledCharSelectModal } from '../styles';
 
-const CharSelectModal = ({ setIsModalOpen }) => {
-  //const curUser = auth.curUser;
+const CharSelectModal = ({ userInfo, setUserInfo, setIsModalOpen }) => {
   const PICTURE_DIR = '/assets/CharacterWhiteBG/';
-  const [userInfo, setUserInfo] = useRecoilState(userState);
-  const [charID, setCharID] = useState(userInfo ? userInfo.character : 0);
+  const charID = userInfo.character ?? 0;
 
   const handleCharClick = async id => {
     try {
       const response = await UserService.updateUser({ character: id });
       window.alert('캐릭터 변경 완료');
-      console.log(response);
-      setCharID(id);
-      setUserInfo([{ ...userInfo, character: id }]);
-      //auth.setIsLoading(true);
-    } catch (e) {
-      console.log(e);
+      setUserInfo({ ...userInfo, character: id });
+    } catch (_) {
       window.alert('캐릭터 변경 실패, 관리자에게 문의하세요');
     }
   };
