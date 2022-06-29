@@ -15,7 +15,7 @@ const useMyArticleBoard = articleType => {
     [constants.ARTICLE]: { fetchFunc: UserService.getMyArticles(1), title: '내 게시글' },
     [constants.COMMENT]: { fetchFunc: UserService.getMyComments(1), title: '내 댓글' },
     [constants.LIKED]: { fetchFunc: UserService.getLikeArticles(1), title: '좋아요한 글' },
-  }[articleType];
+  }[articleType] || { link: '', fetchFunc: undefined, title: '' };
 
   const fetchMyArticles = async () => {
     const response = await articleInfo.fetchFunc;

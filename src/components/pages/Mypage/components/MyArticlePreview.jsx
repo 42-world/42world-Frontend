@@ -1,40 +1,16 @@
-import { React, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { UserService } from 'network';
 import { ArticlePreview } from 'components/organisms/main';
-import constants from 'components/pages/Mypage/constants';
+import { useMyArticlePreview } from 'components/pages/Mypage/hooks';
 
 import { StyledMyArticlePreview } from 'components/pages/Mypage/styles';
 
 const MyArticlePreview = ({ articleType }) => {
-  const [articles, setArticles] = useState([]);
-  const navi = useNavigate();
-  const articleInfo =
-    {
-      [constants.ARTICLE]: { link: 'article', fetchFunc: UserService.getMyArticles(1), title: '내 게시글' },
-      [constants.COMMENT]: { link: 'comment', fetchFunc: UserService.getMyComments(1), title: '내 댓글' },
-      [constants.LIKED]: { link: 'liked', fetchFunc: UserService.getLikeArticles(1), title: '좋아요한 글' },
-    }[articleType] || '';
-
-  const handleMoreBtnClick = () => {
-    navi(`./${articleInfo.link}`);
-  };
-
-  useEffect(() => {
-    const fetchMyArticles = async () => {
-      const response = await articleInfo.fetchFunc;
-      setArticles(response.data && response.data.slice(0, 5));
-    };
-
-    fetchMyArticles();
-  }, [articleType]);
+  const { articles, articleInfo, handleClickMoreButton } = useMyArticlePreview(articleType);
 
   return (
     <StyledMyArticlePreview articleType={articleType}>
       <div className="title">
         <h2>{articleInfo.title}</h2>
-        <button type="button" className="more" onClick={handleMoreBtnClick}>
+        <button type="button" className="more" onClick={handleClickMoreButton}>
           {'더 보기 >'}
         </button>
       </div>
