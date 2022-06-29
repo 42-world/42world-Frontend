@@ -1,4 +1,4 @@
-import { ModalPortal, profileUtils } from '../utils';
+import { ModalPortal, profilePhotoUtils } from '../utils';
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
 
 import { StyledCharSelectModal } from '../styles';
@@ -12,7 +12,7 @@ const CharSelectModal = ({ userInfo, handleCharClick, handleCloseClick }) => {
           <hr />
           <div className="char-select-inner">
             <ul className="char-list">
-              {profileUtils.PROFILE_LIST.map(char => (
+              {profilePhotoUtils.PROFILE_LIST.map(char => (
                 <li key={char.id}>
                   <button onClick={() => handleCharClick(char.id)}>
                     <img

@@ -1,4 +1,4 @@
-import profileUtils from './profileUtils';
+import profilePhotoUtils from './profilePhotoUtils';
 import ModalPortal from './ModalPortal';
 
-export { profileUtils, ModalPortal };
+export { profilePhotoUtils, ModalPortal };

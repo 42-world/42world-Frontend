@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserService } from 'network';
 
-import { profileUtils } from '../utils';
+import { profilePhotoUtils } from '../utils';
 
 const useProfileSection = (userInfo, setUserInfo) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const profilePhoto = profileUtils.getProfilePhoto(userInfo.character ?? 0);
+  const profilePhoto = profilePhotoUtils.getProfilePhoto(userInfo.character ?? 0);
   const authButtonProps =
     userInfo.role === 'NOVICE'
       ? { btnType: 'auth-42', onClick: handleAuthClick, string: '42인증' }
