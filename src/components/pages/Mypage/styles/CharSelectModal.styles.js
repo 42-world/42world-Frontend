@@ -67,8 +67,14 @@ const StyledCharSelectModal = styled.div`
         width: 5rem;
         border: 2px solid black;
         border-radius: 4px;
+
         &:not(.selected) {
           filter: brightness(50%);
+          transition: filter 0.1s;
+
+          &:hover {
+            filter: brightness(70%);
+          }
         }
       }
     }
