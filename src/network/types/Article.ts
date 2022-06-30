@@ -6,11 +6,13 @@ export type Article = {
   id: number;
   title: string;
   content: string;
-  view_count: number;
+  viewCount: number;
   categoryId: number;
   category: Category;
   writerId: number;
   writer: User;
+  likeCount: number;
+  commentCount: number;
   deletedAt: Date;
   createdAt: Date;
   updatedAt: Date;
