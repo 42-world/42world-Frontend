@@ -18,11 +18,7 @@ const Board = () => {
   useEffect(() => {
     setArticleCount(10);
     (async () => {
-      const { data } = await ArticleService.getArticlesByCategoryId(
-        categoryId,
-        page,
-        articleCount,
-      );
+      const { data } = await ArticleService.getArticlesByCategoryId(categoryId, page, articleCount);
       // const data = await ArticleService.getArticles(categoryId, page);
       setArticles(data);
     })();
@@ -39,22 +35,13 @@ const Board = () => {
             <ArticleList>
               {Articles &&
                 Articles.map((article, id) => (
-                  <Link
-                    to={`/article/${article.id}`}
-                    className="articleList_content"
-                    key={id}
-                  >
+                  <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
                     <PreviewArticle article={article} />
                   </Link>
                 ))}
             </ArticleList>
           </Body>
-          <PageSelector
-            curPage={page}
-            setCurPage={setPage}
-            categoryId={categoryId}
-            articleCount={articleCount}
-          />
+          <PageSelector curPage={page} setCurPage={setPage} categoryId={categoryId} articleCount={articleCount} />
         </Wrapper>
       </CategoryBlock>
     </>

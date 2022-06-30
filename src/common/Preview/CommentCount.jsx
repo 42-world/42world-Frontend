@@ -5,8 +5,8 @@ import styled from 'styled-components';
 const CommentCount = ({ count }) => {
   return (
     <StyledCommentCount>
-      <BiCommentDots color={theme.textBlue} />
-      <div>{count}</div>
+      <BiCommentDots color={theme.textBlue} size={'20px'} />
+      <StyledCountText>{count}</StyledCountText>
     </StyledCommentCount>
   );
 };
@@ -14,6 +14,11 @@ const CommentCount = ({ count }) => {
 const StyledCommentCount = styled.div`
   display: flex;
   color: ${props => props.theme.textBlue};
+`;
+
+const StyledCountText = styled.div`
+  margin-left: 4px;
+  line-height: 20px;
 `;
 
 export default CommentCount;
