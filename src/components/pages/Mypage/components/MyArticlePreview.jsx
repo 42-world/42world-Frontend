@@ -1,5 +1,6 @@
 import { ArticlePreview } from 'components/organisms/main';
 import { useMyArticlePreview } from 'components/pages/Mypage/hooks';
+import constants from 'components/pages/Mypage/constants';
 
 import { StyledMyArticlePreview } from 'components/pages/Mypage/styles';
 
@@ -18,7 +19,7 @@ const MyArticlePreview = ({ articleType }) => {
         <ArticlePreview
           key={article.id}
           id={article.id}
-          title={articleType === COMMENT ? article.content : article.title}
+          title={articleType === constants.COMMENT ? article.content : article.title}
           likeCount={articleType ? '' : article.commentCount}
           commentCount={articleType ? '' : article.commentCount}
         /> /* TODO: articleType 들어간 삼항연산자 (47 ~ 48번째 줄) 테스트 필요 */

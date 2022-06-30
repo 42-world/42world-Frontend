@@ -4,14 +4,14 @@ import { useMypageProfile } from 'components/pages/Mypage/hooks';
 import { StyledMypageProfile } from 'components/pages/Mypage/styles';
 
 const MypageProfile = () => {
-  const { myLinks, userInfo, setUserInfo, linkIcon, handleClickLinkbox } = useMypageProfile();
+  const { myLinks, userInfo, linkIcon, handleClickLinkbox } = useMypageProfile();
 
   return (
     <StyledMypageProfile>
       <h1 className="profile-title">마이페이지</h1>
       <hr />
       <div className="profile-section">
-        <ProfileSection userInfo={userInfo} setUserInfo={setUserInfo} />
+        <ProfileSection userInfo={userInfo} />
         <ul className="link-section">
           {myLinks.map(({ linkType, linkValue }) => (
             <li key={`link-${linkType}`} className="profile-link-box" onClick={() => handleClickLinkbox(linkType)}>

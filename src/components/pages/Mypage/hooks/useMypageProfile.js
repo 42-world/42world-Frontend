@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { userState } from 'store/user';
+import { getUser } from 'common/hooks/api/user';
 import {
   IconGithub,
   Icon42,
@@ -22,8 +21,7 @@ const INIT_USER = {
 
 const useMypageProfile = () => {
   const [myLinks, setMyLinks] = useState([]);
-  const userInfo = useRecoilValue(userState) ?? INIT_USER;
-  const setUserInfo = useSetRecoilState(userState);
+  const { user: userInfo } = getUser();
 
   const linkIcon = {
     github: <IconGithub />,
@@ -54,7 +52,7 @@ const useMypageProfile = () => {
     ]);
   }, [userInfo]);
 
-  return { myLinks, userInfo, setUserInfo, linkIcon, handleClickLinkBox };
+  return { myLinks, userInfo, linkIcon, handleClickLinkBox };
 };
 
 export default useMypageProfile;

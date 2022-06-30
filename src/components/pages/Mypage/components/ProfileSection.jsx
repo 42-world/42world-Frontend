@@ -4,7 +4,7 @@ import { useProfileSection } from 'components/pages/Mypage/hooks';
 
 import { StyledProfileSection } from 'components/pages/Mypage/styles';
 
-const ProfileSection = ({ userInfo, setUserInfo }) => {
+const ProfileSection = ({ userInfo }) => {
   const {
     profilePhoto,
     authButtonProps,
@@ -13,7 +13,7 @@ const ProfileSection = ({ userInfo, setUserInfo }) => {
     handleClickClose,
     handleClickPhotoChange,
     handleClickLogout,
-  } = useProfileSection(userInfo, setUserInfo);
+  } = useProfileSection(userInfo);
 
   return (
     <StyledProfileSection>
