@@ -1,13 +1,18 @@
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
 import { ModalPortal, profilePhotoUtils } from 'components/pages/Mypage/utils';
 
+import { useRef } from 'react';
 import { StyledCharSelectModal } from 'components/pages/Mypage/styles';
+import useClickOutside from '../hooks/useClickOutside';
 
 const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
+  const modalRef = useRef(null);
+  useClickOutside(modalRef, handleClickClose);
+
   return (
     <ModalPortal>
       <StyledCharSelectModal>
-        <div className="char-select-modal-container">
+        <div className="char-select-modal-container" ref={modalRef}>
           <h2>캐릭터 선택</h2>
           <hr />
           <div className="char-select-inner">
