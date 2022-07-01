@@ -1,9 +1,10 @@
+import { useRef } from 'react';
+
 import MypageButton from 'components/pages/Mypage/components/MypageButton';
 import { ModalPortal, profilePhotoUtils } from 'components/pages/Mypage/utils';
+import useClickOutside from 'components/pages/Mypage/hooks/useClickOutside';
 
-import { useRef } from 'react';
 import { StyledCharSelectModal } from 'components/pages/Mypage/styles';
-import useClickOutside from '../hooks/useClickOutside';
 
 const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
   const modalRef = useRef(null);
