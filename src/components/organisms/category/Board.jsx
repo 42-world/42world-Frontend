@@ -1,40 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { ArticleService } from '../../../network';
+import { useParams } from 'react-router-dom';
+import BoardHeader from 'common/Board/BoardHeader';
 import { ArticleList, Body, Wrapper } from '../../atoms/Board';
 import { PageSelector } from './';
-import BoardHeader from './BoardHeader';
 import PreviewArticle from './PreviewArticle';
+import { getArticles } from 'common/hooks/api/article';
+import { getSearchResults } from 'common/hooks/api/search';
 
 const Board = () => {
-  const [Articles, setArticles] = useState(null);
   const [page, setPage] = useState(1);
   const [articleCount, setArticleCount] = useState(10);
-  const loca = useLocation();
+  const location = useLocation();
+  const param = useParams();
+  const query = new URLSearchParams(location.search).get('q');
+  const categoryId = param?.id ? parseInt(param.id) : null;
 
-  const categoryId = loca.pathname.split('/')[2];
+  const hasQuery = query?.length > 1;
+  const { articles: articleList } = getArticles(categoryId, !hasQuery);
+  const { articles: searchedArticles } = getSearchResults(query, hasQuery);
 
-  useEffect(() => {
-    setArticleCount(10);
-    (async () => {
-      const { data } = await ArticleService.getArticlesByCategoryId(categoryId, page, articleCount);
-      // const data = await ArticleService.getArticles(categoryId, page);
-      setArticles(data);
-    })();
-    // eslint-disable-next-line
-  }, [categoryId, page, articleCount]);
+  const articles = hasQuery ? searchedArticles : articleList;
+
   return (
     <>
       <CategoryBlock>
         <Wrapper>
           <div className="BoardHeaderWrapper">
-            <BoardHeader />
+            <BoardHeader hasQuery={hasQuery} />
           </div>
           <Body>
             <ArticleList>
-              {Articles &&
-                Articles.map((article, id) => (
+              {articles &&
+                articles.map((article, id) => (
                   <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
                     <PreviewArticle article={article} />
                   </Link>

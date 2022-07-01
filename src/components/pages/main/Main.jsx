@@ -13,7 +13,7 @@ const Main = () => {
 
   const onSubmit = () => {
     // TODO: 빈문자열 엔터치면 기부페이지로 이동
-    navigate(`/search?q=${inputValue}`);
+    navigate(`/category?q=${inputValue}`);
   };
 
   const onChange = e => {
