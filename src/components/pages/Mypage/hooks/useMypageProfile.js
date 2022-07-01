@@ -46,10 +46,12 @@ const useMypageProfile = () => {
   };
 
   useEffect(() => {
-    setMyLinks([
-      { linkType: 'intra42', linkValue: userInfo.nickname ?? 'undefined' },
-      { linkType: 'github', linkValue: userInfo.nickname ?? 'undefined' },
-    ]);
+    if (userInfo.nickname) {
+      setMyLinks([
+        { linkType: 'intra42', linkValue: userInfo.nickname },
+        { linkType: 'github', linkValue: userInfo.nickname },
+      ]);
+    }
   }, [userInfo]);
 
   return { myLinks, userInfo, linkIcon, handleClickLinkBox };
