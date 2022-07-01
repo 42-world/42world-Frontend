@@ -1,11 +1,13 @@
-import '@toast-ui/editor/dist/toastui-editor.css';
-import { Editor } from '@toast-ui/react-editor';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
+
 import { useRecoilValue } from 'recoil';
-import styled from 'styled-components';
 import { ArticleService, ImageService } from '../../../network';
-import { categoryState } from '../../../store/category';
+
+import { getCategory } from '../../../common/hooks/api/category';
+import styled from 'styled-components';
 
 const WritingContent = ({ articleContent, articleTitle }) => {
   const [title, setTitle] = useState(articleTitle);
@@ -15,7 +17,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const [isSending, setIsSending] = useState(false);
-  const category = useRecoilValue(categoryState);
+  const { isError, categories } = getCategory();
   const editorRef = useRef(null);
   const titleRef = useRef(null);
   const categoryRef = useRef(1);
@@ -104,7 +106,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
     <WritingContentBlock>
       <div className="header">
         <select name="category" id="category">
-          {category.map((item, idx) => (
+          {categories.map((item, idx) => (
             <option key={idx}>{item.name}</option>
           ))}
         </select>
