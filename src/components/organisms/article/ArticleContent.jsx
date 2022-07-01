@@ -38,9 +38,7 @@ const ArticleContent = ({ article }) => {
   };
 
   const getArticleTime = time =>
-    dayjs(time).isSame(dayjs(), 'day')
-      ? dayjs(time).format('HH:mm')
-      : dayjs(time).format('MM/DD');
+    dayjs(time).isSame(dayjs(), 'day') ? dayjs(time).format('HH:mm') : dayjs(time).format('MM/DD');
 
   return (
     <ArticleContentBlock>
@@ -54,9 +52,8 @@ const ArticleContent = ({ article }) => {
           {article.writer.role} · {article.writer.nickname}
         </h3>
         <h3 className="article_info">
-          {/* TODO : commentCount를 실시간으로 업데이트 하는 로직 추가(아마 react-query 적용 시 해결할 수 있을듯) */}
-          ⏱ {getArticleTime(article.createdAt)} &nbsp; 👁‍ {article.viewCount}{' '}
-          &nbsp; 💬 {article.commentCount}
+          {/* TODO : commentCount를 실시간으로 업데이트 하는 로직 추가(아마 react-query 적용 시 해결할 수 있을듯) */}⏱{' '}
+          {getArticleTime(article.createdAt)} &nbsp; 👀 {article.viewCount} &nbsp; 💬 {article.commentCount}
         </h3>
         {isModifiable && (
           <div className="edit_article">
