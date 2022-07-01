@@ -13,6 +13,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
   const [content, setContent] = useState(articleContent);
   const [articleId, setArticleId] = useState(null);
   const [categoryId, setCategoryId] = useState(1);
+  const [categoryList, setCategoryList] = useState([]);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
   const { isError, categories } = getCategory();
@@ -103,11 +104,15 @@ const WritingContent = ({ articleContent, articleTitle }) => {
     }
   }, [categoryId, categoryRef]);
 
+  useEffect(() => {
+    setCategoryList(categories.filter(category => category.isArticleWritable));
+  }, [categories]);
+
   return (
     <WritingContentBlock>
       <div className="header">
         <select name="category" id="category" ref={categoryRef} defaultValue={categoryId}>
-          {categories.map((item, idx) => (
+          {categoryList.map((item, idx) => (
             <option value={item.id} selected={item.id == categoryId} key={idx}>
               {item.name}
             </option>
