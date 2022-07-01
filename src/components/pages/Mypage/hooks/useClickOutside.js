@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-const useClickOutside = (ref, onClicKOutside) => {
+const useClickOutside = onClicKOutside => {
+  const ref = useRef(null);
+
   const handleClickOutside = () => {
     if (ref.current && !ref.current.contains(event.target)) onClicKOutside();
   };
@@ -10,6 +12,8 @@ const useClickOutside = (ref, onClicKOutside) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref]);
+
+  return { ref };
 };
 
 export default useClickOutside;
