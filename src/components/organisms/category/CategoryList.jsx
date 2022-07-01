@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { categoryState } from '../../../store/category';
+import { getCategory } from 'common/hooks/api/category';
 import { userCurrentPosState } from '../../../store/userCurrentPos';
 import { rem } from '../../../styles/rem';
 
 const CategoryList = ({ sendedId }) => {
-  const category = useRecoilValue(categoryState);
-  const loca = useLocation();
-  const categoryPos = loca.pathname.split('/')[1];
-  const categoryId = parseInt(loca.pathname.split('/')[2]);
-  const [userCurrentPos, setUserCurrentPos] =
-    useRecoilState(userCurrentPosState);
+  const { categories } = getCategory();
+  const location = useLocation();
+  const categoryPos = location.pathname.split('/')[1];
+  const categoryId = parseInt(location.pathname.split('/')[2]);
+  const [userCurrentPos, setUserCurrentPos] = useRecoilState(userCurrentPosState);
 
   useEffect(() => {
     if (categoryPos === 'category') {
@@ -24,24 +23,15 @@ const CategoryList = ({ sendedId }) => {
     <CategoryListBlock>
       <h2 className="category-title">커뮤니티</h2>
       <section className="category">
-        {category.map(({ id, name }, idx) => {
-          if (id === userCurrentPos || id === sendedId)
-            return (
-              <Link
-                to={`/category/${id}`}
-                className="nav-links curCategory"
-                key={idx}
-              >
-                {name}
-              </Link>
-            );
-          else
-            return (
-              <Link to={`/category/${id}`} className="nav-links" key={idx}>
-                {name}
-              </Link>
-            );
-        })}
+        {categories.map(category => (
+          <Link
+            className={`nav-links ${categoryId === category.id ? 'curCategory' : ''}`}
+            key={category.id}
+            to={`/category/${category.id}`}
+          >
+            <div>{category.name}</div>
+          </Link>
+        ))}
       </section>
     </CategoryListBlock>
   );
@@ -90,14 +80,8 @@ const CategoryListBlock = styled.div`
       align-items: center;
       justify-content: flex-start;
       .nav-links {
-<<<<<<< HEAD
-        color: rgb(148, 150, 155);
-        padding: 0 ${rem(2)} 0px;
-        border-bottom: 2px solid transparent;
-=======
         margin: 0.3rem 0.5rem;
         color: ${props => props.theme.black};
->>>>>>> f7389d307fc94e52ec9eada0a508e21dc5cfed3c
         text-decoration: none;
         &.curCategory {
           color: #53b7ba;
