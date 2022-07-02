@@ -3,9 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
-import { ArticleService, ImageService } from '../../../network';
+import { ArticleService, ImageService } from 'network';
+import { getCategory } from 'common/hooks/api/category';
 
-import { getCategory } from '../../../common/hooks/api/category';
 import styled from 'styled-components';
 
 const WritingContent = ({ articleContent, articleTitle }) => {
