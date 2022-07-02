@@ -6,7 +6,6 @@ import { StyledMyArticlePreview } from 'components/pages/Mypage/styles';
 
 const MyArticlePreview = ({ articleType }) => {
   const { articles, articleInfo, handleClickMoreButton } = useMyArticlePreview(articleType);
-
   return (
     <StyledMyArticlePreview articleType={articleType}>
       <div className="title">
@@ -20,9 +19,9 @@ const MyArticlePreview = ({ articleType }) => {
           key={article.id}
           id={article.id}
           title={articleType === constants.COMMENT ? article.content : article.title}
-          likeCount={articleType ? '' : article.commentCount}
-          commentCount={articleType ? '' : article.commentCount}
-        /> /* TODO: articleType 들어간 삼항연산자 (47 ~ 48번째 줄) 테스트 필요 */
+          likeCount={articleType !== constants.COMMENT ? article.likeCount : ''}
+          commentCount={articleType !== constants.COMMENT ? article.commentCount : ''}
+        />
       ))}
     </StyledMyArticlePreview>
   );
