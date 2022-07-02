@@ -13,7 +13,7 @@ import { StyledTopNav } from '../styled';
 const TopNav = () => {
   const [modalTarget, setModalTarget] = useRecoilState(notiModalState);
 
-  const handleClick = e => {
+  const handleClickNoti = e => {
     setModalTarget(e.currentTarget);
   };
   const handleClose = () => {
@@ -25,7 +25,7 @@ const TopNav = () => {
         <div className="top-nav">
           <Logo />
           <MenuItems />
-          <UserItems onClick={handleClick} />
+          <UserItems onClick={handleClickNoti} />
         </div>
       </StyledTopNav>
 
