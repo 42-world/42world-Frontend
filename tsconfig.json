@@ -35,6 +35,6 @@
     "resolveJsonModule": true,
   },
   "include": ["src", "craco.config.js"],
-  "exclude": ["node_modules/*", "**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules/*"],
   "jsxImportSource": "@emotion/react"
 }

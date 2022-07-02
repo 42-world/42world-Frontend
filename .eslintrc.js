@@ -27,6 +27,13 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'react/prop-types': 'off',
     'react/jsx-key': 'off',
-    'no-undef': 'off',
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
 };
