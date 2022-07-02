@@ -16,11 +16,11 @@ const PreviewHeader = ({ categoryName, onClickHandler, path }) => {
 const StyledPreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 40px;
-  padding: 12.5px 10px 35px 10px;
+  align-items: center;
   border-bottom: 1px solid ${props => props.theme.buttonGray2};
   font-size: 18px;
   font-weight: bold;
+  padding: 0.9rem 1rem 0.8rem 1rem;
   cursor: pointer;
   &:hover {
     background-color: ${props => props.theme.buttonGray2};
@@ -29,10 +29,14 @@ const StyledPreviewHeader = styled.div`
 `;
 
 const StyledCategoryName = styled.div`
+  & > div {
+    margin-left: 0.5rem;
+  }
+  & > svg {
+    transform: translateY(-2px);
+  }
   display: flex;
   justify-content: space-around;
-  width: 8rem;
-  height: 40px;
 `;
 
 const StyledMoreText = styled.div`
