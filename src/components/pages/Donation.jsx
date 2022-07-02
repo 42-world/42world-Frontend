@@ -24,6 +24,7 @@ const DonationBlock = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #eaeaea;
 `;
 
 const DonationHeader = styled.div`
@@ -34,8 +35,7 @@ const DonationHeader = styled.div`
 
 const DonationBody = styled.div`
   img {
-    border: solid black 1px;
-    margin: 20px;
+    margin: 10px;
     width: 400px;
     height: 400px;
   }
