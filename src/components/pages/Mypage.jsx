@@ -3,11 +3,7 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container } from '../atoms/global';
 import { QuickLink } from '../organisms/main';
-import {
-  MyArticleBoard,
-  MyArticlePreview,
-  MyProfile,
-} from '../organisms/mypage';
+import { MyArticleBoard, MyArticlePreview, MyProfile } from '../organisms/mypage';
 
 const Mypage = () => {
   const loc = useLocation();
@@ -22,13 +18,7 @@ const Mypage = () => {
         <main>
           {articleType ? (
             <MyArticleBoard
-              articleType={
-                articleType === 'article'
-                  ? ARTICLE
-                  : articleType === 'comment'
-                  ? COMMENT
-                  : LIKED
-              }
+              articleType={articleType === 'article' ? ARTICLE : articleType === 'comment' ? COMMENT : LIKED}
             />
           ) : (
             <>

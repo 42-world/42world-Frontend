@@ -8,9 +8,9 @@ const Donation = () => {
         <h1>QR을 찍어 후원해주시면 개발자들에게 큰 힘이 됩니다.</h1>
       </DonationHeader>
       <DonationBody>
-        <img src="/assets/donation1.svg" alt="기부1" />
-        <img src="/assets/donation2.svg" alt="기부2" />
-        <img src="/assets/donation3.svg" alt="기부3" />
+        <img src="/assets/donation1.png" alt="기부1" />
+        <img src="/assets/donation2.png" alt="기부2" />
+        <img src="/assets/donation3.png" alt="기부3" />
       </DonationBody>
     </DonationBlock>
   );
