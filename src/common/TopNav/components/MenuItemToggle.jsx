@@ -2,13 +2,14 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaBars } from 'react-icons/fa';
+import { IoMdClose } from 'react-icons/io';
 
 import { getCategory, CATEGORY_URL } from 'common/hooks/api/category';
 import { MenuItemToggleBlock, StyledMenuToggleButton, CategoryListDiv } from '../styled/MenuItemToggle.styled';
 
 const MenuItems = () => {
   const { isError, categories } = getCategory();
-  const [isToggled, setIsToggled] = useState(true);
+  const [isToggled, setIsToggled] = useState(false);
 
   const categoryListRef = useRef(null);
   const categoryListBoxRef = useRef(null);
@@ -25,7 +26,7 @@ const MenuItems = () => {
   return (
     <MenuItemToggleBlock className="category-toggle">
       {isToggled ? (
-        <FaBars onClick={() => setIsToggled(!isToggled)} />
+        <IoMdClose onClick={() => setIsToggled(!isToggled)} />
       ) : (
         <FaBars onClick={() => setIsToggled(!isToggled)} />
       )}
