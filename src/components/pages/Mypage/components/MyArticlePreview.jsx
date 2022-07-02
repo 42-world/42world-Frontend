@@ -17,7 +17,7 @@ const MyArticlePreview = ({ articleType }) => {
       {articles.map(article => (
         <ArticlePreview
           key={article.id}
-          id={article.id}
+          id={articleType === constants.COMMENT ? article.article.id : article.id}
           title={articleType === constants.COMMENT ? article.content : article.title}
           likeCount={articleType !== constants.COMMENT ? article.likeCount : ''}
           commentCount={articleType !== constants.COMMENT ? article.commentCount : ''}
