@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
@@ -32,9 +33,8 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true,
-    "baseUrl": "./src"
   },
-  "include": ["src"],
+  "include": ["src", "craco.config.js"],
   "exclude": ["node_modules/*", "**/*.js", "**/*.jsx"],
   "jsxImportSource": "@emotion/react"
 }

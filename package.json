@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.4",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.2",
@@ -26,12 +27,12 @@
     "styled-reset": "^4.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start:dev": "HTTPS=true env-cmd -f .env.dev react-scripts start",
-    "start:prod": "env-cmd -f .env.prod react-scripts start",
-    "start:local": "env-cmd -f .env.local react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "start:dev": "HTTPS=true env-cmd -f .env.dev craco start",
+    "start:prod": "env-cmd -f .env.prod craco start",
+    "start:local": "env-cmd -f .env.local craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -59,6 +60,7 @@
     "@types/react-dom": "^18.0.5",
     "@types/remove-markdown": "^0.3.1",
     "@types/styled-components": "^5.1.25",
+    "craco-alias": "^3.0.1",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
