@@ -14,12 +14,12 @@ const PROFILE_LIST = [
 
 const getProfilePhoto = id => {
   const profile = PROFILE_LIST.find(imgRef => imgRef.id === id);
-  return profile?.image;
+  return profile.image ?? PROFILE_LIST[6];
 };
 
-const profileUtils = {
+const profilePhotoUtils = {
   PROFILE_LIST,
   getProfilePhoto,
 };
 
-export default profileUtils;
+export default profilePhotoUtils;
