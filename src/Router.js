@@ -1,15 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { PageLayout } from 'common/PageLayout'
-import { LoginCheck } from './components/organisms/login';
+import { PageLayout } from 'common/PageLayout';
 import Article from './components/pages/article/_id';
-import Auth from './components/pages/Auth';
 import Category from './components/pages/category/_id';
 import ErrorPage from './components/pages/Error';
-import Login from './components/pages/Login';
-import Main from './components/pages/Main';
+import Login from './components/pages/login/Login';
+import Main from 'components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
-import Writing from './components/pages/Writing';
+import Writing from 'components/pages/writing';
 
 const Router = () => {
   return (
@@ -25,17 +23,10 @@ const Router = () => {
           <Route path="/writing" element={<Writing />} />
           <Route path="/article/:id" element={<Article />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        {/* topnav가 필요하지 않은 LoginCheck만 필요한 경우*/}
-        <Route path="/" el ement={<LoginCheck />}>
-          <Route exact path="/auth" element={<Auth />} />
-        </Route>
-        <Route exact path="/" element={<Login isCallback={false} />} />
 
-        <Route
-          path="/auth/github/callback"
-          element={<Login isCallback={true} />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/auth/github/callback" element={<Login />} />
+
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../atoms/global';
-import { Advertisement, CategoryList } from '../organisms/category';
-import { WritingContent } from '../organisms/writing';
+import { Container } from '../../atoms/global';
+import { Advertisement, CategoryList } from '../../organisms/category';
+import WritingContent from './WritingContent';
 
 const Writing = () => {
   return (

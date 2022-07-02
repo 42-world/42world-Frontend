@@ -1,24 +1,25 @@
-import '@toast-ui/editor/dist/toastui-editor.css';
-import { Editor } from '@toast-ui/react-editor';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
+
+import { ArticleService, ImageService } from 'network';
+import { getCategory } from 'common/hooks/api/category';
+
 import styled from 'styled-components';
-import { ArticleService, ImageService } from '../../../network';
-import { categoryState } from '../../../store/category';
 
 const WritingContent = ({ articleContent, articleTitle }) => {
   const [title, setTitle] = useState(articleTitle);
   const [content, setContent] = useState(articleContent);
   const [articleId, setArticleId] = useState(null);
   const [categoryId, setCategoryId] = useState(1);
+  const [categoryList, setCategoryList] = useState([]);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
-  const [isSending, setIsSending] = useState(false);
-  const category = useRecoilValue(categoryState);
+  const { isError, categories } = getCategory();
   const editorRef = useRef(null);
   const titleRef = useRef(null);
-  const categoryRef = useRef(1);
+  const categoryRef = useRef(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,7 +58,6 @@ const WritingContent = ({ articleContent, articleTitle }) => {
     }
 
     // 이동한 뒤에 API 실행됨
-    setIsSending(true);
     if (!articleId) {
       await ArticleService.createArticles({
         title: title,
@@ -72,40 +72,50 @@ const WritingContent = ({ articleContent, articleTitle }) => {
         categoryId: categoryId,
       });
     }
-    setIsSending(false);
     navigate(-1);
   };
 
   useEffect(() => {
     if (location.state.categoryId) {
-      console.log(location.state.categoryId);
       setCategoryId(location.state.categoryId);
-      //categoryRef.current.value = location.state.categoryId;
     }
     if (location.state.article) {
       const { article } = location.state;
-      console.log('test', article);
       setTitle(article.title);
       setContent(article.content);
       setCategoryId(article.categoryId);
       setArticleId(article.id);
-      categoryRef.current.value = article.categoryId;
-      console.log(article.categoryId);
       categoryRef.current.disabled = true;
       titleRef.current.disabled = true;
       editorRef.current.getInstance().setMarkdown(article.content);
     }
+  }, []);
+
+  useEffect(() => {
     if (editorRef.current) {
       markdownEditorSetting();
     }
   }, [editorRef]);
 
+  useEffect(() => {
+    if (categoryRef) {
+      console.log('categoryRef.current.value : ', categoryId);
+      categoryRef.current.value = categoryId;
+    }
+  }, [categoryId, categoryRef]);
+
+  useEffect(() => {
+    setCategoryList(categories.filter(category => category.isArticleWritable));
+  }, [categories]);
+
   return (
     <WritingContentBlock>
       <div className="header">
-        <select name="category" id="category">
-          {category.map((item, idx) => (
-            <option key={idx}>{item.name}</option>
+        <select name="category" id="category" ref={categoryRef} defaultValue={categoryId}>
+          {categoryList.map((item, idx) => (
+            <option value={item.id} selected={item.id == categoryId} key={idx}>
+              {item.name}
+            </option>
           ))}
         </select>
         <input

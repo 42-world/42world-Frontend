@@ -14,7 +14,7 @@ const ArticleContent = ({ article }) => {
   const [likeCount, setLikeCount] = React.useState(article.likeCount);
 
   const handleClickLike = async () => {
-    const res = await ReactionService.createArticleReactionHeart(article.id);
+    const res = await ReactionService.articleReaction(article.id);
     setIsLike(res.isLike);
     if (res.isLike) {
       setLikeCount(likeCount + 1);
