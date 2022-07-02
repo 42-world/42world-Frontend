@@ -1,15 +1,21 @@
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import constants from 'components/pages/Mypage/constants';
+import { useEffect } from 'react';
 
 const useMypage = () => {
-  const location = useLocation();
+  const params = useParams();
+  const navigate = useNavigate();
   const articleType =
     {
       article: constants.ARTICLE,
       comment: constants.COMMENT,
       liked: constants.LIKED,
-    }[location.pathname.split('/')[2]] || 0;
+    }[params.articleType] || 0;
+
+  useEffect(() => {
+    if (!articleType && params.articleType) navigate('/error');
+  }, [params, articleType]);
 
   return { articleType };
 };
