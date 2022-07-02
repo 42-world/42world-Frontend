@@ -12,12 +12,11 @@ const Main = () => {
             <MainPreviewBoards />
           </StyledMainSection>
 
-          <StyledMainSection>
+          <StyledSideSection>
             <QuickLink />
-          </StyledMainSection>
+          </StyledSideSection>
         </StyledMainContent>
       </StyledMain>
-      <div>footer</div>
     </>
   );
 };
@@ -29,17 +28,28 @@ const StyledMain = styled.div`
 const StyledMainContent = styled.div`
   display: flex;
   margin: auto;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 1150px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const StyledMainSection = styled.div`
+  width: 100%;
+  margin: 10px;
+`;
+
+const StyledSideSection = styled.div`
   margin: 10px;
 `;
 
 const StyledInput = styled.input`
-  width: 800px; // TODO: reactive width
+  box-sizing: border-box;
+  width: 100%;
   height: 40px;
   border-radius: 10px;
-  margin: 10px;
+  margin-bottom: 20px;
   padding: 10px;
 `;
 

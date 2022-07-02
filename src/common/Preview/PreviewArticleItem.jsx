@@ -31,6 +31,9 @@ const StyledPreviewItemContainer = styled.div`
   &:hover {
     background-color: ${theme.buttonGray1};
   }
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const StyledPreviewArticleTitle = styled.div`
