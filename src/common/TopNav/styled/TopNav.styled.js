@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledTopNav = styled.div`
   position: fixed;
   display: flex;
+  z-index: 999;
   width: 100%;
   min-width: max-content;
   height: ${props => props.theme.topNavHeight};

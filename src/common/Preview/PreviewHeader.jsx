@@ -33,7 +33,6 @@ const StyledCategoryName = styled.div`
     margin-left: 0.5rem;
   }
   & > svg {
-    z-index: -1;
     transform: translateY(-2px);
   }
   display: flex;
