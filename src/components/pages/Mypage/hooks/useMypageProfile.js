@@ -10,15 +10,6 @@ import {
   IconTwitter,
 } from 'components/pages/Mypage/assets';
 
-const INIT_USER = {
-  id: -1,
-  nickname: 'undefined',
-  role: 'CADET',
-  character: 0,
-  createdAt: '1900-01-01T00:00:00.000Z',
-  updatedAt: '1900-01-01T00:00:00.000Z',
-};
-
 const useMypageProfile = () => {
   const [myLinks, setMyLinks] = useState([]);
   const { user: userInfo } = getUser();
