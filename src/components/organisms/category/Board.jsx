@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import BoardHeader from 'common/Board/BoardHeader';
-import { ArticleList, Body, Wrapper } from '../../atoms/Board';
+import BoardHeader from '@common/Board/BoardHeader';
+import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
 import { PageSelector } from './';
 import PreviewArticle from './PreviewArticle';
-import { getArticles } from 'common/hooks/api/article';
-import { getSearchResults } from 'common/hooks/api/search';
+import { getArticles } from '@common/hooks/api/article';
+import { getSearchResults } from '@common/hooks/api/search';
 
 const Board = () => {
   const [page, setPage] = useState(1);

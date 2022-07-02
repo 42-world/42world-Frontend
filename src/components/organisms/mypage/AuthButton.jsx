@@ -1,5 +1,5 @@
-import { getUser } from 'common/hooks/api/user';
 import { useNavigate } from 'react-router-dom';
+import { getUser } from '@common/hooks/api/user';
 import { useRecoilValue } from 'recoil';
 import { userState } from '../../../store/user';
 // import { authState } from "../../../store/auth";

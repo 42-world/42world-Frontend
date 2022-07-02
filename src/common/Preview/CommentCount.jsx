@@ -1,6 +1,6 @@
 import { BiCommentDots } from 'react-icons/bi';
-import { theme } from 'styles/theme';
 import styled from 'styled-components';
+import { theme } from '@styles/theme';
 
 const CommentCount = ({ count }) => {
   return (

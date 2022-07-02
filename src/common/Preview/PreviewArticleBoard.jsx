@@ -1,17 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from 'styles/theme';
+import { theme } from '@styles/theme';
 import PreviewArticleItems from './PreviewArticleItems';
 import PreviewHeader from './PreviewHeader';
 
 const PreviewArticleBoard = ({ categoryName, onClickHandler, path, items }) => {
   return (
     <StyledPreviewContainer>
-      <PreviewHeader
-        onClickHandler={onClickHandler}
-        path={path}
-        categoryName={categoryName}
-      />
+      <PreviewHeader onClickHandler={onClickHandler} path={path} categoryName={categoryName} />
       <PreviewArticleItems items={items} />
     </StyledPreviewContainer>
   );

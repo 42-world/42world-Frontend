@@ -1,9 +1,9 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { isEmpty } from 'common/utils';
 import { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { getCategory } from 'common/hooks/api/category';
+import { isEmpty } from '@common/utils';
+import { getCategory } from '@common/hooks/api/category';
 
 const BoardHeader = ({ hasQuery }) => {
   const navigate = useNavigate();

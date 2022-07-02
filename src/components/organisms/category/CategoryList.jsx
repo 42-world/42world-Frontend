@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { getCategory } from 'common/hooks/api/category';
+import { getCategory } from '@common/hooks/api/category';
 import { userCurrentPosState } from '../../../store/userCurrentPos';
 import { rem } from '../../../styles/rem';
 

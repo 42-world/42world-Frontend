@@ -1,6 +1,6 @@
 import { FaRegHeart } from 'react-icons/fa';
 import styled from 'styled-components';
-import { theme } from 'styles/theme';
+import { theme } from '@styles/theme';
 
 const LikeCount = ({ count }) => {
   return (

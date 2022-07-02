@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { SITEMAP } from 'common/constants';
+import { SITEMAP } from '@common/constants';
 import QuickLinkItem from './QuickLinkItem';
-import { rem } from 'styles/rem';
+import { rem } from '@styles/rem';
 
 // TODO: into hamburger menu
 function QuickLink() {

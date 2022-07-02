@@ -2,10 +2,10 @@
 import removeMarkdown from 'remove-markdown';
 import styled from 'styled-components';
 import { css } from '@emotion/react';
-import { getArticleTime, isNewArticle } from 'common/utils';
-import LikeCount from 'common/Preview/LikeCount';
-import CommentCount from 'common/Preview/CommentCount';
-import { Article } from 'network/types/Article';
+import { getArticleTime, isNewArticle } from '@common/utils';
+import LikeCount from '@common/Preview/LikeCount';
+import CommentCount from '@common/Preview/CommentCount';
+import { Article } from '@network/types/Article';
 
 interface PreviewArticleProps {
   article: Article;

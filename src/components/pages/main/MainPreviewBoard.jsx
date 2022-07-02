@@ -1,7 +1,7 @@
 import React from 'react';
-import { getArticles } from 'common/hooks/api/article';
 import { useNavigate } from 'react-router-dom';
-import PreviewArticleBoard from 'common/Preview/PreviewArticleBoard';
+import { getArticles } from '@common/hooks/api/article';
+import PreviewArticleBoard from '@common/Preview/PreviewArticleBoard';
 
 const MainPreviewBoard = ({ categoryId, categoryName }) => {
   const navigate = useNavigate();
@@ -10,12 +10,7 @@ const MainPreviewBoard = ({ categoryId, categoryName }) => {
     navigate(`/category/${categoryId}`);
   };
   return (
-    <PreviewArticleBoard
-      categoryName={categoryName}
-      onClickHandler={onClick}
-      path={categoryId}
-      items={articles}
-    />
+    <PreviewArticleBoard categoryName={categoryName} onClickHandler={onClick} path={categoryId} items={articles} />
   );
 };
 

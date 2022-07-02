@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
-import { AuthService } from 'network';
-import { getUser } from 'common/hooks/api/user';
-import { isEmpty } from 'common/utils';
+import { AuthService } from '@network';
+import { getUser } from '@common/hooks/api/user';
+import { isEmpty } from '@common/utils';
 
 const LOGIN_ERROR_MESSAGE = '로그인 실패하였습니다. 다시 시도해주세요';
 

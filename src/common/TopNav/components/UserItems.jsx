@@ -1,6 +1,6 @@
 import { StyledMenuButton } from '../styled';
-import { getUser } from 'common/hooks/api/user';
-import { isEmpty } from 'common/utils';
+import { getUser } from '@common/hooks/api/user';
+import { isEmpty } from '@common/utils';
 import LoginButton from './LoginButton';
 import UserName from './UserName';
 

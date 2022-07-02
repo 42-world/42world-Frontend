@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rem } from 'styles/rem';
+import { rem } from '@styles/rem';
 
 const QuickLinkItem = ({ item }) => {
   const onClick = url => {

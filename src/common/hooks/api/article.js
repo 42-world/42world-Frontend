@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { ArticleService } from 'network';
+import { ArticleService } from '@network';
 
 export const ARTICLE_URL = '/article';
 export const ARTICLES_URL = '/articles';

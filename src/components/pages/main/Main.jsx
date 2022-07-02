@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 
-import QuickLink from 'common/QuickLink/QuickLink';
+import QuickLink from '@common/QuickLink/QuickLink';
 import MainPreviewBoards from './MainPreviewBoards';
 
 const Main = () => {
