@@ -9,7 +9,7 @@ export function AXIOS(option) {
     ...option,
     withCredentials: true,
     headers: {
-      // Authorization: process.env.REACT_APP_ACCESS_TOKEN,
+      //Authorization: process.env.REACT_APP_ACCESS_TOKEN,
     },
   });
 }
