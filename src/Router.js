@@ -7,7 +7,7 @@ import ErrorPage from './components/pages/Error';
 import Login from './components/pages/login/Login';
 import Main from 'components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
-import Writing from './components/pages/Writing';
+import Writing from './components/pages/writing';
 import Donation from './components/pages/Donation';
 const Router = () => {
   return (
