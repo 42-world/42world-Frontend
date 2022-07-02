@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { notiModalState } from 'store/notiModal';
@@ -40,7 +39,7 @@ const TopNav = () => {
           horizontal: 'right',
         }}
         open={modalTarget}
-        modalTarget={modalTarget}
+        anchorEl={modalTarget}
         onClose={handleClose}
       >
         <NotiModal />
