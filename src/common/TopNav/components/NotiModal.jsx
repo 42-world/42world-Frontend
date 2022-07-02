@@ -12,7 +12,6 @@ const NotiModal = () => {
   const getNoti = async () => {
     const result = await NotificationService.getNotifications();
     setNoti(result);
-    console.log(result);
   };
   useEffect(async () => {
     getNoti();
@@ -25,13 +24,7 @@ const NotiModal = () => {
           <div className="divide"></div>
           <NotiLists>
             {noti.map(data => {
-              return (
-                <NotiList
-                  type={data.type}
-                  body={data.content}
-                  articleId={data.articleId}
-                />
-              );
+              return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
             })}
           </NotiLists>
         </ModalStyle>
