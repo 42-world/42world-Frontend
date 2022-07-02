@@ -41,6 +41,9 @@ const StyledMainSection = styled.div`
 `;
 
 const StyledSideSection = styled.div`
+  ${props => props.theme.mobileSize} {
+    display: none;
+  }
   margin: 10px;
 `;
 

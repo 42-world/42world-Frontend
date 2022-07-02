@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const TopNavMobileWidth = '800px';
-
 export const StyledTopNav = styled.div`
   display: flex;
   width: 100%;
@@ -34,7 +32,7 @@ export const StyledTopNav = styled.div`
     text-decoration: none;
   }
 
-  @media screen and (max-width: ${TopNavMobileWidth}) {
+  ${props => props.theme.mobileSize} {
     .top-nav {
       .category-div,
       .alarm-button {

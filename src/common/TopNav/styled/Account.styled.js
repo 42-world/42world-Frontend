@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { TopNavMobileWidth } from './TopNav.styled';
 
 const StyledProfileImage = styled.img`
   border-radius: 50%;
@@ -7,7 +6,7 @@ const StyledProfileImage = styled.img`
   width: 3rem;
   height: 3rem;
 
-  @media screen and (max-width: ${TopNavMobileWidth}) {
+  ${props => props.theme.mobileSize} {
     margin-left: 0;
     width: 2.5rem;
     height: 2.5rem;
@@ -27,7 +26,7 @@ const StyledUserName = styled.div`
     background-color: ${({ theme }) => theme.primary};
   }
 
-  @media screen and (max-width: ${TopNavMobileWidth}) {
+  ${props => props.theme.mobileSize} {
     padding-left: 0;
     .username-div {
       display: none;
