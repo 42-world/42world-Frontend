@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+
+import { notiModalState } from 'store/notiModal';
 
 import Logo from './Logo';
 import MenuItems from './MenuItems';
@@ -9,13 +12,13 @@ import Popover from '@mui/material/Popover';
 import { StyledTopNav } from '../styled';
 
 const TopNav = () => {
-  const [anchorEl, setAnchorEl] = useState(false);
+  const [modalTarget, setModalTarget] = useRecoilState(notiModalState);
 
   const handleClick = e => {
-    setAnchorEl(e.currentTarget);
+    setModalTarget(e.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setModalTarget(null);
   };
   return (
     <>
@@ -36,8 +39,8 @@ const TopNav = () => {
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={anchorEl}
-        anchorEl={anchorEl}
+        open={modalTarget}
+        modalTarget={modalTarget}
         onClose={handleClose}
       >
         <NotiModal />
