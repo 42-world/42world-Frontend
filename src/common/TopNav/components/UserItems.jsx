@@ -17,7 +17,7 @@ const UserItems = () => {
       ) : (
         <>
           {/* TODO : 아이콘 및 모달 적용 */}
-          <StyledMenuButton>알람</StyledMenuButton>
+          <StyledMenuButton className="alarm-button">알람</StyledMenuButton>
           <StyledMenuButton>
             <UserName user={user} />
           </StyledMenuButton>

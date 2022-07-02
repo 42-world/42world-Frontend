@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const MenuItemToggleBlock = styled.div`
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem;
+  }
   margin: 0;
 `;
 
@@ -29,7 +34,7 @@ export const StyledMenuToggleButton = styled.button`
 
 export const CategoryListDiv = styled.div`
   position: fixed;
-  top: 66px; // 추후 상단바 높이를 theme 로 저장하는 방식으로 변경
+  top: ${props => props.theme.topNavHeight}; // 추후 상단바 높이를 theme 로 저장하는 방식으로 변경
   left: 0;
 
   display: flex;
