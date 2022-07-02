@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledTopNav = styled.div`
+  position: fixed;
   display: flex;
   width: 100%;
   min-width: max-content;
@@ -43,4 +44,10 @@ export const StyledTopNav = styled.div`
       }
     }
   }
+`;
+
+export const TopNavSpace = styled.div`
+  display: flex;
+  width: 100%;
+  height: ${props => props.theme.topNavHeight};
 `;

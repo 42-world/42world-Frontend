@@ -4,7 +4,7 @@ import Logo from './Logo';
 import MenuItems from './MenuItems';
 import MenuItemToggle from './MenuItemToggle';
 import UserItems from './UserItems';
-import { StyledTopNav } from '../styled';
+import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
   return (
@@ -17,6 +17,7 @@ const TopNav = () => {
           <UserItems />
         </div>
       </StyledTopNav>
+      <TopNavSpace />
     </>
   );
 };
