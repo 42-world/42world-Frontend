@@ -4,24 +4,24 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import BoardHeader from '@common/Board/BoardHeader';
 import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
-import { PageSelector } from './';
 import PreviewArticle from './PreviewArticle';
 import { getArticles } from '@common/hooks/api/article';
 import { getSearchResults } from '@common/hooks/api/search';
+import { PageSelector } from './';
 
 const Board = () => {
   const [page, setPage] = useState(1);
-  const [articleCount, setArticleCount] = useState(10);
   const location = useLocation();
   const param = useParams();
   const query = new URLSearchParams(location.search).get('q');
   const categoryId = param?.id ? parseInt(param.id) : null;
 
   const hasQuery = query?.length > 1;
-  const { articles: articleList } = getArticles(categoryId, !hasQuery);
-  const { articles: searchedArticles } = getSearchResults(query, hasQuery);
+  const { articles: articleList, meta: articlesMeta } = getArticles(categoryId, page, !hasQuery);
+  const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(query, page, hasQuery);
 
   const articles = hasQuery ? searchedArticles : articleList;
+  const meta = hasQuery ? searchedArticlesMeta : articlesMeta;
 
   return (
     <>
@@ -40,7 +40,7 @@ const Board = () => {
                 ))}
             </ArticleList>
           </Body>
-          <PageSelector curPage={page} setCurPage={setPage} categoryId={categoryId} articleCount={articleCount} />
+          <PageSelector currentPage={page} onChangePage={setPage} totalPageCount={meta?.pageCount || 0} />
         </Wrapper>
       </CategoryBlock>
     </>

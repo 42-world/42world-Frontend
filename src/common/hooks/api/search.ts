@@ -1,13 +1,25 @@
 import { useQuery } from 'react-query';
-import ArticleService2 from '@network/ArticleService2';
+import { ArticleService2 } from '@root/network';
+import { Article } from '@network/types/Article';
+import { Meta } from '@network/types/Pagination';
 
 export const SEARCH_URL = '/search';
 export const SEARCHES_URL = '/searches';
 
-export const getSearchResults = (query: string, enable: boolean = false) => {
-  const { isError, data } = useQuery([SEARCHES_URL, query], () => ArticleService2.getArticleSearch({ q: query }), {
-    enabled: enable,
-  });
+type GetSearchResults = (
+  query: string,
+  pageNumber?: number,
+  enable?: boolean,
+) => { isError: boolean; articles: Article[]; meta?: Meta };
 
-  return { isError, articles: data?.data ?? [] };
+export const getSearchResults: GetSearchResults = (query, pageNumber = 1, enable = false) => {
+  const { isError, data } = useQuery(
+    [SEARCHES_URL, query, pageNumber],
+    () => ArticleService2.getArticleSearch({ q: query, page: pageNumber }),
+    {
+      enabled: enable,
+    },
+  );
+
+  return { isError, articles: data?.data ?? [], meta: data?.meta };
 };
