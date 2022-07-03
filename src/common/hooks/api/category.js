@@ -9,3 +9,8 @@ export const getCategory = () => {
 
   return { isError, categories: data?.data ?? [] };
 };
+
+export const getCategoryName = (categories, categoryId) => {
+  const category = categories.find(category => category.id == categoryId);
+  return category?.name;
+};

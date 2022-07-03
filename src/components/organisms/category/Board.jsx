@@ -8,6 +8,7 @@ import { getArticles } from '@common/hooks/api/article';
 import { getSearchResults } from '@common/hooks/api/search';
 import PreviewArticle from './PreviewArticle';
 import PageSelector from './PageSelector';
+import { getCategory, getCategoryName } from '@root/common/hooks/api/category';
 
 const Board = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,6 +16,7 @@ const Board = () => {
   const param = useParams();
   const [page, setPage] = useState(1);
   const query = new URLSearchParams(location.search).get('q');
+  const { categories } = getCategory();
 
   const categoryId = param?.id ? parseInt(param.id) : null;
   const hasQuery = query?.length > 1;
@@ -44,9 +46,18 @@ const Board = () => {
             <ArticleList>
               {articles &&
                 articles.map((article, id) => (
-                  <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
-                    <PreviewArticle article={article} />
-                  </Link>
+                  <>
+                    {categoryId ? (
+                      <></>
+                    ) : (
+                      <Link to={`/category/${article.categoryId}`}>
+                        {getCategoryName(categories, article.categoryId)}
+                      </Link>
+                    )}
+                    <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
+                      <PreviewArticle article={article} />
+                    </Link>
+                  </>
                 ))}
             </ArticleList>
           </Body>
