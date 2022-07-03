@@ -67,7 +67,7 @@ const top = css`
 
 const middle = css`
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 400;
   align-items: left;
   width: 100%;
@@ -85,6 +85,8 @@ const bottom = css`
   align-items: center;
   justify-content: left;
   height: 2em;
+  font-size: 0.75rem;
+  gap: 5px;
 `;
 
 const info = css`

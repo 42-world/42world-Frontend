@@ -51,7 +51,7 @@ const Board = () => {
                       <></>
                     ) : (
                       <Link to={`/category/${article.categoryId}`}>
-                        {getCategoryName(categories, article.categoryId)}
+                        <CategoryName>{getCategoryName(categories, article.categoryId)}</CategoryName>
                       </Link>
                     )}
                     <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
@@ -87,6 +87,15 @@ const CategoryBlock = styled.div`
       }
     }
   }
+`;
+
+const CategoryName = styled.h3`
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #424242;
+  margin: 0.5rem 0.5rem -0.3rem 0.9rem;
+  width: max-content;
+  text-decoration: none;
 `;
 
 export default Board;
