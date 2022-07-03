@@ -1,27 +1,37 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useSearchParams, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 import BoardHeader from '@common/Board/BoardHeader';
 import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
-import PreviewArticle from './PreviewArticle';
+import { serializeFormQuery } from '@root/common/utils';
 import { getArticles } from '@common/hooks/api/article';
 import { getSearchResults } from '@common/hooks/api/search';
-import { PageSelector } from './';
+import PreviewArticle from './PreviewArticle';
+import PageSelector from './PageSelector';
 
 const Board = () => {
-  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const param = useParams();
+  const [page, setPage] = useState(1);
   const query = new URLSearchParams(location.search).get('q');
-  const categoryId = param?.id ? parseInt(param.id) : null;
 
+  const categoryId = param?.id ? parseInt(param.id) : null;
   const hasQuery = query?.length > 1;
   const { articles: articleList, meta: articlesMeta } = getArticles(categoryId, page, !hasQuery);
   const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(query, page, hasQuery);
 
   const articles = hasQuery ? searchedArticles : articleList;
   const meta = hasQuery ? searchedArticlesMeta : articlesMeta;
+
+  const handleChange = value => {
+    setPage(value);
+    setSearchParams({ ...serializeFormQuery(searchParams), page: value });
+  };
+
+  useEffect(() => {
+    setPage(searchParams.get('page'));
+  }, [searchParams]);
 
   return (
     <>
@@ -40,7 +50,7 @@ const Board = () => {
                 ))}
             </ArticleList>
           </Body>
-          <PageSelector currentPage={page} onChangePage={setPage} totalPageCount={meta?.pageCount || 0} />
+          <PageSelector currentPage={page} onChangePage={handleChange} totalPageCount={meta?.pageCount || 0} />
         </Wrapper>
       </CategoryBlock>
     </>

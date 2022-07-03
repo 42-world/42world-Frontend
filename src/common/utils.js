@@ -17,3 +17,12 @@ export const isNewArticle = time => dayjs().isBefore(dayjs(time).add(12, 'hour')
 export const numberRange = (start, end) => {
   return new Array(end + 1 - start).fill().map((d, i) => i + start);
 };
+
+export const serializeFormQuery = searchParams => {
+  const result = {};
+
+  for (let [key, value] of searchParams.entries()) {
+    result[key] = value;
+  }
+  return result;
+};
