@@ -9,7 +9,7 @@ const ArticleService = {
   /**
    * **CREATE** New Articles with Signned User
    * @param {{title: string, content: string,categoryId: number}} newArticles
-   * @returns {{
+   * @returns Promise<{{
    *    id: number,
    *    title: string,
    *    content: string,
@@ -37,7 +37,7 @@ const ArticleService = {
    *    deletedAt: Date,
    *    createdAt: Date,
    *    updatedAt: Date
-   * }} articles
+   * }}> articles
    * `200` : success
    * `401` : fail
    */

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PreviewArticle from 'components/organisms/category/PreviewArticle';
+import PreviewArticle from '@components/organisms/category/PreviewArticle';
 
 const ArticleListItem = ({ article }) => {
   return (

@@ -24,10 +24,7 @@ const Comment = ({ articleId, writer }) => {
       <div className="comment_info">
         <h3>댓글 {comment.meta.totalCount}개</h3>
       </div>
-      <CreateComment
-        articleId={articleId}
-        onCreateComment={handleCreateComment}
-      />
+      <CreateComment articleId={articleId} onCreateComment={handleCreateComment} />
       <CommentList commentDataList={comment.data} writer={writer} />
     </CommentBlock>
   );
@@ -43,7 +40,8 @@ const CreateComment = ({ articleId, onCreateComment }) => {
   const handleChangeComment = e => {
     setCommentInput(e.target.value);
   };
-  const handleSubmitComment = async e => {
+
+  const handleSubmitComment = async () => {
     //e.preventDefault();
     if (commentInput === '') {
       alert('입력된 댓글이 없습니다.');
@@ -57,11 +55,14 @@ const CreateComment = ({ articleId, onCreateComment }) => {
     textAreaRef.current.style.height = 'auto';
     onCreateComment();
   };
+
   const onKeyDown = e => {
+    if (e.nativeEvent.isComposing) return;
     if (e.key === 'Enter') {
       handleSubmitComment();
     }
   };
+
   return (
     <CreateCommentBlock>
       <textarea
@@ -72,7 +73,9 @@ const CreateComment = ({ articleId, onCreateComment }) => {
         onChange={handleChangeComment}
         onKeyDown={onKeyDown}
       ></textarea>
-      <button onClick={handleSubmitComment}>입력</button>
+      <button type="button" onClick={handleSubmitComment}>
+        입력
+      </button>
     </CreateCommentBlock>
   );
 };
@@ -82,11 +85,7 @@ const CommentList = ({ commentDataList, writer }) => {
   return (
     <CommentListBlock>
       {commentDataList.map(commentData => (
-        <CommentItem
-          key={commentData.id}
-          commentData={commentData}
-          writer={writer}
-        />
+        <CommentItem key={commentData.id} commentData={commentData} writer={writer} />
       ))}
     </CommentListBlock>
   );
@@ -95,9 +94,7 @@ const CommentList = ({ commentDataList, writer }) => {
 const CommentItem = ({ commentData, writer }) => {
   // TODO : 현재 유저의 ID를 확인할 수 있는 전역 값 추가
   const getArticleTime = time =>
-    dayjs(time).isSame(dayjs(), 'day')
-      ? dayjs(time).format('HH:mm')
-      : dayjs(time).format('MM/DD');
+    dayjs(time).isSame(dayjs(), 'day') ? dayjs(time).format('HH:mm') : dayjs(time).format('MM/DD');
 
   const deleteCommentById = async () => {
     if (window.confirm('댓글을 삭제하시겠습니까?')) {
