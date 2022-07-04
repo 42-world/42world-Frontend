@@ -17,9 +17,7 @@ const Mypage = () => {
       <MypageBlock>
         <main>
           {articleType ? (
-            <MyArticleBoard
-              articleType={articleType === 'article' ? ARTICLE : articleType === 'comment' ? COMMENT : LIKED}
-            />
+            <MyArticleBoard articleType={articleType} />
           ) : (
             <>
               <MyProfile />
