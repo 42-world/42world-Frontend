@@ -21,7 +21,12 @@ const Board = () => {
   const categoryId = param?.id ? parseInt(param.id) : null;
   const hasQuery = query?.length > 1;
   const { articles: articleList, meta: articlesMeta } = getArticles(categoryId, page, !hasQuery);
-  const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(query, page, hasQuery);
+  const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(
+    query,
+    categoryId,
+    page,
+    hasQuery,
+  );
 
   const articles = hasQuery ? searchedArticles : articleList;
   const meta = hasQuery ? searchedArticlesMeta : articlesMeta;

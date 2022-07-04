@@ -20,6 +20,7 @@ export type Article = {
 
 export interface GetArticleSearchRequest {
   q: string;
+  categoryId?: number;
   page?: number;
   take?: number;
   order?: 'ASC' | 'DESC';

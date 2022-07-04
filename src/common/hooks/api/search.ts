@@ -8,14 +8,15 @@ export const SEARCHES_URL = '/searches';
 
 type GetSearchResults = (
   query: string,
+  categoryId?: number,
   pageNumber?: number,
   enable?: boolean,
 ) => { isError: boolean; articles: Article[]; meta?: Meta };
 
-export const getSearchResults: GetSearchResults = (query, pageNumber = 1, enable = false) => {
+export const getSearchResults: GetSearchResults = (query, categoryId, pageNumber = 1, enable = false) => {
   const { isError, data } = useQuery(
-    [SEARCHES_URL, query, pageNumber],
-    () => ArticleService2.getArticleSearch({ q: query, page: pageNumber }),
+    [SEARCHES_URL, query, categoryId, pageNumber],
+    () => ArticleService2.getArticleSearch({ q: query, categoryId, page: pageNumber }),
     {
       enabled: enable,
     },

@@ -17,7 +17,11 @@ const BoardHeader = ({ hasQuery }) => {
   const handleSubmitSearch = e => {
     e.preventDefault();
     if (search === '') return;
-    navigate(`/category?q=${search}`);
+    if (categoryId) {
+      navigate(`/category/${categoryId}?q=${search}`);
+    } else {
+      navigate(`/category?q=${search}`);
+    }
     setSearch('');
   };
 
@@ -31,7 +35,7 @@ const BoardHeader = ({ hasQuery }) => {
 
   const getTitle = () => {
     if (hasQuery) {
-      return isEmpty(categoryName) ? '전체 게시판 검색 결과' : `${categoryName}게시판 검색 결과`;
+      return isEmpty(categoryName) ? '전체 게시판 검색 결과' : `${categoryName} 검색 결과`;
     }
     return isEmpty(categoryName) ? '' : categoryName;
   };
