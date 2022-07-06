@@ -17,7 +17,7 @@ const UserItems = ({ onClick }) => {
       ) : (
         <>
           {/* TODO : 아이콘 및 모달 적용 */}
-          <StyledMenuButton onClick={onClick}>알람</StyledMenuButton>
+          <StyledMenuButton className="alarm-button" onClick={onClick}>알람</StyledMenuButton>
           <StyledMenuButton>
             <UserName user={user} />
           </StyledMenuButton>
