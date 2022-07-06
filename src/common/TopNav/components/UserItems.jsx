@@ -4,7 +4,7 @@ import { isEmpty } from 'common/utils';
 import LoginButton from './LoginButton';
 import UserName from './UserName';
 
-const UserItems = () => {
+const UserItems = ({ onClick }) => {
   const { user } = getUser();
   return (
     <div className="user">
@@ -17,7 +17,7 @@ const UserItems = () => {
       ) : (
         <>
           {/* TODO : 아이콘 및 모달 적용 */}
-          <StyledMenuButton className="alarm-button">알람</StyledMenuButton>
+          <StyledMenuButton className="alarm-button" onClick={onClick}>알람</StyledMenuButton>
           <StyledMenuButton>
             <UserName user={user} />
           </StyledMenuButton>
