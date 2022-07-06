@@ -30,12 +30,12 @@ const Main = () => {
             </SearchForm>
             <MainPreviewBoards />
           </StyledMainSection>
-          <StyledMainSection>
+
+          <StyledSideSection>
             <QuickLink />
-          </StyledMainSection>
+          </StyledSideSection>
         </StyledMainContent>
       </StyledMain>
-      <div>footer</div>
     </>
   );
 };
@@ -59,15 +59,28 @@ const StyledMain = styled.div`
 const StyledMainContent = styled.div`
   display: flex;
   margin: auto;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 1150px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const StyledMainSection = styled.div`
+  width: 100%;
+  margin: 10px;
+`;
+
+const StyledSideSection = styled.div`
+  ${props => props.theme.mobileSize} {
+    display: none;
+  }
   margin: 10px;
 `;
 
 const StyledInput = styled.input`
-  width: 800px;
-  height: 50px;
+  width: 100%;
+  height: 40px;
   border-radius: 25px;
   margin: 10px;
 

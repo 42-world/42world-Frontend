@@ -35,8 +35,6 @@ const QuickLinkTitle = styled.div`
   text-align: center;
   font-weight: bold;
   padding: ${rem(10)};
-
-  border-bottom: 1.5px solid black;
 `;
 
 export default QuickLink;

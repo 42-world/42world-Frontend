@@ -6,7 +6,7 @@ const UserName = ({ user }) => {
   return (
     <Link to="/mypage">
       <StyledUserName>
-        <div>{user.nickname}</div>
+        <div className="username-div">{user.nickname}</div>
         <StyledProfileImage
           src={`${PICTURE_DIR}${PROFILE_LIST[user.character]}`}
           alt="사용자 캐릭터"

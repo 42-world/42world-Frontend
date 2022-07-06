@@ -13,7 +13,14 @@ const MainPreviewBoards = () => {
       ) : (
         categories
           .filter(category => category.isArticleReadable)
-          .map(category => <MainPreviewBoard key={category.id} categoryId={category.id} categoryName={category.name} />)
+          .map(category => (
+            <MainPreviewBoard
+              key={category.id}
+              categoryId={category.id}
+              categoryName={category.name}
+              maxItemCount={10}
+            />
+          ))
       )}
     </StyledPreviewBoard>
   );
@@ -21,7 +28,9 @@ const MainPreviewBoards = () => {
 
 const StyledPreviewBoard = styled.div`
   display: flex;
-  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export default MainPreviewBoards;

@@ -52,6 +52,9 @@ export const theme = {
   //   headerHeight: "4.5rem",
   //   mobileMinWidth: "28rem",
   //   desktopWidth: "24.5rem"
+
+  // TopNav
+  topNavHeight: '4rem',
   mobileSize: '@media screen and (max-width: 768px)',
 
   //shadow

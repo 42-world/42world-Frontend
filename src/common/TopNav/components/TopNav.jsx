@@ -4,11 +4,12 @@ import { notiModalState } from '@root/store/notiModal';
 
 import Logo from './Logo';
 import MenuItems from './MenuItems';
+import MenuItemToggle from './MenuItemToggle';
 import UserItems from './UserItems';
 import NotiModal from './NotiModal';
 
 import Popover from '@mui/material/Popover';
-import { StyledTopNav } from '../styled';
+import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
   const [modalTarget, setModalTarget] = useRecoilState(notiModalState);
@@ -23,12 +24,13 @@ const TopNav = () => {
     <>
       <StyledTopNav>
         <div className="top-nav">
+          <MenuItemToggle />
           <Logo />
           <MenuItems />
           <UserItems onClick={handleClickNoti} />
         </div>
       </StyledTopNav>
-
+      <TopNavSpace />
       <Popover
         anchorOrigin={{
           vertical: 'bottom',

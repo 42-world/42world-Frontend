@@ -36,7 +36,6 @@ const CategoryBlock = styled(Container)`
 
   @media screen and (max-width: 1020px) {
     display: flex;
-    flex-direction: column;
     .writing_block {
       max-width: calc(100% - 15.2rem);
     }
