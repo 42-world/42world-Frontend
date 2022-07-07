@@ -29,9 +29,11 @@ const StyledMyArticlePreview = styled.div`
     }
   }
   h3 {
-    height: 1.5rem;
-    display: flex;
+    margin: 0.4rem 0;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .like,
   .comment {
