@@ -1,11 +1,4 @@
-//import React, { useState } from "react";
-import qs from 'qs';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { AuthService, UserService } from '../../network';
-import { userState } from '../../store/user';
 import Seoul42 from '../organisms/auth/Seoul42';
 
 const Auth = ({ isCallback }) => {
