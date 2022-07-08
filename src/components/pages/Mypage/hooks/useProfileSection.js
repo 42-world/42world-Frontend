@@ -8,6 +8,10 @@ const useProfileSection = userInfo => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const profilePhoto = profilePhotoUtils.getProfilePhoto(userInfo.character ?? 0);
+  const handleClickAuth = () => {
+    if (userInfo.role === 'NOVICE') navigate('/auth');
+  };
+
   const authButtonProps =
     userInfo.role === 'NOVICE'
       ? { btnType: 'auth-42', onClick: handleClickAuth, string: '42인증' }
@@ -15,10 +19,6 @@ const useProfileSection = userInfo => {
 
   const handleClickPhotoChange = () => {
     setIsModalOpen(true);
-  };
-
-  const handleClickAuth = () => {
-    if (userInfo.role === 'NOVICE') navigate('/auth');
   };
 
   const handleClickLogout = async () => {
