@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import BoardHeader from '@common/Board/BoardHeader';
 import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
 import { serializeFormQuery } from '@root/common/utils';
+import { getCategory, getCategoryName } from '@root/common/hooks/api/category';
 import { getArticles } from '@common/hooks/api/article';
 import { getSearchResults } from '@common/hooks/api/search';
 import PreviewArticle from './PreviewArticle';
 import PageSelector from './PageSelector';
-import { getCategory, getCategoryName } from '@root/common/hooks/api/category';
 
 const Board = () => {
   const [searchParams, setSearchParams] = useSearchParams();
