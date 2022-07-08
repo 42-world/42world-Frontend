@@ -9,44 +9,10 @@ import { userState } from '../../store/user';
 import Seoul42 from '../organisms/auth/Seoul42';
 
 const Auth = ({ isCallback }) => {
-  const setUser = useSetRecoilState(userState);
-  const queryData = qs.parse(window.location.search, {
-    ignoreQueryPrefix: true,
-  });
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    (async () => {
-      if (isCallback) {
-        const github_code = queryData.code;
-        if (!github_code) {
-          alert('다시 로그인 하세요!'); // 임시
-          navigate('/');
-          return;
-        }
-        const result = await AuthService.getAuthAccessToken(github_code);
-        if (result.status !== 200) {
-          alert('깃허브 로그인 오류! 다시 로그인 하세요!'); // 임시
-          navigate('/');
-          return;
-        }
-        const userData = await UserService.getNoviceProfile();
-        setUser(userData);
-        navigate('/');
-      }
-    })();
-  }, [isCallback, navigate, queryData.code]);
-
   return (
     <AuthBlock>
       <div className="video-container">
-        <video
-          src="assets/videos/video-1.mp4"
-          type="video/mp4"
-          autoPlay
-          loop
-          muted
-        />
+        <video src="assets/videos/video-1.mp4" type="video/mp4" autoPlay loop muted />
         <Seoul42 />
       </div>
     </AuthBlock>
