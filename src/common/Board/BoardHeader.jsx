@@ -12,7 +12,7 @@ const BoardHeader = ({ hasQuery }) => {
   const { categories } = getCategory();
   const [search, setSearch] = useState('');
   const categoryId = param?.id ? parseInt(param.id) : null;
-  const categoryName = categories?.find(c => c.id === categoryId)?.name;
+  const categoryName = categories.find(c => c.id === categoryId)?.name;
 
   const handleSubmitSearch = e => {
     e.preventDefault();
