@@ -51,6 +51,8 @@ const ArticlePreviewWrapper = styled.div`
 
 const ReactionWrapper = styled.div`
   display: flex;
+  width: max-content;
+  white-space: nowrap;
 
   & > span {
     display: flex;
