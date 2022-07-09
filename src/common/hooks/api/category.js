@@ -5,9 +5,9 @@ export const CATEGORY_URL = '/category';
 export const CATEGORIES_URL = '/categories';
 
 export const getCategory = () => {
-  const { isError, data } = useQuery([CATEGORIES_URL], CategoryService.getCategories);
+  const { isError, data = {data: []} } = useQuery([CATEGORIES_URL], CategoryService.getCategories);
 
-  return { isError, categories: data?.data ?? [] };
+  return { isError, categories: data.data };
 };
 
 export const getCategoryName = (categories, categoryId) => {

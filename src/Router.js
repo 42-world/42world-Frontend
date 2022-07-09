@@ -9,6 +9,7 @@ import Main from './components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
 import Writing from '@components/pages/writing';
 import Auth from './components/pages/Auth';
+import Donation from './components/pages/Donation';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
           <Route path="mypage/:articleType" element={<Mypage />} />
           <Route path="writing" element={<Writing />} />
           <Route path="article/:id" element={<Article />} />
+          <Route path="/donation" element={<Donation />} />
         </Route>
 
         <Route path="login" element={<Login />} />
