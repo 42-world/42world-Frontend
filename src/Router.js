@@ -7,7 +7,8 @@ import ErrorPage from './components/pages/Error';
 import Login from './components/pages/login/Login';
 import Main from './components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
-import Writing from './components/pages/writing';
+import Writing from '@components/pages/writing';
+import Auth from './components/pages/Auth';
 import Donation from './components/pages/Donation';
 
 const Router = () => {
@@ -27,7 +28,7 @@ const Router = () => {
 
         <Route path="login" element={<Login />} />
         <Route path="auth/github/callback" element={<Login />} />
-
+        <Route path="auth" element={<Auth />} />
         <Route path="error" element={<ErrorPage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
