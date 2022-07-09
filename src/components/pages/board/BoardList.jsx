@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../../atoms/global';
 import { Advertisement, Board, CategoryList } from '../../organisms/category';
-const _id = () => {
+
+const BoardList = () => {
   return (
     <CategoryBlock>
       <div className="block category_block">
@@ -57,4 +58,4 @@ const CategoryBlock = styled(Container)`
   }
 `;
 
-export default _id;
+export default BoardList;

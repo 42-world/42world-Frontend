@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { UserService } from 'network';
+import { UserService } from '@network';
 
 export const USER_URL = '/user';
 export const USERS_URL = '/users';

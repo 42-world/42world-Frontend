@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Container } from 'components/atoms/global';
+import { Container } from '@components/atoms/global';
 
 const StyledMypage = styled(Container)`
   justify-content: center;

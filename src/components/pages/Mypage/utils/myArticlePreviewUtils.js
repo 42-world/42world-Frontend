@@ -1,5 +1,5 @@
-import { UserService } from 'network';
-import constants from 'components/pages/Mypage/constants';
+import { UserService } from '@network';
+import constants from '@components/pages/Mypage/constants';
 
 const getArticleInfo = articleType => {
   return (

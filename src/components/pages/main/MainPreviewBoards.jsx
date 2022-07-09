@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { getCategory } from 'common/hooks/api/category';
-import { isEmpty } from 'common/utils';
+import { getCategory } from '@common/hooks/api/category';
+import { isEmpty } from '@common/utils';
 import MainPreviewBoard from './MainPreviewBoard';
 
 const MainPreviewBoards = () => {

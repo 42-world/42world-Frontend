@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
-import { ArticleService, ImageService } from 'network';
-import { getCategory } from 'common/hooks/api/category';
+import { ArticleService, ImageService } from '@network';
+import { getCategory } from '@common/hooks/api/category';
 
 import styled from 'styled-components';
 

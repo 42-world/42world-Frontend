@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 
-import { notiModalState } from 'store/notiModal';
+import { notiModalState } from '@root/store/notiModal';
 
 import Logo from './Logo';
 import MenuItems from './MenuItems';

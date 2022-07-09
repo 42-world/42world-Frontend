@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import PreviewArticle from 'components/organisms/category/PreviewArticle';
-import { useMyArticleBoard } from 'components/pages/Mypage/hooks';
+import PreviewArticle from '@components/organisms/category/PreviewArticle';
+import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
 
-import { StyledMyArticleBoard, StyledMyArticlePageSelector } from 'components/pages/Mypage/styles';
+import { StyledMyArticleBoard, StyledMyArticlePageSelector } from '@components/pages/Mypage/styles';
 
 const MyArticleBoard = ({ articleType }) => {
   const {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 
-import { getCategory, CATEGORY_URL } from 'common/hooks/api/category';
+import { getCategory, CATEGORY_URL } from '@common/hooks/api/category';
 import { MenuItemToggleBlock, StyledMenuToggleButton, CategoryListDiv } from '../styled/MenuItemToggle.styled';
 
 const MenuItems = () => {

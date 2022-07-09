@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getUser } from 'common/hooks/api/user';
+import { getUser } from '@common/hooks/api/user';
 import {
   IconGithub,
   Icon42,
@@ -8,7 +8,7 @@ import {
   IconLinkedin,
   IconSolvedac,
   IconTwitter,
-} from 'components/pages/Mypage/assets';
+} from '@components/pages/Mypage/assets';
 
 const useMypageProfile = () => {
   const [myLinks, setMyLinks] = useState([]);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import getArticleInfo from 'components/pages/Mypage/utils/myArticlePreviewUtils';
+import getArticleInfo from '@components/pages/Mypage/utils/myArticlePreviewUtils';
 
 const useMyArticleBoard = articleType => {
   const [articles, setArticles] = useState([]);

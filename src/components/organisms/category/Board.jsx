@@ -1,60 +1,72 @@
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useSearchParams, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { ArticleService } from '../../../network';
-import { ArticleList, Body, Wrapper } from '../../atoms/Board';
-import { PageSelector } from './';
-import BoardHeader from './BoardHeader';
+import BoardHeader from '@common/Board/BoardHeader';
+import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
+import { serializeFormQuery } from '@root/common/utils';
+import { getCategory, getCategoryName } from '@root/common/hooks/api/category';
+import { getArticles } from '@common/hooks/api/article';
+import { getSearchResults } from '@common/hooks/api/search';
 import PreviewArticle from './PreviewArticle';
+import PageSelector from './PageSelector';
 
 const Board = () => {
-  const [Articles, setArticles] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const param = useParams();
   const [page, setPage] = useState(1);
-  const [articleCount, setArticleCount] = useState(10);
-  const loca = useLocation();
+  const query = new URLSearchParams(location.search).get('q');
+  const { categories } = getCategory();
 
-  const categoryId = loca.pathname.split('/')[2];
+  const categoryId = param?.id ? parseInt(param.id) : null;
+  const hasQuery = query?.length > 1;
+  const { articles: articleList, meta: articlesMeta } = getArticles(categoryId, page, !hasQuery);
+  const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(
+    query,
+    categoryId,
+    page,
+    hasQuery,
+  );
+
+  const articles = hasQuery ? searchedArticles : articleList;
+  const meta = hasQuery ? searchedArticlesMeta : articlesMeta;
+
+  const handleChange = value => {
+    setPage(value);
+    setSearchParams({ ...serializeFormQuery(searchParams), page: value });
+  };
 
   useEffect(() => {
-    setArticleCount(10);
-    (async () => {
-      const { data } = await ArticleService.getArticlesByCategoryId(
-        categoryId,
-        page,
-        articleCount,
-      );
-      // const data = await ArticleService.getArticles(categoryId, page);
-      setArticles(data);
-    })();
-    // eslint-disable-next-line
-  }, [categoryId, page, articleCount]);
+    setPage(searchParams.get('page'));
+  }, [searchParams]);
+
   return (
     <>
       <CategoryBlock>
         <Wrapper>
           <div className="BoardHeaderWrapper">
-            <BoardHeader />
+            <BoardHeader hasQuery={hasQuery} />
           </div>
           <Body>
             <ArticleList>
-              {Articles &&
-                Articles.map((article, id) => (
-                  <Link
-                    to={`/article/${article.id}`}
-                    className="articleList_content"
-                    key={id}
-                  >
-                    <PreviewArticle article={article} />
-                  </Link>
+              {articles &&
+                articles.map((article, id) => (
+                  <>
+                    {categoryId ? (
+                      <></>
+                    ) : (
+                      <Link to={`/category/${article.categoryId}`}>
+                        <CategoryName>{getCategoryName(categories, article.categoryId)}</CategoryName>
+                      </Link>
+                    )}
+                    <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
+                      <PreviewArticle article={article} />
+                    </Link>
+                  </>
                 ))}
             </ArticleList>
           </Body>
-          <PageSelector
-            curPage={page}
-            setCurPage={setPage}
-            categoryId={categoryId}
-            articleCount={articleCount}
-          />
+          <PageSelector currentPage={page} onChangePage={handleChange} totalPageCount={meta?.pageCount || 0} />
         </Wrapper>
       </CategoryBlock>
     </>
@@ -80,6 +92,15 @@ const CategoryBlock = styled.div`
       }
     }
   }
+`;
+
+const CategoryName = styled.h3`
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #424242;
+  margin: 0.5rem 0.5rem -0.3rem 0.9rem;
+  width: max-content;
+  text-decoration: none;
 `;
 
 export default Board;

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Typography } from '@mui/material';
 
 import NotiList from './NotiList';
-import { NotificationService } from 'network';
-
-import { Typography } from '@mui/material';
-import styled from 'styled-components';
+import { NotificationService } from '@network';
 
 const NotiModal = () => {
   const [noti, setNoti] = useState(null);
