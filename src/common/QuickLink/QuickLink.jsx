@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { SITEMAP } from 'common/constants';
+import { SITEMAP } from '@common/constants';
 import QuickLinkItem from './QuickLinkItem';
-import { rem } from 'styles/rem';
+import { rem } from '@styles/rem';
 
 // TODO: into hamburger menu
 function QuickLink() {
@@ -35,8 +35,6 @@ const QuickLinkTitle = styled.div`
   text-align: center;
   font-weight: bold;
   padding: ${rem(10)};
-
-  border-bottom: 1.5px solid black;
 `;
 
 export default QuickLink;

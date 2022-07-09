@@ -1,8 +1,8 @@
-import MypageButton from 'components/pages/Mypage/components/MypageButton';
-import { ModalPortal, profilePhotoUtils } from 'components/pages/Mypage/utils';
-import { useClickOutside } from 'components/pages/Mypage/hooks';
+import MypageButton from '@components/pages/Mypage/components/MypageButton';
+import { ModalPortal, profilePhotoUtils } from '@components/pages/Mypage/utils';
+import { useClickOutside } from '@components/pages/Mypage/hooks';
 
-import { StyledCharSelectModal } from 'components/pages/Mypage/styles';
+import { StyledCharSelectModal } from '@components/pages/Mypage/styles';
 
 const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
   const { ref: modalRef } = useClickOutside(handleClickClose);

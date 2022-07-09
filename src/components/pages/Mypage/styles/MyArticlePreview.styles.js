@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import constants from 'components/pages/Mypage/constants';
+import constants from '@components/pages/Mypage/constants';
 
 const StyledMyArticlePreview = styled.div`
   background: ${props => props.theme.white};

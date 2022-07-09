@@ -1,44 +1,48 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { categoryState } from '../../../store/category';
+import { isEmpty } from '@common/utils';
+import { getCategory } from '@common/hooks/api/category';
 
-const BoardHeader = () => {
+const BoardHeader = ({ hasQuery }) => {
+  const navigate = useNavigate();
+  const param = useParams();
+  const location = useLocation();
+  const { categories } = getCategory();
   const [search, setSearch] = useState('');
-  const navi = useNavigate();
-  const category = useRecoilValue(categoryState);
-  const loca = useLocation();
-  const categoryId = parseInt(loca.pathname.split('/')[2]);
+  const categoryId = param?.id ? parseInt(param.id) : null;
+  const categoryName = categories?.find(c => c.id === categoryId)?.name;
 
   const handleSubmitSearch = e => {
     e.preventDefault();
     if (search === '') return;
-    // console.log(search); // 검색 창으로 이동해야 함.
-    navi(`/search?keyword=${search}`);
+    if (categoryId) {
+      navigate(`/category/${categoryId}?q=${search}`);
+    } else {
+      navigate(`/category?q=${search}`);
+    }
     setSearch('');
   };
 
   const handleChangeSearch = e => {
     setSearch(e.currentTarget.value);
   };
+
   const handleCreateArticle = () => {
-    console.log('test', categoryId);
-    navi(`/writing`, { state: { categoryId } });
+    navigate(`/writing`, { state: { categoryId } });
+  };
+
+  const getTitle = () => {
+    if (hasQuery) {
+      return isEmpty(categoryName) ? '전체 게시판 검색 결과' : `${categoryName} 검색 결과`;
+    }
+    return isEmpty(categoryName) ? '' : categoryName;
   };
 
   return (
     <BoardHeaderDiv>
-      {category.map(({ id, name }, idx) =>
-        id === categoryId ? (
-          <h2 className="title" key={idx}>
-            {name}
-          </h2>
-        ) : (
-          <></>
-        ),
-      )}
+      <Title>{getTitle()}</Title>
       <div className="side-box">
         <form onSubmit={handleSubmitSearch}>
           <div className="input-box">
@@ -100,4 +104,9 @@ const BoardHeaderDiv = styled.div`
       }
     }
   }
+`;
+
+const Title = styled.h2`
+  font-size: 24px;
+  font-weight: 700;
 `;

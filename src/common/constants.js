@@ -1,4 +1,4 @@
-import { assets } from 'styles/assets';
+import { assets } from '@styles/assets';
 
 export const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 

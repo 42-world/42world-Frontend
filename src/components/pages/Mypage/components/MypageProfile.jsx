@@ -1,7 +1,7 @@
-import ProfileSection from 'components/pages/Mypage/components/ProfileSection';
-import { useMypageProfile } from 'components/pages/Mypage/hooks';
+import ProfileSection from '@components/pages/Mypage/components/ProfileSection';
+import { useMypageProfile } from '@components/pages/Mypage/hooks';
 
-import { StyledMypageProfile } from 'components/pages/Mypage/styles';
+import { StyledMypageProfile } from '@components/pages/Mypage/styles';
 
 const MypageProfile = () => {
   const { myLinks, userInfo, linkIcon, handleClickLinkbox } = useMypageProfile();

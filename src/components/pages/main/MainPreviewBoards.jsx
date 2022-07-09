@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { getCategory } from 'common/hooks/api/category';
-import { isEmpty } from 'common/utils';
+import { getCategory } from '@common/hooks/api/category';
+import { isEmpty } from '@common/utils';
 import MainPreviewBoard from './MainPreviewBoard';
 
 const MainPreviewBoards = () => {
@@ -18,6 +18,7 @@ const MainPreviewBoards = () => {
               key={category.id}
               categoryId={category.id}
               categoryName={category.name}
+              maxItemCount={10}
             />
           ))
       )}
@@ -27,7 +28,9 @@ const MainPreviewBoards = () => {
 
 const StyledPreviewBoard = styled.div`
   display: flex;
-  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export default MainPreviewBoards;

@@ -53,7 +53,7 @@ const ArticleService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
     return response.data;
   },
@@ -107,7 +107,7 @@ const ArticleService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
     return response.data;
   },
@@ -125,7 +125,7 @@ const ArticleService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
     return response.data;
   },
@@ -143,7 +143,7 @@ const ArticleService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
     return response.data.meta;
   },
@@ -220,7 +220,7 @@ const ArticleService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
     return response.data;
   },
@@ -303,7 +303,7 @@ const ArticleService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
     return response.data;
   },

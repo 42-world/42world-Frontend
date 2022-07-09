@@ -1,4 +1,4 @@
-export interface GetCategoriesResponse {
+export type Category = {
   id: number;
   name: string;
   isAnonymous: boolean;
@@ -7,4 +7,6 @@ export interface GetCategoriesResponse {
   isCommentWritable: boolean;
   isCommentReadable: boolean;
   isReactionable: boolean;
-}
+};
+
+export interface GetCategoriesResponse extends Category {}

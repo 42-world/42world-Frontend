@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
-
-import constants from 'components/pages/Mypage/constants';
 import { useEffect } from 'react';
+
+import constants from '@components/pages/Mypage/constants';
 
 const useMypage = () => {
   const params = useParams();

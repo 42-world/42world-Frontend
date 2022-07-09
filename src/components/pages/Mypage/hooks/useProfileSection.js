@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserService } from 'network';
+import { UserService, AuthService } from '@network';
 
 import { profilePhotoUtils } from '../utils';
 
@@ -18,7 +18,7 @@ const useProfileSection = userInfo => {
   };
 
   const handleClickAuth = () => {
-    if (user.role === 'NOVICE') navigate('/auth');
+    if (userInfo.role === 'NOVICE') navigate('/auth');
   };
 
   const handleClickLogout = async () => {

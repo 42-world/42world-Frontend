@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { notiModalState } from 'store/notiModal';
-
 import styled from 'styled-components';
+
+import { notiModalState } from '@root/store/notiModal';
+
 const getImage = type => {
   switch (type) {
     case 'NEW_COMMENT':
