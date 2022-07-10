@@ -19,7 +19,7 @@ const Board = () => {
   const { categories } = getCategory();
 
   const categoryId = param?.id ? parseInt(param.id) : null;
-  const hasQuery = query?.length > 1;
+  const hasQuery = query?.length >= 1;
   const { articles: articleList, meta: articlesMeta } = getArticles(categoryId, page, !hasQuery);
   const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(
     query,
@@ -50,16 +50,16 @@ const Board = () => {
           <Body>
             <ArticleList>
               {articles &&
-                articles.map((article, id) => (
+                articles.map(article => (
                   <>
                     {categoryId ? (
                       <></>
                     ) : (
-                      <Link to={`/category/${article.categoryId}`}>
+                      <Link key={`category_${article.categoryId}`} to={`/category/${article.categoryId}`}>
                         <CategoryName>{getCategoryName(categories, article.categoryId)}</CategoryName>
                       </Link>
                     )}
-                    <Link to={`/article/${article.id}`} className="articleList_content" key={id}>
+                    <Link to={`/article/${article.id}`} className="articleList_content" key={`article_${article.id}`}>
                       <PreviewArticle article={article} />
                     </Link>
                   </>
