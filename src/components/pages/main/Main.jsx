@@ -45,9 +45,13 @@ const SearchForm = styled.form`
   display: flex;
   align-items: center;
   position: relative;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 0 15px;
+  margin-bottom: 1rem;
+
   svg {
     height: 25px;
-    transform: translateX(45px);
     color: black;
   }
 `;
@@ -81,15 +85,13 @@ const StyledSideSection = styled.div`
 const StyledInput = styled.input`
   width: 100%;
   height: 40px;
-  border-radius: 25px;
-  margin: 10px;
 
   transform-origin: right center;
   padding: 5px 10px;
-  padding-left: 40px;
   font-size: 16px;
   background-color: transparent;
-  border: 2px solid black;
+  border: none;
+  outline: none;
 `;
 
 export default Main;
