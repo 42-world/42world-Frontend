@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { css } from '@emotion/react';
 import { Typography } from '@mui/material';
 
 import NotiList from './NotiList';
@@ -18,15 +18,15 @@ const NotiModal = () => {
   return (
     noti && (
       <Typography>
-        <ModalStyle>
+        <div css={modal}>
           <div className="main-title">알림</div>
           <div className="divide"></div>
-          <NotiLists>
+          <div css={notiLists}>
             {noti.map(data => {
               return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
             })}
-          </NotiLists>
-        </ModalStyle>
+          </div>
+        </div>
       </Typography>
     )
   );
@@ -34,7 +34,7 @@ const NotiModal = () => {
 
 export default NotiModal;
 
-const ModalStyle = styled.div`
+const modal = css`
   font-size: 20px;
   max-width: 300px;
   max-height: 400px;
@@ -51,7 +51,7 @@ const ModalStyle = styled.div`
   }
 `;
 
-const NotiLists = styled.div`
+const notiLists = css`
   max-height: 300px;
   overflow: scroll;
   overflow-x: hidden;

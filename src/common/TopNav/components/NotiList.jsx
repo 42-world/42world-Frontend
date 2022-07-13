@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import styled from 'styled-components';
+import { css } from '@emotion/react';
 
 import { notiModalState } from '@root/store/notiModal';
 
@@ -21,12 +21,12 @@ const NotiList = ({ type, body, articleId }) => {
   };
   return (
     <>
-      <NotiListStyle onClick={onClickNavigation}>
+      <div css={notiList} onClick={onClickNavigation}>
         <img src={img} />
         <div className="body">
           <div className="text">{body}</div>
         </div>
-      </NotiListStyle>
+      </div>
       <div className="divide"></div>
     </>
   );
@@ -34,7 +34,7 @@ const NotiList = ({ type, body, articleId }) => {
 
 export default NotiList;
 
-const NotiListStyle = styled.div`
+const notiList = css.div`
   display: flex;
   max-height: 120px;
   * {
