@@ -41,11 +41,14 @@ const StyledPreviewArticleTitle = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 0px;
+  flex-grow: 1;
 `;
 
 const StyledIcons = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-left: 5px;
 `;
 
 export default PreviewArticleItem;
