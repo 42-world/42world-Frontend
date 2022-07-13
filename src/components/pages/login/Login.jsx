@@ -10,9 +10,9 @@ const Login = () => {
 
   return (
     <Container>
+      <StyledImg src="assets/main_background.webp" />
       <StyledLogin>
-        <img src="assets/images/logo/Logo@1x.png" alt="Logo" />
-        <h1>당신이 있기에 행복한 42Seoul</h1>
+        <StyledLogo src="assets/images/logo/Logo@1x.png" alt="Logo" />
         <LoginTextBox>
           <TextContent>42WORLD 커뮤니티는</TextContent>
           <TextContent>
@@ -35,6 +35,18 @@ const Login = () => {
 
 export default Login;
 
+const StyledImg = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+`;
+
+const StyledLogo = styled.img`
+  width: 15rem;
+`;
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -44,10 +56,6 @@ const Container = styled.div`
   height: 100vh;
 
   background: url('/assets/videos/42seoul_login.jpg') no-repeat center center/cover;
-
-  img {
-    width: 15rem;
-  }
 
   h1 {
     font-size: 1.2rem;
