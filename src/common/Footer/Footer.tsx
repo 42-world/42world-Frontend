@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import BuyCoffee from './BuyCoffee';
 import { BsGithub } from 'react-icons/bs';
 import { FiMail } from 'react-icons/fi';
-import { BiMessageAltDots } from 'react-icons/bi';
 import { theme } from '@root/styles/theme';
 
 const GITHUB_URL = 'https://github.com/42-world';
@@ -20,7 +19,6 @@ const Footer = () => {
         <a href={`mailto:${EMAIL}`}>
           <FiMail css={iconColor} size={20} />
         </a>
-        <BiMessageAltDots css={iconColor} size={20} />
       </address>
       <address>
         <BuyCoffee />
