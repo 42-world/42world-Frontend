@@ -121,7 +121,6 @@ const Seoul42 = () => {
       <div className="main">
         <Title>
           <img src="assets/images/logo/Logo@1x.png" alt="" />
-          <p>당신이 있기에 행복한 42</p>
         </Title>
         <div className="Box">
           <LoginTitle className="LoginTitle">인증하기</LoginTitle>
