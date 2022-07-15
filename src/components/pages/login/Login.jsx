@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <Container>
-      <StyledImg src="assets/main_background.webp" />
+      <StyledImg src="assets/main_background.jpeg" />
       <StyledLogin>
         <StyledLogo src="assets/images/logo/Logo@1x.png" alt="Logo" />
         <LoginTextBox>

@@ -4,7 +4,7 @@ import Seoul42 from '../organisms/auth/Seoul42';
 const Auth = ({ isCallback }) => {
   return (
     <AuthBlock>
-      <StyledImg src="assets/main_background.webp" />
+      <StyledImg src="assets/main_background.jpeg" />
       <Seoul42 />
     </AuthBlock>
   );
