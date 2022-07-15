@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <Container>
       <StyledLogin>
-        <img src="assets/images/logo/Logo@1x.png" alt="Logo" />
+        <img src="/assets/images/logo/Logo@1x.png" alt="Logo" />
         <h1>당신이 있기에 행복한 42Seoul</h1>
         <LoginTextBox>
           <TextContent>42WORLD 커뮤니티는</TextContent>
@@ -68,6 +68,7 @@ const LoginTextBox = styled.div`
   padding: 2rem;
   border-radius: 1rem;
   background-color: ${props => props.theme.backgroundWhite};
+  text-align: center;
 `;
 
 const TextContent = styled.p`
@@ -93,4 +94,6 @@ const LoginButton = styled.button`
 
   color: ${props => props.theme.textWhite};
   background-color: #2a2d38;
+
+  cursor: pointer;
 `;
