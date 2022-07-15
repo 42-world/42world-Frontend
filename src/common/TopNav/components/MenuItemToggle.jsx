@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 
-import { getCategory, CATEGORY_URL } from '@common/hooks/api/category';
+import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 import { MenuItemToggleBlock, StyledMenuToggleButton, CategoryListDiv } from '../styled/MenuItemToggle.styled';
 
 const MenuItems = () => {
-  const { isError, categories } = getCategory();
+  const { isError, categories } = useGetCategory();
   const [isToggled, setIsToggled] = useState(false);
 
   const categoryListRef = useRef(null);

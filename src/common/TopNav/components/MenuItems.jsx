@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import { getCategory, CATEGORY_URL } from '@common/hooks/api/category';
+import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 import { StyledMenuButton } from '../styled/MenuItems.styled';
 
 const MenuItems = () => {
-  const { isError, categories } = getCategory();
+  const { isError, categories } = useGetCategory();
 
   return (
     <div className="category-div">

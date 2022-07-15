@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { getCategory } from '@common/hooks/api/category';
+import { useGetCategory } from '@common/hooks/api/category';
 import { userCurrentPosState } from '../../../store/userCurrentPos';
 import { rem } from '../../../styles/rem';
 
 const CategoryList = ({ sendedId }) => {
-  const { categories } = getCategory();
+  const { categories } = useGetCategory();
   const location = useLocation();
   const categoryPos = location.pathname.split('/')[1];
   const categoryId = parseInt(location.pathname.split('/')[2]);

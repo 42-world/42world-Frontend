@@ -12,7 +12,7 @@ type GetArticles = (
   enable?: boolean,
 ) => { isError: Boolean; articles: Article[]; meta?: Meta };
 
-export const getArticles: GetArticles = (categoryId, pageNumber = 1, enable = true) => {
+export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable = true) => {
   const { isError, data } = useQuery(
     [ARTICLES_URL, categoryId, pageNumber],
     () => ArticleService.getArticlesByCategoryId(categoryId, pageNumber, 10),

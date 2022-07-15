@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { getCategory } from '@common/hooks/api/category';
+import { useGetCategory } from '@common/hooks/api/category';
 import { isEmpty } from '@common/utils';
 import MainPreviewBoard from './MainPreviewBoard';
 
 const MainPreviewBoards = () => {
-  const { categories } = getCategory();
+  const { categories } = useGetCategory();
   return (
     <StyledPreviewBoard>
       {isEmpty(categories) ? (
