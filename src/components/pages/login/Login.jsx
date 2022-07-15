@@ -10,7 +10,6 @@ const Login = () => {
 
   return (
     <Container>
-      <StyledImg src="assets/main_background.jpeg" />
       <StyledLogin>
         <StyledLogo src="assets/images/logo/Logo@1x.png" alt="Logo" />
         <LoginTextBox>
@@ -35,16 +34,9 @@ const Login = () => {
 
 export default Login;
 
-const StyledImg = styled.img`
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: -1;
-`;
-
 const StyledLogo = styled.img`
   width: 15rem;
+  margin-bottom: 1rem;
 `;
 
 const Container = styled.div`
@@ -55,7 +47,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: url('/assets/videos/42seoul_login.jpg') no-repeat center center/cover;
+  background: url('assets/main_background.jpeg') no-repeat center center/cover;
 
   h1 {
     font-size: 1.2rem;
