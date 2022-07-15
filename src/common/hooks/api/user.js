@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from 'react-query';
 import { UserService } from '@network';
+import { AuthService } from '@root/network';
 
 export const USER_URL = '/user';
 export const USERS_URL = '/users';
@@ -10,11 +11,12 @@ export const useGetUser = () => {
   return { isError, user: data?.data ?? {} };
 };
 
-export const useGetClearUser = () => {
+export const useLogout = () => {
   const queryClient = useQueryClient();
 
-  return () => {
-    queryClient.removeQueries(USERS_ME_URL);
+  return async () => {
+    await AuthService.signOut();
+    queryClient.invalidateQueries();
     queryClient.clear();
   };
 };
