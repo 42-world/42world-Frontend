@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { PageLayout } from '@common/PageLayout';
-import ArticleDetail from './components/pages/article/ArticleDetail';
-import BoardList from './components/pages/board/BoardList';
+import BoardList from './components/pages/articles/ArticleList/BoardList';
 import ErrorPage from './components/pages/Error';
 import Login from './components/pages/login/Login';
 import Main from './components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
-import Writing from '@components/pages/writing';
 import Auth from './components/pages/Auth';
 import Donation from './components/pages/Donation';
+import Writing from './components/pages/writing';
+import ArticleDetail from './components/pages/articles/ArticleDetail';
 
 const Router = () => {
   return (

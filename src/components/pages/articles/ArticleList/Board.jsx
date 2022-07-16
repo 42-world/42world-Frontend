@@ -7,8 +7,8 @@ import { serializeFormQuery } from '@root/common/utils';
 import { useGetCategory, getCategoryName } from '@root/common/hooks/api/category';
 import { useGetArticles } from '@common/hooks/api/article';
 import { useGetSearchResults } from '@common/hooks/api/search';
-import PreviewArticle from './PreviewArticle';
-import PageSelector from './PageSelector';
+import PreviewArticle from '@root/components/organisms/category/PreviewArticle';
+import PageSelector from '@root/common/PageSelector';
 
 const Board = () => {
   const [searchParams, setSearchParams] = useSearchParams();

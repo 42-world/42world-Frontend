@@ -1,10 +1,11 @@
+import CategoryList from '@root/common/CategoryList';
+import { Container } from '@root/components/atoms/global';
+import { ArticleContent, Comment } from '@root/components/organisms/article';
+import { Advertisement } from '@root/components/organisms/category';
+import { ArticleService } from '@root/network';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { ArticleService } from '../../../network';
-import { Container } from '../../atoms/global';
-import { ArticleContent, Comment } from '../../organisms/article';
-import { Advertisement, CategoryList } from '../../organisms/category';
 
 const ArticleDetail = () => {
   const params = useParams();

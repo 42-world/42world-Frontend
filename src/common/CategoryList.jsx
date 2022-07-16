@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { rem } from '@root/styles/rem';
 import { useGetCategory } from '@common/hooks/api/category';
-import { rem } from '../../../styles/rem';
 
 const CategoryList = ({ categoryId }) => {
   const { categories } = useGetCategory();

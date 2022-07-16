@@ -1,7 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../../atoms/global';
-import { Advertisement, CategoryList } from '../../organisms/category';
+
+import CategoryList from '@root/common/CategoryList';
+import { Container } from '@root/components/atoms/global';
+import { Advertisement } from '@root/components/organisms/category';
 import WritingContent from './WritingContent';
 
 const Writing = () => {

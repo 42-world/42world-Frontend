@@ -1,8 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import { Container } from '../../atoms/global';
-import { Advertisement, Board, CategoryList } from '../../organisms/category';
+
+import CategoryList from '@root/common/CategoryList';
+import { Advertisement } from '@root/components/organisms/category';
+import { Container } from '@root/components/atoms/global';
+import Board from './Board';
 
 const BoardList = () => {
   const params = useParams();
