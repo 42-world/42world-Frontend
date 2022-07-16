@@ -5,10 +5,9 @@ import styled from 'styled-components';
 import { isEmpty } from '@common/utils';
 import { useGetCategory } from '@common/hooks/api/category';
 
-const BoardHeader = ({ hasQuery }) => {
+const ArticleListHeader = ({ hasQuery }) => {
   const navigate = useNavigate();
   const param = useParams();
-  const location = useLocation();
   const { categories } = useGetCategory();
   const [search, setSearch] = useState('');
   const categoryId = param?.id ? parseInt(param.id) : null;
@@ -62,7 +61,7 @@ const BoardHeader = ({ hasQuery }) => {
   );
 };
 
-export default BoardHeader;
+export default ArticleListHeader;
 
 const BoardHeaderDiv = styled.div`
   padding: 5px 10px;

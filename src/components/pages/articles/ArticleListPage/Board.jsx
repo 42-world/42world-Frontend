@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import BoardHeader from '@common/Board/BoardHeader';
 import { Wrapper } from '@components/atoms/Board';
 import { serializeFormQuery } from '@root/common/utils';
 import { useGetArticles } from '@common/hooks/api/article';
 import { useGetSearchResults } from '@common/hooks/api/search';
 import PageSelector from '@root/common/PageSelector';
-import ArticleList from './ArticleList';
+import ArticleList from './components/ArticleList';
+import ArticleListHeader from './components/ArticleListHeader';
 
 const Board = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,7 +44,7 @@ const Board = () => {
       <CategoryBlock>
         <Wrapper>
           <div className="BoardHeaderWrapper">
-            <BoardHeader hasQuery={hasQuery} />
+            <ArticleListHeader hasQuery={hasQuery} />
           </div>
           <ArticleList articles={articles} categoryId={categoryId} />
           <PageSelector currentPage={page} onChangePage={handleChange} totalPageCount={meta?.pageCount || 0} />

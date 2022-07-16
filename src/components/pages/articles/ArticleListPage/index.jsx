@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import CategoryList from '@root/common/CategoryList';
 import { Advertisement } from '@root/components/organisms/category';
 import { Container } from '@root/components/atoms/global';
-import Board from './components/Board';
+import Board from './Board';
 
 const BoardList = () => {
   const params = useParams();

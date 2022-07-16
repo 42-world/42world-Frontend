@@ -1,4 +1,5 @@
 import CategoryList from '@root/common/CategoryList';
+import { Body } from '@root/components/atoms/Board';
 import { Container } from '@root/components/atoms/global';
 import { ArticleContent, Comment } from '@root/components/organisms/article';
 import { Advertisement } from '@root/components/organisms/category';
@@ -22,17 +23,20 @@ const ArticleDetail = () => {
 
   return (
     <ArticleBlock>
-      {article && (
-        <>
-          <div className="block category_block">
-            <CategoryList categoryId={article.categoryId} />
-          </div>
-          <div className="block article_block">
+      <div className="block category_block">
+        <CategoryList categoryId={article?.categoryId} />
+      </div>
+      <div className="block article_block">
+        {article ? (
+          <>
             <ArticleContent article={article} />
             <Comment articleId={id} writer={article.writer} />
-          </div>
-        </>
-      )}
+          </>
+        ) : (
+          // TODO: 이쁘게 만들기
+          <Body>글이 없다</Body>
+        )}
+      </div>
       <Advertisement />
     </ArticleBlock>
   );
