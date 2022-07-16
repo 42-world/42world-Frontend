@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getCategory } from '@common/hooks/api/category';
+import { useGetCategory } from '@common/hooks/api/category';
 import { rem } from '../../../styles/rem';
 
 const CategoryList = ({ categoryId }) => {
-  const { categories } = getCategory();
+  const { categories } = useGetCategory();
 
   return (
     <CategoryListBlock>

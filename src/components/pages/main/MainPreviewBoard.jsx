@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getArticles } from '@common/hooks/api/article';
+import { useGetArticles } from '@common/hooks/api/article';
 import PreviewArticleBoard from '@common/Preview/PreviewArticleBoard';
 
 const MainPreviewBoard = ({ categoryId, categoryName, maxItemCount }) => {
   const navigate = useNavigate();
-  const { articles } = getArticles(categoryId);
+  const { articles } = useGetArticles(categoryId);
   const onClick = categoryId => {
     navigate(`/category/${categoryId}`);
   };
