@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { isEmpty } from '@common/utils';
 import { useGetCategory } from '@common/hooks/api/category';
@@ -68,6 +68,9 @@ const BoardHeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  border-bottom: 0.1rem solid #d8d8d8;
+
   button {
     background: #53b7ba;
     color: #ffffff;

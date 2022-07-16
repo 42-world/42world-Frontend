@@ -1,67 +1,75 @@
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+/** @jsxImportSource @emotion/react */
 
-import CategoryList from '@root/common/CategoryList';
-import { Advertisement } from '@root/components/organisms/category';
-import { Container } from '@root/components/atoms/global';
-import Board from './Board';
+import { useState, useEffect } from 'react';
+import { useLocation, useSearchParams, useParams } from 'react-router-dom';
+import { css } from '@emotion/react';
 
-const BoardList = () => {
-  const params = useParams();
-  const { id } = params;
+import { serializeFormQuery } from '@root/common/utils';
+import { useGetArticles } from '@common/hooks/api/article';
+import { useGetSearchResults } from '@common/hooks/api/search';
+import PageSelector from '@root/common/PageSelector';
+import ArticleList from './components/ArticleList';
+import ArticleListHeader from './components/ArticleListHeader';
+import Board from '../common/Board';
+import { block } from '../common/styles';
+
+const ArticleListPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const param = useParams();
+  const [page, setPage] = useState(1);
+  const query = new URLSearchParams(location.search).get('q');
+
+  const categoryId = param?.id ? parseInt(param.id) : null;
+  const hasQuery = query?.length >= 1;
+  const { articles: articleList, meta: articlesMeta } = useGetArticles(categoryId, page, !hasQuery);
+  const { articles: searchedArticles, meta: searchedArticlesMeta } = useGetSearchResults(
+    query,
+    categoryId,
+    page,
+    hasQuery,
+  );
+
+  const articles = hasQuery ? searchedArticles : articleList;
+  const meta = hasQuery ? searchedArticlesMeta : articlesMeta;
+
+  const handleChange = value => {
+    setPage(value);
+    setSearchParams({ ...serializeFormQuery(searchParams), page: value });
+  };
+
+  useEffect(() => {
+    setPage(searchParams.get('page'));
+  }, [searchParams]);
 
   return (
-    <CategoryBlock>
-      <div className="block category_block">
-        <CategoryList categoryId={parseInt(id)} />
+    <Board categoryId={categoryId}>
+      <div css={[block, articleListStyle]}>
+        <div css={categoryBlock}>
+          <ArticleListHeader hasQuery={hasQuery} />
+          <ArticleList articles={articles} categoryId={categoryId} />
+          <PageSelector currentPage={page} onChangePage={handleChange} totalPageCount={meta?.pageCount || 0} />
+        </div>
       </div>
-      <div className="block writing_block">
-        <Board />
-      </div>
-      <Advertisement />
-    </CategoryBlock>
+    </Board>
   );
 };
 
-const CategoryBlock = styled(Container)`
+const categoryBlock = css`
   display: flex;
-  flex-direction: row;
-  margin-top: 1.5rem;
+  flex-direction: column;
 
-  & > .block {
-    margin: 0 0.8rem;
-    width: 100%;
-  }
-  .category_block {
-    width: 12rem;
-    min-width: 12rem;
-  }
-  .writing_block {
-    max-width: calc(100% - 15.2rem - 9rem - 1.6rem);
-  }
+  width: 12rem;
 
-  @media screen and (max-width: 1020px) {
-    display: flex;
-    .writing_block {
-      max-width: calc(100% - 15.2rem);
-    }
-  }
-
-  ${props => props.theme.mobileSize} {
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-    .category_block {
-      margin: 0;
-      padding-left: 0.5rem;
-      width: 100%;
-    }
-    .writing_block {
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-    }
-  }
+  border-radius: 0.3rem;
+  box-shadow: ${props => props.theme.boxShadow};
+  background-color: #fff;
+  text-decoration: none;
 `;
 
-export default BoardList;
+const articleListStyle = css`
+  width: 12rem;
+  min-width: 12rem;
+`;
+
+export default ArticleListPage;
