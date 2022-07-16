@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useSearchParams, useParams } from 'react-router-dom';
+import { useLocation, useSearchParams, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
 import BoardHeader from '@common/Board/BoardHeader';
-import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
+import { Wrapper } from '@components/atoms/Board';
 import { serializeFormQuery } from '@root/common/utils';
-import { useGetCategory, getCategoryName } from '@root/common/hooks/api/category';
 import { useGetArticles } from '@common/hooks/api/article';
 import { useGetSearchResults } from '@common/hooks/api/search';
-import PreviewArticle from '@root/components/organisms/category/PreviewArticle';
 import PageSelector from '@root/common/PageSelector';
+import ArticleList from './ArticleList';
 
 const Board = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,7 +16,6 @@ const Board = () => {
   const param = useParams();
   const [page, setPage] = useState(1);
   const query = new URLSearchParams(location.search).get('q');
-  const { categories } = useGetCategory();
 
   const categoryId = param?.id ? parseInt(param.id) : null;
   const hasQuery = query?.length >= 1;
@@ -47,25 +46,7 @@ const Board = () => {
           <div className="BoardHeaderWrapper">
             <BoardHeader hasQuery={hasQuery} />
           </div>
-          <Body>
-            <ArticleList>
-              {articles &&
-                articles.map(article => (
-                  <>
-                    {categoryId ? (
-                      <></>
-                    ) : (
-                      <Link key={`category_${article.categoryId}`} to={`/category/${article.categoryId}`}>
-                        <CategoryName>{getCategoryName(categories, article.categoryId)}</CategoryName>
-                      </Link>
-                    )}
-                    <Link to={`/article/${article.id}`} className="articleList_content" key={`article_${article.id}`}>
-                      <PreviewArticle article={article} />
-                    </Link>
-                  </>
-                ))}
-            </ArticleList>
-          </Body>
+          <ArticleList articles={articles} categoryId={categoryId} />
           <PageSelector currentPage={page} onChangePage={handleChange} totalPageCount={meta?.pageCount || 0} />
         </Wrapper>
       </CategoryBlock>
@@ -92,15 +73,6 @@ const CategoryBlock = styled.div`
       }
     }
   }
-`;
-
-const CategoryName = styled.h3`
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #424242;
-  margin: 0.5rem 0.5rem -0.3rem 0.9rem;
-  width: max-content;
-  text-decoration: none;
 `;
 
 export default Board;
