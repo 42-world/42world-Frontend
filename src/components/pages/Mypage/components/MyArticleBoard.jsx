@@ -4,6 +4,7 @@ import PreviewArticle from '@components/organisms/category/PreviewArticle';
 import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
 
 import { StyledMyArticleBoard, StyledMyArticlePageSelector } from '@components/pages/Mypage/styles';
+import constants from '../constants';
 
 const MyArticleBoard = ({ articleType }) => {
   const {
@@ -27,7 +28,8 @@ const MyArticleBoard = ({ articleType }) => {
       </div>
       <div className="article-list">
         {articles.map((article, id) => (
-          <Link to={`/article/${article.id}`} className="article-content" key={id}>
+          //TODO: article 이름 수정
+          <Link to={`/article/${articleType === constants.COMMENT ? article.article.id : article.id}`} className="article-content" key={id}>
             <PreviewArticle article={article} />
           </Link>
         ))}
