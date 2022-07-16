@@ -6,7 +6,7 @@ import { Container } from '../../atoms/global';
 import { ArticleContent, Comment } from '../../organisms/article';
 import { Advertisement, CategoryList } from '../../organisms/category';
 
-const _id = () => {
+const ArticleDetail = () => {
   const params = useParams();
   const { id } = params;
 
@@ -17,19 +17,21 @@ const _id = () => {
       let data = await ArticleService.getArticleByAritlceId(id);
       setArticle(data);
     })();
-    // eslint-disable-next-line
   }, []);
 
-  if (!article) return <></>;
   return (
     <ArticleBlock>
-      <div className="block category_block">
-        <CategoryList sendedId={article.category.id} />
-      </div>
-      <div className="block article_block">
-        <ArticleContent article={article} />
-        <Comment articleId={id} writer={article.writer} />
-      </div>
+      {article && (
+        <>
+          <div className="block category_block">
+            <CategoryList categoryId={article.categoryId} />
+          </div>
+          <div className="block article_block">
+            <ArticleContent article={article} />
+            <Comment articleId={id} writer={article.writer} />
+          </div>
+        </>
+      )}
       <Advertisement />
     </ArticleBlock>
   );
@@ -67,4 +69,4 @@ const ArticleBlock = styled(Container)`
   }
 `;
 
-export default _id;
+export default ArticleDetail;
