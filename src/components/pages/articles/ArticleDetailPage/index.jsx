@@ -1,9 +1,10 @@
 import { Body } from '@root/components/atoms/Board';
-import { ArticleContent, Comment } from '@root/components/organisms/article';
 import { ArticleService } from '@root/network';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Board from '../common/Board';
+import ArticleContent from './ArticleContent';
+import Comment from './Comment';
 
 const ArticleDetail = () => {
   const params = useParams();

@@ -1,7 +1,7 @@
+import { ArticleService, CommentService } from '@root/network';
 import dayjs from 'dayjs';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { ArticleService, CommentService } from '../../../network';
 
 const Comment = ({ articleId, writer }) => {
   const [comment, setComment] = useState(null);

@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { ArticleService, ReactionService } from '../../../network';
+import { ArticleService, ReactionService } from '../../../../network';
 
 const ArticleContent = ({ article }) => {
   // TODO : 현재 카테고리를 전역 상태로 관리해서 reactionPossible 불러오기
