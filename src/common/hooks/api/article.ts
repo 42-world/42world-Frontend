@@ -1,0 +1,23 @@
+import { useQuery } from 'react-query';
+import { ArticleService } from '@root/network';
+import { Article } from '@network/types/Article';
+import { Meta } from '@network/types/Pagination';
+
+export const ARTICLE_URL = '/article';
+export const ARTICLES_URL = '/articles';
+
+type GetArticles = (
+  categoryId: number,
+  pageNumber?: number,
+  enable?: boolean,
+) => { isError: Boolean; articles: Article[]; meta?: Meta };
+
+export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable = true) => {
+  const { isError, data } = useQuery(
+    [ARTICLES_URL, categoryId, pageNumber],
+    () => ArticleService.getArticlesByCategoryId(categoryId, pageNumber, 10),
+    { enabled: enable },
+  );
+
+  return { isError, articles: data?.data ?? [], meta: data?.meta };
+};
