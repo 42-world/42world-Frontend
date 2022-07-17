@@ -12,6 +12,8 @@ type GetArticles = (
   enable?: boolean,
 ) => { isError: Boolean; articles: Article[]; meta?: Meta };
 
+type GetArticle = (articleId: number) => { isError: Boolean; article: Article };
+
 export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable = true) => {
   const { isError, data } = useQuery(
     [ARTICLES_URL, categoryId, pageNumber],
@@ -20,4 +22,10 @@ export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable =
   );
 
   return { isError, articles: data?.data ?? [], meta: data?.meta };
+};
+
+export const useGetArticleById: GetArticle = articleId => {
+  const { isError, data } = useQuery([ARTICLES_URL, articleId], () => ArticleService.getArticleById(articleId));
+
+  return { isError, article: data };
 };
