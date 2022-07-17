@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ReactionService } from '@root/network';
 import { ArticleProps } from '@components/pages/articles/common/types';
 
-const Like = ({ article }: ArticleProps) => {
+const ArticleLike = ({ article }: ArticleProps) => {
   const [isLike, setIsLike] = useState(false);
   const [likeCount, setLikeCount] = useState(article.likeCount);
 
@@ -17,4 +17,4 @@ const Like = ({ article }: ArticleProps) => {
   return <button onClick={handleClick}>좋아요 {likeCount} </button>;
 };
 
-export default Like;
+export default ArticleLike;
