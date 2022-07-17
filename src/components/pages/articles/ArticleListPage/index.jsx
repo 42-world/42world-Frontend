@@ -39,7 +39,7 @@ const ArticleListPage = () => {
   };
 
   useEffect(() => {
-    setPage(searchParams.get('page'));
+    setPage(parseInt(searchParams.get('page')) || 1);
   }, [searchParams]);
 
   return (

@@ -4,8 +4,8 @@ import { useMemo } from 'react';
 
 const PageSelector = ({ currentPage = 1, onChangePage, totalPageCount, pageDisplayRange = 5 }) => {
   const start = parseInt((currentPage - 1) / pageDisplayRange);
-  const startPage = useMemo(() => start * pageDisplayRange + 1, [start]);
-  const endPage = useMemo(() => Math.min((start + 1) * pageDisplayRange, totalPageCount), [start]);
+  const startPage = start * pageDisplayRange + 1;
+  const endPage = Math.min((start + 1) * pageDisplayRange, totalPageCount);
 
   const pageList = () => numberRange(startPage, endPage);
 
