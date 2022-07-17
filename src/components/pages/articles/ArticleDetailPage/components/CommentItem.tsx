@@ -32,7 +32,6 @@ const CommentItem = ({ comment, articleId, handleUpdate, handleDelete }: Comment
       <div>{comment.content}</div>
       {comment.isSelf ? (
         <>
-          <button onClick={() => handleUpdate(comment.id)}>수정</button>
           <button onClick={() => handleDelete(comment.id)}>삭제</button>
         </>
       ) : (
