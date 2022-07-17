@@ -18,7 +18,7 @@ const ArticleDetailPage = () => {
         {article ? (
           <>
             <ArticleContainer article={article} />
-            {/* <CommentContainer articleId={article.id} /> */}
+            <CommentContainer articleId={article.id} />
           </>
         ) : (
           // TODO: 이쁘게 만들기
