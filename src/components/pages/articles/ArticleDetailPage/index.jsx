@@ -3,10 +3,11 @@ import { ArticleService } from '@root/network';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Board from '../common/Board';
-import ArticleContent from './ArticleContent';
+import ArticleContainer from './ArticleContainer';
+import ArticleContent from './ArticleContentOld';
 import Comment from './Comment';
 
-const ArticleDetail = () => {
+const ArticleDetailPage = () => {
   const params = useParams();
   const { id } = params;
 
@@ -14,7 +15,7 @@ const ArticleDetail = () => {
 
   useEffect(() => {
     (async () => {
-      let data = await ArticleService.getArticleByAritlceId(id);
+      let data = await ArticleService.getArticleById(id);
       setArticle(data);
     })();
   }, []);
@@ -24,7 +25,7 @@ const ArticleDetail = () => {
       <div className="block article_block">
         {article ? (
           <>
-            <ArticleContent article={article} />
+            <ArticleContainer articleId={id} />
             <Comment articleId={id} writer={article.writer} />
           </>
         ) : (
@@ -36,4 +37,4 @@ const ArticleDetail = () => {
   );
 };
 
-export default ArticleDetail;
+export default ArticleDetailPage;
