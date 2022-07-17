@@ -3,23 +3,33 @@ import { numberRange } from '@common/utils';
 import { useMemo } from 'react';
 
 const PageSelector = ({ currentPage = 1, onChangePage, totalPageCount, pageDisplayRange = 5 }) => {
-  const pageList = useMemo(() => {
-    const start = parseInt(currentPage / pageDisplayRange);
-    const startPage = start * pageDisplayRange + 1;
-    const endPage = Math.min((start + 1) * pageDisplayRange, totalPageCount);
+  const start = parseInt((currentPage - 1) / pageDisplayRange);
+  const startPage = useMemo(() => start * pageDisplayRange + 1, [start]);
+  const endPage = useMemo(() => Math.min((start + 1) * pageDisplayRange, totalPageCount), [start]);
 
-    return numberRange(startPage, endPage);
-  }, [currentPage, pageDisplayRange, totalPageCount]);
+  const pageList = () => numberRange(startPage, endPage);
+
+  const handleNextPage = () => {
+    if (endPage < totalPageCount) {
+      onChangePage(endPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (endPage > pageDisplayRange) {
+      onChangePage(startPage - 1);
+    }
+  };
 
   return (
     <PageSelectorBlock>
-      <PageButton onClick={() => onChangePage(1)}>&lt;</PageButton>
-      {pageList.map(page => (
+      <PageButton onClick={handlePrevPage}>&lt;</PageButton>
+      {pageList().map(page => (
         <PageButton key={page} onClick={() => onChangePage(page)} isCurrentPage={page === currentPage}>
           {page}
         </PageButton>
       ))}
-      <PageButton onClick={() => onChangePage(totalPageCount)}>&gt;</PageButton>
+      <PageButton onClick={handleNextPage}>&gt;</PageButton>
     </PageSelectorBlock>
   );
 };
