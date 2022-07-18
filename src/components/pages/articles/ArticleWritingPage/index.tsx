@@ -1,22 +1,25 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import qs from 'qs';
+import { useParams } from 'react-router-dom';
 
 import { Container } from '@root/components/atoms/global';
+import { isEmpty } from '@root/common/utils';
 import WritingContent from './WritingContent';
 import Board from '../common/Board';
 import WritingContentOld from './WritingContentOld';
 
 const ArticleWritingPage = () => {
-  const { queryCategoryId } = qs.parse(window.location.search, { ignoreQueryPrefix: true });
-  const [categoryId, setCategoryId] = useState(queryCategoryId);
+  const { id } = useParams();
+  const { categoryId } = qs.parse(window.location.search, { ignoreQueryPrefix: true });
+  const categoryIdNumber = isEmpty(categoryId) ? 1 : parseInt(categoryId as string);
+  const articleId = isEmpty(id) ? undefined : parseInt(id as string);
 
   return (
-    <Board categoryId={categoryId}>
+    <Board categoryId={categoryIdNumber}>
       <WritingBlock>
         <div className="block writing_block">
-          <WritingContentOld />
-          <WritingContent />
+          <WritingContent categoryId={categoryIdNumber} articleId={articleId} />
         </div>
       </WritingBlock>
     </Board>

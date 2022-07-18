@@ -29,8 +29,6 @@ const CommentsList = ({ comments, meta, page, setPage, refetch }: CommentsListPr
     setPage(page);
   };
 
-  console.log(comments);
-
   return (
     <div>
       {comments &&

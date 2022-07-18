@@ -9,9 +9,7 @@ const ArticleUpdateDelete = ({ articleId, categoryId }: IdProps) => {
   const navigate = useNavigate();
   const { article } = useGetArticleById(articleId);
   const handleClickUpdate = () => {
-    // TODO: 수정 페이지로 이동
-    navigate(`${URLs.WRITING}?categoryId=${categoryId}`, { state: article });
-    // navigate(`${URLs.WRITING}/${articleId}`);
+    navigate(`${URLs.WRITING}/${articleId}`);
   };
 
   const handleClickDelete = async () => {
