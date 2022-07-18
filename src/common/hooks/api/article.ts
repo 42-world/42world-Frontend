@@ -25,7 +25,9 @@ export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable =
 };
 
 export const useGetArticleById: GetArticle = articleId => {
-  const { isError, data } = useQuery([ARTICLES_URL, articleId], () => ArticleService.getArticleById(articleId));
+  const { isError, data } = useQuery([ARTICLES_URL, articleId], () => ArticleService.getArticleById(articleId), {
+    retry: false,
+  });
 
   return { isError, article: data };
 };
