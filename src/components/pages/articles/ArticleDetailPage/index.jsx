@@ -21,13 +21,11 @@ const ArticleDetailPage = () => {
   return (
     <Board categoryId={article?.categoryId}>
       <div className="block article_block">
-        {article ? (
+        {article && (
           <>
             <ArticleContainer article={article} />
             <CommentContainer articleId={article.id} />
           </>
-        ) : (
-          <></>
         )}
       </div>
     </Board>

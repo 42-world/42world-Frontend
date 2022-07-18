@@ -7,7 +7,7 @@ import Main from './components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
 import Auth from './components/pages/Auth';
 import Donation from './components/pages/Donation';
-import Writing from './components/pages/writing';
+import Writing from './components/pages/articles/ArticleWritingPage';
 import ArticleDetailPage from './components/pages/articles/ArticleDetailPage';
 import ArticleListPage from './components/pages/articles/ArticleListPage';
 import { URLs } from './common/urls';
