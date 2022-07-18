@@ -13,6 +13,8 @@ export type Article = {
   writer: User;
   likeCount: number;
   commentCount: number;
+  isSelf: boolean;
+  isLike: boolean;
   deletedAt: Date;
   createdAt: Date;
   updatedAt: Date;

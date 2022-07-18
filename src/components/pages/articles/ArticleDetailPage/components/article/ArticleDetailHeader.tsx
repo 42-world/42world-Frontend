@@ -16,7 +16,7 @@ const ArticleDetailHeader = ({ article, categoryName = '' }: ArticleDetailHeader
       <ArticleDetailTitle title={article.title} />
       <ArticleDetailWriter writer={article.writer} />
       <ArticleDetailInfo article={article} />
-      <ArticleUpdateDelete articleId={article.id} categoryId={article.categoryId} />
+      {article.isSelf && <ArticleUpdateDelete articleId={article.id} categoryId={article.categoryId} />}
     </div>
   );
 };

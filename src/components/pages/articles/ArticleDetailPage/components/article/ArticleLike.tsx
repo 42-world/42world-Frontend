@@ -4,7 +4,7 @@ import { ReactionService } from '@root/network';
 import { ArticleProps } from '@components/pages/articles/common/types';
 
 const ArticleLike = ({ article }: ArticleProps) => {
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(article.isLike);
   const [likeCount, setLikeCount] = useState(article.likeCount);
 
   const handleClick = async () => {
@@ -14,7 +14,11 @@ const ArticleLike = ({ article }: ArticleProps) => {
 
     // TODO: debouncing 적용
   };
-  return <button onClick={handleClick}>좋아요 {likeCount} </button>;
+  return (
+    <button onClick={handleClick}>
+      {isLike ? '좋아요 취소' : '좋아요'} {likeCount}
+    </button>
+  );
 };
 
 export default ArticleLike;
