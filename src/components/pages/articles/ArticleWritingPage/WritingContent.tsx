@@ -4,7 +4,6 @@ import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 
 import { useGetCategory } from '@common/hooks/api/category';
-import { NumberProps } from '../common/types';
 import { ArticleService, ImageService } from '@root/network';
 import { URLs } from '@root/common/urls';
 import { isEmpty } from '@common/utils';
@@ -159,7 +158,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
     validateTitleAndContent();
 
     try {
-      const data = await ArticleService.editArticles(articleId, {
+      await ArticleService.editArticles(articleId, {
         title: state.title,
         content: state.content,
         categoryId: state.categoryId,
@@ -198,7 +197,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
           ref={editorRef}
           previewStyle="vertical"
           height="600px"
-          initialEditType="markdown"
+          initialEditType="wysiwyg"
           useCommandShortcut={true}
           onChange={handleChangeContent}
         />

@@ -7,7 +7,6 @@ import { IdProps } from '@components/pages/articles/common/types';
 
 const ArticleUpdateDelete = ({ articleId, categoryId }: IdProps) => {
   const navigate = useNavigate();
-  const { article } = useGetArticleById(articleId);
   const handleClickUpdate = () => {
     navigate(`${URLs.WRITING}/${articleId}`);
   };

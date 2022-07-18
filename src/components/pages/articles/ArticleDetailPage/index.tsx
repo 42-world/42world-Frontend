@@ -7,8 +7,8 @@ import CommentContainer from './components/comment/CommentContainer';
 import { useGetArticleById } from '@root/common/hooks/api/article';
 
 const ArticleDetailPage = () => {
-  const { id } = useParams();
-  const { isError, article } = useGetArticleById(id);
+  const { id = '0' } = useParams();
+  const { isError, article } = useGetArticleById(parseInt(id));
   const navigator = useNavigate();
 
   useEffect(() => {
