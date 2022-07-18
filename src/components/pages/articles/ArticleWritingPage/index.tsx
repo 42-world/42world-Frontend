@@ -1,13 +1,11 @@
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import qs from 'qs';
-import { useParams } from 'react-router-dom';
 
 import { Container } from '@root/components/atoms/global';
 import { isEmpty } from '@root/common/utils';
 import WritingContent from './WritingContent';
 import Board from '../common/Board';
-import WritingContentOld from './WritingContentOld';
 
 const ArticleWritingPage = () => {
   const { id } = useParams();

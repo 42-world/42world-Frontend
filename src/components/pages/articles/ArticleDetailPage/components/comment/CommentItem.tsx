@@ -1,7 +1,8 @@
-import { Comment } from '@root/network/types/Comment';
-import { getCreatedAt } from '@components/pages/articles/common/utils';
 import { useState } from 'react';
+
+import { Comment } from '@root/network/types/Comment';
 import { ReactionService } from '@root/network';
+import { getCreatedAt } from '@components/pages/articles/common/utils';
 
 interface CommentItemProps {
   comment: Comment;

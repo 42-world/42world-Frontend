@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from '@emotion/react';
+
 import { useGetCategory } from '@root/common/hooks/api/category';
 import { Body } from '@root/components/atoms/Board';
 import ArticleListItem from './ArticleListItem';

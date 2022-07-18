@@ -1,10 +1,11 @@
-import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import SearchIcon from '@mui/icons-material/Search';
+
+import { URLs } from '@root/common/urls';
 import { isEmpty } from '@common/utils';
 import { useGetCategory } from '@common/hooks/api/category';
-import { URLs } from '@root/common/urls';
 
 const ArticleListHeader = ({ hasQuery }) => {
   const navigate = useNavigate();

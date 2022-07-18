@@ -1,5 +1,4 @@
 import { ArticleProps } from '@components/pages/articles/common/types';
-
 import ArticleDetailCategory from './ArticleDetailCategory';
 import ArticleDetailInfo from './ArticleDetailInfo';
 import ArticleDetailTitle from './ArticleDetailTitle';

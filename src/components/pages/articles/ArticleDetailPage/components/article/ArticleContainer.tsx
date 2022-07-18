@@ -1,8 +1,7 @@
-import { useGetArticleById } from '@common/hooks/api/article';
+import { Article } from '@root/network/types/Article';
 import { getCategoryName, useGetCategory } from '@common/hooks/api/category';
 import ArticleDetailHeader from './ArticleDetailHeader';
 import ArticleContent from './ArticleContent';
-import { Article } from '@root/network/types/Article';
 
 interface ArticleContainer {
   article: Article;

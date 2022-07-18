@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams, useParams } from 'react-router-dom';
 import { css } from '@emotion/react';
 
-import { serializeFormQuery } from '@root/common/utils';
 import { useGetArticles } from '@common/hooks/api/article';
 import { useGetSearchResults } from '@common/hooks/api/search';
-import PageSelector from '@root/common/PageSelector';
+import PageSelector from '@common/PageSelector';
+import { serializeFormQuery } from '@common/utils';
 import ArticleList from './components/ArticleList';
 import ArticleListHeader from './components/ArticleListHeader';
 import Board from '../common/Board';

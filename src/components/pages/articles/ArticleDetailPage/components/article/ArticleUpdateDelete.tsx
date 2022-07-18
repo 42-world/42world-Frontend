@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import { useGetArticleById } from '@common/hooks/api/article';
-import { URLs } from '@common/urls';
 import { ArticleService } from '@root/network';
+import { URLs } from '@common/urls';
 import { IdProps } from '@components/pages/articles/common/types';
 
 const ArticleUpdateDelete = ({ articleId, categoryId }: IdProps) => {

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Board from '../common/Board';
+import { useGetArticleById } from '@root/common/hooks/api/article';
 import ArticleContainer from './components/article/ArticleContainer';
 import CommentContainer from './components/comment/CommentContainer';
-import { useGetArticleById } from '@root/common/hooks/api/article';
+import Board from '../common/Board';
 
 const ArticleDetailPage = () => {
   const { id = '0' } = useParams();

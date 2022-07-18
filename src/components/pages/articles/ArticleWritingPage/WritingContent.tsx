@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 
-import { useGetCategory } from '@common/hooks/api/category';
 import { ArticleService, ImageService } from '@root/network';
 import { URLs } from '@root/common/urls';
-import { isEmpty } from '@common/utils';
 import { useGetArticleById } from '@common/hooks/api/article';
+import { useGetCategory } from '@common/hooks/api/category';
+import { isEmpty } from '@common/utils';
 
 interface InputState {
   title: string;
