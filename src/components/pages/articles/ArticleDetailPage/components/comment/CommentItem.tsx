@@ -6,16 +6,14 @@ import { ReactionService } from '@root/network';
 interface CommentItemProps {
   comment: Comment;
   articleId: number;
-  handleUpdate: (commendId: number) => void;
   handleDelete: (commendId: number) => void;
 }
 
-const CommentItem = ({ comment, articleId, handleUpdate, handleDelete }: CommentItemProps) => {
+const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => {
   const [likeCount, setLikeCount] = useState(comment.likeCount);
   const [isLike, setIsLike] = useState(comment.isLike);
 
   const handleClickLikeComment = async () => {
-    // 댓글 좋아요
     try {
       const { isLike, likeCount } = await ReactionService.commentReaction({ articleId, commentId: comment.id });
       setIsLike(isLike);
@@ -30,13 +28,7 @@ const CommentItem = ({ comment, articleId, handleUpdate, handleDelete }: Comment
       <div>{comment.writer.nickname}</div>
       <div>{getCreatedAt(comment.createdAt)}</div>
       <div>{comment.content}</div>
-      {comment.isSelf ? (
-        <>
-          <button onClick={() => handleDelete(comment.id)}>삭제</button>
-        </>
-      ) : (
-        <></>
-      )}
+      {comment.isSelf ? <button onClick={() => handleDelete(comment.id)}>삭제</button> : <></>}
       <div>
         <button onClick={handleClickLikeComment}>{isLike ? '좋아요 취소' : '좋아요'}</button>
         {likeCount}

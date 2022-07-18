@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { Body } from '@root/components/atoms/Board';
 import { ArticleService } from '@root/network';
 import Board from '../common/Board';
-import ArticleContainer from './components/ArticleContainer';
-import CommentContainer from './components/CommentContainer';
+import ArticleContainer from './components/article/ArticleContainer';
+import CommentContainer from './components/comment/CommentContainer';
 import { useGetArticleById } from '@root/common/hooks/api/article';
 
 const ArticleDetailPage = () => {

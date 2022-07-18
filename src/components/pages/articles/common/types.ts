@@ -8,7 +8,7 @@ export interface ArticleProps {
 export interface StringProps {
   [key: string]: string;
 }
-interface NumberProps {
+export interface NumberProps {
   [key: string]: number;
 }
 
