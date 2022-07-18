@@ -7,9 +7,9 @@ import ArticleDetailWriter from './ArticleDetailWriter';
 import ArticleUpdateDelete from './ArticleUpdateDelete';
 
 interface ArticleDetailHeaderProps extends ArticleProps {
-  categoryName: string;
+  categoryName?: string;
 }
-const ArticleDetailHeader = ({ article, categoryName }: ArticleDetailHeaderProps) => {
+const ArticleDetailHeader = ({ article, categoryName = '' }: ArticleDetailHeaderProps) => {
   return (
     <div>
       <ArticleDetailCategory categoryName={categoryName} />

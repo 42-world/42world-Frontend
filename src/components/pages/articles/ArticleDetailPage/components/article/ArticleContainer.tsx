@@ -10,7 +10,7 @@ interface ArticleContainer {
 
 const ArticleContainer = ({ article }: ArticleContainer) => {
   const { categories } = useGetCategory();
-  const categoryName = getCategoryName(categories, article?.categoryId);
+  const categoryName = getCategoryName(article?.categoryId, categories);
   return (
     <>
       <ArticleDetailHeader article={article} categoryName={categoryName} />

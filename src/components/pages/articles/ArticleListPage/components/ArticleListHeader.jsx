@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { isEmpty } from '@common/utils';
 import { useGetCategory } from '@common/hooks/api/category';
+import { URLs } from '@root/common/urls';
 
 const ArticleListHeader = ({ hasQuery }) => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const ArticleListHeader = ({ hasQuery }) => {
   };
 
   const handleCreateArticle = () => {
-    navigate(`/writing`, { state: { categoryId } });
+    navigate(`${URLs.WRITING}?categoryId=${categoryId}`);
   };
 
   const getTitle = () => {

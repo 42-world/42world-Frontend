@@ -8,7 +8,7 @@ import { useGetCategory } from '@common/hooks/api/category';
 
 import styled from 'styled-components';
 
-const WritingContent = ({ articleContent, articleTitle }) => {
+const WritingContentOld = ({ articleContent, articleTitle }) => {
   const [title, setTitle] = useState(articleTitle);
   const [content, setContent] = useState(articleContent);
   const [articleId, setArticleId] = useState(null);
@@ -76,19 +76,15 @@ const WritingContent = ({ articleContent, articleTitle }) => {
   };
 
   useEffect(() => {
-    if (location.state.categoryId) {
-      setCategoryId(location.state.categoryId);
-    }
-    if (location.state.article) {
-      const { article } = location.state;
-      setTitle(article.title);
-      setContent(article.content);
-      setCategoryId(article.categoryId);
-      setArticleId(article.id);
-      categoryRef.current.disabled = true;
-      titleRef.current.disabled = true;
-      editorRef.current.getInstance().setMarkdown(article.content);
-    }
+    const { article } = location.state;
+    if (!article) return;
+    setTitle(article.title);
+    setContent(article.content);
+    setCategoryId(article.categoryId);
+    setArticleId(article.id);
+    categoryRef.current.disabled = true;
+    titleRef.current.disabled = true;
+    editorRef.current.getInstance().setMarkdown(article.content);
   }, []);
 
   useEffect(() => {
@@ -99,7 +95,6 @@ const WritingContent = ({ articleContent, articleTitle }) => {
 
   useEffect(() => {
     if (categoryRef) {
-      console.log('categoryRef.current.value : ', categoryId);
       categoryRef.current.value = categoryId;
     }
   }, [categoryId, categoryRef]);
@@ -215,4 +210,4 @@ const WritingContentBlock = styled.div`
   }
 `;
 
-export default WritingContent;
+export default WritingContentOld;

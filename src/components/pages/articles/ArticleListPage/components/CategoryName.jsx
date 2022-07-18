@@ -8,7 +8,7 @@ import { getCategoryName } from '@root/common/hooks/api/category';
 const CategoryName = ({ article, categories }) => {
   return (
     <Link key={`category_${article.categoryId}`} to={`/category/${article.categoryId}`}>
-      <h3 css={categoryName}>{getCategoryName(categories, article.categoryId)}</h3>
+      <h3 css={categoryName}>{getCategoryName(article.categoryId, categories)}</h3>
     </Link>
   );
 };

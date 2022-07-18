@@ -7,7 +7,7 @@ import Main from './components/pages/main/Main';
 import Mypage from './components/pages/Mypage';
 import Auth from './components/pages/Auth';
 import Donation from './components/pages/Donation';
-import Writing from './components/pages/articles/ArticleWritingPage';
+import ArticleWritingPage from './components/pages/articles/ArticleWritingPage';
 import ArticleDetailPage from './components/pages/articles/ArticleDetailPage';
 import ArticleListPage from './components/pages/articles/ArticleListPage';
 import { URLs } from './common/urls';
@@ -22,8 +22,8 @@ const Router = () => {
           <Route path={`${URLs.CATEGORY}/:id`} element={<ArticleListPage />} />
           <Route path={URLs.MYPAGE} element={<Mypage />} />
           <Route path={`${URLs.MYPAGE}/:articleType`} element={<Mypage />} />
-          <Route path={URLs.WRITING} element={<Writing />} />
-          <Route path={`${URLs.WRITING}/:id`} element={<Writing />} />
+          <Route path={URLs.WRITING} element={<ArticleWritingPage />} />
+          <Route path={`${URLs.WRITING}/:id`} element={<ArticleWritingPage />} />
           <Route path={`${URLs.ARTICLE}/:id`} element={<ArticleDetailPage />} />
           <Route path={URLs.DONATION} element={<Donation />} />
         </Route>
