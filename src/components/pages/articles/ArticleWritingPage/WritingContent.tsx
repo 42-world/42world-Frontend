@@ -126,12 +126,13 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
   const validateTitleAndContent = () => {
     if (state.title === '') {
       window.alert('제목을 입력하세요!');
-      return;
+      return false;
     }
     if (state.content === '') {
       window.alert('내용을 입력하세요!');
-      return;
+      return false;
     }
+    return true;
   };
 
   const navigateArticle = (articleId: number) => {
@@ -139,7 +140,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
   };
 
   const handleSubmitCreate = async () => {
-    validateTitleAndContent();
+    if (!validateTitleAndContent()) return;
 
     try {
       const data = await ArticleService.createArticles({
@@ -155,7 +156,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
   };
 
   const handleSubmitEdit = async () => {
-    validateTitleAndContent();
+    if (!validateTitleAndContent()) return;
 
     try {
       await ArticleService.editArticles(articleId, {
