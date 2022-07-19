@@ -1,17 +1,12 @@
+import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { css } from '@emotion/react';
+import { theme } from '@styles/theme';
 
 import { notiModalState } from '@root/store/notiModal';
 
-const getImage = type => {
-  switch (type) {
-    case 'NEW_COMMENT':
-      return '/assets/comment.svg';
-  }
-};
 const NotiList = ({ type, body, articleId }) => {
-  const img = getImage(type);
   const navi = useNavigate();
   const setModalTarget = useSetRecoilState(notiModalState);
 
@@ -22,7 +17,7 @@ const NotiList = ({ type, body, articleId }) => {
   return (
     <>
       <div css={notiList} onClick={onClickNavigation}>
-        <img src={img} />
+        <BiCommentDots color={theme.textBlue} size={'40px'} />
         <div className="body">
           <div className="text">{body}</div>
         </div>
@@ -41,8 +36,5 @@ const notiList = css.div`
     margin: 5px;
     overflow: hidden;
   }
-  img {
-    min-width: 30px;
-    min-height: 30px;
-  }
+
 `;

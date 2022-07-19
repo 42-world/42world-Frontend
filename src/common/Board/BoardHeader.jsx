@@ -3,13 +3,13 @@ import { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { isEmpty } from '@common/utils';
-import { getCategory } from '@common/hooks/api/category';
+import { useGetCategory } from '@common/hooks/api/category';
 
 const BoardHeader = ({ hasQuery }) => {
   const navigate = useNavigate();
   const param = useParams();
   const location = useLocation();
-  const { categories } = getCategory();
+  const { categories } = useGetCategory();
   const [search, setSearch] = useState('');
   const categoryId = param?.id ? parseInt(param.id) : null;
   const categoryName = categories.find(c => c.id === categoryId)?.name;

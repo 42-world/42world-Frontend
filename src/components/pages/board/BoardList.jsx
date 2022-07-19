@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import { Container } from '../../atoms/global';
 import { Advertisement, Board, CategoryList } from '../../organisms/category';
 
 const BoardList = () => {
+  const params = useParams();
+  const { id } = params;
+
   return (
     <CategoryBlock>
       <div className="block category_block">
-        <CategoryList />
+        <CategoryList categoryId={parseInt(id)} />
       </div>
       <div className="block writing_block">
         <Board />

@@ -40,6 +40,7 @@ export const theme = {
   buttonBlue2: '#53b7ba',
   buttonRed1: '#df867d',
   buttonRed2: '#ad0000',
+  buttonYello: '#FBBC05',
 
   //Line Color
   lineGray1: '#d8d8d8',

@@ -4,7 +4,7 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
 import { ArticleService, ImageService } from '@network';
-import { getCategory } from '@common/hooks/api/category';
+import { useGetCategory } from '@common/hooks/api/category';
 
 import styled from 'styled-components';
 
@@ -16,7 +16,7 @@ const WritingContent = ({ articleContent, articleTitle }) => {
   const [categoryList, setCategoryList] = useState([]);
   // TODO : 로딩 상태에 따라 로딩 컴포넌트 추가
   // eslint-disable-next-line
-  const { isError, categories } = getCategory();
+  const { isError, categories } = useGetCategory();
   const editorRef = useRef(null);
   const titleRef = useRef(null);
   const categoryRef = useRef(null);

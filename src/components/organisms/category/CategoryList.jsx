@@ -1,23 +1,10 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getCategory } from '@common/hooks/api/category';
-import { userCurrentPosState } from '../../../store/userCurrentPos';
+import { useGetCategory } from '@common/hooks/api/category';
 import { rem } from '../../../styles/rem';
 
-const CategoryList = ({ sendedId }) => {
-  const { categories } = getCategory();
-  const location = useLocation();
-  const categoryPos = location.pathname.split('/')[1];
-  const categoryId = parseInt(location.pathname.split('/')[2]);
-  const [userCurrentPos, setUserCurrentPos] = useRecoilState(userCurrentPosState);
-
-  useEffect(() => {
-    if (categoryPos === 'category') {
-      setUserCurrentPos(categoryId);
-    }
-  }, [categoryId, categoryPos, setUserCurrentPos]);
+const CategoryList = ({ categoryId }) => {
+  const { categories } = useGetCategory();
 
   return (
     <CategoryListBlock>

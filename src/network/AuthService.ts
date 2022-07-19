@@ -9,22 +9,14 @@ const getAuthUrl = (): string => {
 };
 
 const getAuthAccessToken = async (code: string) => {
-  try {
-    const res = await apiClient.get(GET_ACCESS_TOKEN_API_URL, {
-      params: { code },
-    });
-    return res;
-  } catch (error) {
-    alert(error);
-  }
+  const res = await apiClient.get(GET_ACCESS_TOKEN_API_URL, {
+    params: { code },
+  });
+  return res;
 };
 
 const signOut = async () => {
-  try {
-    await apiClient.delete(SIGN_OUT_API_URL);
-  } catch (error) {
-    alert(error);
-  }
+  await apiClient.delete(SIGN_OUT_API_URL);
 };
 
 export default {

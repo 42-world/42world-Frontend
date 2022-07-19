@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
 import { AuthService } from '@network';
-import { getUser } from '@common/hooks/api/user';
+import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
 
 const LOGIN_ERROR_MESSAGE = '로그인 실패하였습니다. 다시 시도해주세요';
@@ -12,7 +12,7 @@ const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
-  const { user } = getUser();
+  const { user } = useGetUser();
 
   const onClickButton = () => {
     try {
@@ -41,14 +41,21 @@ const useLogin = () => {
 
   const getAccessToken = async code => {
     const res = await AuthService.getAuthAccessToken(code);
+
     if (res.status == 200) {
-      navigate('/');
+      window.location.href = '/';
     } else {
       throw new Error(LOGIN_ERROR_MESSAGE);
     }
   };
 
   useEffect(() => {
+    if (isLoggedIn()) {
+      window.alert('이미 로그인 된 회원입니다');
+      navigate('/');
+      return;
+    }
+
     (async () => {
       if (isAuthCallbackProcess()) {
         try {
@@ -59,16 +66,11 @@ const useLogin = () => {
           }
         } catch (e) {
           // TODO: need to change alert to modal
-          window.alert(e.message);
           window.location.href = '/login';
         }
       }
-      if (isLoggedIn()) {
-        navigate('/');
-      }
-    })(),
-      [];
-  });
+    })();
+  }, [isLoggedIn]);
 
   return { onClickButton, isAuthCallbackProcess };
 };

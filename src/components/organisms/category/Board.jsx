@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import BoardHeader from '@common/Board/BoardHeader';
 import { ArticleList, Body, Wrapper } from '@components/atoms/Board';
 import { serializeFormQuery } from '@root/common/utils';
-import { getCategory, getCategoryName } from '@root/common/hooks/api/category';
-import { getArticles } from '@common/hooks/api/article';
-import { getSearchResults } from '@common/hooks/api/search';
+import { useGetCategory, getCategoryName } from '@root/common/hooks/api/category';
+import { useGetArticles } from '@common/hooks/api/article';
+import { useGetSearchResults } from '@common/hooks/api/search';
 import PreviewArticle from './PreviewArticle';
 import PageSelector from './PageSelector';
 
@@ -16,12 +16,12 @@ const Board = () => {
   const param = useParams();
   const [page, setPage] = useState(1);
   const query = new URLSearchParams(location.search).get('q');
-  const { categories } = getCategory();
+  const { categories } = useGetCategory();
 
   const categoryId = param?.id ? parseInt(param.id) : null;
   const hasQuery = query?.length >= 1;
-  const { articles: articleList, meta: articlesMeta } = getArticles(categoryId, page, !hasQuery);
-  const { articles: searchedArticles, meta: searchedArticlesMeta } = getSearchResults(
+  const { articles: articleList, meta: articlesMeta } = useGetArticles(categoryId, page, !hasQuery);
+  const { articles: searchedArticles, meta: searchedArticlesMeta } = useGetSearchResults(
     query,
     categoryId,
     page,

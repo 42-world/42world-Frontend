@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { PageLayout } from '@common/PageLayout';
-import Article from './components/pages/article/_id';
+import ArticleDetail from './components/pages/article/ArticleDetail';
 import BoardList from './components/pages/board/BoardList';
 import ErrorPage from './components/pages/Error';
 import Login from './components/pages/login/Login';
@@ -22,7 +22,7 @@ const Router = () => {
           <Route path="mypage" element={<Mypage />} />
           <Route path="mypage/:articleType" element={<Mypage />} />
           <Route path="writing" element={<Writing />} />
-          <Route path="article/:id" element={<Article />} />
+          <Route path="article/:id" element={<ArticleDetail />} />
           <Route path="/donation" element={<Donation />} />
         </Route>
 

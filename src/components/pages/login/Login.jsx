@@ -11,8 +11,7 @@ const Login = () => {
   return (
     <Container>
       <StyledLogin>
-        <img src="assets/images/logo/Logo@1x.png" alt="Logo" />
-        <h1>당신이 있기에 행복한 42Seoul</h1>
+        <StyledLogo src="/assets/images/logo/Logo@1x.png" alt="Logo" />
         <LoginTextBox>
           <TextContent>42WORLD 커뮤니티는</TextContent>
           <TextContent>
@@ -35,6 +34,11 @@ const Login = () => {
 
 export default Login;
 
+const StyledLogo = styled.img`
+  width: 15rem;
+  margin-bottom: 1rem;
+`;
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -43,11 +47,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: url('/assets/videos/42seoul_login.jpg') no-repeat center center/cover;
-
-  img {
-    width: 15rem;
-  }
+  background: url('assets/main_background.jpeg') no-repeat center center/cover;
 
   h1 {
     font-size: 1.2rem;
@@ -68,6 +68,7 @@ const LoginTextBox = styled.div`
   padding: 2rem;
   border-radius: 1rem;
   background-color: ${props => props.theme.backgroundWhite};
+  text-align: center;
 `;
 
 const TextContent = styled.p`
@@ -93,4 +94,6 @@ const LoginButton = styled.button`
 
   color: ${props => props.theme.textWhite};
   background-color: #2a2d38;
+
+  cursor: pointer;
 `;

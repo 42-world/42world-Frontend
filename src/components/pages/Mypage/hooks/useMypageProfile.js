@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getUser } from '@common/hooks/api/user';
+import { useGetUser } from '@common/hooks/api/user';
 import {
   IconGithub,
   Icon42,
@@ -12,7 +12,7 @@ import {
 
 const useMypageProfile = () => {
   const [myLinks, setMyLinks] = useState([]);
-  const { user: userInfo } = getUser();
+  const { user: userInfo } = useGetUser();
 
   const linkIcon = {
     github: <IconGithub />,

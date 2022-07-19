@@ -6,14 +6,14 @@ import { Meta } from '@network/types/Pagination';
 export const SEARCH_URL = '/search';
 export const SEARCHES_URL = '/searches';
 
-type GetSearchResults = (
+type UseGetSearchResults = (
   query: string,
   categoryId?: number,
   pageNumber?: number,
   enable?: boolean,
 ) => { isError: boolean; articles: Article[]; meta?: Meta };
 
-export const getSearchResults: GetSearchResults = (query, categoryId, pageNumber = 1, enable = false) => {
+export const useGetSearchResults: UseGetSearchResults = (query, categoryId, pageNumber = 1, enable = false) => {
   const { isError, data } = useQuery(
     [SEARCHES_URL, query, categoryId, pageNumber],
     () => ArticleService2.getArticleSearch({ q: query, categoryId, page: pageNumber }),

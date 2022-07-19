@@ -1,4 +1,5 @@
 import { LoadingButton } from '@mui/lab';
+import { theme } from '@root/styles/theme';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -119,10 +120,7 @@ const Seoul42 = () => {
   return (
     <Seoul42Block>
       <div className="main">
-        <Title>
-          <img src="assets/images/logo/Logo@1x.png" alt="" />
-          <p>당신이 있기에 행복한 42</p>
-        </Title>
+        <StyledLogo src="assets/images/logo/Logo@1x.png" alt="Logo" />
         <div className="Box">
           <LoginTitle className="LoginTitle">인증하기</LoginTitle>
           <ErrorSpan isError={isError}>{errorMessage}</ErrorSpan>
@@ -146,10 +144,11 @@ const Seoul42 = () => {
             onClick={handleAuthenticate}
             loading={isBlock}
             loadingIndicator={loadingMessage.text}
+            loadingPosition={'center'}
             variant="contained"
             disabled={isBlock}
           >
-            인증메일 전송하기
+            {isBlock ? '' : '인증메일 전송하기'}
           </LoadingButton>
 
           {isSend && <AuthRequestInformation intraId={authInfo.email} />}
@@ -160,11 +159,15 @@ const Seoul42 = () => {
   );
 };
 
+const StyledLogo = styled.img`
+  width: 15rem;
+  margin-bottom: 1rem;
+`;
+
 const ErrorSpan = styled.span`
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   color: #f00;
-  transform: translateY(25px);
   ${props => {
     if (!props.isError)
       return `
@@ -175,7 +178,7 @@ const ErrorSpan = styled.span`
       return `
       opacity: 1;
       transition: transform 200ms ease-in-out 0ms, opacity 500ms;
-      transform: translateY(30px);
+      transform: translateY(5px);
       `;
   }};
 `;
@@ -191,241 +194,131 @@ const fadeIn = keyframes`
 
 const Seoul42Block = styled.div`
   background: url('/images/img-home.jpg') center center/cover no-repeat;
-  @media screen and (min-width: 768px) {
-    .main {
-      display: block;
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .Box {
+      padding: 2rem;
+      margin-bottom: 10px;
+      background: ${props => props.theme.white};
+      text-align: center;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      .Box {
-        width: 500px;
-        padding: 10px 0;
-        margin-bottom: 10px;
-        background: var(--primary-white);
-        border: 1px solid #dbdbdb;
-        text-align: center;
-        border-radius: 10px;
+      .LoginTitle {
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      .InputBox {
+        margin-bottom: 8px;
+        padding: 5px 0;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        .LoginTitle {
-          display: block;
-          margin-top: 2rem;
-          font-size: 1.8rem;
-          font-weight: bold;
-        }
-
-        .InputBox {
-          margin-bottom: 8px;
-          padding: 5px 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 77%;
-          .Input {
-            width: 80%;
-            background: white;
-            outline: none;
-            border-radius: 5px;
-            border: 1px #dee2e6 solid;
-            padding: 0.5rem 0.7rem;
-            margin-right: 5px;
-            font-size: 1.125rem;
-            line-height: 1.5;
-            color: black;
-            &::placeholder {
-              color: #dee2e6;
-            }
-            // 버튼을 제외한 영역을 모두 차지하기
-          }
-          span {
-            font-size: 1.125rem;
-            font-weight: bold;
-          }
-        }
-        .SendButton {
-          width: 77%;
-          padding: 12px 9px;
-          background: #2a2d38;
-          color: #fff;
-          border: 1px solid #d8d8d8;
-          box-sizing: border-box;
+        width: 77%;
+        .Input {
+          width: 80%;
+          background: white;
+          outline: none;
           border-radius: 5px;
-          font-weight: bold;
-          cursor: pointer;
-          font-size: 16px;
-        }
-        .send_info {
-          display: flex;
-          flex-direction: column;
-          div {
-            margin-top: 2rem;
-            h2 {
-              font-size: 1.2rem;
-              color: ${props => props.theme.primary};
-              font-weight: 700;
-            }
-            h3 {
-              font-size: 1rem;
-              color: ${props => props.theme.textGray3};
-              font-weight: 400;
-              margin-bottom: 0.5rem;
-            }
+          border: 1px #dee2e6 solid;
+          padding: 0.5rem 0.7rem;
+          margin-right: 5px;
+          font-size: 1.125rem;
+          line-height: 1.5;
+          color: black;
+          &::placeholder {
+            color: #dee2e6;
           }
-
-          animation: ${fadeIn} 500ms ease-out 0ms;
+          // 버튼을 제외한 영역을 모두 차지하기
         }
-        .error_info {
-          display: flex;
-          flex-direction: column;
-          margin-top: 3rem;
-          padding: 1rem 0;
-          align-items: center;
+        span {
+          font-size: 1.125rem;
+          font-weight: bold;
+        }
+      }
+      .SendButton {
+        width: 77%;
+        padding: 12px 9px;
+        background: #2a2d38;
+        color: #fff;
+        border: 1px solid #d8d8d8;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
 
-          h4 {
-            font-size: 0.8rem;
+        .MuiLoadingButton-loadingIndicator {
+          position: relative;
+          color: ${props => props.theme.white};
+          left: 0;
+          transform: translateY(0);
+        }
+      }
+      .send_info {
+        display: flex;
+        flex-direction: column;
+        div {
+          margin-top: 2rem;
+          h2 {
+            font-size: 1.2rem;
+            color: ${props => props.theme.primary};
+            font-weight: 700;
+          }
+          h3 {
+            font-size: 1rem;
             color: ${props => props.theme.textGray3};
             font-weight: 400;
-            &:first-child {
-              margin-bottom: 1.5rem;
-            }
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
           }
-
-          button {
-            margin-top: 1rem;
-            width: max-content;
-            color: ${props => props.theme.backgroundBlack};
-            text-decoration: underline;
-            border: none;
-            background: none;
-            outline: none;
-            cursor: pointer;
-          }
-          animation: ${fadeIn} 500ms ease-out 1000ms;
-          animation-fill-mode: backwards;
         }
+
+        animation: ${fadeIn} 500ms ease-out 0ms;
+      }
+      .error_info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        padding: 1rem 0;
+        align-items: center;
+
+        h4 {
+          font-size: 0.8rem;
+          color: ${props => props.theme.textGray3};
+          font-weight: 400;
+          &:first-child {
+            margin-bottom: 1.5rem;
+          }
+          margin-bottom: 0.6rem;
+        }
+
+        button {
+          margin-top: 1rem;
+          width: max-content;
+          color: ${props => props.theme.backgroundBlack};
+          text-decoration: underline;
+          border: none;
+          background: none;
+          outline: none;
+          cursor: pointer;
+        }
+        animation: ${fadeIn} 500ms ease-out 1000ms;
+        animation-fill-mode: backwards;
       }
     }
   }
-
-  @media screen and (max-width: 768px) {
+  ${props => props.theme.mobileSize} {
     .main {
-      position: relative;
-      width: 370px;
-      justify-content: center;
-      align-items: center;
-
       .Box {
-        width: 100%;
-        padding: 10px 4px;
-        margin-bottom: 10px;
-        background: var(--primary-white);
-        border: 1px solid #dbdbdb;
-        text-align: center;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .LoginTitle {
-          display: block;
-          margin-top: 2rem;
-          font-size: 1.8rem;
-          font-weight: bold;
-        }
-
-        .InputBox {
-          margin-bottom: 8px;
-          padding: 5px 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 77%;
-          .Input {
-            width: 80%;
-            background: white;
-            outline: none;
-            border-radius: 5px;
-            border: 1px #dee2e6 solid;
-            padding: 0.5rem 0.7rem;
-            margin-right: 5px;
-            font-size: 0.8rem;
-            line-height: 1.5;
-            color: black;
-            &::placeholder {
-              color: #dee2e6;
-            }
-            // 버튼을 제외한 영역을 모두 차지하기
-          }
-          span {
-            font-size: 0.8rem;
-            font-weight: bold;
-          }
-        }
-        .SendButton {
-          width: 77%;
-          padding: 12px 9px;
-
-          background: #2a2d38;
-          color: #fff;
-          border: 1px solid #d8d8d8;
-          box-sizing: border-box;
-          border-radius: 5px;
-          font-weight: bold;
-          cursor: pointer;
-          font-size: 16px;
-        }
-        .send_info {
-          display: flex;
-          flex-direction: column;
-          div {
-            margin-top: 2rem;
-            h2 {
-              font-size: 1.2rem;
-              color: ${props => props.theme.primary};
-              font-weight: 700;
-            }
-            h3 {
-              font-size: 1rem;
-              color: ${props => props.theme.textGray3};
-              font-weight: 400;
-              margin-bottom: 0.5rem;
-            }
-          }
-
-          animation: ${fadeIn} 500ms ease-out 0ms;
-        }
-        .error_info {
-          display: flex;
-          flex-direction: column;
-          margin-top: 3rem;
-          padding: 1rem 0;
-          align-items: center;
-
-          h4 {
-            font-size: 0.8rem;
-            color: ${props => props.theme.textGray3};
-            font-weight: 400;
-            &:first-child {
-              margin-bottom: 1.5rem;
-            }
-            margin-bottom: 0.6rem;
-          }
-
-          button {
-            margin-top: 1rem;
-            width: max-content;
-            color: ${props => props.theme.backgroundBlack};
-            text-decoration: underline;
-            border: none;
-            background: none;
-            outline: none;
-            cursor: pointer;
-          }
-          animation: ${fadeIn} 500ms ease-out 1000ms;
-          animation-fill-mode: backwards;
-        }
+        padding: 2rem 1rem;
       }
     }
   }
