@@ -1,15 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 
+import LoginButton from './LoginButton';
+import UserName from './UserName';
+
+import { css } from '@emotion/react';
 import { StyledMenuButton } from '../styled';
 import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
 import { TbBellRinging, TbBell } from 'react-icons/tb';
-import LoginButton from './LoginButton';
-import UserName from './UserName';
 
 const UserItems = ({ onClick }) => {
   const { user } = useGetUser();
+
   return (
     // <div className="user">
     <div css={userStyle}>

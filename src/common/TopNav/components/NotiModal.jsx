@@ -1,21 +1,9 @@
-import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Typography } from '@mui/material';
 
 import NotiList from './NotiList';
-import { NotificationService } from '@network';
 
-const NotiModal = () => {
-  const [noti, setNoti] = useState(null);
-
-  const getNoti = async () => {
-    const result = await NotificationService.getNotifications();
-    setNoti(result);
-  };
-  useEffect(async () => {
-    getNoti();
-  }, []);
-
+const NotiModal = ({ noti }) => {
   return (
     noti && (
       <Typography>

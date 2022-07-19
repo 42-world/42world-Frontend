@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-
 import { notiModalState } from '@root/store/notiModal';
+import { NotificationService } from '@network';
 
 import Logo from './Logo';
 import MenuItems from './MenuItems';
@@ -13,6 +14,12 @@ import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
   const [modalTarget, setModalTarget] = useRecoilState(notiModalState);
+  const [noti, setNoti] = useState(null);
+
+  const getNoti = async () => {
+    const result = await NotificationService.getNotifications();
+    setNoti(result);
+  };
 
   const handleClickNoti = e => {
     setModalTarget(e.currentTarget);
@@ -20,6 +27,11 @@ const TopNav = () => {
   const handleClose = () => {
     setModalTarget(null);
   };
+
+  useEffect(async () => {
+    getNoti();
+  }, []);
+
   return (
     <>
       <StyledTopNav>
@@ -44,7 +56,7 @@ const TopNav = () => {
         anchorEl={modalTarget}
         onClose={handleClose}
       >
-        <NotiModal />
+        <NotiModal noti={noti} />
       </Popover>
     </>
   );
