@@ -95,15 +95,18 @@ const commentDeleteButtonStyle = css`
   font-size: 0.6rem;
   font-weight: bold;
   color: #999;
+  transform: translateY(-1.3px);
   cursor: pointer;
 `;
 
 const commentLikeButtonStyle = css`
+  transform: translateY(-2px);
+
   & > button {
     border: none;
     background-color: transparent;
     font-size: 15px;
-    transform: translateY(2.5px);
+    transform: translateY(3px);
     font-weight: bold;
     color: ${theme.buttonRed1};
     cursor: pointer;
@@ -111,8 +114,9 @@ const commentLikeButtonStyle = css`
   }
 
   & > span {
-    font-size: 14px;
+    font-size: 0.7rem;
     padding-bottom: 10px;
+    color: ${theme.textGray4};
   }
 `;
 
