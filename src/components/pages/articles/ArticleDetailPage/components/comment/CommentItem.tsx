@@ -7,6 +7,8 @@ import { Comment } from '@root/network/types/Comment';
 import { ReactionService } from '@root/network';
 import { useGetArticleById } from '@root/common/hooks/api/article';
 import { getCreatedAt } from '@components/pages/articles/common/utils';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { theme } from '@root/styles/theme';
 
 interface CommentItemProps {
   comment: Comment;
@@ -40,14 +42,13 @@ const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => 
             삭제
           </button>
         ) : (
-          <></>
+          <div css={commentLikeButtonStyle}>
+            <button onClick={handleClickLikeComment}>{isLike ? <FaHeart /> : <FaRegHeart />}</button>
+            <span>{likeCount}</span>
+          </div>
         )}
       </div>
       <div css={commentContentStyle}>{comment.content}</div>
-      <div>
-        <button onClick={handleClickLikeComment}>{isLike ? '좋아요 취소' : '좋아요'}</button>
-        {likeCount}
-      </div>
     </div>
   );
 };
@@ -95,6 +96,24 @@ const commentDeleteButtonStyle = css`
   font-weight: bold;
   color: #999;
   cursor: pointer;
+`;
+
+const commentLikeButtonStyle = css`
+  & > button {
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    transform: translateY(2.5px);
+    font-weight: bold;
+    color: ${theme.buttonRed1};
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  & > span {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
 `;
 
 export default CommentItem;

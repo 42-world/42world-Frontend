@@ -71,6 +71,7 @@ const styledButton = css`
   font-weight: bold;
   padding: 1.4rem 2.5rem;
   border-radius: 0.3rem;
+  cursor: pointer;
 `;
 
 export default CommentInput;

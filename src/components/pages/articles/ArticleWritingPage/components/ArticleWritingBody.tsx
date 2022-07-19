@@ -29,7 +29,9 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
           useCommandShortcut={true}
           onChange={handleChangeContent}
         />
-        <button css={submitButton} onClick={handleSubmit}>{isEdit ? '수정하기' : '글쓰기'}</button>
+        <button css={submitButton} onClick={handleSubmit}>
+          {isEdit ? '수정하기' : '글쓰기'}
+        </button>
       </div>
     </>
   );
@@ -53,6 +55,7 @@ const submitButton = css`
   font-size: 1rem;
   font-weight: 700;
   border-radius: 0.3rem;
+  cursor: pointer;
 `;
 
 export default ArticleWritingBody;
