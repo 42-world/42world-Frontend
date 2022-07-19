@@ -53,7 +53,7 @@ const WritingContent = ({ categoryId, articleId }: WritingContentProps) => {
 
   return (
     <>
-      <ArticleWritingHeader state={state} dispatch={dispatch} />
+      <ArticleWritingHeader state={state} dispatch={dispatch} articleId={articleId} />
       <ArticleWritingBody state={state} dispatch={dispatch} articleId={articleId} />
     </>
   );
@@ -68,6 +68,7 @@ interface ArticleWritingHeaderProps {
 const ArticleWritingHeader = ({ state, dispatch, articleId }: ArticleWritingHeaderProps) => {
   const { categories } = useGetCategory();
   const writeableCategories = useMemo(() => categories?.filter(category => category.isArticleWritable), [categories]);
+  const isEdit = !isEmpty(articleId);
 
   const handleChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({ type: InputStateEnum.CHANGE_INPUT, name: 'categoryId', value: parseInt(e.target.value) });
@@ -79,7 +80,7 @@ const ArticleWritingHeader = ({ state, dispatch, articleId }: ArticleWritingHead
 
   return (
     <div>
-      <select name="category" id="category" value={state.categoryId} onChange={handleChangeCategory}>
+      <select name="category" id="category" value={state.categoryId} onChange={handleChangeCategory} disabled={isEdit}>
         {writeableCategories?.map(category => (
           <option value={category.id} key={category.id}>
             {category.name}
@@ -101,6 +102,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
   const navigate = useNavigate();
   const editorRef = useRef<Editor>(null);
   const { article, remove: articleCacheRemove } = useGetArticleById(articleId ?? 0, !isEmpty(articleId));
+  const isEdit = !isEmpty(articleId);
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current as Editor;
@@ -172,7 +174,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
     }
   };
 
-  const handleSubmit = isEmpty(articleId) ? handleSubmitCreate : handleSubmitEdit;
+  const handleSubmit = isEdit ? handleSubmitEdit : handleSubmitCreate;
 
   useEffect(() => {
     if (editorRef.current) {
@@ -202,7 +204,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
           useCommandShortcut={true}
           onChange={handleChangeContent}
         />
-        <button onClick={handleSubmit}>{isEmpty(articleId) ? '글쓰기' : '수정하기'}</button>
+        <button onClick={handleSubmit}>{isEdit ? '수정하기' : '글쓰기'}</button>
       </div>
     </>
   );
