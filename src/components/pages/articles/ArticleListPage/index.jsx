@@ -73,6 +73,11 @@ const articleListStyle = css`
   @media screen and (max-width: 1020px) {
     max-width: calc(100% - 15.2rem);
   }
+
+  ${theme.mobileSize} {
+    max-width: 100%;
+    margin: 0;
+  }
 `;
 
 export default ArticleListPage;

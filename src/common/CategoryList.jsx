@@ -53,8 +53,7 @@ const CategoryListBlock = styled.div`
     }
   }
   @media screen and (max-width: 768px) {
-    padding: ${rem(5)} 0;
-    width: 100vw;
+    padding: 0.7rem 0 0.5rem 0;
     margin: auto;
     h2 {
       display: none;
@@ -68,8 +67,10 @@ const CategoryListBlock = styled.div`
       align-items: center;
       justify-content: flex-start;
       .nav-links {
+        transition: all 0.3s ease-in-out;
         margin: 0.3rem 0.5rem;
         color: ${props => props.theme.black};
+        border-bottom: 2px solid ${props => props.theme.backgroundWhite};
         text-decoration: none;
         &.curCategory {
           color: #53b7ba;
