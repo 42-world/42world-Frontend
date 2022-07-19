@@ -12,6 +12,7 @@ import ArticleList from './components/ArticleList';
 import ArticleListHeader from './components/ArticleListHeader';
 import Board from '../common/Board';
 import { block } from '../common/styles';
+import { theme } from '@styles/theme';
 
 const ArticleListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,17 +60,19 @@ const categoryBlock = css`
   display: flex;
   flex-direction: column;
 
-  width: 12rem;
-
   border-radius: 0.3rem;
-  box-shadow: ${props => props.theme.boxShadow};
+  box-shadow: ${theme.boxShadow};
   background-color: #fff;
   text-decoration: none;
 `;
 
 const articleListStyle = css`
-  width: 12rem;
-  min-width: 12rem;
+  width: 100%;
+  max-width: calc(((100% - 15.2rem) - 9rem) - 1.6rem);
+
+  @media screen and (max-width: 1020px) {
+    max-width: calc(100% - 15.2rem);
+  }
 `;
 
 export default ArticleListPage;
