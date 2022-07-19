@@ -1,7 +1,7 @@
 import { StringProps } from '@components/pages/articles/common/types';
 
 const ArticleDetailCategory = ({ categoryName }: StringProps) => {
-  return <div>{categoryName}</div>;
+  return <h2>{categoryName}</h2>;
 };
 
 export default ArticleDetailCategory;

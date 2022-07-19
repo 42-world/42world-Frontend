@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import { useNavigate } from 'react-router-dom';
+import { css } from '@emotion/react';
 
 import { ArticleService } from '@root/network';
 import { URLs } from '@common/urls';
@@ -19,10 +21,24 @@ const ArticleUpdateDelete = ({ articleId, categoryId }: IdProps) => {
 
   return (
     <>
-      <button onClick={handleClickUpdate}>수정</button>
-      <button onClick={handleClickDelete}>삭제</button>
+      <button css={buttonStyle} onClick={handleClickUpdate}>
+        수정
+      </button>
+      <button css={buttonStyle} onClick={handleClickDelete}>
+        삭제
+      </button>
     </>
   );
 };
+
+const buttonStyle = css`
+  border: none;
+  background-color: transparent;
+  color: #555;
+  font-size: 0.8rem;
+  margin-right: 0.4rem;
+  font-weight: bold;
+  cursor: pointer;
+`;
 
 export default ArticleUpdateDelete;

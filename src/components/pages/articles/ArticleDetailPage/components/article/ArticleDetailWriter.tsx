@@ -6,10 +6,9 @@ interface ArticleDetailWriterProps {
 
 const ArticleDetailWriter = ({ writer }: ArticleDetailWriterProps) => {
   return (
-    <>
-      <div>{writer.role}</div>
-      <div>{writer.nickname}</div>
-    </>
+    <h3>
+      {writer.role} · {writer.nickname}
+    </h3>
   );
 };
 

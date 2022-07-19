@@ -1,10 +1,15 @@
+/** @jsxImportSource @emotion/react */
+
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { css } from '@emotion/react';
 
+import { theme } from '@root/styles/theme';
 import { useGetArticleById } from '@root/common/hooks/api/article';
 import ArticleContainer from './components/article/ArticleContainer';
 import CommentContainer from './components/comment/CommentContainer';
 import Board from '../common/Board';
+import { block } from '../common/styles';
 
 const ArticleDetailPage = () => {
   const { id = '0' } = useParams();
@@ -20,16 +25,40 @@ const ArticleDetailPage = () => {
 
   return (
     <Board categoryId={article?.categoryId}>
-      <div className="block article_block">
+      <div css={[block, articleListStyle]}>
         {article && (
           <>
-            <ArticleContainer article={article} />
-            <CommentContainer articleId={article.id} />
+            <div css={categoryBlock}>
+              <ArticleContainer article={article} />
+            </div>
+            <div css={categoryBlock}>
+              <CommentContainer articleId={article.id} />
+            </div>
           </>
         )}
       </div>
     </Board>
   );
 };
+
+const categoryBlock = css`
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 0.3rem;
+  box-shadow: ${theme.boxShadow};
+  background-color: #fff;
+  text-decoration: none;
+  margin: 20px;
+`;
+
+const articleListStyle = css`
+  width: 100%;
+  max-width: calc(((100% - 15.2rem) - 9rem) - 1.6rem);
+
+  @media screen and (max-width: 1020px) {
+    max-width: calc(100% - 15.2rem);
+  }
+`;
 
 export default ArticleDetailPage;
