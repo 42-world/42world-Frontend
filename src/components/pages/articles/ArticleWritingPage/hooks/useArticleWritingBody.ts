@@ -61,6 +61,7 @@ const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleI
         categoryId: state.categoryId,
       });
 
+      articleCacheRemove();
       navigateArticle(data.id);
     } catch (err) {
       window.alert('글 작성 실패');
