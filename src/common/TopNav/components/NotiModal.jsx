@@ -15,11 +15,12 @@ const NotiModal = () => {
   useEffect(async () => {
     getNoti();
   }, []);
+
   return (
     noti && (
       <Typography>
         <div css={modal}>
-          <div className="main-title">알림</div>
+          <div className="main-title">알람</div>
           <div className="divide"></div>
           <div css={notiLists}>
             {noti.map(data => {
