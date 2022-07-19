@@ -63,6 +63,10 @@ const top = css`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  & > img {
+    margin-right: 0.3rem;
+    margin-bottom: 0.1rem;
+  }
 `;
 
 const middle = css`
