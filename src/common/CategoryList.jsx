@@ -55,6 +55,7 @@ const CategoryListBlock = styled.div`
   @media screen and (max-width: 768px) {
     padding: 0.7rem 0 0.5rem 0;
     margin: auto;
+    border-bottom: 1px solid ${props => props.theme.lineGray2};
     h2 {
       display: none;
     }
