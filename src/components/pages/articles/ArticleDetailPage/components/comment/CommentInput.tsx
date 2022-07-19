@@ -1,4 +1,7 @@
+/** @jsxImportSource @emotion/react */
+
 import { useState } from 'react';
+import { css } from '@emotion/react';
 
 import { CommentService } from '@root/network';
 
@@ -16,7 +19,6 @@ const CommentInput = ({ articleId, setPage, refetch }: CommentInputProps) => {
   };
 
   const handleSubmit = async () => {
-    // 댓글 작성
     if (inputText.length < 1) return;
 
     try {
@@ -33,11 +35,42 @@ const CommentInput = ({ articleId, setPage, refetch }: CommentInputProps) => {
     }
   };
   return (
-    <div>
-      <textarea placeholder="댓글을 입력하세요" value={inputText} onChange={handleChangeInput} />
-      <input onClick={handleSubmit} type="submit" value="입력" />
+    <div css={styledPostComment}>
+      <textarea css={styledTextArea} placeholder="댓글을 입력하세요" value={inputText} onChange={handleChangeInput} />
+      <input css={styledButton} onClick={handleSubmit} type="submit" value="입력" />
     </div>
   );
 };
+
+const styledPostComment = css`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
+const styledTextArea = css`
+  outline: none;
+  border: 1px solid #ddd;
+  min-height: 4rem;
+  padding: 0.5rem;
+  resize: none;
+  font-size: 1rem;
+  flex-grow: 1;
+  border-radius: 0.3rem;
+  margin-right: 0.7rem;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const styledButton = css`
+  border: none;
+  background-color: #53b7ba;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1.4rem 2.5rem;
+  border-radius: 0.3rem;
+`;
 
 export default CommentInput;
