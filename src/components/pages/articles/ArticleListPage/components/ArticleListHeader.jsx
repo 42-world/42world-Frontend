@@ -66,7 +66,7 @@ const ArticleListHeader = ({ hasQuery }) => {
 export default ArticleListHeader;
 
 const BoardHeaderDiv = styled.div`
-  padding: 5px 10px;
+  padding: 0.4rem 0.9rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,14 +77,11 @@ const BoardHeaderDiv = styled.div`
     background: #53b7ba;
     color: #ffffff;
     border: 0px;
-    padding: 0 0.7rem 0 0.7rem;
+    padding: 0 0.7rem;
     border-radius: 20px;
     cursor: pointer;
   }
 
-  .title {
-    font-size: 18px;
-  }
   .side-box {
     display: flex;
     flex-direction: row;
@@ -111,6 +108,6 @@ const BoardHeaderDiv = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 800;
 `;
