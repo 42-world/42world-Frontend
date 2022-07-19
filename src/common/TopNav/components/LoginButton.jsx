@@ -4,7 +4,9 @@ import { StyledUserName } from '../styled';
 const LoginButton = () => {
   return (
     <Link to="/login">
-      <StyledUserName>로그인</StyledUserName>
+      <StyledUserName>
+        <div className="username-div">로그인</div>
+      </StyledUserName>
     </Link>
   );
 };
