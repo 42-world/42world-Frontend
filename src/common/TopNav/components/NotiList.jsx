@@ -29,12 +29,11 @@ const NotiList = ({ type, body, articleId }) => {
 
 export default NotiList;
 
-const notiList = css.div`
+const notiList = css`
   display: flex;
   max-height: 120px;
   * {
     margin: 5px;
     overflow: hidden;
   }
-
 `;
