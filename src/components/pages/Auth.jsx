@@ -13,7 +13,7 @@ const AuthBlock = styled.div`
   position: fixed;
   scrollbar-width: none;
 
-  background: url('assets/main_background.jpeg') no-repeat center center/cover;
+  background: url(${process.env.PUBLIC_URL} + '/assets/main_background.jpeg') no-repeat center center/cover;
 
   height: 100vh;
   width: 100%;
