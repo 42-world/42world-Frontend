@@ -4,7 +4,7 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import { WritingInputState } from '@components/pages/articles/common/types';
 import { writingReducer } from '@components/pages/articles/common/reducer';
 import ArticleWritingHeader from './ArticleWritingHeader';
-import ArticleWritingBody from './ArticleWriting';
+import ArticleWritingBody from './ArticleWritingBody';
 
 interface WritingContentProps {
   categoryId: number;

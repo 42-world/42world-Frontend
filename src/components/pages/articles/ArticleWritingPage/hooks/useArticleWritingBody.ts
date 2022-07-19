@@ -1,23 +1,30 @@
 import { useGetArticleById } from '@root/common/hooks/api/article';
-import { URLs } from '@root/common/urls';
-import { isEmpty } from '@root/common/utils';
-import { ArticleService, ImageService } from '@root/network';
 import { Editor } from '@toast-ui/react-editor';
-import { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   WritingInputState,
   WritingInputStateAction,
   WritingInputStateEnum,
 } from '@components/pages/articles/common/types';
+import { isEmpty } from '@root/common/utils';
+import { ArticleService, ImageService } from '@root/network';
+import { URLs } from '@root/common/urls';
 
-interface ArticleWritingBodyProps {
+interface UseArticleWritingBodyProps {
   state: WritingInputState;
   dispatch: React.Dispatch<WritingInputStateAction>;
   articleId?: number;
 }
 
-const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyProps) => {
+type UseArticleWriingBody = (props: UseArticleWritingBodyProps) => {
+  editorRef: React.RefObject<Editor>;
+  handleSubmit: () => Promise<void>;
+  handleChangeContent: () => void;
+  isEdit: boolean;
+};
+
+const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleId }: UseArticleWritingBodyProps) => {
   const navigate = useNavigate();
   const editorRef = useRef<Editor>(null);
   const { article, remove: articleCacheRemove } = useGetArticleById(articleId ?? 0, !isEmpty(articleId));
@@ -42,22 +49,6 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
       name: 'content',
       value: editorRef.current?.getInstance().getMarkdown(),
     });
-  };
-
-  const validateTitleAndContent = () => {
-    if (state.title === '') {
-      window.alert('제목을 입력하세요!');
-      return false;
-    }
-    if (state.content === '') {
-      window.alert('내용을 입력하세요!');
-      return false;
-    }
-    return true;
-  };
-
-  const navigateArticle = (articleId: number) => {
-    navigate(`${URLs.ARTICLE}/${articleId}`);
   };
 
   const handleSubmitCreate = async () => {
@@ -93,6 +84,22 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
     }
   };
 
+  const validateTitleAndContent = () => {
+    if (state.title === '') {
+      window.alert('제목을 입력하세요!');
+      return false;
+    }
+    if (state.content === '') {
+      window.alert('내용을 입력하세요!');
+      return false;
+    }
+    return true;
+  };
+
+  const navigateArticle = (articleId: number) => {
+    navigate(`${URLs.ARTICLE}/${articleId}`);
+  };
+
   const handleSubmit = isEdit ? handleSubmitEdit : handleSubmitCreate;
 
   useEffect(() => {
@@ -112,21 +119,12 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
     }
   }, [article]);
 
-  return (
-    <>
-      <div>
-        <Editor
-          ref={editorRef}
-          previewStyle="vertical"
-          height="600px"
-          initialEditType="wysiwyg"
-          useCommandShortcut={true}
-          onChange={handleChangeContent}
-        />
-        <button onClick={handleSubmit}>{isEdit ? '수정하기' : '글쓰기'}</button>
-      </div>
-    </>
-  );
+  return {
+    editorRef,
+    handleSubmit,
+    handleChangeContent,
+    isEdit,
+  };
 };
 
-export default ArticleWritingBody;
+export default useArticleWritingBody;
