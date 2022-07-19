@@ -11,8 +11,9 @@ type GetCategoryName = (categoryId: number, categories?: Category[]) => string |
 
 export const useGetCategory: GetCategory = () => {
   const { isError, data = { data: [] } } = useQuery([CATEGORIES_URL], CategoryService.getCategories);
+  const categories = data.data.filter((category) => category.isArticleReadable === true);
 
-  return { isError, categories: data.data };
+  return { isError, categories: categories };
 };
 
 export const getCategoryName: GetCategoryName = (categoryId, categories) => {
