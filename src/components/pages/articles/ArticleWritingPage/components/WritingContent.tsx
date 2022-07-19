@@ -19,10 +19,10 @@ const WritingContent = ({ categoryId, articleId }: WritingContentProps) => {
   const [state, dispatch] = useReducer(writingReducer, initialState);
 
   return (
-    <main css={mainStyle}>
+    <div css={mainStyle}>
       <ArticleWritingHeader state={state} dispatch={dispatch} articleId={articleId} />
       <ArticleWritingBody state={state} dispatch={dispatch} articleId={articleId} />
-    </main>
+    </div>
   );
 };
 

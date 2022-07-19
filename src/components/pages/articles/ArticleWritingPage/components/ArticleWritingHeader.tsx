@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import { useGetCategory } from '@root/common/hooks/api/category';
 import { isEmpty } from '@root/common/utils';
 import { useMemo } from 'react';
@@ -6,6 +8,8 @@ import {
   WritingInputStateAction,
   WritingInputStateEnum,
 } from '@components/pages/articles/common/types';
+
+import { css } from '@emotion/react';
 
 interface ArticleWritingHeaderProps {
   state: WritingInputState;
@@ -27,17 +31,37 @@ const ArticleWritingHeader = ({ state, dispatch, articleId }: ArticleWritingHead
   };
 
   return (
-    <div>
-      <select name="category" id="category" value={state.categoryId} onChange={handleChangeCategory} disabled={isEdit}>
+    <div css={articleWritingHeader}>
+      <select css={categoryListSelector} name="category" id="category" value={state.categoryId} onChange={handleChangeCategory} disabled={isEdit}>
         {writeableCategories?.map(category => (
           <option value={category.id} key={category.id}>
             {category.name}
           </option>
         ))}
       </select>
-      <input name="title" value={state.title} onChange={handleChangeTitle} maxLength={42} />
+      <input css={articleTitle} name="title" value={state.title} onChange={handleChangeTitle} maxLength={42} placeholder="제목을 입력하세요"/>
     </div>
   );
 };
+
+const articleWritingHeader = css`
+  display: flex;
+  flex-direction: column;
+`;
+
+const categoryListSelector = css`
+  width: max-content;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
+
+const articleTitle = css`
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+`;
 
 export default ArticleWritingHeader;

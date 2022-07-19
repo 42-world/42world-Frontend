@@ -7,6 +7,7 @@ import { isEmpty } from '@root/common/utils';
 import WritingContent from './components/WritingContent';
 import Board from '@components/pages/articles/common/Board';
 import { css } from '@emotion/react';
+import { theme } from '@root/styles/theme';
 
 const ArticleWritingPage = () => {
   const { id } = useParams();
@@ -16,10 +17,8 @@ const ArticleWritingPage = () => {
 
   return (
     <Board categoryId={categoryIdNumber}>
-      <main css={mainWritingBlock}>
-        <div css={innerWritingBlock}>
-          <WritingContent categoryId={categoryIdNumber} articleId={articleId} />
-        </div>
+      <main css={innerWritingBlock}>
+        <WritingContent categoryId={categoryIdNumber} articleId={articleId} />
       </main>
     </Board>
   );
@@ -29,9 +28,6 @@ const mainWritingBlock = css`
   display: flex;
   flex-direction: row;
 
-  margin-top: 1.5rem;
-  margin: auto;
-
   width: 100%;
   max-width: 1100px;
 `;
@@ -39,6 +35,16 @@ const mainWritingBlock = css`
 const innerWritingBlock = css`
   margin: 0 0.8rem;
   width: 100%;
+  max-width: calc(((100% - 15.2rem) - 9rem) - 1.6rem);
+
+  @media screen and (max-width: 1020px) {
+    max-width: calc(100% - 15.2rem);
+  }
+
+  ${theme.mobileSize} {
+    max-width: 100%;
+    margin: 0;
+  }
 `;
 
 export default ArticleWritingPage;
