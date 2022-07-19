@@ -30,8 +30,8 @@ const commentContainerStyle = css`
   width: 100%;
   padding: 1rem;
   background-color: #fff;
-  box-shadow: ${theme.boxShadow};
   border-radius: 0.3rem;
+
 `;
 
 export default CommentContainer;

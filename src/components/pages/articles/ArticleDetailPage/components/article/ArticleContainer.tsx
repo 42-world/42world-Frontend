@@ -25,8 +25,8 @@ const ArticleContainer = ({ article }: ArticleContainer) => {
 const articleContainerStyle = css`
   width: 100%;
   background-color: #fff;
-  box-shadow: ${theme.boxShadow};
   border-radius: 0.3rem;
+
 `;
 
 export default ArticleContainer;

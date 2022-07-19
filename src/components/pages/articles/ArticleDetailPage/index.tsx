@@ -49,7 +49,12 @@ const categoryBlock = css`
   box-shadow: ${theme.boxShadow};
   background-color: #fff;
   text-decoration: none;
-  margin: 20px;
+  margin-bottom: 1.5rem;
+
+  ${theme.mobileSize} {
+    box-shadow: none;
+    margin-bottom: 0;
+  }
 `;
 
 const articleListStyle = css`
@@ -58,6 +63,11 @@ const articleListStyle = css`
 
   @media screen and (max-width: 1020px) {
     max-width: calc(100% - 15.2rem);
+  }
+
+  ${theme.mobileSize} {
+    max-width: 100%;
+    margin: 0;
   }
 `;
 

@@ -25,7 +25,7 @@ const ArticleLike = ({ article }: ArticleProps) => {
         ) : (
           <img src="/assets/images/Icon/notFavorite.svg" alt="좋아요 취소" />
         )}
-        <div css={[blockStyle, likeCountStyle]}>{likeCount}</div>
+        <div css={likeCountStyle}>{likeCount}</div>
       </span>
     </div>
   );
@@ -41,18 +41,21 @@ const articleLike = css`
 
 const blockStyle = css`
   display: flex;
-  width: 70px;
-  margin: 1rem 0 1rem 0.5rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  margin: 1rem 0 1rem 0;
+
   cursor: pointer;
   img {
     width: 100%;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
 `;
 
 const likeCountStyle = css`
   display: flex;
-  width: max-content;
   color: ${theme.textGray4};
 `;
 
