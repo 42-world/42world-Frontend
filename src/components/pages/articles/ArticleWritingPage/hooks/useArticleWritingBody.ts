@@ -10,6 +10,7 @@ import {
 import { isEmpty } from '@root/common/utils';
 import { ArticleService, ImageService } from '@root/network';
 import { URLs } from '@root/common/urls';
+import { ARTICLE_CONTENT_MAX_LENGTH, ARTICLE_TITLE_MAX_LENGTH } from '@root/common/constants';
 
 interface UseArticleWritingBodyProps {
   state: WritingInputState;
@@ -92,6 +93,13 @@ const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleI
     }
     if (state.content === '') {
       window.alert('내용을 입력하세요!');
+      return false;
+    }
+    if (state.title.length > ARTICLE_TITLE_MAX_LENGTH) {
+      window.alert(`글 제목은 최대 ${ARTICLE_TITLE_MAX_LENGTH}까지 입력가능합니다!`);
+    }
+    if (state.content.length > ARTICLE_CONTENT_MAX_LENGTH) {
+      window.alert(`글 내용은 최대 ${ARTICLE_CONTENT_MAX_LENGTH}까지 입력가능합니다!`);
       return false;
     }
     return true;

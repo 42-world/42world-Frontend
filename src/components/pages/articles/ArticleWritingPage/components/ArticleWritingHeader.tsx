@@ -10,6 +10,7 @@ import {
 } from '@components/pages/articles/common/types';
 
 import { css } from '@emotion/react';
+import { ARTICLE_TITLE_MAX_LENGTH } from '@root/common/constants';
 
 interface ArticleWritingHeaderProps {
   state: WritingInputState;
@@ -32,14 +33,28 @@ const ArticleWritingHeader = ({ state, dispatch, articleId }: ArticleWritingHead
 
   return (
     <div css={articleWritingHeader}>
-      <select css={categoryListSelector} name="category" id="category" value={state.categoryId} onChange={handleChangeCategory} disabled={isEdit}>
+      <select
+        css={categoryListSelector}
+        name="category"
+        id="category"
+        value={state.categoryId}
+        onChange={handleChangeCategory}
+        disabled={isEdit}
+      >
         {writeableCategories?.map(category => (
           <option value={category.id} key={category.id}>
             {category.name}
           </option>
         ))}
       </select>
-      <input css={articleTitle} name="title" value={state.title} onChange={handleChangeTitle} maxLength={42} placeholder="제목을 입력하세요"/>
+      <input
+        css={articleTitle}
+        placeholder={`최대 ${ARTICLE_TITLE_MAX_LENGTH}글자 까지 입력 가능합니다.`}
+        name="title"
+        value={state.title}
+        onChange={handleChangeTitle}
+        maxLength={42}
+      />
     </div>
   );
 };

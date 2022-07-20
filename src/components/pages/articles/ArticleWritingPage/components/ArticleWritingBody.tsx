@@ -4,6 +4,7 @@ import { Editor } from '@toast-ui/react-editor';
 import { WritingInputState, WritingInputStateAction } from '@components/pages/articles/common/types';
 import useArticleWritingBody from '@components/pages/articles/ArticleWritingPage/hooks/useArticleWritingBody';
 import { css } from '@emotion/react';
+import { ARTICLE_CONTENT_MAX_LENGTH } from '@root/common/constants';
 
 interface ArticleWritingBodyProps {
   state: WritingInputState;
@@ -28,6 +29,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
           initialEditType="wysiwyg"
           useCommandShortcut={true}
           onChange={handleChangeContent}
+          placeholder={`최대 ${ARTICLE_CONTENT_MAX_LENGTH}글자까지 입력 가능합니다.`}
         />
         <button css={submitButton} onClick={handleSubmit}>
           {isEdit ? '수정하기' : '글쓰기'}

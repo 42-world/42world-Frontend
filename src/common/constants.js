@@ -61,3 +61,6 @@ export const SITEMAP = [
     icon: assets.sidebar['42blind'],
   },
 ];
+
+export const ARTICLE_TITLE_MAX_LENGTH = 42;
+export const ARTICLE_CONTENT_MAX_LENGTH = 4242;
