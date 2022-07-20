@@ -1,45 +1,11 @@
-import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { URLs } from '@root/common/urls';
-import { isEmpty } from '@common/utils';
-import { useGetCategory } from '@common/hooks/api/category';
+import useArticleListHeader from '@components/pages/articles/ArticleListPage/hooks/useArticleListHeader';
 
 const ArticleListHeader = ({ hasQuery }) => {
-  const navigate = useNavigate();
-  const param = useParams();
-  const { categories } = useGetCategory();
-  const [search, setSearch] = useState('');
-  const categoryId = param?.id ? parseInt(param.id) : null;
-  const categoryName = categories.find(c => c.id === categoryId)?.name;
-
-  const handleSubmitSearch = e => {
-    e.preventDefault();
-    if (search === '') return;
-    if (categoryId) {
-      navigate(`/category/${categoryId}?q=${search}`);
-    } else {
-      navigate(`/category?q=${search}`);
-    }
-    setSearch('');
-  };
-
-  const handleChangeSearch = e => {
-    setSearch(e.currentTarget.value);
-  };
-
-  const handleCreateArticle = () => {
-    navigate(`${URLs.WRITING}?categoryId=${categoryId}`);
-  };
-
-  const getTitle = () => {
-    if (hasQuery) {
-      return isEmpty(categoryName) ? '전체 게시판 검색 결과' : `${categoryName} 검색 결과`;
-    }
-    return isEmpty(categoryName) ? '' : categoryName;
-  };
+  const { search, isWriteable, getTitle, handleChangeSearch, handleCreateArticle, handleSubmitSearch } =
+    useArticleListHeader(hasQuery);
 
   return (
     <BoardHeaderDiv>
@@ -57,7 +23,7 @@ const ArticleListHeader = ({ hasQuery }) => {
             />
           </div>
         </form>
-        <button onClick={handleCreateArticle}>글쓰기</button>
+        {isWriteable ? <button onClick={handleCreateArticle}>글쓰기</button> : <></>}
       </div>
     </BoardHeaderDiv>
   );
