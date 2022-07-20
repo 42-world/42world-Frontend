@@ -9,23 +9,23 @@ import MenuItemToggle from './MenuItemToggle';
 import UserItems from './UserItems';
 import NotiModal from './NotiModal';
 
-import Popover from '@mui/material/Popover';
+// import Popover from '@mui/material/Popover';
 import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
-  const [modalTarget, setModalTarget] = useRecoilState(notiModalState);
-  const [noti, setNoti] = useState(null);
+  const [isOpen, setIsOpen] = useRecoilState(notiModalState);
+  const [noti, setNoti] = useState(false);
 
   const getNoti = async () => {
     const result = await NotificationService.getNotifications();
     setNoti(result);
   };
 
-  const handleClickNoti = e => {
-    setModalTarget(e.currentTarget);
+  const handleClickNoti = () => {
+    setIsOpen(true);
   };
   const handleClose = () => {
-    setModalTarget(null);
+    setIsOpen(null);
   };
 
   useEffect(async () => {
@@ -39,11 +39,11 @@ const TopNav = () => {
           <MenuItemToggle />
           <Logo />
           <MenuItems />
-          <UserItems onClick={handleClickNoti} />
+          <UserItems onClick={handleClickNoti} noti={noti} />
         </div>
       </StyledTopNav>
       <TopNavSpace />
-      <Popover
+      {/* <Popover
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right',
@@ -55,9 +55,9 @@ const TopNav = () => {
         open={modalTarget}
         anchorEl={modalTarget}
         onClose={handleClose}
-      >
-        <NotiModal noti={noti} />
-      </Popover>
+      > */}
+      <NotiModal noti={noti} />
+      {/* </Popover> */}
     </>
   );
 };

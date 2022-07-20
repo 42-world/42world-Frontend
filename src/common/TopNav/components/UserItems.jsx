@@ -9,9 +9,15 @@ import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
 import { TbBellRinging, TbBell } from 'react-icons/tb';
 
-const UserItems = ({ onClick }) => {
+const UserItems = ({ onClick, noti }) => {
   const { user } = useGetUser();
 
+  const notiIcon = () => {
+    if (isEmpty(noti)) {
+      return <TbBell className="icon" size="30px" />;
+    }
+    return <TbBellRinging className="icon" size="30px" />;
+  };
   return (
     // <div className="user">
     <div css={userStyle}>
@@ -26,7 +32,8 @@ const UserItems = ({ onClick }) => {
           {/* TODO : 아이콘 및 모달 적용 */}
           <div className="info">
             <StyledMenuButton className="alarm-button" onClick={onClick}>
-              <TbBell className="icon" size="30px" />
+              {/* <TbBell className="icon" size="30px" /> */}
+              {notiIcon()}
             </StyledMenuButton>
             <StyledMenuButton>
               <UserName user={user} />

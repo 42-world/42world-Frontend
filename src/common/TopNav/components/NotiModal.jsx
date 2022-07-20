@@ -1,22 +1,22 @@
 import { css } from '@emotion/react';
-import { Typography } from '@mui/material';
+// import { Typography } from '@mui/material';
 
 import NotiList from './NotiList';
 
 const NotiModal = ({ noti }) => {
   return (
     noti && (
-      <Typography>
-        <div css={modal}>
-          <div className="main-title">알람</div>
-          <div className="divide"></div>
-          <div css={notiLists}>
-            {noti.map(data => {
-              return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
-            })}
-          </div>
+      // <Typography>
+      <div css={modal}>
+        <div className="main-title">알람</div>
+        <div className="divide"></div>
+        <div css={notiLists}>
+          {noti.map(data => {
+            return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
+          })}
         </div>
-      </Typography>
+      </div>
+      // </Typography>
     )
   );
 };
