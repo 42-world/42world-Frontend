@@ -1,5 +1,5 @@
 import { useGetCategory } from '@root/common/hooks/api/category';
-import { URLs } from '@root/common/urls';
+import URLs from '@common/urls';
 import { isEmpty } from '@root/common/utils';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';

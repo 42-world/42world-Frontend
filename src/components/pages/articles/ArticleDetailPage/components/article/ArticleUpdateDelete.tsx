@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 
 import { ArticleService } from '@root/network';
-import { URLs } from '@common/urls';
+import URLs from '@common/urls';
 import { IdProps } from '@components/pages/articles/common/types';
 
 const ArticleUpdateDelete = ({ articleId, categoryId }: IdProps) => {

@@ -1,4 +1,4 @@
-export const URLs = {
+const URLs = {
   CATEGORY: '/category',
   MYPAGE: '/mypage',
   WRITING: '/writing',
@@ -8,3 +8,5 @@ export const URLs = {
   AUTH: '/auth',
   ERROR: '/error',
 };
+
+export default URLs;

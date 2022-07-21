@@ -10,7 +10,7 @@ import Donation from './components/pages/Donation';
 import ArticleWritingPage from './components/pages/articles/ArticleWritingPage';
 import ArticleDetailPage from './components/pages/articles/ArticleDetailPage';
 import ArticleListPage from './components/pages/articles/ArticleListPage';
-import { URLs } from './common/urls';
+import URLs from '@common/urls';
 
 const Router = () => {
   return (

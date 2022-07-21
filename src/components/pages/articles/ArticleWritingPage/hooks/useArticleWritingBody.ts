@@ -1,16 +1,17 @@
-import { useGetArticleById } from '@root/common/hooks/api/article';
-import { Editor } from '@toast-ui/react-editor';
 import React, { useRef, useEffect } from 'react';
+import { Editor } from '@toast-ui/react-editor';
 import { useNavigate } from 'react-router-dom';
+
+import { useGetArticleById } from '@common/hooks/api/article';
 import {
   WritingInputState,
   WritingInputStateAction,
   WritingInputStateEnum,
 } from '@components/pages/articles/common/types';
-import { isEmpty } from '@root/common/utils';
+import { isEmpty } from '@common/utils';
 import { ArticleService, ImageService } from '@root/network';
-import { URLs } from '@root/common/urls';
-import { ARTICLE_CONTENT_MAX_LENGTH, ARTICLE_TITLE_MAX_LENGTH } from '@root/common/constants';
+import URLs from '@common/urls';
+import { ARTICLE_CONTENT_MAX_LENGTH, ARTICLE_TITLE_MAX_LENGTH } from '@common/constants';
 
 interface UseArticleWritingBodyProps {
   state: WritingInputState;
