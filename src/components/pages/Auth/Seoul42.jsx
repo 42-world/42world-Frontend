@@ -1,12 +1,8 @@
-import { LoadingButton } from '@mui/lab';
-import { theme } from '@root/styles/theme';
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 import styled, { keyframes } from 'styled-components';
-import { FtAuthService } from '../../../network';
-import { userState } from '../../../store/user';
-import { LoginTitle, Title } from '../../atoms/Login';
+import { LoadingButton } from '@mui/lab';
+
+import { FtAuthService } from '@network';
 
 const AuthRequestInformation = ({ intraId }) => {
   return (
@@ -45,8 +41,6 @@ function checkIntraId(str) {
 }
 
 const Seoul42 = () => {
-  const navigate = useNavigate();
-  const user = useRecoilValue(userState);
   const [isSend, setIsSend] = useState(false);
   const [isBlock, setIsBlock] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -112,10 +106,6 @@ const Seoul42 = () => {
       setLoadingMessage({ text: '메일 전송 중' });
     }
   }, [isBlock]);
-
-  // useEffect(() => {
-  //   if (user === null || user.role !== 'NOVICE') navigate('/');
-  // }, [user, navigate]);
 
   return (
     <Seoul42Block>
@@ -189,6 +179,18 @@ const fadeIn = keyframes`
   }
   100%{
     opacity: 1;
+  }
+`;
+
+const LoginTitle = styled.span`
+  display: block;
+  font-weight: bold;
+  @media screen and (min-width: 960px) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 960px) {
+    font-size: 24px;
   }
 `;
 

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import Seoul42 from '../organisms/auth/Seoul42';
 
-const Auth = ({ isCallback }) => {
+import Seoul42 from './Seoul42';
+
+const Auth = () => {
   return (
     <AuthBlock>
       <Seoul42 />
