@@ -38,6 +38,18 @@ const NotiModal = ({ noti, handleCloseModal }) => {
 export default NotiModal;
 
 const modal = css`
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  }
+  animation: fadeInLeft 0.5s;
+
   position: relative;
   background-color: #fff;
   position: absolute;
