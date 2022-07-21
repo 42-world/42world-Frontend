@@ -1,12 +1,28 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-
+import { useEffect, useRef } from 'react';
 import NotiList from './NotiList';
 
-const NotiModal = ({ noti }) => {
+import { css } from '@emotion/react';
+
+const NotiModal = ({ noti, handleCloseModal }) => {
+  const modalRef = useRef(null);
+
+  const clickModalOutside = e => {
+    const target = e.target;
+    if (target.className !== 'text' && modalRef.current.contains(target)) handleCloseModal();
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', clickModalOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', clickModalOutside);
+    };
+  });
+
   return (
     noti && (
-      <div css={modal}>
+      <div css={modal} ref={modalRef}>
         <div className="main-title">알람</div>
         <div className="divide"></div>
         <div css={notiLists}>

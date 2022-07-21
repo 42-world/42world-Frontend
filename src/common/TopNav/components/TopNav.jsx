@@ -40,7 +40,7 @@ const TopNav = () => {
       </StyledTopNav>
       <TopNavSpace />
 
-      {isOpen && <NotiModal noti={noti} handleClose={handleClickToggleOpen} />}
+      {isOpen && <NotiModal noti={noti} handleCloseModal={handleClickToggleOpen} />}
     </>
   );
 };
