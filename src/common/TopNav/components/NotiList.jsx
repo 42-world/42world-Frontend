@@ -1,6 +1,9 @@
+/** @jsxImportSource @emotion/react */
+
 import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
+
 import { css } from '@emotion/react';
 import { theme } from '@styles/theme';
 
@@ -17,7 +20,7 @@ const NotiList = ({ type, body, articleId }) => {
   return (
     <>
       <div css={notiList} onClick={onClickNavigation}>
-        <BiCommentDots color={theme.textBlue} size={'40px'} />
+        <BiCommentDots color={theme.textBlue} size={'60px'} />
         <div className="body">
           <div className="text">{body}</div>
         </div>
@@ -32,6 +35,7 @@ export default NotiList;
 const notiList = css`
   display: flex;
   max-height: 120px;
+  padding: 10px;
   * {
     margin: 5px;
     overflow: hidden;

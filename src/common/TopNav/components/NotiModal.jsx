@@ -1,12 +1,11 @@
+/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-// import { Typography } from '@mui/material';
 
 import NotiList from './NotiList';
 
 const NotiModal = ({ noti }) => {
   return (
     noti && (
-      // <Typography>
       <div css={modal}>
         <div className="main-title">알람</div>
         <div className="divide"></div>
@@ -16,7 +15,6 @@ const NotiModal = ({ noti }) => {
           })}
         </div>
       </div>
-      // </Typography>
     )
   );
 };
@@ -24,19 +22,29 @@ const NotiModal = ({ noti }) => {
 export default NotiModal;
 
 const modal = css`
+  background-color: #fff;
+  position: absolute;
+  z-index: 100;
+  // left: 75%;
+
   font-size: 20px;
   max-width: 300px;
   max-height: 400px;
+  margin: 10px;
+  border: 2px solid #979797;
+  border-radius: 20px;
   padding: 10px;
+
+  box-shadow: -2px 2px 4px grey;
 
   .divide {
     border-bottom: 2px solid #d9d9d9;
     width: 270px;
   }
-  .title,
   .main-title {
     font-weight: bold;
     background: white;
+    padding: 10px;
   }
 `;
 
