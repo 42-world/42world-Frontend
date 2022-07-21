@@ -2,7 +2,7 @@
 
 import { Link } from 'react-router-dom';
 
-import PreviewArticle from '@root/components/organisms/category/PreviewArticle';
+import PreviewArticle from '@components/pages/articles/ArticleListPage/components/PreviewArticle';
 import CategoryName from './CategoryName';
 
 const ArticleListItem = ({ article, categoryId, categories }) => {

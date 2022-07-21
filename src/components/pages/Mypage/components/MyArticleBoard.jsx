@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import PreviewArticle from '@components/organisms/category/PreviewArticle';
+import PreviewArticle from '@components/pages/articles/ArticleListPage/components/PreviewArticle';
 import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
 
-import { StyledMyArticleBoard, StyledMyArticlePageSelector } from '@components/pages/Mypage/styles';
+import { StyledMyArticleBoard } from '@components/pages/Mypage/styles';
 import constants from '../constants';
 
 const MyArticleBoard = ({ articleType }) => {
@@ -29,7 +29,11 @@ const MyArticleBoard = ({ articleType }) => {
       <div className="article-list">
         {articles.map((article, id) => (
           //TODO: article 이름 수정
-          <Link to={`/article/${articleType === constants.COMMENT ? article.article.id : article.id}`} className="article-content" key={id}>
+          <Link
+            to={`/article/${articleType === constants.COMMENT ? article.article.id : article.id}`}
+            className="article-content"
+            key={id}
+          >
             <PreviewArticle article={article} />
           </Link>
         ))}

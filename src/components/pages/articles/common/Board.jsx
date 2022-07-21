@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 
 import styled from 'styled-components';
-
-import CategoryList from '@root/common/CategoryList';
-import { Advertisement } from '@root/components/organisms/category';
-import { Container } from '@root/components/atoms/global';
 import { css } from '@emotion/react';
+
+import CategoryList from '@common/CategoryList';
+import { Container } from '@components/atoms/global';
 import { block } from './styles';
 import { theme } from '@styles/theme';
+import Advertisement from './Advertisement';
 
 const Board = ({ categoryId, children }) => {
   return (
