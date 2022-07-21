@@ -22,13 +22,10 @@ export type WritingInputState = {
   categoryId: number;
 };
 
-export enum WritingInputStateEnum {
-  CHANGE_INPUT,
-  LOAD_ARTICLE,
-}
+export type WritingInputStateType = 'CHANGE_INPUT' | 'LOAD_ARTICLE';
 
 export type WritingInputStateAction = {
-  type: WritingInputStateEnum;
+  type: WritingInputStateType;
   name: string;
   value: any;
 };

@@ -1,13 +1,13 @@
-import { WritingInputState, WritingInputStateAction, WritingInputStateEnum } from './types';
+import { WritingInputState, WritingInputStateAction } from './types';
 
 export const writingReducer = (state: WritingInputState, action: WritingInputStateAction) => {
   switch (action.type) {
-    case WritingInputStateEnum.CHANGE_INPUT:
+    case 'CHANGE_INPUT':
       return {
         ...state,
         [action.name]: action.value,
       };
-    case WritingInputStateEnum.LOAD_ARTICLE:
+    case 'LOAD_ARTICLE':
       return {
         ...state,
         title: action.value.title,

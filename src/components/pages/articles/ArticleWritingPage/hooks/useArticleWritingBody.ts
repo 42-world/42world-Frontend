@@ -3,11 +3,7 @@ import { Editor } from '@toast-ui/react-editor';
 import { useNavigate } from 'react-router-dom';
 
 import { useGetArticleById } from '@common/hooks/api/article';
-import {
-  WritingInputState,
-  WritingInputStateAction,
-  WritingInputStateEnum,
-} from '@components/pages/articles/common/types';
+import { WritingInputState, WritingInputStateAction } from '@components/pages/articles/common/types';
 import { isEmpty } from '@common/utils';
 import { ArticleService, ImageService } from '@root/network';
 import URLs from '@common/urls';
@@ -45,7 +41,7 @@ const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleI
 
   const handleChangeContent = () => {
     dispatch({
-      type: WritingInputStateEnum.CHANGE_INPUT,
+      type: 'CHANGE_INPUT',
       name: 'content',
       value: editorRef.current?.getInstance().getMarkdown(),
     });
@@ -119,7 +115,7 @@ const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleI
   useEffect(() => {
     if (article) {
       dispatch({
-        type: WritingInputStateEnum.LOAD_ARTICLE,
+        type: 'LOAD_ARTICLE',
         name: 'content',
         value: { title: article.title, content: article.content },
       });

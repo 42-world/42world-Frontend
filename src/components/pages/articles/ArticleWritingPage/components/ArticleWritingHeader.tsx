@@ -3,11 +3,7 @@
 import { useGetCategory } from '@root/common/hooks/api/category';
 import { isEmpty } from '@root/common/utils';
 import { useMemo } from 'react';
-import {
-  WritingInputState,
-  WritingInputStateAction,
-  WritingInputStateEnum,
-} from '@components/pages/articles/common/types';
+import { WritingInputState, WritingInputStateAction } from '@components/pages/articles/common/types';
 
 import { css } from '@emotion/react';
 import { ARTICLE_TITLE_MAX_LENGTH } from '@root/common/constants';
@@ -24,11 +20,11 @@ const ArticleWritingHeader = ({ state, dispatch, articleId }: ArticleWritingHead
   const isEdit = !isEmpty(articleId);
 
   const handleChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch({ type: WritingInputStateEnum.CHANGE_INPUT, name: 'categoryId', value: parseInt(e.target.value) });
+    dispatch({ type: 'CHANGE_INPUT', name: 'categoryId', value: parseInt(e.target.value) });
   };
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: WritingInputStateEnum.CHANGE_INPUT, name: 'title', value: e.target.value });
+    dispatch({ type: 'CHANGE_INPUT', name: 'title', value: e.target.value });
   };
 
   return (
