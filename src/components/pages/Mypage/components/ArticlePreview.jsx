@@ -1,8 +1,9 @@
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BiCommentDots } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { rem } from '../../../styles/rem';
+
+import { rem } from '@styles/rem';
 
 const ArticlePreview = ({ id, title, likeCount, commentCount }) => {
   const navigate = useNavigate();
