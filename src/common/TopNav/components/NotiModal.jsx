@@ -9,7 +9,7 @@ const NotiModal = ({ noti, handleCloseModal }) => {
 
   const clickModalOutside = e => {
     const target = e.target;
-    if (target.className !== 'text' && modalRef.current.contains(target)) handleCloseModal();
+    if (!modalRef.current.contains(target)) handleCloseModal();
   };
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const NotiModal = ({ noti, handleCloseModal }) => {
 export default NotiModal;
 
 const modal = css`
+  position: relative;
   background-color: #fff;
   position: absolute;
   z-index: 100;
