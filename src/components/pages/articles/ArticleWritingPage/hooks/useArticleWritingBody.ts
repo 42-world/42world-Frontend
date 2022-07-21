@@ -36,11 +36,9 @@ const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleI
     editor.getRootElement().classList.add('editor');
     editor.getInstance().removeHook('addImageBlobHook');
     editor.getInstance().addHook('addImageBlobHook', (blob, callback) => {
-      (async () => {
-        ImageService.uploadImage(blob).then(res => {
-          callback(res);
-        });
-      })();
+      ImageService.uploadImage(blob).then(res => {
+        callback(res);
+      });
     });
   };
 
