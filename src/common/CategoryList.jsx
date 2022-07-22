@@ -34,18 +34,20 @@ const CategoryListBlock = styled.div`
     border-radius: 0.4rem;
 
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
       border-bottom: 1px solid #ddd;
-      padding: 0.3rem 0;
-      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      margin-bottom: 0.7rem;
     }
     .nav-links {
       display: block;
       text-decoration: none;
       color: ${props => props.theme.black};
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
       list-style: none;
-      margin: 0.3rem 0;
+      margin: 0.5rem 0;
       font-weight: 600;
       &.curCategory {
         color: #53b7ba;
@@ -53,16 +55,18 @@ const CategoryListBlock = styled.div`
     }
   }
   @media screen and (max-width: 768px) {
-    overflow-x: scroll;
     padding: 0.7rem 0.5rem 0.5rem 0.5rem;
     margin: auto;
     border-bottom: 1px solid ${props => props.theme.lineGray2};
+    &::-webkit-scrollbar {
+    }
     h2 {
       display: none;
     }
     .category {
+      overflow-x: scroll;
       font-size: 0.9rem;
-      width: 100%;
+      /*width: 100%;*/
       font-weight: 600;
       display: flex;
       flex-direction: row;
@@ -79,6 +83,9 @@ const CategoryListBlock = styled.div`
           color: #53b7ba;
           border-bottom: 2px solid #53b7ba;
         }
+      }
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
   }
