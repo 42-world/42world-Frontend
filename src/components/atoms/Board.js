@@ -37,21 +37,7 @@ export const Body = styled.div`
   max-width: 1100px;
   margin: auto;
 `;
-//small
-export const ArticleList = styled.ul`
-  padding-left: 0;
-  margin: 0;
-  li {
-    padding-top: 9px;
-    list-style: none;
-    display: flex;
-    span {
-      display: inline-block;
-      line-height: 20px;
-      color: #222;
-    }
-  }
-`;
+
 export const ArticleTitle = styled.span`
   width: calc(100% - 50px);
 `;

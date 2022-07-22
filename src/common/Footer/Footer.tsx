@@ -35,8 +35,9 @@ const footerStyle = css`
   flex-direction: column;
   gap: 12px;
 
-  margin-top: 16px;
-  margin-bottom: 6px;
+  margin-top: auto;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
 
   text-align: center;
 `;
