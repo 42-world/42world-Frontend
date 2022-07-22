@@ -5,7 +5,7 @@ const LoginButton = () => {
   return (
     <Link to="/login">
       <StyledUserName>
-        <div className="username-div">로그인</div>
+        <div className="login-div">로그인</div>
       </StyledUserName>
     </Link>
   );

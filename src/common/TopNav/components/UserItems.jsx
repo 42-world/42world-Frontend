@@ -10,9 +10,7 @@ const UserItems = ({ onClick }) => {
     <div className="user">
       {isEmpty(user) ? (
         <>
-          <StyledMenuButton>
-            <LoginButton />
-          </StyledMenuButton>
+          <LoginButton />
         </>
       ) : (
         <>

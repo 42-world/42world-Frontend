@@ -24,6 +24,11 @@ const StyledUserName = styled.div`
   .username-div {
     padding: 0.7rem 1rem;
   }
+  .login-div {
+    padding: 0.7rem 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
 
   &:hover {
     background-color: ${({ theme }) => theme.primary};
@@ -33,6 +38,9 @@ const StyledUserName = styled.div`
     padding-left: 0;
     .username-div {
       display: none;
+    }
+    .login-div {
+      padding: 0.7rem 0.5rem;
     }
   }
 `;
