@@ -32,7 +32,7 @@ const ArticleDetailPage = () => {
               <ArticleContainer article={article} />
             </div>
             <div css={categoryBlock}>
-              <CommentContainer articleId={article.id} />
+              <CommentContainer articleId={article.id} category={article.category} />
             </div>
           </>
         )}

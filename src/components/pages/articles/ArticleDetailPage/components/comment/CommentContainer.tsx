@@ -8,23 +8,38 @@ import CommentCount from './CommentCount';
 import CommentInput from './CommentInput';
 import CommentsList from './CommentsList';
 import { useGetArticleById } from '@root/common/hooks/api/article';
+import { Category } from '@root/network/types/Category';
 
 interface CommentContainerProps {
   articleId: number;
+  category: Category;
 }
 
-const CommentContainer = ({ articleId }: CommentContainerProps) => {
+const CommentContainer = ({ articleId, category }: CommentContainerProps) => {
   const [page, setPage] = useState(1);
 
   const { isError, comments, meta, refetch } = useGetComments(articleId, page);
-  const isCommentWritable = useGetArticleById(articleId)?.article.category.isCommentWritable;
+  const isCommentReadable = category.isCommentReadable;
+  const isCommentWritable = category.isCommentWritable;
+  const isReactionable = category.isReactionable;
 
   return (
-    <div css={commentContainerStyle}>
-      <CommentCount totalCount={meta?.totalCount || 0} />
-      {isCommentWritable && <CommentInput articleId={articleId} setPage={setPage} refetch={refetch} />}
-      <CommentsList comments={comments} meta={meta} page={page} setPage={setPage} refetch={refetch} />
-    </div>
+    <>
+      {isCommentReadable && (
+        <div css={commentContainerStyle}>
+          <CommentCount totalCount={meta?.totalCount || 0} />
+          {isCommentWritable && <CommentInput articleId={articleId} setPage={setPage} refetch={refetch} />}
+          <CommentsList
+            isReactionable={isReactionable}
+            comments={comments}
+            meta={meta}
+            page={page}
+            setPage={setPage}
+            refetch={refetch}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
@@ -33,7 +48,6 @@ const commentContainerStyle = css`
   padding: 1rem;
   background-color: #fff;
   border-radius: 0.3rem;
-
 `;
 
 export default CommentContainer;

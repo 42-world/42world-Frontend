@@ -11,24 +11,23 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { theme } from '@root/styles/theme';
 
 interface CommentItemProps {
+  isReactionable: boolean;
   comment: Comment;
   articleId: number;
   handleDelete: (commendId: number) => void;
 }
 
-const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => {
+const CommentItem = ({ isReactionable, comment, articleId, handleDelete }: CommentItemProps) => {
   const [likeCount, setLikeCount] = useState(comment.likeCount);
   const [isLike, setIsLike] = useState(comment.isLike);
 
   const { article } = useGetArticleById(articleId);
 
   const handleClickLikeComment = async () => {
-    try {
+    if (isReactionable) {
       const { isLike, likeCount } = await ReactionService.commentReaction({ articleId, commentId: comment.id });
       setIsLike(isLike);
       setLikeCount(likeCount);
-    } catch (e) {
-      window.alert('좋아요 실패');
     }
   };
 
@@ -42,7 +41,7 @@ const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => 
             삭제
           </button>
         ) : (
-          <div css={commentLikeButtonStyle}>
+          <div css={[commentLikeButtonStyle, isReactionable && likeButtonCursorStyle]}>
             <button onClick={handleClickLikeComment}>{isLike ? <FaHeart /> : <FaRegHeart />}</button>
             <span>{likeCount}</span>
           </div>
@@ -109,7 +108,6 @@ const commentLikeButtonStyle = css`
     transform: translateY(3px);
     font-weight: bold;
     color: ${theme.buttonRed1};
-    cursor: pointer;
     margin-right: 5px;
   }
 
@@ -118,6 +116,10 @@ const commentLikeButtonStyle = css`
     padding-bottom: 10px;
     color: ${theme.textGray4};
   }
+`;
+
+const likeButtonCursorStyle = css`
+  cursor: pointer;
 `;
 
 export default CommentItem;

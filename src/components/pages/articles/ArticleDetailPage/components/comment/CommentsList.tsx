@@ -5,6 +5,7 @@ import { Meta } from '@root/network/types/Pagination';
 import CommentItem from './CommentItem';
 
 interface CommentsListProps {
+  isReactionable: boolean;
   comments?: Comment[];
   page: number;
   meta?: Meta;
@@ -12,7 +13,7 @@ interface CommentsListProps {
   refetch: () => void;
 }
 
-const CommentsList = ({ comments, meta, page, setPage, refetch }: CommentsListProps) => {
+const CommentsList = ({ isReactionable, comments, meta, page, setPage, refetch }: CommentsListProps) => {
   const handleDelete = async (commentId: number) => {
     if (!window.confirm('삭제하시겠습니까?')) return;
 
@@ -33,7 +34,12 @@ const CommentsList = ({ comments, meta, page, setPage, refetch }: CommentsListPr
     <div>
       {comments &&
         comments.map(comment => (
-          <CommentItem comment={comment} articleId={comment.articleId} handleDelete={handleDelete} />
+          <CommentItem
+            isReactionable={isReactionable}
+            comment={comment}
+            articleId={comment.articleId}
+            handleDelete={handleDelete}
+          />
         ))}
       {meta && <PageSelector currentPage={page} onChangePage={onChangePage} totalPageCount={meta.pageCount} />}
     </div>
