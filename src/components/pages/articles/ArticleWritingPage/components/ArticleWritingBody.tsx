@@ -30,6 +30,7 @@ const ArticleWritingBody = ({ state, dispatch, articleId }: ArticleWritingBodyPr
           useCommandShortcut={true}
           onChange={handleChangeContent}
           placeholder={`최대 ${ARTICLE_CONTENT_MAX_LENGTH}글자까지 입력 가능합니다.`}
+          autofocus={false}
         />
         <button css={submitButton} onClick={handleSubmit}>
           {isEdit ? '수정하기' : '글쓰기'}

@@ -50,6 +50,7 @@ const ArticleWritingHeader = ({ state, dispatch, articleId }: ArticleWritingHead
         value={state.title}
         onChange={handleChangeTitle}
         maxLength={42}
+        autoFocus={true}
       />
     </div>
   );
