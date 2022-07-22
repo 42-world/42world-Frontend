@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { theme } from '@root/styles/theme';
@@ -9,6 +9,7 @@ import { ArticleProps } from '@components/pages/articles/common/types';
 const ArticleLike = ({ article }: ArticleProps) => {
   const [isLike, setIsLike] = useState(article.isLike);
   const [likeCount, setLikeCount] = useState(article.likeCount);
+  const isReactionable = article.category.isReactionable;
 
   const handleClick = async () => {
     const res = await ReactionService.articleReaction(article.id);
@@ -19,7 +20,7 @@ const ArticleLike = ({ article }: ArticleProps) => {
   };
   return (
     <div css={articleLike}>
-      <span onClick={handleClick} css={blockStyle}>
+      <span onClick={handleClick} css={[blockStyle, isReactionable && likeButtonCursorStyle]}>
         {isLike ? (
           <img src="/assets/images/Icon/Favorite.svg" alt="좋아요" />
         ) : (
@@ -47,11 +48,14 @@ const blockStyle = css`
   width: 50px;
   margin: 1rem 0 1rem 0;
 
-  cursor: pointer;
   img {
     width: 100%;
     margin-right: 0.5rem;
   }
+`;
+
+const likeButtonCursorStyle = css`
+  cursor: pointer;
 `;
 
 const likeCountStyle = css`
