@@ -10,7 +10,7 @@ const ArticleDetailInfo = ({ article }: ArticleProps) => {
     <h3 css={articleDetailInfoStyle}>
       <div>⏱ {getCreatedAt(article.createdAt)}</div>
       <div>👀 {article.viewCount}</div>
-      <div>💬 {article.likeCount}</div>
+      <div>💬 {article.commentCount}</div>
     </h3>
   );
 };
