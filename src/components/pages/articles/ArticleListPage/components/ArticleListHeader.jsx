@@ -36,6 +36,7 @@ const BoardHeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
 
   border-bottom: 0.1rem solid #d8d8d8;
 
@@ -74,6 +75,6 @@ const BoardHeaderDiv = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 800;
 `;
