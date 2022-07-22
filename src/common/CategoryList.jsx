@@ -53,7 +53,8 @@ const CategoryListBlock = styled.div`
     }
   }
   @media screen and (max-width: 768px) {
-    padding: 0.7rem 0 0.5rem 0;
+    overflow-x: scroll;
+    padding: 0.7rem 0.5rem 0.5rem 0.5rem;
     margin: auto;
     border-bottom: 1px solid ${props => props.theme.lineGray2};
     h2 {
@@ -67,6 +68,7 @@ const CategoryListBlock = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
+      white-space: nowrap;
       .nav-links {
         transition: all 0.3s ease-in-out;
         margin: 0.3rem 0.5rem;

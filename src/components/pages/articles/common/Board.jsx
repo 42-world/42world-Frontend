@@ -38,7 +38,6 @@ const categoryBlock = css`
 
   ${theme.mobileSize} {
     width: 100%;
-    padding-left: 0.5rem;
     margin: 0px;
   }
 `;
