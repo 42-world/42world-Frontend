@@ -9,13 +9,10 @@ import ArticleDetailTitle from './ArticleDetailTitle';
 import ArticleDetailWriter from './ArticleDetailWriter';
 import ArticleUpdateDelete from './ArticleUpdateDelete';
 
-interface ArticleDetailHeaderProps extends ArticleProps {
-  categoryName?: string;
-}
-const ArticleDetailHeader = ({ article, categoryName = '' }: ArticleDetailHeaderProps) => {
+const ArticleDetailHeader = ({ article }: ArticleProps) => {
   return (
     <div css={articleDetailHeaderStyle}>
-      <ArticleDetailCategory categoryName={categoryName} />
+      <ArticleDetailCategory categoryName={article.category.name} />
       <ArticleDetailTitle title={article.title} />
       <ArticleDetailWriter writer={article.writer} />
       <ArticleDetailInfo article={article} />
