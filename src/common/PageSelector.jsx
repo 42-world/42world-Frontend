@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { numberRange } from '@common/utils';
-import { useMemo } from 'react';
 
 const PageSelector = ({ currentPage = 1, onChangePage, totalPageCount, pageDisplayRange = 5 }) => {
   const start = parseInt((currentPage - 1) / pageDisplayRange);
@@ -22,15 +21,19 @@ const PageSelector = ({ currentPage = 1, onChangePage, totalPageCount, pageDispl
   };
 
   return (
-    <PageSelectorBlock>
-      <PageButton onClick={handlePrevPage}>&lt;</PageButton>
-      {pageList().map(page => (
-        <PageButton key={page} onClick={() => onChangePage(page)} isCurrentPage={page === currentPage}>
-          {page}
-        </PageButton>
-      ))}
-      <PageButton onClick={handleNextPage}>&gt;</PageButton>
-    </PageSelectorBlock>
+    <>
+      {totalPageCount !== 0 && (
+        <PageSelectorBlock>
+          <PageButton onClick={handlePrevPage}>&lt;</PageButton>
+          {pageList().map(page => (
+            <PageButton key={page} onClick={() => onChangePage(page)} isCurrentPage={page === currentPage}>
+              {page}
+            </PageButton>
+          ))}
+          <PageButton onClick={handleNextPage}>&gt;</PageButton>
+        </PageSelectorBlock>
+      )}
+    </>
   );
 };
 
