@@ -12,12 +12,14 @@ const ArticleLike = ({ article }: ArticleProps) => {
   const isReactionable = article.category.isReactionable;
 
   const handleClick = async () => {
-    const res = await ReactionService.articleReaction(article.id);
-    setIsLike(res.isLike);
-    setLikeCount(res.likeCount);
-
-    // TODO: debouncing 적용
+    if (isReactionable) {
+      const res = await ReactionService.articleReaction(article.id);
+      setIsLike(res.isLike);
+      setLikeCount(res.likeCount);
+      // TODO: debouncing 적용
+    }
   };
+
   return (
     <div css={articleLike}>
       <span onClick={handleClick} css={[blockStyle, isReactionable && likeButtonCursorStyle]}>
