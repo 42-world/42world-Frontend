@@ -6,9 +6,9 @@ import { IoMdClose } from 'react-icons/io';
 
 import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 import { MenuItemToggleBlock, StyledMenuToggleButton, CategoryListDiv } from '../styled/MenuItemToggle.styled';
+import { SITEMAP } from '@common/constants';
 
 const MenuItems = () => {
-  const { isError, categories } = useGetCategory();
   const [isToggled, setIsToggled] = useState(false);
 
   const categoryListRef = useRef(null);
@@ -33,9 +33,9 @@ const MenuItems = () => {
 
       <CategoryListDiv ref={categoryListBoxRef}>
         <div ref={categoryListRef}>
-          {categories &&
-            categories.map(item => (
-              <Link key={item.name} to={`${CATEGORY_URL}/${item.id}`}>
+          {SITEMAP &&
+            SITEMAP.map(item => (
+              <Link key={item.name} to={item.link}>
                 <StyledMenuToggleButton>{item.name}</StyledMenuToggleButton>
               </Link>
             ))}
