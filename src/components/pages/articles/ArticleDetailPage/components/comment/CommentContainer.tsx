@@ -19,8 +19,7 @@ const CommentContainer = ({ articleId }: CommentContainerProps) => {
 
   const { isError, comments, meta, refetch } = useGetComments(articleId, page);
   const { article } = useGetArticleById(articleId);
-  const isCommentReadable = article.category.isCommentReadable;
-  const isCommentWritable = article.category.isCommentWritable;
+  const { isCommentReadable, isCommentWritable } = article.category;
 
   return (
     <>
