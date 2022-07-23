@@ -91,10 +91,10 @@ const useArticleWritingBody: UseArticleWriingBody = ({ state, dispatch, articleI
       return false;
     }
     if (state.title.length > ARTICLE_TITLE_MAX_LENGTH) {
-      window.alert(`글 제목은 최대 ${ARTICLE_TITLE_MAX_LENGTH}까지 입력가능합니다!`);
+      window.alert(`글 제목은 최대 ${ARTICLE_TITLE_MAX_LENGTH} 글자까지 입력가능합니다!`);
     }
     if (state.content.length > ARTICLE_CONTENT_MAX_LENGTH) {
-      window.alert(`글 내용은 최대 ${ARTICLE_CONTENT_MAX_LENGTH}까지 입력가능합니다!`);
+      window.alert(`글 내용은 최대 ${ARTICLE_CONTENT_MAX_LENGTH}글자까지 입력가능합니다!`);
       return false;
     }
     return true;
