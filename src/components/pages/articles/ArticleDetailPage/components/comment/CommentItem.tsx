@@ -11,26 +11,17 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { theme } from '@root/styles/theme';
 
 interface CommentItemProps {
-  isReactionable: boolean;
   comment: Comment;
   articleId: number;
   handleDelete: (commendId: number) => void;
 }
 
-const CommentItem = ({ isReactionable, comment, articleId, handleDelete }: CommentItemProps) => {
+const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => {
   const [likeCount, setLikeCount] = useState(comment.likeCount);
   const [isLike, setIsLike] = useState(comment.isLike);
 
-  // TODO: props로 articleWriter을 받아오지않고
-  // 댓글 하나하나 hook 으로 article을 가져와서 article.writer.id를 쓰는 이유는,
-  // 어자피 실제 요청이 나가지 않으니까 매번 hook을 사용해도 상관없기 때문인가요?
-  //
-  // 또는 CommentItem 의 props인터페이스에서 외부에 들어나는 불필요한 의존성은 최대한 줄이고
-  // articleWriter를 가져오는 책임을 내부로 전환하였다고 봐도 될까요?
-  //
-  // -> 그렇다면 내부에서 hook으로 처리가능하다고 판단되면, props로 받을 필요가 없는건가요?
-  // 그렇다면 isReactionable 도 hook으로 처리가능할거같은데 어떻게 생각하시나요?
   const { article } = useGetArticleById(articleId);
+  const isReactionable = article.category.isReactionable;
 
   const handleClickLikeComment = async () => {
     if (isReactionable) {

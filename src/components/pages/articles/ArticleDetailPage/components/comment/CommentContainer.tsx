@@ -12,16 +12,15 @@ import { Category } from '@root/network/types/Category';
 
 interface CommentContainerProps {
   articleId: number;
-  category: Category;
 }
 
-const CommentContainer = ({ articleId, category }: CommentContainerProps) => {
+const CommentContainer = ({ articleId }: CommentContainerProps) => {
   const [page, setPage] = useState(1);
 
   const { isError, comments, meta, refetch } = useGetComments(articleId, page);
-  const isCommentReadable = category.isCommentReadable;
-  const isCommentWritable = category.isCommentWritable;
-  const isReactionable = category.isReactionable;
+  const { article } = useGetArticleById(articleId);
+  const isCommentReadable = article.category.isCommentReadable;
+  const isCommentWritable = article.category.isCommentWritable;
 
   return (
     <>
@@ -29,14 +28,7 @@ const CommentContainer = ({ articleId, category }: CommentContainerProps) => {
         <div css={commentContainerStyle}>
           <CommentCount totalCount={meta?.totalCount || 0} />
           {isCommentWritable && <CommentInput articleId={articleId} setPage={setPage} refetch={refetch} />}
-          <CommentsList
-            isReactionable={isReactionable}
-            comments={comments}
-            meta={meta}
-            page={page}
-            setPage={setPage}
-            refetch={refetch}
-          />
+          <CommentsList comments={comments} meta={meta} page={page} setPage={setPage} refetch={refetch} />
         </div>
       )}
     </>
