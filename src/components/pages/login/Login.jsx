@@ -47,7 +47,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: url('assets/main_background.jpeg') no-repeat center center/cover;
+  background: url(${process.env.PUBLIC_URL} + '/assets/main_background.jpeg') no-repeat center center/cover;
 
   h1 {
     font-size: 1.2rem;

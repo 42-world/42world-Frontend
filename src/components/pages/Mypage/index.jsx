@@ -1,9 +1,8 @@
-import { QuickLink } from '@components/organisms/main';
 import { MyArticlePreview, MyArticleBoard, MypageProfile } from '@components/pages/Mypage/components';
 import constants from '@components/pages/Mypage/constants';
 import { useMypage } from '@components/pages/Mypage/hooks';
-
 import { StyledMypage } from '@components/pages/Mypage/styles';
+import QuickLink from '@common/QuickLink/QuickLink';
 
 const Mypage = () => {
   const { articleType } = useMypage();
