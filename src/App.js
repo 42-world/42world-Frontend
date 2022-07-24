@@ -1,9 +1,8 @@
 import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import './App.css';
+import './styles/reset.css';
 import Router from './Router';
-import GlobalStyle from './GlobalStyle';
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnMount: false, refetchOnWindowFocus: false } },
@@ -13,7 +12,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
-        <GlobalStyle />
         <Router />
       </RecoilRoot>
     </QueryClientProvider>

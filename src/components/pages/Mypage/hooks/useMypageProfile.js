@@ -23,29 +23,29 @@ const useMypageProfile = () => {
     solvedac: <IconSolvedac />,
   };
 
-  const linkHref = {
-    github: 'https://github.com/',
-    intra42: 'https://profile.intra.42.fr/',
-    linkedin: 'https://kr.linkedin.com/',
-    facebook: 'https://facebook.com/',
-    twitter: 'https://twitter.com/',
-    solvedac: 'https://solved.ac/profile/',
-  };
-
-  const handleClickLinkBox = linkType => {
-    console.log(linkHref[linkType]); // TODO: 링크 누르면 이동하도록 수정
-  };
-
   useEffect(() => {
+    const linkBaseURL = {
+      github: 'https://github.com/',
+      intra42: 'https://profile.intra.42.fr/',
+      linkedin: 'https://kr.linkedin.com/',
+      facebook: 'https://facebook.com/',
+      twitter: 'https://twitter.com/',
+      solvedac: 'https://solved.ac/profile/',
+    };
+
     if (userInfo.nickname) {
       setMyLinks([
-        { linkType: 'intra42', linkValue: userInfo.nickname },
-        { linkType: 'github', linkValue: userInfo.nickname },
+        { linkType: 'intra42', linkValue: userInfo.nickname, linkHref: linkBaseURL['intra42'] + userInfo.nickname },
+        {
+          linkType: 'github',
+          linkValue: userInfo.githubUsername,
+          linkHref: linkBaseURL['github'] + userInfo.githubUsername,
+        },
       ]);
     }
   }, [userInfo]);
 
-  return { myLinks, userInfo, linkIcon, handleClickLinkBox };
+  return { myLinks, userInfo, linkIcon };
 };
 
 export default useMypageProfile;

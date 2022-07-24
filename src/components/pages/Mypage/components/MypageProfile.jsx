@@ -2,9 +2,10 @@ import ProfileSection from '@components/pages/Mypage/components/ProfileSection';
 import { useMypageProfile } from '@components/pages/Mypage/hooks';
 
 import { StyledMypageProfile } from '@components/pages/Mypage/styles';
+import { Link } from 'react-router-dom';
 
 const MypageProfile = () => {
-  const { myLinks, userInfo, linkIcon, handleClickLinkbox } = useMypageProfile();
+  const { myLinks, userInfo, linkIcon } = useMypageProfile();
 
   return (
     <StyledMypageProfile>
@@ -13,14 +14,15 @@ const MypageProfile = () => {
       <div className="profile-section">
         <ProfileSection userInfo={userInfo} />
         <ul className="link-section">
-          {myLinks.map(({ linkType, linkValue }) => (
-            <li key={`link-${linkType}`} className="profile-link-box" onClick={() => handleClickLinkbox(linkType)}>
-              {linkIcon[linkType] ?? <></>}
-              <span>{linkValue}</span>
+          {myLinks.map(({ linkType, linkValue, linkHref }) => (
+            <li key={`link-${linkType}`}>
+              <a href={linkHref} className="profile-link-box" target="_blank" rel="noreferrer">
+                {linkIcon[linkType] ?? <></>}
+                <span>{linkValue}</span>
+              </a>
             </li>
           ))}
         </ul>
-        {/* TODO: MypageData에 아직 링크 구현 안됨 */}
       </div>
     </StyledMypageProfile>
   );
