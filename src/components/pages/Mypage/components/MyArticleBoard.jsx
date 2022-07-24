@@ -29,7 +29,11 @@ const MyArticleBoard = ({ articleType }) => {
       <div className="article-list">
         {articles.map((article, id) => (
           //TODO: article 이름 수정
-          <Link to={`/article/${articleType === constants.COMMENT ? article.article.id : article.id}`} className="article-content" key={id}>
+          <Link
+            to={`/article/${articleType === constants.COMMENT ? article.article.id : article.id}`}
+            className="article-content"
+            key={id}
+          >
             <PreviewArticle article={article} />
           </Link>
         ))}
