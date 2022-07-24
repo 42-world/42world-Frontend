@@ -23,9 +23,7 @@ const UserItems = ({ onClick, noti }) => {
     <div css={userStyle}>
       {isEmpty(user) ? (
         <>
-          <StyledMenuButton>
-            <LoginButton />
-          </StyledMenuButton>
+          <LoginButton />
         </>
       ) : (
         <>

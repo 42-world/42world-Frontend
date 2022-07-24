@@ -8,5 +8,3 @@ export type Category = {
   isCommentReadable: boolean;
   isReactionable: boolean;
 };
-
-export interface GetCategoriesResponse extends Category {}

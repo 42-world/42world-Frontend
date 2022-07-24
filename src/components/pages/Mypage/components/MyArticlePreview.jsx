@@ -1,8 +1,8 @@
-import { ArticlePreview } from '@components/organisms/main';
 import { useMyArticlePreview } from '@components/pages/Mypage/hooks';
 import constants from '@components/pages/Mypage/constants';
 
 import { StyledMyArticlePreview } from '@components/pages/Mypage/styles';
+import ArticlePreview from './ArticlePreview';
 
 const MyArticlePreview = ({ articleType }) => {
   const { articles, articleInfo, handleClickMoreButton } = useMyArticlePreview(articleType);

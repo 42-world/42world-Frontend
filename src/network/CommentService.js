@@ -92,16 +92,9 @@ const CommentService = {
     }
     return response.data;
   },
-  /**
-   * **DELETE** Comments with Comments ID
-   * @param {string} commentsId
-   * @returns
-   * `200` : success
-   * `401` : fail
-   */
-  deleteComments: async commentsId => {
+  deleteComment: async commentId => {
     const method = 'DELETE';
-    const url = commentUrl(`/${commentsId}`);
+    const url = commentUrl(`/${commentId}`);
 
     let response;
     try {

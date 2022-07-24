@@ -1,13 +1,11 @@
 import { AxiosResponse } from 'axios';
 import { apiClient } from './APIType';
-import { GetCategoriesResponse } from './types/Category';
+import { Category } from './types/Category';
 
 export const CATEGORY_API_URL = '/categories';
 
-export const getCategories = async (): Promise<
-  AxiosResponse<GetCategoriesResponse, any>
-> => {
-  return apiClient.get<GetCategoriesResponse>(CATEGORY_API_URL);
+export const getCategories = async (): Promise<AxiosResponse<Category[], any>> => {
+  return apiClient.get<Category[]>(CATEGORY_API_URL);
 };
 
 export default { CATEGORY_API_URL, getCategories };

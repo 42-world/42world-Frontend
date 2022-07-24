@@ -10,6 +10,7 @@ import ImageService from './ImageService';
 import NotificationService from './NotificationService';
 import ReactionService from './ReactionService';
 import UserService from './UserService';
+import CommentService2 from './CommentService2';
 
 export {
   ArticleService,
@@ -19,6 +20,7 @@ export {
   CategoryService,
   CheckInService,
   CommentService,
+  CommentService2,
   FtAuthService,
   NotificationService,
   ReactionService,

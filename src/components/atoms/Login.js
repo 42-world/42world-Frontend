@@ -68,18 +68,6 @@ export const Title = styled.div`
   font-size: 24px;
 `;
 
-export const LoginTitle = styled.span`
-  display: block;
-  font-weight: bold;
-  @media screen and (min-width: 960px) {
-    font-size: 24px;
-  }
-
-  @media screen and (max-width: 960px) {
-    font-size: 24px;
-  }
-`;
-
 export const Alert = styled.div`
   p {
     margin: 10px;
