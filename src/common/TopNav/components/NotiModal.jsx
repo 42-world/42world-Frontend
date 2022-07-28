@@ -1,66 +1,75 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Typography } from '@mui/material';
-
+/** @jsxImportSource @emotion/react */
+import { useEffect, useRef } from 'react';
 import NotiList from './NotiList';
-import { NotificationService } from '@network';
 
-const NotiModal = () => {
-  const [noti, setNoti] = useState(null);
+import { css } from '@emotion/react';
 
-  const getNoti = async () => {
-    const result = await NotificationService.getNotifications();
-    setNoti(result);
+const NotiModal = ({ noti, handleCloseModal }) => {
+  const modalRef = useRef(null);
+
+  const clickModalOutside = e => {
+    const target = e.target;
+    if (!modalRef.current.contains(target) && target.className.baseVal !== 'alarm-icon') handleCloseModal();
   };
-  useEffect(async () => {
-    getNoti();
-  }, []);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', clickModalOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', clickModalOutside);
+    };
+  });
+
   return (
     noti && (
-      <Typography>
-        <ModalStyle>
-          <div className="main-title">알림</div>
-          <div className="divide"></div>
-          <NotiLists>
-            {noti.map(data => {
-              return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
-            })}
-          </NotiLists>
-        </ModalStyle>
-      </Typography>
+      <div css={modal} ref={modalRef}>
+        <div className="main-title">알람</div>
+        <div className="divide"></div>
+        <div css={notiLists}>
+          {noti.map(data => {
+            return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
+          })}
+        </div>
+      </div>
     )
   );
 };
 
 export default NotiModal;
 
-const ModalStyle = styled.div`
+const modal = css`
+  position: relative;
+  background-color: #fff;
+  position: absolute;
+  z-index: 100;
+  // left: 75%;
   font-size: 20px;
   max-width: 300px;
   max-height: 400px;
+  margin: 80px;
+  border: 2px solid #979797;
+  border-radius: 20px;
   padding: 10px;
-
+  box-shadow: -2px 2px 4px grey;
   .divide {
     border-bottom: 2px solid #d9d9d9;
     width: 270px;
   }
-  .title,
   .main-title {
     font-weight: bold;
     background: white;
+    padding: 10px;
   }
 `;
 
-const NotiLists = styled.div`
+const notiLists = css`
   max-height: 300px;
   overflow: scroll;
   overflow-x: hidden;
   cursor: pointer;
-
   ::-webkit-scrollbar {
     width: 5px;
   }
-
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #d9d9d9;
