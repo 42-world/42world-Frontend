@@ -9,7 +9,7 @@ const NotiModal = ({ noti, handleCloseModal }) => {
 
   const clickModalOutside = e => {
     const target = e.target;
-    if (!modalRef.current.contains(target)) handleCloseModal();
+    if (!modalRef.current.contains(target) && target.className.baseVal !== 'alarm-icon') handleCloseModal();
   };
 
   useEffect(() => {
