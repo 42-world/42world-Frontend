@@ -49,11 +49,10 @@ const modal = css`
     }
   }
   animation: fadeInLeft 0.5s;
-  position: relative;
   background-color: #fff;
-  position: absolute;
+  position: fixed;
   z-index: 100;
-  right: 20%;
+  right: 20vw;
   font-size: 20px;
   max-width: 300px;
   max-height: 400px;
@@ -71,6 +70,10 @@ const modal = css`
     background: white;
     padding: 10px;
   }
+
+  // @media screen and (max-width: 1600px) {
+  //   right: 5vw;
+  // }
 
   @media screen and (max-width: 880px) {
     display: none;
