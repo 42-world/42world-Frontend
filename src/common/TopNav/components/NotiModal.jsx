@@ -53,7 +53,7 @@ const modal = css`
   background-color: #fff;
   position: absolute;
   z-index: 100;
-  right: 25%;
+  right: 20%;
   font-size: 20px;
   max-width: 300px;
   max-height: 400px;
@@ -70,6 +70,10 @@ const modal = css`
     font-weight: bold;
     background: white;
     padding: 10px;
+  }
+
+  @media screen and (max-width: 880px) {
+    display: none;
   }
 `;
 
