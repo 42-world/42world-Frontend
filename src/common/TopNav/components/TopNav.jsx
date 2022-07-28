@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-
 import { notiModalState } from '@root/store/notiModal';
+import { NotificationService } from '@network';
 
 import Logo from './Logo';
 import MenuItems from './MenuItems';
@@ -8,18 +9,25 @@ import MenuItemToggle from './MenuItemToggle';
 import UserItems from './UserItems';
 import NotiModal from './NotiModal';
 
-import Popover from '@mui/material/Popover';
 import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
-  const [modalTarget, setModalTarget] = useRecoilState(notiModalState);
+  const [isOpen, setIsOpen] = useRecoilState(notiModalState);
+  const [noti, setNoti] = useState(false);
 
-  const handleClickNoti = e => {
-    setModalTarget(e.currentTarget);
+  const getNoti = async () => {
+    const result = await NotificationService.getNotifications();
+    setNoti(result);
   };
-  const handleClose = () => {
-    setModalTarget(null);
+
+  const handleClickToggleOpen = () => {
+    setIsOpen(bool => !bool);
   };
+
+  useEffect(async () => {
+    getNoti();
+  }, []);
+
   return (
     <>
       <StyledTopNav>
@@ -27,25 +35,12 @@ const TopNav = () => {
           <MenuItemToggle />
           <Logo />
           <MenuItems />
-          <UserItems onClick={handleClickNoti} />
+          <UserItems onClick={handleClickToggleOpen} noti={noti} />
         </div>
       </StyledTopNav>
       <TopNavSpace />
-      <Popover
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        open={modalTarget}
-        anchorEl={modalTarget}
-        onClose={handleClose}
-      >
-        <NotiModal />
-      </Popover>
+
+      {isOpen && <NotiModal noti={noti} handleCloseModal={handleClickToggleOpen} />}
     </>
   );
 };
