@@ -9,7 +9,7 @@ const NotiModal = ({ noti, handleCloseModal }) => {
 
   const clickModalOutside = e => {
     const target = e.target;
-    if (!modalRef.current.contains(target) && target.className.baseVal !== 'alarm-icon') handleCloseModal();
+    if (!modalRef.current.contains(target)) handleCloseModal();
   };
 
   useEffect(() => {
@@ -38,15 +38,26 @@ const NotiModal = ({ noti, handleCloseModal }) => {
 export default NotiModal;
 
 const modal = css`
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  }
+  animation: fadeInLeft 0.5s;
   position: relative;
   background-color: #fff;
   position: absolute;
   z-index: 100;
-  // left: 75%;
+  right: 25%;
   font-size: 20px;
   max-width: 300px;
   max-height: 400px;
-  margin: 80px;
+  margin-top: 80px;
   border: 2px solid #979797;
   border-radius: 20px;
   padding: 10px;
