@@ -1,4 +1,4 @@
-import { usePageSelector } from './hooks';
+import { usePageSelector } from '@components/pages/Mypage/hooks';
 
 interface IProps {
   maxPage: number;

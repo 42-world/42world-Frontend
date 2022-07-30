@@ -1,4 +1,4 @@
-import { useMyArticleBoard } from '@components/pages/Mypage/components/MyArticleBoard/hooks';
+import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
 
 import { StyledMyArticleBoard } from '@components/pages/Mypage/styles';
 import constants from '@components/pages/Mypage/constants';
