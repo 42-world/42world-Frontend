@@ -2,7 +2,6 @@ import ProfileSection from '@components/pages/Mypage/components/MypageBoard/Prof
 import { useMypageProfile } from '@components/pages/Mypage/hooks';
 
 import { StyledMypageProfile } from '@components/pages/Mypage/styles';
-import { Link } from 'react-router-dom';
 
 const MypageProfile = () => {
   const { myLinks, userInfo, linkIcon } = useMypageProfile();
