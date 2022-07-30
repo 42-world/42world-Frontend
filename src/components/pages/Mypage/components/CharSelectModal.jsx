@@ -1,8 +1,11 @@
 import MypageButton from '@components/pages/Mypage/components/MypageButton';
-import { ModalPortal, profilePhotoUtils } from '@components/pages/Mypage/utils';
+import { ModalPortal } from '@components/pages/Mypage/utils';
+import { PROFILE_LIST } from '@common/constants';
 import { useClickOutside } from '@components/pages/Mypage/hooks';
 
 import { StyledCharSelectModal } from '@components/pages/Mypage/styles';
+import { useMemo } from 'react';
+import CharSelectModalButtons from './CharSelectModalButtons';
 
 const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
   const { ref: modalRef } = useClickOutside(handleClickClose);
@@ -15,16 +18,8 @@ const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
           <hr />
           <div className="char-select-inner">
             <ul className="char-list">
-              {profilePhotoUtils.PROFILE_LIST.map(char => (
-                <li key={char.id}>
-                  <button onClick={() => handleClickChar(char.id)}>
-                    <img
-                      className={char.id === userInfo.character ? 'selected' : ''}
-                      alt="profile"
-                      src={'/assets/CharacterWhiteBG/' + char.image}
-                    />
-                  </button>
-                </li>
+              {Object.entries(PROFILE_LIST).map(entry => (
+                <CharSelectModalButtons userInfo={userInfo} entry={entry} onClick={handleClickChar} />
               ))}
             </ul>
             <MypageButton onClick={handleClickClose}>닫기</MypageButton>
