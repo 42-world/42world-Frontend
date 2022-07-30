@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import { useQuery } from 'react-query';
 
 import { UserService } from '@root/network';
-import { mypageCurPageState } from '../store';
+import { mypageCurPageState } from '@components/pages/Mypage/components/MyArticleBoard/store';
 
 const useGetLikeArticles = () => {
   const curPage = useRecoilValue(mypageCurPageState);
