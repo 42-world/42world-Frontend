@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+
+import { mypageCurPageState } from '../store';
 
 const usePageSelector = (maxPage: number) => {
-  const [curPage, setCurPage] = useState(1);
+  const [curPage, setCurPage] = useRecoilState(mypageCurPageState);
   const [pageList, setPageList] = useState<number[]>([]);
 
   const getPageList = () => {
