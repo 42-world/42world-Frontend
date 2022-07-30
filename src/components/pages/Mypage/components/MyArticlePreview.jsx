@@ -4,23 +4,23 @@ import constants from '@components/pages/Mypage/constants';
 import { StyledMyArticlePreview } from '@components/pages/Mypage/styles';
 import ArticlePreview from './ArticlePreview';
 
-const MyArticlePreview = ({ articleType }) => {
-  const { articles, articleInfo, handleClickMoreButton } = useMyArticlePreview(articleType);
+const MyArticlePreview = ({ title, type, articleListArray, hrefLink }) => {
+  const { handleClickMoreButton } = useMyArticlePreview(hrefLink);
   return (
-    <StyledMyArticlePreview articleType={articleType}>
+    <StyledMyArticlePreview type={type}>
       <div className="title">
-        <h2>{articleInfo.title}</h2>
+        <h2>{title}</h2>
         <button type="button" className="more" onClick={handleClickMoreButton}>
           {'더 보기 >'}
         </button>
       </div>
-      {articles.map(article => (
+      {articleListArray.map(article => (
         <ArticlePreview
-          key={article.id}
-          id={articleType === constants.COMMENT ? article.article.id : article.id}
-          title={articleType === constants.COMMENT ? article.content : article.title}
-          likeCount={articleType !== constants.COMMENT ? article.likeCount : ''}
-          commentCount={articleType !== constants.COMMENT ? article.commentCount : ''}
+          key={`${type}-${article.id}`}
+          id={type === constants.COMMENT ? article.article.id : article.id}
+          title={type === constants.COMMENT ? article.content : article.title}
+          likeCount={type !== constants.COMMENT ? article.likeCount : ''}
+          commentCount={type !== constants.COMMENT ? article.commentCount : ''}
         />
       ))}
     </StyledMyArticlePreview>

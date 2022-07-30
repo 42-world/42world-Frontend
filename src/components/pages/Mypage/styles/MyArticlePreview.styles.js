@@ -9,7 +9,7 @@ const StyledMyArticlePreview = styled.div`
 
   margin: 0.5rem 0;
 
-  width: ${props => (props.articleType === constants.LIKED ? 'calc(100%);' : 'calc(50% - 0.8rem);')};
+  width: ${props => (props.type === constants.LIKED ? 'calc(100%);' : 'calc(50% - 0.8rem);')};
   .title {
     padding: 0.5rem;
     display: flex;
@@ -37,7 +37,7 @@ const StyledMyArticlePreview = styled.div`
   }
   .like,
   .comment {
-    display: ${props => (props.articleType === constants.COMMENT ? 'none' : 'block')};
+    display: ${props => (props.type === constants.COMMENT ? 'none' : 'block')};
   }
   ${props => props.theme.mobileSize} {
     box-shadow: none;
