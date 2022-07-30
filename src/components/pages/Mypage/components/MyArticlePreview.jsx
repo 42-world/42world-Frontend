@@ -6,6 +6,7 @@ import ArticlePreview from './ArticlePreview';
 
 const MyArticlePreview = ({ title, type, articleListArray, hrefLink }) => {
   const { handleClickMoreButton } = useMyArticlePreview(hrefLink);
+
   return (
     <StyledMyArticlePreview type={type}>
       <div className="title">

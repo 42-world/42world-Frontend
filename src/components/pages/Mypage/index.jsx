@@ -5,7 +5,7 @@ import { StyledMypage } from '@components/pages/Mypage/styles';
 import QuickLink from '@common/QuickLink/QuickLink';
 
 const Mypage = () => {
-  const { articleType } = useMypage();
+  const { articleType, articles, comments, likeArticles } = useMypage();
 
   return (
     <>
@@ -17,9 +17,24 @@ const Mypage = () => {
             <>
               <MypageProfile />
               <div className="mypage-article">
-                <MyArticlePreview articleType={constants.ARTICLE} />
-                <MyArticlePreview articleType={constants.COMMENT} />
-                <MyArticlePreview articleType={constants.LIKED} />
+                <MyArticlePreview
+                  title="내 게시글"
+                  type={constants.ARTICLE}
+                  articleListArray={articles}
+                  hrefLink="/mypage/article"
+                />
+                <MyArticlePreview
+                  title="내 댓글"
+                  type={constants.COMMENT}
+                  articleListArray={comments}
+                  hrefLink="/mypage/comment"
+                />
+                <MyArticlePreview
+                  title="좋아요한 게시글"
+                  type={constants.LIKED}
+                  articleListArray={likeArticles}
+                  hrefLink="/mypage/liked"
+                />
               </div>
             </>
           )}
