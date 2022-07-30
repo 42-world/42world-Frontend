@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserService } from '@network';
 
-import { profilePhotoUtils } from '../utils';
+import { getProfilePhoto } from '../utils';
 import { useLogout } from '@common/hooks/api/user';
 
 const useProfileSection = userInfo => {
@@ -10,7 +10,7 @@ const useProfileSection = userInfo => {
   const navigate = useNavigate();
   const logout = useLogout();
 
-  const profilePhoto = profilePhotoUtils.getProfilePhoto(userInfo.character ?? 0);
+  const profilePhoto = getProfilePhoto(userInfo.character ?? 0);
   const handleClickAuth = () => {
     if (userInfo.role === 'NOVICE') navigate('/auth');
   };

@@ -7,16 +7,17 @@ export const MAIN_BACKGROUND_IMG = 'https://42world.s3.ap-northeast-2.amazonaws.
 // TODO: file naming을 인덱스로 관리하면 좀 더 편할 것 같음
 export const PROFILE_LIST = {
   0: 'bbo.png',
-  1: 'bora.png',
-  2: 'ddub.png',
-  3: 'nana.png',
-  4: 'bongsuni.png',
-  5: 'hyeonkim.png',
-  6: 'babybbo.png',
-  7: 'babynana.png',
-  8: 'babybora.png',
-  9: 'babyddub.png',
-  10: 'babyhyeonkim.png',
+  1: 'babybbo.png',
+  2: 'nana.png',
+  3: 'babynana.png',
+  4: 'ddub.png',
+  5: 'babyddub.png',
+  6: 'bora.png',
+  7: 'babybora.png',
+  8: 'hyeonkim.png',
+  9: 'babyhyeonkim.png',
+  10: 'seongparcat.png',
+  11: 'seongparcat2.png',
 };
 
 export const SITEMAP = [
