@@ -5,4 +5,19 @@ import useMyArticlePreview from './useMyArticlePreview';
 import useMyArticleBoard from './useMyArticleBoard';
 import useClickOutside from './useClickOutside';
 
-export { useMypage, useMypageProfile, useProfileSection, useMyArticlePreview, useMyArticleBoard, useClickOutside };
+// UseQuery Hooks
+import useGetMyArticles from './useGetMyArticles';
+import useGetMyComments from './useGetMyComments';
+import useGetLikeArticles from './useGetLikeArticles';
+
+export {
+  useMypage,
+  useMypageProfile,
+  useProfileSection,
+  useMyArticlePreview,
+  useMyArticleBoard,
+  useClickOutside,
+  useGetMyArticles,
+  useGetLikeArticles,
+  useGetMyComments,
+};
