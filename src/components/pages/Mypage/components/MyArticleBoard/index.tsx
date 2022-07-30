@@ -1,13 +1,23 @@
 import { useMyArticleBoard } from '@components/pages/Mypage/components/MyArticleBoard/hooks';
 
 import { StyledMyArticleBoard } from '@components/pages/Mypage/styles';
+import constants from '@components/pages/Mypage/constants';
+import MyArticleList from './MyArticleList';
+import MyCommentList from './MyCommentList';
+import LikeArticleList from './LikeArticleList';
 
 interface IProps {
   articleType: number;
 }
 
 const MyArticleBoard = ({ articleType }: IProps) => {
-  const { articleInfo, innerComponent, handleClickGoBack } = useMyArticleBoard(articleType);
+  const { articleInfo, handleClickGoBack } = useMyArticleBoard(articleType);
+
+  const innerComponent = {
+    [constants.ARTICLE]: <MyArticleList />,
+    [constants.COMMENT]: <MyCommentList />,
+    [constants.LIKED]: <LikeArticleList />,
+  }[articleType];
 
   return (
     <StyledMyArticleBoard>
