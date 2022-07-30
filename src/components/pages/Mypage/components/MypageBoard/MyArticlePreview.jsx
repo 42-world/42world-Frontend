@@ -1,8 +1,8 @@
 import { useMyArticlePreview } from '@components/pages/Mypage/hooks';
 import constants from '@components/pages/Mypage/constants';
+import ArticlePreview from '@components/pages/Mypage/components/MypageBoard/ArticlePreview';
 
 import { StyledMyArticlePreview } from '@components/pages/Mypage/styles';
-import ArticlePreview from './ArticlePreview';
 
 const MyArticlePreview = ({ title, type, articleListArray, hrefLink }) => {
   const { handleClickMoreButton } = useMyArticlePreview(hrefLink);

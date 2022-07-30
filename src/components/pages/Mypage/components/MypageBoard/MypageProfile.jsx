@@ -1,4 +1,4 @@
-import ProfileSection from '@components/pages/Mypage/components/ProfileSection';
+import ProfileSection from '@components/pages/Mypage/components/MypageBoard/ProfileSection';
 import { useMypageProfile } from '@components/pages/Mypage/hooks';
 
 import { StyledMypageProfile } from '@components/pages/Mypage/styles';

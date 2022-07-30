@@ -1,4 +1,4 @@
-import MypageButton from '@components/pages/Mypage/components/MypageButton';
+import MypageButton from '@components/pages/Mypage/components/MypageBoard/MypageButton';
 import { ModalPortal } from '@components/pages/Mypage/utils';
 import { PROFILE_LIST } from '@common/constants';
 import { useClickOutside } from '@components/pages/Mypage/hooks';
