@@ -26,7 +26,7 @@ const useMypageProfile = () => {
   useEffect(() => {
     const linkBaseURL = {
       github: 'https://github.com/',
-      intra42: 'https://profile.intra.42.fr/',
+      intra42: 'https://profile.intra.42.fr/users/',
       linkedin: 'https://kr.linkedin.com/',
       facebook: 'https://facebook.com/',
       twitter: 'https://twitter.com/',
