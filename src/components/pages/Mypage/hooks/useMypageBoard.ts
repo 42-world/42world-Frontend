@@ -14,7 +14,7 @@ const useMypageBoard = () => {
     setCurrentPage(1);
   }, []);
 
-  return { articles: articles.slice(5), comments: comments.slice(5), likeArticles: likeArticles.slice(5) };
+  return { articles: articles.slice(0, 5), comments: comments.slice(0, 5), likeArticles: likeArticles.slice(0, 5) };
 };
 
 export default useMypageBoard;
