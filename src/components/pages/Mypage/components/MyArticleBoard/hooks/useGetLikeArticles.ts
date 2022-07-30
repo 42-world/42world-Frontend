@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { useQuery } from 'react-query';
 
 import { UserService } from '@root/network';
+import { mypageCurPageState } from '../store';
 
 const useGetLikeArticles = () => {
-  const [page, setPage] = useState(1);
+  const curPage = useRecoilValue(mypageCurPageState);
   const {
     isError,
     data = { data: [], meta: { maxPage: 1 } },
     refetch,
-  } = useQuery(['myLikes', page], () => UserService.getLikeArticles(page));
+  } = useQuery(['myLikes', curPage], () => UserService.getLikeArticles(curPage));
 
-  return { isError, setPage, likeArticles: data.data, maxPage: data.meta.pageCount, refetch };
+  return { isError, likeArticles: data.data, maxPage: data.meta.pageCount, refetch };
 };
 
 export default useGetLikeArticles;
