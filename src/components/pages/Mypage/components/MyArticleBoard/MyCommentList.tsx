@@ -11,7 +11,7 @@ const MyCommentList = () => {
     <>
       <div className="article-list">
         {comments.map((article: Article, index: number) => (
-          <Link to={`/article/${article.id}`} className="article-content" key={`article-${index}`}>
+          <Link to={`/article/${comments[index].article.id}`} className="article-content" key={`comment-${index}`}>
             <PreviewArticle article={article} />
           </Link>
         ))}
