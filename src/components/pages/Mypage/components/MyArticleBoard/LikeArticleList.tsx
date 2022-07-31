@@ -9,7 +9,7 @@ const LikeArticleList = () => {
   const { likeArticles, maxPage } = useGetLikeArticles();
   return (
     <>
-      <div className="page-selector">
+      <div className="article-list">
         {likeArticles.map((article: Article, index: number) => (
           <Link to={`/article/${article.id}`} className="article-content" key={`article-${index}`}>
             <PreviewArticle article={article} />

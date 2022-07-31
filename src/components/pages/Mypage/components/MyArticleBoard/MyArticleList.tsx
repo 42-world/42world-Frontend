@@ -9,7 +9,7 @@ const MyArticleList = () => {
   const { articles, maxPage } = useGetMyArticles();
   return (
     <>
-      <div className="page-selector">
+      <div className="article-list">
         {articles.map((article: Article, index: number) => (
           <Link to={`/article/${article.id}`} className="article-content" key={`article-${index}`}>
             <PreviewArticle article={article} />

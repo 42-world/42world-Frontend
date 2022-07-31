@@ -9,7 +9,7 @@ const MyCommentList = () => {
   const { comments, maxPage } = useGetMyComments();
   return (
     <>
-      <div className="page-selector">
+      <div className="article-list">
         {comments.map((article: Article, index: number) => (
           <Link to={`/article/${article.id}`} className="article-content" key={`article-${index}`}>
             <PreviewArticle article={article} />
