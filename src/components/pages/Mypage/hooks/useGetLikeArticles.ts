@@ -10,7 +10,11 @@ const useGetLikeArticles = () => {
     isError,
     data = { data: [], meta: { maxPage: 1 } },
     refetch,
-  } = useQuery(['myLikes', curPage], () => UserService.getLikeArticles(curPage));
+  } = useQuery(['myLikes', curPage], () => UserService.getLikeArticles(curPage), {
+    refetchOnWindowFocus: false,
+    cacheTime: 1000 * 10 * 60,
+    staleTime: 1000 * 10 * 60,
+  });
 
   return { isError, likeArticles: data.data, maxPage: data.meta.pageCount, refetch };
 };
