@@ -1,13 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import LoginButton from './LoginButton';
 import UserName from './UserName';
-import { css } from '@emotion/react';
-import { StyledMenuButton } from '../styled';
+import NotiModal from './NotiModal';
+
 import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
+import { StyledMenuButton } from '../styled';
+
+import { css } from '@emotion/react';
 import { TbBellRinging, TbBell } from 'react-icons/tb';
 
-const UserItems = ({ onClick, noti }) => {
+const UserItems = ({ isOpen, handleCloseModal, noti }) => {
   const { user } = useGetUser();
 
   const notiIcon = () => {
@@ -28,8 +31,9 @@ const UserItems = ({ onClick, noti }) => {
         <>
           {/* TODO : 아이콘 및 모달 적용 */}
           <div className="info">
-            <StyledMenuButton className="alarm-button" onClick={onClick}>
+            <StyledMenuButton className="alarm-button" onClick={handleCloseModal}>
               {notiIcon()}
+              {isOpen && <NotiModal noti={noti} handleCloseModal={handleCloseModal} />}
             </StyledMenuButton>
             <StyledMenuButton>
               <UserName user={user} />
@@ -46,5 +50,9 @@ const userStyle = css`
   .info {
     display: flex;
     color: white;
+    .alarm-button {
+      position: relative;
+      top: 1em;
+    }
   }
 `;

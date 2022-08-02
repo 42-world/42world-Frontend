@@ -49,17 +49,22 @@ const modal = css`
     }
   }
   animation: fadeInLeft 0.5s;
+
   background-color: #fff;
-  position: fixed;
+  color: black;
+  position: absolute;
   z-index: 100;
-  right: 20vw;
   font-size: 20px;
+  text-align: left;
+
   max-width: 300px;
   max-height: 400px;
-  margin-top: 80px;
+  margin-top: 20px;
+  right: -10px;
   border: 2px solid #979797;
   border-radius: 20px;
   padding: 10px;
+
   box-shadow: -2px 2px 4px grey;
   .divide {
     border-bottom: 2px solid #d9d9d9;
@@ -70,10 +75,6 @@ const modal = css`
     background: white;
     padding: 10px;
   }
-
-  // @media screen and (max-width: 1600px) {
-  //   right: 5vw;
-  // }
 
   @media screen and (max-width: 880px) {
     display: none;

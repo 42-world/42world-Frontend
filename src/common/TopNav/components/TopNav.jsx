@@ -7,7 +7,6 @@ import Logo from './Logo';
 import MenuItems from './MenuItems';
 import MenuItemToggle from './MenuItemToggle';
 import UserItems from './UserItems';
-import NotiModal from './NotiModal';
 
 import { StyledTopNav, TopNavSpace } from '../styled';
 
@@ -35,12 +34,10 @@ const TopNav = () => {
           <MenuItemToggle />
           <Logo />
           <MenuItems />
-          <UserItems onClick={handleClickToggleOpen} noti={noti} />
+          <UserItems isOpen={isOpen} handleCloseModal={handleClickToggleOpen} noti={noti} />
         </div>
       </StyledTopNav>
       <TopNavSpace />
-
-      {isOpen && <NotiModal noti={noti} handleCloseModal={handleClickToggleOpen} />}
     </>
   );
 };
