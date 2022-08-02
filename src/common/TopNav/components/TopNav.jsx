@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { notiModalState } from '@root/store/notiModal';
 import { NotificationService } from '@network';
 
 import Logo from './Logo';
@@ -11,16 +9,11 @@ import UserItems from './UserItems';
 import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
-  const [isOpen, setIsOpen] = useRecoilState(notiModalState);
   const [noti, setNoti] = useState(false);
 
   const getNoti = async () => {
     const result = await NotificationService.getNotifications();
     setNoti(result);
-  };
-
-  const handleClickToggleOpen = () => {
-    setIsOpen(bool => !bool);
   };
 
   useEffect(async () => {
@@ -34,7 +27,7 @@ const TopNav = () => {
           <MenuItemToggle />
           <Logo />
           <MenuItems />
-          <UserItems isOpen={isOpen} handleCloseModal={handleClickToggleOpen} noti={noti} />
+          <UserItems noti={noti} />
         </div>
       </StyledTopNav>
       <TopNavSpace />

@@ -1,15 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useRef } from 'react';
+import { useSetRecoilState } from 'recoil';
+
 import NotiList from './NotiList';
+import { notiModalState } from '@root/store/notiModal';
 
 import { css } from '@emotion/react';
 
-const NotiModal = ({ noti, handleCloseModal }) => {
+const NotiModal = ({ noti }) => {
   const modalRef = useRef(null);
+  const setIsOpen = useSetRecoilState(notiModalState);
 
   const clickModalOutside = e => {
     const target = e.target;
-    if (!modalRef.current.contains(target) && target.className.baseVal !== 'alarm-icon') handleCloseModal();
+
+    if (!modalRef.current.contains(target) && target.className.baseVal !== 'alarm-icon') {
+      setIsOpen(false);
+    }
   };
 
   useEffect(() => {
