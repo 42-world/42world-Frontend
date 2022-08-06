@@ -16,7 +16,7 @@ export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable =
   const { isError, data } = useQuery(
     [ARTICLES_URL, categoryId, pageNumber],
     () => ArticleService.getArticlesByCategoryId(categoryId, pageNumber, 10),
-    { enabled: enable },
+    { enabled: enable, refetchOnMount: 'always' },
   );
 
   return { isError, articles: data?.data ?? [], meta: data?.meta };
