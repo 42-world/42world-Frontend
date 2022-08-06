@@ -7,7 +7,6 @@ export const assets = {
     '42doproject': '/assets/sidebar/42doproject.png',
     '42swim': '/assets/sidebar/42swim.png',
     '42psychic': '/assets/sidebar/42psychic.png',
-    '42blind': '/assets/sidebar/42blind.png',
   },
   footer: {
     github: '/assets/Footer/github.svg',
