@@ -19,7 +19,6 @@ export const useGetSearchResults: UseGetSearchResults = (query, categoryId, page
     () => ArticleService2.getArticleSearch({ q: query, categoryId, page: pageNumber }),
     {
       enabled: enable,
-      refetchOnMount: 'always',
     },
   );
 
