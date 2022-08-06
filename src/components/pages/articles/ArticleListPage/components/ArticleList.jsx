@@ -14,7 +14,7 @@ const ArticleList = ({ articles, categoryId }) => {
       <ul css={articleListStyle}>
         {articles &&
           articles.map(article => (
-            <ArticleListItem article={article} categoryId={categoryId} categories={categories} />
+            <ArticleListItem key={article.id} article={article} categoryId={categoryId} categories={categories} />
           ))}
       </ul>
     </Body>
