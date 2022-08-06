@@ -9,7 +9,7 @@ import { IdProps } from '@components/pages/articles/common/types';
 const ArticleUpdateDelete = ({ articleId, categoryId }: IdProps) => {
   const navigate = useNavigate();
   const handleClickUpdate = () => {
-    navigate(`${URLs.WRITING}/${articleId}`);
+    navigate(`${URLs.WRITING}/${articleId}?categoryId=${categoryId}`);
   };
 
   const handleClickDelete = async () => {
