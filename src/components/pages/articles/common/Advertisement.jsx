@@ -8,7 +8,7 @@ const Advertisement = () => {
     <AdvertisementBlock>
       광고
       <a href={SURVIVING42_URL} target={'_blank'} rel="noreferrer">
-        <img src="/assets/advertisement/surviving42.png" />
+        <img src="/assets/advertisement/surviving42_1.png" />
       </a>
     </AdvertisementBlock>
   );
