@@ -4,7 +4,7 @@ import { PROFILE_LIST } from '@common/constants';
 import { useClickOutside } from '@components/pages/Mypage/hooks';
 
 import { StyledCharSelectModal } from '@components/pages/Mypage/styles';
-import { useMemo } from 'react';
+
 import CharSelectModalButtons from './CharSelectModalButtons';
 
 const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {

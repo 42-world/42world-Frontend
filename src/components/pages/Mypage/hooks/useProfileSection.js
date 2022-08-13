@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { UserService } from '@network';
 
 import { getProfilePhoto } from '../utils';
-import { useLogout } from '@common/hooks/api/user';
+import { useGetUser, useLogout } from '@common/hooks/api/user';
 
-const useProfileSection = userInfo => {
+const useProfileSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user: userInfo, refetch } = useGetUser();
   const navigate = useNavigate();
   const logout = useLogout();
 
@@ -32,6 +33,7 @@ const useProfileSection = userInfo => {
   const handleClickChar = async id => {
     try {
       await UserService.updateUser({ character: id });
+      refetch();
     } catch {
       window.alert('캐릭터 변경 실패, 관리자에게 문의하세요');
     }

@@ -1,7 +1,7 @@
 const CharSelectModalButtons = ({ userInfo, entry, onClick }) => {
   return (
     <li key={entry[0]}>
-      <button onClick={() => onClick(entry[0])}>
+      <button onClick={() => onClick(Number(entry[0]))}>
         <img
           className={entry[0] === userInfo.character ? 'selected' : ''}
           alt="profile"

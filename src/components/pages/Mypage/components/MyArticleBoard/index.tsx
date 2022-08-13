@@ -11,13 +11,7 @@ interface IProps {
 }
 
 const MyArticleBoard = ({ articleType }: IProps) => {
-  const { articleInfo, handleClickGoBack } = useMyArticleBoard(articleType);
-
-  const innerComponent = {
-    [constants.ARTICLE]: <MyArticleList />,
-    [constants.COMMENT]: <MyCommentList />,
-    [constants.LIKED]: <LikeArticleList />,
-  }[articleType];
+  const { articleInfo, handleClickGoBack, innerComponent } = useMyArticleBoard(articleType);
 
   return (
     <StyledMyArticleBoard>
