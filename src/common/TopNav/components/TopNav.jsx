@@ -16,7 +16,7 @@ const TopNav = () => {
     setNoti(result);
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     getNoti();
   }, []);
 
