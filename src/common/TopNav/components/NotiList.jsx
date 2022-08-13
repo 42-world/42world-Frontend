@@ -18,7 +18,7 @@ const NotiList = ({ type, body, articleId }) => {
       <div css={notiList} onClick={onClickNavigation}>
         <BiCommentDots color={theme.textBlue} />
         <div className="body">
-          <div className="text">{body}</div>
+          <text>{body}</text>
         </div>
       </div>
       <div className="divide"></div>
@@ -36,8 +36,12 @@ const notiList = css`
     overflow: hidden;
   }
   svg {
-    min-width: 30px;
-    min-height: 30px;
+    min-width: 20px;
+    min-height: 20px;
     margin-top: 15px;
+  }
+  text {
+    font-size: 18px;
+    font-weight: normal;
   }
 `;
