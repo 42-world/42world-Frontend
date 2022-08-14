@@ -34,13 +34,15 @@ const SidebarCategoryList = ({ setIsToggled }) => {
 };
 
 const sidebarCategoryListStyle = css`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 
   width: 100%;
-  padding: 2rem;
+  margin-top: 5rem;
+  padding: 0 2rem;
 `;
 
 const sidebarCategoryListTitleStyle = css`

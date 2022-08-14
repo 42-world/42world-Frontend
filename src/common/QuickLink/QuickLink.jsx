@@ -45,7 +45,6 @@ const quickLinkWrapperStyle = css`
 
   min-width: 15rem;
   width: inherit;
-  box-shadow: ${theme.boxShadow};
   background: ${theme.backgroundTheme3};
   color: ${theme.textWhite};
 
