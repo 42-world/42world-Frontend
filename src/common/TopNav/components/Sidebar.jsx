@@ -11,7 +11,7 @@ import { IoMdClose } from 'react-icons/io';
 import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 import { SITEMAP } from '@common/constants';
 import SidebarCategoryList from './SidebarCategoryList';
-import QuickLink from '@common/QuickLink/QuickLink';
+import SidebarQuickLinkList from './SidebarQuickLinkList';
 import { theme } from '@styles/theme';
 
 const Sidebar = () => {
@@ -27,8 +27,10 @@ const Sidebar = () => {
 
       <SwipeableDrawer anchor="left" open={isToggled} onClose={handleOpenMenu} onOpen={handleOpenMenu}>
         <div css={SidebarDrawerStyle}>
-          <SidebarCategoryList setIsToggled={setIsToggled} />
-          <QuickLink />
+          <div css={SidebarDrawerWrapperStyle}>
+            <SidebarCategoryList setIsToggled={setIsToggled} />
+            <SidebarQuickLinkList />
+          </div>
         </div>
       </SwipeableDrawer>
     </div>
@@ -56,14 +58,23 @@ const SidebarDrawerStyle = css`
   justify-content: center;
   align-items: center;
 
-  overflow-y: scroll;
-  overflow-x: hidden;
-
   width: 80vw;
-  min-height: 100vh;
+  max-width: 22rem;
+
   background-color: ${theme.secondary};
 
   transition: all 0.3s ease-in-out;
+`;
+
+const SidebarDrawerWrapperStyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0;
 `;
 
 export default Sidebar;

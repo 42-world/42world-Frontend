@@ -41,17 +41,16 @@ const sidebarCategoryListStyle = css`
   align-items: flex-start;
 
   width: 100%;
-  margin-top: 5rem;
   padding: 0 2rem;
 `;
 
 const sidebarCategoryListTitleStyle = css`
   padding: 0.5rem 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   border-bottom: 2px solid ${theme.textWhite};
 
   color: ${theme.textWhite};
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 800;
 `;
 
@@ -62,18 +61,23 @@ const sidebarCategoryListItemsStyle = css`
   align-items: flex-start;
 
   width: 100%;
-  padding: 1rem 0;
-
-  color: ${theme.textWhite};
-  font-size: 1.2rem;
-  font-weight: 600;
 `;
 
 const sidebarCategoryListItemStyle = css`
-  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+
   color: ${theme.textWhite};
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+
+  cursor: pointer;
+
+  &:hover {
+    background: ${theme.backgroundBlue2};
+  }
 `;
 
 export default SidebarCategoryList;
