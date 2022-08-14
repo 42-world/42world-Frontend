@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { notiModalState } from '@root/store/notiModal';
 
 import Logo from './Logo';
-import MenuItems from './MenuItems';
+import CategoryItems from './CategoryItems';
 import MenuItemToggle from './MenuItemToggle';
 import UserItems from './UserItems';
 import NotiModal from './NotiModal';
@@ -26,7 +26,7 @@ const TopNav = () => {
         <div className="top-nav">
           <MenuItemToggle />
           <Logo />
-          <MenuItems />
+          <CategoryItems />
           <UserItems onClick={handleClickNoti} />
         </div>
       </StyledTopNav>

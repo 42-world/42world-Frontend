@@ -33,10 +33,6 @@ export const StyledMenuToggleButton = styled.button`
 `;
 
 export const CategoryListDiv = styled.div`
-  position: fixed;
-  top: ${props => props.theme.topNavHeight}; // 추후 상단바 높이를 theme 로 저장하는 방식으로 변경
-  left: 0;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,13 +40,9 @@ export const CategoryListDiv = styled.div`
 
   overflow: hidden;
 
-  width: 100%;
+  width: 80vw;
+  min-height: 100vh;
   background-color: ${props => props.theme.secondary};
 
   transition: all 0.3s ease-in-out;
-
-  a,
-  div {
-    width: 100%;
-  }
 `;
