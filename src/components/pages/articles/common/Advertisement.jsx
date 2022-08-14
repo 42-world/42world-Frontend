@@ -6,7 +6,6 @@ const SURVIVING42_URL = 'https://mimseong.github.io/Surviving_in_42';
 const Advertisement = () => {
   return (
     <AdvertisementBlock>
-      광고
       <a href={SURVIVING42_URL} target={'_blank'} rel="noreferrer">
         <img src="/assets/advertisement/surviving42_1.png" />
       </a>
