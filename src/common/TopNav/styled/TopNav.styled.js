@@ -24,9 +24,6 @@ export const StyledTopNav = styled.div`
       margin-left: 2rem;
       flex-grow: 1;
     }
-    .category-toggle {
-      display: none;
-    }
   }
 
   a {
@@ -39,9 +36,6 @@ export const StyledTopNav = styled.div`
       .category-div,
       .alarm-button {
         display: none;
-      }
-      .category-toggle {
-        display: flex;
       }
     }
   }

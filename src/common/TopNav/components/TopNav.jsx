@@ -4,7 +4,7 @@ import { notiModalState } from '@root/store/notiModal';
 
 import Logo from './Logo';
 import CategoryItems from './CategoryItems';
-import MenuItemToggle from './MenuItemToggle';
+import Sidebar from './Sidebar';
 import UserItems from './UserItems';
 import NotiModal from './NotiModal';
 
@@ -24,7 +24,7 @@ const TopNav = () => {
     <>
       <StyledTopNav>
         <div className="top-nav">
-          <MenuItemToggle />
+          <Sidebar />
           <Logo />
           <CategoryItems />
           <UserItems onClick={handleClickNoti} />
