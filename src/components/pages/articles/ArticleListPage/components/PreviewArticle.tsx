@@ -21,9 +21,11 @@ const PreviewArticle = ({ article, isBestArticle = false }: PreviewArticleProps)
         <div css={top}>
           {isBestArticle && <img alt="hot " src="assets/hot.svg" />}
           {isNewArticle(article.createdAt) && <img alt="new" src="../../assets/new.svg" />}
-          {article.title}
+          <div css={title}>{article.title}</div>
         </div>
-        <div css={middle}>{getPlainText(article.content)}</div>
+        <div css={middle}>
+          <span>{getPlainText(article.content)}</span>
+        </div>
         <div css={bottom}>
           {article.writer && <h2>{article.writer.nickname}</h2>}
           <h2 css={info}>{getArticleTime(article.createdAt)}</h2>
@@ -54,38 +56,56 @@ const PreviewArticleDiv = styled.div`
 `;
 
 const left = css`
+  display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 
 const top = css`
   display: flex;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.1rem;
   align-items: center;
-  margin-bottom: 0.15rem;
-  width: 100%;
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  width: 100%;
+  margin-bottom: 0.2rem;
+
   & > img {
     margin-right: 0.3rem;
     margin-bottom: 0.1rem;
   }
 `;
 
-const middle = css`
-  display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 400;
-  align-items: left;
-  width: 100%;
+const title = css`
+  width: 0px;
+  flex-grow: 1;
 
-  word-break: break-all;
-
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.1rem;
+`;
+
+const middle = css`
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  margin-bottom: 0.3rem;
+
+  & > span {
+    width: 0px;
+    flex-grow: 1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 0.85rem;
+    font-weight: 400;
+    align-items: left;
+  }
 `;
 
 const bottom = css`
@@ -106,6 +126,7 @@ const info = css`
 `;
 
 const countTexts = css`
+  width: max-content;
   margin-left: auto;
   font-size: 0.9rem;
   display: flex;
