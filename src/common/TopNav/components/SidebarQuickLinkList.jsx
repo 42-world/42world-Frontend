@@ -14,15 +14,16 @@ const SidebarQuickLinkList = ({ setIsToggled }) => {
       <div css={sidebarCategoryListTitleStyle}>Quick Link</div>
       <div css={sidebarCategoryListItemsStyle}>
         {SITEMAP.map(item => (
-          <QuickLinkItem item={item} />
+          <QuickLinkItem item={item} setIsToggled={setIsToggled} />
         ))}
       </div>
     </div>
   );
 };
 
-const QuickLinkItem = ({ item }) => {
+const QuickLinkItem = ({ item, setIsToggled }) => {
   const onClick = url => {
+    setIsToggled(false);
     window.open(url);
   };
 

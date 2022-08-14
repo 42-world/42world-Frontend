@@ -29,7 +29,7 @@ const Sidebar = () => {
         <div css={SidebarDrawerStyle}>
           <div css={SidebarDrawerWrapperStyle}>
             <SidebarCategoryList setIsToggled={setIsToggled} />
-            <SidebarQuickLinkList />
+            <SidebarQuickLinkList setIsToggled={setIsToggled} />
           </div>
         </div>
       </SwipeableDrawer>
