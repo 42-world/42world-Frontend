@@ -26,7 +26,13 @@ const CategoryList = ({ categoryId }) => {
 };
 
 const CategoryListBlock = styled.div`
+  overflow: hidden;
   @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     width: 100%;
     background-color: #fff;
     padding: 1rem;
@@ -34,11 +40,23 @@ const CategoryListBlock = styled.div`
     border-radius: 0.4rem;
 
     h2 {
+      width: 100%;
       font-size: 1.3rem;
       font-weight: 700;
       border-bottom: 1px solid #ddd;
       padding: 0.5rem 0;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+    .category {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      a {
+        margin: 0 0 0.5rem 0;
+      }
     }
     .nav-links {
       display: block;
