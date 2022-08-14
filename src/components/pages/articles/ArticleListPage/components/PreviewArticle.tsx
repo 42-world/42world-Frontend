@@ -56,6 +56,7 @@ const top = css`
   display: flex;
   font-size: 0.95rem;
   font-weight: 700;
+  line-height: 105%;
   align-items: center;
   margin-bottom: 0.15rem;
   width: 100%;
