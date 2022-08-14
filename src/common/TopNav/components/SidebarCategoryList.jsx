@@ -9,7 +9,7 @@ import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 
 import { theme } from '@styles/theme';
 
-const SidebarCategoryList = () => {
+const SidebarCategoryList = ({ setIsToggled }) => {
   const { isError, categories } = useGetCategory();
   return (
     <div css={sidebarCategoryListStyle}>
@@ -17,7 +17,14 @@ const SidebarCategoryList = () => {
       <div css={sidebarCategoryListItemsStyle}>
         {categories &&
           categories.map(item => (
-            <Link key={item.name} to={`${CATEGORY_URL}/${item.id}`} css={sidebarCategoryListItemStyle}>
+            <Link
+              key={item.name}
+              to={`${CATEGORY_URL}/${item.id}`}
+              css={sidebarCategoryListItemStyle}
+              onClick={() => {
+                setIsToggled(false);
+              }}
+            >
               {item.name}
             </Link>
           ))}

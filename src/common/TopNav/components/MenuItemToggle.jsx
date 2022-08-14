@@ -23,7 +23,7 @@ const MenuItems = () => {
 
       <SwipeableDrawer anchor="left" open={isToggled} onClose={handleOpenMenu} onOpen={handleOpenMenu}>
         <CategoryListDiv>
-          <SidebarCategoryList />
+          <SidebarCategoryList setIsToggled={setIsToggled} />
         </CategoryListDiv>
       </SwipeableDrawer>
     </MenuItemToggleBlock>
