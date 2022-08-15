@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+
+import { css } from '@emotion/react';
 import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
@@ -15,29 +18,43 @@ const NotiList = ({ type, body, articleId }) => {
     navi(`article/${articleId}`);
   };
   return (
-    <>
-      <NotiListStyle onClick={onClickNavigation}>
-        <BiCommentDots color={theme.textBlue} size={'40px'} />
-        <div className="body">
-          <div className="text">{body}</div>
-        </div>
-      </NotiListStyle>
-      <div className="divide"></div>
-    </>
+    <div css={NotiItemStyle} onClick={onClickNavigation}>
+      <BiCommentDots css={NotiItemIconStyle} />
+      <div css={NotiItemContentStyle}>{body}</div>
+    </div>
   );
 };
 
 export default NotiList;
 
-const NotiListStyle = styled.div`
+const NotiItemStyle = css`
   display: flex;
-  max-height: 120px;
-  * {
-    margin: 5px;
-    overflow: hidden;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  transition: all 0.2s ease-in-out;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${theme.buttonBlue1};
   }
-  img {
-    min-width: 30px;
-    min-height: 30px;
-  }
+`;
+
+const NotiItemIconStyle = css`
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0.7rem;
+
+  color: ${theme.textBlue};
+`;
+
+const NotiItemContentStyle = css`
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 13rem;
 `;
