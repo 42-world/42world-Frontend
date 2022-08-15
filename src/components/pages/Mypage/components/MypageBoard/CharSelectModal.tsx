@@ -1,14 +1,21 @@
-import MypageButton from '@components/pages/Mypage/components/MypageBoard/MypageButton';
+import { Dispatch, SetStateAction } from 'react';
+
 import { ModalPortal } from '@components/pages/Mypage/utils';
-import { PROFILE_LIST } from '@common/constants';
-import { useClickOutside } from '@components/pages/Mypage/hooks';
-
 import { StyledCharSelectModal } from '@components/pages/Mypage/styles';
+import { PROFILE_LIST } from '@common/constants';
+import { User } from '@network/types/User';
+import { useCharSelectModal } from '@components/pages/Mypage/hooks';
 
+import MypageButton from '@components/pages/Mypage/components/MypageBoard/MypageButton';
 import CharSelectModalButtons from './CharSelectModalButtons';
 
-const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
-  const { ref: modalRef } = useClickOutside(handleClickClose);
+interface IProps {
+  userInfo: User;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const CharSelectModal = ({ userInfo, setIsModalOpen }: IProps) => {
+  const { handleClickChar, handleClickClose, modalRef } = useCharSelectModal(setIsModalOpen);
 
   return (
     <ModalPortal>
@@ -27,7 +34,9 @@ const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
                 />
               ))}
             </ul>
-            <MypageButton onClick={handleClickClose}>닫기</MypageButton>
+            <MypageButton onClick={handleClickClose} btnType={null}>
+              닫기
+            </MypageButton>
           </div>
         </div>
       </StyledCharSelectModal>

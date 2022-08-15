@@ -6,6 +6,7 @@ import useClickOutside from './useClickOutside';
 import useMyArticleBoard from './useMyArticleBoard';
 import usePageSelector from './usePageSelector';
 import useMypageBoard from './useMypageBoard';
+import useCharSelectModal from './useCharSelectModal';
 
 // UseQuery Hooks
 import useGetMyArticles from './useGetMyArticles';
@@ -24,4 +25,5 @@ export {
   useGetMyComments,
   useMyArticleBoard,
   usePageSelector,
+  useCharSelectModal,
 };

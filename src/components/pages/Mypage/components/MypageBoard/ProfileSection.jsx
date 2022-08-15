@@ -5,15 +5,8 @@ import { useProfileSection } from '@components/pages/Mypage/hooks';
 import { StyledProfileSection } from '@components/pages/Mypage/styles';
 
 const ProfileSection = ({ userInfo }) => {
-  const {
-    profilePhoto,
-    authButtonProps,
-    isModalOpen,
-    handleClickChar,
-    handleClickClose,
-    handleClickPhotoChange,
-    handleClickLogout,
-  } = useProfileSection(userInfo);
+  const { profilePhoto, authButtonProps, isModalOpen, setIsModalOpen, handleClickPhotoChange, handleClickLogout } =
+    useProfileSection(userInfo);
 
   return (
     <StyledProfileSection>
@@ -32,9 +25,7 @@ const ProfileSection = ({ userInfo }) => {
           <MypageButton onClick={handleClickLogout}>로그아웃</MypageButton>
         </div>
       </div>
-      {isModalOpen && (
-        <CharSelectModal userInfo={userInfo} handleClickChar={handleClickChar} handleClickClose={handleClickClose} />
-      )}
+      {isModalOpen && <CharSelectModal userInfo={userInfo} setIsModalOpen={setIsModalOpen} />}
     </StyledProfileSection>
   );
 };

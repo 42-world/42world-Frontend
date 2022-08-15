@@ -30,25 +30,11 @@ const useProfileSection = () => {
     navigate('/');
   };
 
-  const handleClickChar = async id => {
-    try {
-      await UserService.updateUser({ character: id });
-      refetch();
-    } catch {
-      window.alert('캐릭터 변경 실패, 관리자에게 문의하세요');
-    }
-  };
-
-  const handleClickClose = () => {
-    setIsModalOpen(false);
-  };
-
   return {
     profilePhoto,
     authButtonProps,
     isModalOpen,
-    handleClickChar,
-    handleClickClose,
+    setIsModalOpen,
     handleClickPhotoChange,
     handleClickLogout,
   };
