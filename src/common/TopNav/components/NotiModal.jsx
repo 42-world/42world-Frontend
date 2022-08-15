@@ -6,6 +6,7 @@ import NotiList from './NotiList';
 import { notiModalState } from '@root/store/notiModal';
 
 import { css } from '@emotion/react';
+import { theme } from '@styles/theme';
 
 const NotiModal = ({ noti }) => {
   const modalRef = useRef(null);
@@ -34,7 +35,7 @@ const NotiModal = ({ noti }) => {
         <div className="divide"></div>
         <div css={notiLists}>
           {noti.map(data => {
-            return <NotiList type={data.type} body={data.content} articleId={data.articleId} />;
+            return <NotiList type={data.type} body={data.content} articleId={data.articleId} isRead={data.isRead} />;
           })}
         </div>
       </div>
@@ -69,10 +70,10 @@ const modal = css`
   margin-top: 20px;
   right: -10px;
   border: 2px solid #979797;
-  border-radius: 20px;
+  border-radius: 0.5rem;
   padding: 10px;
 
-  box-shadow: -2px 2px 4px grey;
+  box-shadow: ${theme.boxShadow};
   .divide {
     border-bottom: 2px solid #d9d9d9;
     width: 270px;
