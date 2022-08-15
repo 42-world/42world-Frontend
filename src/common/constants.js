@@ -5,7 +5,21 @@ export const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 export const MAIN_BACKGROUND_IMG = 'https://42world.s3.ap-northeast-2.amazonaws.com/main_background.jpeg';
 
 // TODO: file naming을 인덱스로 관리하면 좀 더 편할 것 같음
-export const PROFILE_LIST = {
+export const PROFILE_LIST = [
+  'bbo.png',
+  'babybbo.png',
+  'nana.png',
+  'babynana.png',
+  'ddub.png',
+  'babyddub.png',
+  'bora.png',
+  'babybora.png',
+  'hyeonkim.png',
+  'babyhyeonkim.png',
+  'seongparcat.png',
+  'seongparcat2.png',
+];
+export const PROFILE_LIST_TEMP = {
   0: 'bbo.png',
   1: 'babybbo.png',
   2: 'nana.png',

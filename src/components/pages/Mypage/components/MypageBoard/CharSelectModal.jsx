@@ -18,8 +18,13 @@ const CharSelectModal = ({ userInfo, handleClickChar, handleClickClose }) => {
           <hr />
           <div className="char-select-inner">
             <ul className="char-list">
-              {Object.entries(PROFILE_LIST).map(entry => (
-                <CharSelectModalButtons userInfo={userInfo} entry={entry} onClick={handleClickChar} />
+              {PROFILE_LIST.map((character, index) => (
+                <CharSelectModalButtons
+                  userInfo={userInfo}
+                  character={character}
+                  index={index}
+                  onClick={handleClickChar}
+                />
               ))}
             </ul>
             <MypageButton onClick={handleClickClose}>닫기</MypageButton>

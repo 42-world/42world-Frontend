@@ -1,11 +1,11 @@
-const CharSelectModalButtons = ({ userInfo, entry, onClick }) => {
+const CharSelectModalButtons = ({ userInfo, character, index, onClick }) => {
   return (
-    <li key={entry[0]}>
-      <button onClick={() => onClick(Number(entry[0]))}>
+    <li key={index}>
+      <button onClick={() => onClick(index)}>
         <img
-          className={entry[0] === userInfo.character ? 'selected' : ''}
+          className={index === userInfo.character ? 'selected' : ''}
           alt="profile"
-          src={'/assets/CharacterWhiteBG/' + entry[1]}
+          src={'/assets/CharacterWhiteBG/' + character}
         />
       </button>
     </li>
