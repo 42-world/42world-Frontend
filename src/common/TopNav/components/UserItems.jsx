@@ -8,6 +8,8 @@ import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
 import LoginButton from './LoginButton';
 import UserName from './UserName';
+import { theme } from '@styles/theme';
+
 const UserItems = ({ onClick }) => {
   const { user } = useGetUser();
   return (
@@ -40,6 +42,10 @@ const UserItemNotificationStyle = css`
   width: 1.8rem;
   height: 1.8rem;
   margin-right: 0.5rem;
+
+  ${theme.mobileSize} {
+    display: none;
+  }
 `;
 
 export default UserItems;
