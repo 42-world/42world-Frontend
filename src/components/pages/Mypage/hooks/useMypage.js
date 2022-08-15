@@ -1,16 +1,16 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import constants from '@components/pages/Mypage/constants';
+import { ARTICLE_TYPE } from '@components/pages/Mypage/utils';
 
 const useMypage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const articleType =
     {
-      article: constants.ARTICLE,
-      comment: constants.COMMENT,
-      liked: constants.LIKED,
+      article: ARTICLE_TYPE.ARTICLE,
+      comment: ARTICLE_TYPE.COMMENT,
+      liked: ARTICLE_TYPE.LIKED,
     }[params.articleType] || 0;
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import getArticleInfo from '@components/pages/Mypage/utils/getArticleInfo';
 import MyArticleList from '../components/MyArticleBoard/MyArticleList';
 import MyCommentList from '../components/MyArticleBoard/MyCommentList';
 import LikeArticleList from '../components/MyArticleBoard/LikeArticleList';
-import constants from '../constants';
+import { ARTICLE_TYPE } from '@components/pages/Mypage/utils';
 
 const useMyArticleBoard = (articleType: number) => {
   const navigate = useNavigate();
@@ -15,9 +15,9 @@ const useMyArticleBoard = (articleType: number) => {
   };
 
   const innerComponent = {
-    [constants.ARTICLE]: MyArticleList(),
-    [constants.COMMENT]: MyCommentList(),
-    [constants.LIKED]: LikeArticleList(),
+    [ARTICLE_TYPE.ARTICLE]: MyArticleList(),
+    [ARTICLE_TYPE.COMMENT]: MyCommentList(),
+    [ARTICLE_TYPE.LIKED]: LikeArticleList(),
   }[articleType];
 
   return {

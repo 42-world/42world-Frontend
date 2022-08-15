@@ -1,5 +1,5 @@
 import { useMyArticlePreview } from '@components/pages/Mypage/hooks';
-import constants from '@components/pages/Mypage/constants';
+import { ARTICLE_TYPE } from '@components/pages/Mypage/utils';
 import ArticlePreview from '@components/pages/Mypage/components/MypageBoard/ArticlePreview';
 
 import { StyledMyArticlePreview } from '@components/pages/Mypage/styles';
@@ -18,10 +18,10 @@ const MyArticlePreview = ({ title, type, articleListArray, hrefLink }) => {
       {articleListArray.map(article => (
         <ArticlePreview
           key={`${type}-${article.id}`}
-          id={type === constants.COMMENT ? article.article.id : article.id}
-          title={type === constants.COMMENT ? article.content : article.title}
-          likeCount={type !== constants.COMMENT ? article.likeCount : ''}
-          commentCount={type !== constants.COMMENT ? article.commentCount : ''}
+          id={type === ARTICLE_TYPE.COMMENT ? article.article.id : article.id}
+          title={type === ARTICLE_TYPE.COMMENT ? article.content : article.title}
+          likeCount={type !== ARTICLE_TYPE.COMMENT ? article.likeCount : ''}
+          commentCount={type !== ARTICLE_TYPE.COMMENT ? article.commentCount : ''}
         />
       ))}
     </StyledMyArticlePreview>

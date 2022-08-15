@@ -1,10 +1,6 @@
 import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
 
 import { StyledMyArticleBoard } from '@components/pages/Mypage/styles';
-import constants from '@components/pages/Mypage/constants';
-import MyArticleList from './MyArticleList';
-import MyCommentList from './MyCommentList';
-import LikeArticleList from './LikeArticleList';
 
 interface IProps {
   articleType: number;

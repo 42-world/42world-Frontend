@@ -1,6 +1,6 @@
 import MyArticlePreview from '@components/pages/Mypage/components/MypageBoard/MyArticlePreview';
 import MypageProfile from '@components/pages/Mypage/components/MypageBoard/MypageProfile';
-import constants from '@components/pages/Mypage/constants';
+import { ARTICLE_TYPE } from '@components/pages/Mypage/utils';
 import { useMypageBoard } from '@components/pages/Mypage/hooks';
 
 const MypageBoard = () => {
@@ -12,19 +12,19 @@ const MypageBoard = () => {
       <div className="mypage-article">
         <MyArticlePreview
           title="내 게시글"
-          type={constants.ARTICLE}
+          type={ARTICLE_TYPE.ARTICLE}
           articleListArray={articles}
           hrefLink="/mypage/article"
         />
         <MyArticlePreview
           title="내 댓글"
-          type={constants.COMMENT}
+          type={ARTICLE_TYPE.COMMENT}
           articleListArray={comments}
           hrefLink="/mypage/comment"
         />
         <MyArticlePreview
           title="좋아요한 게시글"
-          type={constants.LIKED}
+          type={ARTICLE_TYPE.LIKED}
           articleListArray={likeArticles}
           hrefLink="/mypage/liked"
         />

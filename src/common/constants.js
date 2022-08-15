@@ -19,20 +19,6 @@ export const PROFILE_LIST = [
   'seongparcat.png',
   'seongparcat2.png',
 ];
-export const PROFILE_LIST_TEMP = {
-  0: 'bbo.png',
-  1: 'babybbo.png',
-  2: 'nana.png',
-  3: 'babynana.png',
-  4: 'ddub.png',
-  5: 'babyddub.png',
-  6: 'bora.png',
-  7: 'babybora.png',
-  8: 'hyeonkim.png',
-  9: 'babyhyeonkim.png',
-  10: 'seongparcat.png',
-  11: 'seongparcat2.png',
-};
 
 export const SITEMAP = [
   {
