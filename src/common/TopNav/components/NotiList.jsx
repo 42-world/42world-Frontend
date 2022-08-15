@@ -16,10 +16,8 @@ const NotiList = ({ type, body, articleId }) => {
   return (
     <>
       <div css={notiList} onClick={onClickNavigation}>
-        <BiCommentDots color={theme.textBlue} />
-        <div className="body">
-          <text>{body}</text>
-        </div>
+        <BiCommentDots css={NotiItemIconStyle} />
+        <text css={NotiItemContentStyle}>{body}</text>
       </div>
       <div className="divide"></div>
     </>
@@ -29,19 +27,31 @@ export default NotiList;
 
 const notiList = css`
   display: flex;
-  max-height: 120px;
-  padding: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: ${theme.buttonBlue1};
+  }
   * {
-    margin: 5px;
+    margin: 3px;
     overflow: hidden;
   }
-  svg {
-    min-width: 20px;
-    min-height: 20px;
-    margin-top: 15px;
-  }
-  text {
-    font-size: 18px;
-    font-weight: normal;
-  }
+`;
+
+const NotiItemIconStyle = css`
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  margin-right: 0.7rem;
+  color: ${theme.textBlue};
+`;
+
+const NotiItemContentStyle = css`
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 13rem;
 `;
