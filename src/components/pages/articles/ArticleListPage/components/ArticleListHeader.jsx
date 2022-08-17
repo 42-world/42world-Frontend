@@ -19,7 +19,7 @@ const ArticleListHeader = ({ hasQuery }) => {
               type="text"
               className="search"
               value={search}
-              placeholder="게시물 제목 검색"
+              placeholder="검색어를 입력해주세요"
             />
           </div>
         </form>
