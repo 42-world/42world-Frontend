@@ -6,7 +6,7 @@ export const useGetComments = (articleId: number, page: number, take?: 10) => {
     ['comments', articleId, page],
     () => CommentService2.getCommentsByArticleId(articleId, page, take),
     {
-      cacheTime: 1,
+      cacheTime: 1000,
     },
   );
 

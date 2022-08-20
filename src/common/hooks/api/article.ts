@@ -38,7 +38,7 @@ export const useGetArticleById: GetArticle = (articleId, enable = true) => {
     {
       retry: false,
       enabled: enable,
-      cacheTime: 1,
+      cacheTime: 1000,
     },
   );
 
