@@ -2,6 +2,8 @@ import { assets } from '@styles/assets';
 
 export const PICTURE_DIR = '/assets/CharacterWhiteBG/';
 
+export const MAIN_BACKGROUND_IMG = 'https://42world.s3.ap-northeast-2.amazonaws.com/main_background.jpeg';
+
 // TODO: file naming을 인덱스로 관리하면 좀 더 편할 것 같음
 export const PROFILE_LIST = {
   0: 'bbo.png',
