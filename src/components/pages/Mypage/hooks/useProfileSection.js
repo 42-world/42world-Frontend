@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserService } from '@network';
 
-import { profilePhotoUtils } from '../utils';
-import { useLogout } from '@common/hooks/api/user';
+import { PROFILE_LIST } from '@root/common/constants';
+import { useGetUser, useLogout } from '@common/hooks/api/user';
 
-const useProfileSection = userInfo => {
+const useProfileSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user: userInfo, refetch } = useGetUser();
   const navigate = useNavigate();
   const logout = useLogout();
 
-  const profilePhoto = profilePhotoUtils.getProfilePhoto(userInfo.character ?? 0);
+  const profilePhoto = PROFILE_LIST[userInfo.character];
   const handleClickAuth = () => {
     if (userInfo.role === 'NOVICE') navigate('/auth');
   };
@@ -29,25 +30,11 @@ const useProfileSection = userInfo => {
     navigate('/');
   };
 
-  const handleClickChar = async id => {
-    try {
-      await UserService.updateUser({ character: id });
-      window.alert('캐릭터 변경 완료');
-    } catch {
-      window.alert('캐릭터 변경 실패, 관리자에게 문의하세요');
-    }
-  };
-
-  const handleClickClose = () => {
-    setIsModalOpen(false);
-  };
-
   return {
     profilePhoto,
     authButtonProps,
     isModalOpen,
-    handleClickChar,
-    handleClickClose,
+    setIsModalOpen,
     handleClickPhotoChange,
     handleClickLogout,
   };

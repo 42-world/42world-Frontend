@@ -1,5 +1,4 @@
-import MypageProfile from './MypageProfile';
-import MyArticlePreview from './MyArticlePreview';
+import MypageBoard from './MypageBoard';
 import MyArticleBoard from './MyArticleBoard';
 
-export { MypageProfile, MyArticleBoard, MyArticlePreview };
+export { MyArticleBoard, MypageBoard };
