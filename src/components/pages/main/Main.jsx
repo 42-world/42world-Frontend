@@ -6,6 +6,8 @@ import { FaSearch } from 'react-icons/fa';
 import QuickLink from '@common/QuickLink/QuickLink';
 import MainPreviewBoards from './MainPreviewBoards';
 
+import { theme } from '@root/styles/theme';
+
 const Main = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
@@ -68,6 +70,9 @@ const StyledMainContent = styled.div`
   max-width: 1150px;
   flex-direction: row;
   justify-content: space-between;
+  ${theme.mobileSize} {
+    margin-top: 0;
+  }
 `;
 
 const StyledMainSection = styled.div`

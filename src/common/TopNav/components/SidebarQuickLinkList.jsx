@@ -3,28 +3,27 @@
 import { useState, useRef, useEffect } from 'react';
 import { css } from '@emotion/react';
 
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { SITEMAP } from '@common/constants';
-
 import { theme } from '@styles/theme';
-import { rem } from '@styles/rem';
 
-// TODO: into hamburger menu
-const QuickLink = () => {
+const SidebarQuickLinkList = ({ setIsToggled }) => {
   return (
-    <div css={quickLinkWrapperStyle}>
-      <div css={quickLinkTitleStyle}>Quick Link</div>
-      <div>
+    <div css={sidebarCategoryListStyle}>
+      <div css={sidebarCategoryListTitleStyle}>Quick Link</div>
+      <div css={sidebarCategoryListItemsStyle}>
         {SITEMAP.map(item => (
-          <QuickLinkItem item={item} />
+          <QuickLinkItem item={item} setIsToggled={setIsToggled} />
         ))}
       </div>
     </div>
   );
 };
 
-const QuickLinkItem = ({ item }) => {
+const QuickLinkItem = ({ item, setIsToggled }) => {
   const onClick = url => {
+    setIsToggled(false);
     window.open(url);
   };
 
@@ -39,24 +38,39 @@ const QuickLinkItem = ({ item }) => {
   );
 };
 
-const quickLinkWrapperStyle = css`
+const sidebarCategoryListStyle = css`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 
-  min-width: 15rem;
-  width: inherit;
-  background: ${theme.backgroundTheme3};
-  color: ${theme.textWhite};
-
-  border-radius: 1rem;
-  padding: 1rem 0;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0 2rem;
 `;
 
-const quickLinkTitleStyle = css`
-  font-size: 1rem;
-  text-align: center;
-  font-weight: bold;
-  padding: 1rem;
+const sidebarCategoryListTitleStyle = css`
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid ${theme.textWhite};
+
+  color: ${theme.textWhite};
+  font-size: 1.7rem;
+  font-weight: 800;
+`;
+
+const sidebarCategoryListItemsStyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+
+  color: ${theme.textWhite};
+  font-size: 1.5rem;
+  font-weight: 600;
 `;
 
 const quickLinkItemStyle = css`
@@ -65,8 +79,10 @@ const quickLinkItemStyle = css`
   align-items: center;
 
   width: 100%;
-  padding: 0.6rem 1rem;
-  /* transition: background 0.5s; */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+
   cursor: pointer;
 
   &:hover {
@@ -97,4 +113,4 @@ const quickLinkItemInfoStyle = css`
   }
 `;
 
-export default QuickLink;
+export default SidebarQuickLinkList;
