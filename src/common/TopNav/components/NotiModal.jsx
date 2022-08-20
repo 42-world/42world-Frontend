@@ -2,8 +2,6 @@
 
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Typography } from '@mui/material';
 
 import NotiList from './NotiList';
 import { NotificationService } from '@network';
@@ -12,13 +10,11 @@ import { theme } from '@styles/theme';
 const NotiModal = () => {
   const [noti, setNoti] = useState([]);
 
-  const getNoti = async () => {
-    const result = await NotificationService.getNotifications();
-    setNoti(result);
-  };
-
   useEffect(() => {
-    getNoti();
+    (async () => {
+      const result = await NotificationService.getNotifications();
+      setNoti(result);
+    })();
   }, []);
 
   return (
