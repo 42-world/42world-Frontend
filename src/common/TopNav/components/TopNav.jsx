@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+
+import { css } from '@emotion/react';
 import { useRecoilState } from 'recoil';
 
 import { notiModalState } from '@root/store/notiModal';
@@ -43,11 +46,18 @@ const TopNav = () => {
         open={modalTarget}
         anchorEl={modalTarget}
         onClose={handleClose}
+        css={PopoverStyle}
       >
         <NotiModal />
       </Popover>
     </>
   );
 };
+
+const PopoverStyle = css`
+  .MuiPopover-paper {
+    border-radius: 0.3rem;
+  }
+`;
 
 export default TopNav;
