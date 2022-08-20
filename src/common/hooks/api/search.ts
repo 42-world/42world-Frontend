@@ -19,7 +19,7 @@ export const useGetSearchResults: UseGetSearchResults = (query, categoryId, page
     () => ArticleService2.getArticleSearch({ q: query, categoryId, page: pageNumber }),
     {
       enabled: enable,
-      cacheTime: 1000,
+      cacheTime: 0,
     },
   );
 
