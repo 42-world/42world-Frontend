@@ -33,7 +33,7 @@ const CommentsList = ({ comments, meta, page, setPage, refetch }: CommentsListPr
     <div>
       {comments &&
         comments.map(comment => (
-          <CommentItem comment={comment} articleId={comment.articleId} handleDelete={handleDelete} />
+          <CommentItem key={comment.id} comment={comment} articleId={comment.articleId} handleDelete={handleDelete} />
         ))}
       {meta && <PageSelector currentPage={page} onChangePage={onChangePage} totalPageCount={meta.pageCount} />}
     </div>
