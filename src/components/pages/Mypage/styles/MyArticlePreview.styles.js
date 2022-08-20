@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import constants from '@components/pages/Mypage/constants';
+import { ARTICLE_TYPE } from '@components/pages/Mypage/utils';
 
 const StyledMyArticlePreview = styled.div`
   background: ${props => props.theme.white};
@@ -9,7 +9,7 @@ const StyledMyArticlePreview = styled.div`
 
   margin: 0.5rem 0;
 
-  width: ${props => (props.articleType === constants.LIKED ? 'calc(100%);' : 'calc(50% - 0.8rem);')};
+  width: ${props => (props.type === ARTICLE_TYPE.LIKED ? 'calc(100%);' : 'calc(50% - 0.8rem);')};
   .title {
     padding: 0.5rem;
     display: flex;
@@ -37,7 +37,7 @@ const StyledMyArticlePreview = styled.div`
   }
   .like,
   .comment {
-    display: ${props => (props.articleType === constants.COMMENT ? 'none' : 'block')};
+    display: ${props => (props.type === ARTICLE_TYPE.COMMENT ? 'none' : 'block')};
   }
   ${props => props.theme.mobileSize} {
     box-shadow: none;

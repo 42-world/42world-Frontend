@@ -21,7 +21,11 @@ const StyledCharSelectModal = styled.div`
     border-radius: ${props => props.theme.borderRadius};
 
     h2 {
-      padding: 1rem 0.8rem;
+      display: flex;
+      padding: 0 1rem;
+      height: 4rem;
+      align-items: center;
+      justify-content: flex-start;
       font-size: 1.6rem;
       font-weight: bold;
     }
@@ -43,12 +47,16 @@ const StyledCharSelectModal = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0.5rem;
+    justify-content: space-between;
+    padding: 0.5rem 0 1rem;
+    height: calc(100% - 4rem);
 
     .char-list {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      max-height: 85%;
+      overflow: auto;
       justify-content: center;
       padding: 0.3rem;
 

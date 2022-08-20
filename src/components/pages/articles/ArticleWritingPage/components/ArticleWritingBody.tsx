@@ -46,6 +46,28 @@ const articleWritingBody = css`
   flex-direction: column;
   -webkit-box-align: stretch;
   align-items: stretch;
+
+  .editor {
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 100%;
+    .toastui-editor-dropdown-toolbar {
+      flex-wrap: wrap;
+      height: auto;
+      width: min-content;
+    }
+    .toastui-editor-popup {
+      width: max-content;
+      max-width: 15rem;
+      .toastui-editor-file-select-button {
+        padding: 0 4px;
+        font-size: 0.7rem;
+      }
+      @media (max-width: 480px) {
+        margin-left: -3rem;
+      }
+    }
+  }
 `;
 
 const submitButton = css`

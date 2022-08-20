@@ -48,6 +48,10 @@ const StyledMyArticleBoard = styled.div`
       padding: 0.3rem 0.5rem;
       margin: 0.2rem;
       border-radius: 0.3rem;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
     .cur-page {
       background-color: ${props => props.theme.primary};

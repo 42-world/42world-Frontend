@@ -125,6 +125,7 @@ const Seoul42 = () => {
               label="Intra ID"
               variant="outlined"
               onChange={onChange}
+              autoComplete="off"
             />
             <span>@student.42seoul.kr</span>
           </div>

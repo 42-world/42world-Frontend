@@ -11,29 +11,32 @@ import ArticleWritingPage from './components/pages/articles/ArticleWritingPage';
 import ArticleDetailPage from './components/pages/articles/ArticleDetailPage';
 import ArticleListPage from './components/pages/articles/ArticleListPage';
 import URLs from '@common/urls';
+import ScrollToTop from './common/TopNav/ScrollToTap';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<PageLayout />}>
-          <Route exact path="/" element={<Main />} />
-          <Route path={URLs.CATEGORY} element={<ArticleListPage />} />
-          <Route path={`${URLs.CATEGORY}/:id`} element={<ArticleListPage />} />
-          <Route path={URLs.MYPAGE} element={<Mypage />} />
-          <Route path={`${URLs.MYPAGE}/:articleType`} element={<Mypage />} />
-          <Route path={URLs.WRITING} element={<ArticleWritingPage />} />
-          <Route path={`${URLs.WRITING}/:id`} element={<ArticleWritingPage />} />
-          <Route path={`${URLs.ARTICLE}/:id`} element={<ArticleDetailPage />} />
-          <Route path={URLs.DONATION} element={<Donation />} />
-        </Route>
+      <ScrollToTop>
+        <Routes>
+          <Route element={<PageLayout />}>
+            <Route exact path="/" element={<Main />} />
+            <Route path={URLs.CATEGORY} element={<ArticleListPage />} />
+            <Route path={`${URLs.CATEGORY}/:id`} element={<ArticleListPage />} />
+            <Route path={URLs.MYPAGE} element={<Mypage />} />
+            <Route path={`${URLs.MYPAGE}/:articleType`} element={<Mypage />} />
+            <Route path={URLs.WRITING} element={<ArticleWritingPage />} />
+            <Route path={`${URLs.WRITING}/:id`} element={<ArticleWritingPage />} />
+            <Route path={`${URLs.ARTICLE}/:id`} element={<ArticleDetailPage />} />
+            <Route path={URLs.DONATION} element={<Donation />} />
+          </Route>
 
-        <Route path={URLs.LOGIN} element={<Login />} />
-        <Route path={`${URLs.AUTH}/github/callback`} element={<Login />} />
-        <Route path={URLs.AUTH} element={<Auth />} />
-        <Route path={URLs.ERROR} element={<ErrorPage />} />
-        <Route path="/*" element={<ErrorPage />} />
-      </Routes>
+          <Route path={URLs.LOGIN} element={<Login />} />
+          <Route path={`${URLs.AUTH}/github/callback`} element={<Login />} />
+          <Route path={URLs.AUTH} element={<Auth />} />
+          <Route path={URLs.ERROR} element={<ErrorPage />} />
+          <Route path="/*" element={<ErrorPage />} />
+        </Routes>
+      </ScrollToTop>
     </BrowserRouter>
   );
 };

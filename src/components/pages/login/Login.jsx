@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { CircularProgress } from '@mui/material';
 
 import useLogin from './hooks/useLogin';
+import { MAIN_BACKGROUND_IMG } from '@common/constants';
 
 const Login = () => {
   const { onClickButton, isAuthCallbackProcess } = useLogin();
@@ -47,7 +48,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: url(${process.env.PUBLIC_URL} + '/assets/main_background.jpeg') no-repeat center center/cover;
+  background: url(${MAIN_BACKGROUND_IMG}) no-repeat center center/cover;
 
   h1 {
     font-size: 1.2rem;
