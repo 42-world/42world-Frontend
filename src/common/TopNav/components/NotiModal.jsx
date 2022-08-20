@@ -14,8 +14,7 @@ const NotiModal = () => {
 
   const getNoti = async () => {
     const result = await NotificationService.getNotifications();
-    console.log(result);
-    //setNoti(result);
+    setNoti(result);
   };
 
   useEffect(() => {
