@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const useMyArticlePreview = hrefLink => {
+const useMyArticlePreview = (hrefLink: string) => {
   const navigate = useNavigate();
 
   const handleClickMoreButton = () => {
