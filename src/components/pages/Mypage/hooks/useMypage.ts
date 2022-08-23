@@ -16,7 +16,7 @@ const useMypage = () => {
     }[params.articleType ?? 'myPage'] || 0;
 
   useEffect(() => {
-    if (!user || !user.nickname) navigate('/');
+    if (!user || !user.nickname) navigate('/login');
     if (!articleType && params.articleType) navigate('/error');
   }, [params, articleType, navigate]);
 
