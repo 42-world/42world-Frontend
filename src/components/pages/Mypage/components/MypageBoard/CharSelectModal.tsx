@@ -30,6 +30,7 @@ const CharSelectModal = ({ userInfo, setIsModalOpen }: IProps) => {
                   userInfo={userInfo}
                   character={character}
                   index={index}
+                  key={`character-${index}`}
                   onClick={handleClickChar}
                 />
               ))}
