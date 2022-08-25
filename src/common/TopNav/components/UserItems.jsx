@@ -12,7 +12,6 @@ import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
 import { NotificationService } from '@network';
 import { theme } from '@styles/theme';
-import { StyledMenuButton } from '../styled';
 
 const UserItems = () => {
   const { user } = useGetUser();
@@ -38,24 +37,25 @@ const UserItems = () => {
   useEffect(() => {
     getNoti();
   }, []);
+
   return (
     <div css={userStyle}>
       {isEmpty(user) ? (
-        <StyledMenuButton>
+        <div className="button">
           <LoginButton />
-        </StyledMenuButton>
+        </div>
       ) : (
         <div className="info">
-          <StyledMenuButton className="alarm-button" onClick={onClickIcon}>
+          <div className="alarm-button button" onClick={onClickIcon}>
             <div>
               <img className="alarm-icon" src="/assets/bell.svg"></img>
               <div className="alarm-number">{notYetReadCount}</div>
             </div>
             {isOpen && <NotiModal noti={noti} />}
-          </StyledMenuButton>
-          <StyledMenuButton>
+          </div>
+          <div className="button">
             <UserName user={user} />
-          </StyledMenuButton>
+          </div>
         </div>
       )}
     </div>
@@ -67,10 +67,31 @@ const userStyle = css`
   .info {
     display: flex;
     color: white;
-    .alarm-button {
-      position: relative;
-    }
+    display: flex;
+    align-items: center;
   }
+
+  .button {
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.textWhite};
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 10px;
+
+    /* reset css */
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+    cursor: pointer;
+    outline: 0;
+  }
+  .alarm-button {
+    position: relative;
+  }
+
   .alarm-icon {
     width: 2rem;
     height: 2rem;

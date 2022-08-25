@@ -28,6 +28,7 @@ const NotiList = ({ type, body, articleId, isRead }) => {
 };
 export default NotiList;
 
+// props를 전달해 주기 위해 부득히하게 styled-component를 사용.
 const NotiListStyle = styled.div`
   display: flex;
   flex-direction: row;
