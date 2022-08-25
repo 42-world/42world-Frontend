@@ -1,23 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
+import { css } from '@emotion/react';
 
 import LoginButton from './LoginButton';
 import UserName from './UserName';
 import NotiModal from './NotiModal';
 
-import { StyledMenuButton } from '../styled';
-import { theme } from '@styles/theme';
-
 import { notiModalState } from '@root/store/notiModal';
 import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
 import { NotificationService } from '@network';
+import { theme } from '@styles/theme';
+import { StyledMenuButton } from '../styled';
 
-import { css } from '@emotion/react';
-
-const UserItems = ({ noti }) => {
+const UserItems = () => {
   const { user } = useGetUser();
+  const [noti, setNoti] = useState(null);
   const [isOpen, setIsOpen] = useRecoilState(notiModalState);
   const [notYetReadCount, setNotYetReadCount] = useState(0);
 
@@ -27,10 +26,17 @@ const UserItems = ({ noti }) => {
     setIsOpen(bool => !bool);
   };
 
-  useEffect(() => {
+  const getNoti = async () => {
+    const result = await NotificationService.getNotifications();
+    setNoti(result);
+
     if (noti.length) {
       setNotYetReadCount(noti.filter(data => !data.isRead).length);
     }
+  };
+
+  useEffect(() => {
+    getNoti();
   }, []);
   return (
     <div css={userStyle}>

@@ -1,40 +1,100 @@
+/** @jsxImportSource @emotion/react */
+
+import { useState, useRef, useEffect } from 'react';
+import { css } from '@emotion/react';
+
 import styled from 'styled-components';
 import { SITEMAP } from '@common/constants';
-import QuickLinkItem from './QuickLinkItem';
+
+import { theme } from '@styles/theme';
 import { rem } from '@styles/rem';
 
 // TODO: into hamburger menu
-function QuickLink() {
+const QuickLink = () => {
   return (
-    <QuickLinkWrapper>
-      <QuickLinkTitle>Quick Link</QuickLinkTitle>
+    <div css={quickLinkWrapperStyle}>
+      <div css={quickLinkTitleStyle}>Quick Link</div>
       <div>
         {SITEMAP.map(item => (
           <QuickLinkItem item={item} />
         ))}
       </div>
-    </QuickLinkWrapper>
+    </div>
   );
-}
+};
 
-const QuickLinkWrapper = styled.div`
+const QuickLinkItem = ({ item }) => {
+  const onClick = url => {
+    window.open(url);
+  };
+
+  return (
+    <div css={quickLinkItemStyle} key={item.name} onClick={() => onClick(item.link)}>
+      <img css={quickLinkItemImageStyle} src={item.icon} alt="" />
+      <div css={quickLinkItemInfoStyle}>
+        <h2>{item.name}</h2>
+        <span>{item.desc}</span>
+      </div>
+    </div>
+  );
+};
+
+const quickLinkWrapperStyle = css`
   display: flex;
   flex-direction: column;
 
+  min-width: 15rem;
   width: inherit;
-  box-shadow: ${props => props.theme.boxShadow};
-  background: ${props => props.theme.backgroundTheme3};
-  color: ${props => props.theme.textWhite};
+  background: ${theme.backgroundTheme3};
+  color: ${theme.textWhite};
 
-  border-radius: ${rem(10)};
-  padding: 0.7rem;
+  border-radius: 1rem;
+  padding: 1rem 0;
 `;
 
-const QuickLinkTitle = styled.div`
-  font-size: ${rem(16)};
+const quickLinkTitleStyle = css`
+  font-size: 1rem;
   text-align: center;
   font-weight: bold;
-  padding: ${rem(10)};
+  padding: 1rem;
+`;
+
+const quickLinkItemStyle = css`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  padding: 0.6rem 1rem;
+  /* transition: background 0.5s; */
+  cursor: pointer;
+
+  &:hover {
+    background: ${theme.backgroundBlue2};
+  }
+`;
+
+const quickLinkItemImageStyle = css`
+  border-radius: 0.5rem;
+  margin-right: 0.8rem;
+  width: 3.5rem;
+  background: white;
+`;
+
+const quickLinkItemInfoStyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  span {
+    font-size: 0.7rem;
+  }
 `;
 
 export default QuickLink;

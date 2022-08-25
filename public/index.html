@@ -4,13 +4,8 @@
     <meta charset="utf-8" />
     <meta property="og:title" content="42World" />
     <meta property="og:description" content="42서울 재학생과 졸업생 모두를 아우르는 커뮤니티" />
-    <meta property="og:image" content="/assets/42worldCharacterLogo.jpg" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/CharacterNoBG/nana.png"
-    />
+    <meta property="og:image" content="/assets/42worldCharacterLogo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/CharacterNoBG/nana.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created using create-react-app" />
@@ -37,10 +32,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>42World</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QBTP8VBE6B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-QBTP8VBE6B');
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" style="display:flex; flex-direction: column; min-height: 100vh;"></div>
+    <div id="root" style="display: flex; flex-direction: column; min-height: 100vh"></div>
     <div id="modal"></div>
     <!--
       This HTML file is a template.

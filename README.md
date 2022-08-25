@@ -1,6 +1,6 @@
 <div align="center">
 
-![/public/assets/42worldCharacterLogo.jpg](/public/assets/42worldCharacterLogo.jpg)
+![/public/assets/42worldCharacterLogo.png](/public/assets/42worldCharacterLogo.png)
 
 # 42WORLD
 

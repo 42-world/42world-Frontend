@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { getArticleTime, isNewArticle } from '@common/utils';
 import { theme } from '@styles/theme';
 import CommentCount from './CommentCount';
 import LikeCount from './LikeCount';
@@ -11,6 +12,7 @@ const PreviewArticleItem = ({ item }) => {
   };
   return (
     <StyledPreviewItemContainer onClick={onClick}>
+      {isNewArticle(item.createdAt) && <img alt="new" src="assets/new.svg" />}
       <StyledPreviewArticleTitle>{item.title}</StyledPreviewArticleTitle>
       <StyledIcons>
         <LikeCount count={item.likeCount} />
@@ -34,10 +36,16 @@ const StyledPreviewItemContainer = styled.div`
   &:last-child {
     border-bottom: none;
   }
+
+  img {
+    margin-right: 0.3rem;
+    transform: translateY(-0.15rem);
+  }
 `;
 
 const StyledPreviewArticleTitle = styled.div`
   font-weight: 600;
+  line-height: 105%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

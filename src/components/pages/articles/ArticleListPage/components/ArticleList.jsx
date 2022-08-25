@@ -3,23 +3,29 @@
 import { css } from '@emotion/react';
 
 import { useGetCategory } from '@root/common/hooks/api/category';
-import { Body } from '@root/components/atoms/Board';
 import ArticleListItem from './ArticleListItem';
 
 const ArticleList = ({ articles, categoryId }) => {
   const { categories } = useGetCategory();
 
   return (
-    <Body>
+    <div css={articleListWrapperStyle}>
       <ul css={articleListStyle}>
         {articles &&
           articles.map(article => (
-            <ArticleListItem article={article} categoryId={categoryId} categories={categories} />
+            <ArticleListItem key={article.id} article={article} categoryId={categoryId} categories={categories} />
           ))}
       </ul>
-    </Body>
+    </div>
   );
 };
+
+const articleListWrapperStyle = css`
+  padding: 5px 0;
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+`;
 
 const articleListStyle = css`
   padding-left: 0;

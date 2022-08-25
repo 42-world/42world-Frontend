@@ -16,7 +16,7 @@ export const useGetArticles: GetArticles = (categoryId, pageNumber = 1, enable =
   const { isError, data } = useQuery(
     [ARTICLES_URL, categoryId, pageNumber],
     () => ArticleService.getArticlesByCategoryId(categoryId, pageNumber, 10),
-    { enabled: enable },
+    { enabled: enable, cacheTime: 1 },
   );
 
   return { isError, articles: data?.data ?? [], meta: data?.meta };
@@ -38,6 +38,7 @@ export const useGetArticleById: GetArticle = (articleId, enable = true) => {
     {
       retry: false,
       enabled: enable,
+      cacheTime: 0,
     },
   );
 

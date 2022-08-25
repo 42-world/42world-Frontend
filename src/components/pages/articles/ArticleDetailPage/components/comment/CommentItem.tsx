@@ -41,8 +41,10 @@ const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => 
             삭제
           </button>
         ) : (
-          <div css={[commentLikeButtonStyle, isReactionable && likeButtonCursorStyle]}>
-            <button onClick={handleClickLikeComment}>{isLike ? <FaHeart /> : <FaRegHeart />}</button>
+          <div css={commentLikeButtonStyle}>
+            <button css={isReactionable && likeButtonCursorStyle} onClick={handleClickLikeComment}>
+              {isLike ? <FaHeart /> : <FaRegHeart />}
+            </button>
             <span>{likeCount}</span>
           </div>
         )}

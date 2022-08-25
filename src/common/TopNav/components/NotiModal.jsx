@@ -11,7 +11,6 @@ import { theme } from '@styles/theme';
 const NotiModal = ({ noti }) => {
   const modalRef = useRef(null);
   const setIsOpen = useSetRecoilState(notiModalState);
-
   const clickModalOutside = e => {
     const target = e.target;
 
@@ -19,15 +18,12 @@ const NotiModal = ({ noti }) => {
       setIsOpen(false);
     }
   };
-
   useEffect(() => {
     document.addEventListener('mousedown', clickModalOutside);
-
     return () => {
       document.removeEventListener('mousedown', clickModalOutside);
     };
   });
-
   return (
     noti && (
       <div css={modal} ref={modalRef}>

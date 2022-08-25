@@ -1,3 +1,4 @@
+import { MAIN_BACKGROUND_IMG } from '@root/common/constants';
 import styled from 'styled-components';
 
 import Seoul42 from './Seoul42';
@@ -14,7 +15,7 @@ const AuthBlock = styled.div`
   position: fixed;
   scrollbar-width: none;
 
-  background: url(${process.env.PUBLIC_URL} + '/assets/main_background.jpeg') no-repeat center center/cover;
+  background: url(${MAIN_BACKGROUND_IMG}) no-repeat center center/cover;
 
   height: 100vh;
   width: 100%;

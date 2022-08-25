@@ -7,8 +7,8 @@ export const USERS_URL = '/users';
 export const USERS_ME_URL = '/users/me';
 
 export const useGetUser = () => {
-  const { isError, data } = useQuery([USERS_ME_URL], UserService.getUser);
-  return { isError, user: data?.data ?? {} };
+  const { isError, data, refetch } = useQuery([USERS_ME_URL], UserService.getUser, { cacheTime: 10 * 1000 });
+  return { isError, user: data?.data ?? {}, refetch };
 };
 
 export const useLogout = () => {

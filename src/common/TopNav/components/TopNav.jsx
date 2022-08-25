@@ -1,33 +1,19 @@
-import { useEffect, useState } from 'react';
-import { NotificationService } from '@network';
-
 import Logo from './Logo';
-import MenuItems from './MenuItems';
-import MenuItemToggle from './MenuItemToggle';
+import CategoryItems from './CategoryItems';
+import Sidebar from './Sidebar';
 import UserItems from './UserItems';
 
 import { StyledTopNav, TopNavSpace } from '../styled';
 
 const TopNav = () => {
-  const [noti, setNoti] = useState(false);
-
-  const getNoti = async () => {
-    const result = await NotificationService.getNotifications();
-    setNoti(result);
-  };
-
-  useEffect(() => {
-    getNoti();
-  }, []);
-
   return (
     <>
       <StyledTopNav>
         <div className="top-nav">
-          <MenuItemToggle />
+          <Sidebar />
           <Logo />
-          <MenuItems />
-          <UserItems noti={noti} />
+          <CategoryItems />
+          <UserItems />
         </div>
       </StyledTopNav>
       <TopNavSpace />
