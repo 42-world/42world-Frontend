@@ -15,7 +15,7 @@ const NotiModal = ({ noti }) => {
   const clickModalOutside = e => {
     const target = e.target;
 
-    if (!modalRef.current.contains(target) && target.className.baseVal !== 'alarm-icon') {
+    if (!modalRef.current.contains(target) && target.className !== 'alarm-icon') {
       setIsOpen(false);
     }
   };
