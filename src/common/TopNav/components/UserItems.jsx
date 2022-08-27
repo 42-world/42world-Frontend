@@ -28,9 +28,8 @@ const UserItems = () => {
   const getNoti = async () => {
     const result = await NotificationService.getNotifications();
     setNoti(result);
-
-    if (noti.length) {
-      setNotYetReadCount(noti.filter(data => !data.isRead).length);
+    if (result.length) {
+      setNotYetReadCount(result.filter(data => !data.isRead).length);
     }
   };
 
