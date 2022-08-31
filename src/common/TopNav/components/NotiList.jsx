@@ -3,7 +3,7 @@
 import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { theme } from '@styles/theme';
 
