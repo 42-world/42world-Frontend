@@ -3,15 +3,25 @@
 import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
+import { Notification } from '@network/types/Notification';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { theme } from '@styles/theme';
+import { theme } from '@root/styles/theme';
 
-const NotiList = ({ type, body, articleId, isRead }) => {
+interface IProps {
+  type: string;
+  body: string;
+  articleId: number;
+  isRead: boolean;
+}
+interface styledProps {
+  bg: string;
+}
+
+const NotiList = ({ type, body, articleId, isRead }: IProps) => {
+  console.log({ type, body, articleId, isRead });
   const navi = useNavigate();
   const onClickNavigation = () => {
-    // UserItems - StyledMenuButton 컴포넌트의 Onclick 이벤트 핸들러가 중첩해서 발생하는 이슈
-    // 하위 컴포넌트에서 setIsOpen을 아예 사용하지 않기로
     navi(`article/${articleId}`);
   };
 
@@ -37,7 +47,7 @@ const NotiListStyle = styled.div`
   padding: 0.5rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  background-color: ${props => props.bg};
+  background-color: ${(props: styledProps) => props.bg};
   &:hover {
     background-color: ${theme.buttonBlue1};
   }

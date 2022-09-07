@@ -3,9 +3,8 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
 import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
-import { StyledMenuButton } from '../styled/MenuItems.styled';
 
-import { theme } from '@styles/theme';
+import { theme } from '@root/styles/theme';
 
 const CategoryItems = () => {
   const { isError, categories } = useGetCategory();

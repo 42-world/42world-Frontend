@@ -2,7 +2,19 @@ import { Link } from 'react-router-dom';
 import { StyledProfileImage, StyledUserName } from '../styled';
 import { PICTURE_DIR, PROFILE_LIST } from '@common/constants';
 
-const UserName = ({ user }) => {
+interface IProps {
+  user: {
+    character: number;
+    githubUsername: string;
+    id: number;
+    intraId: string;
+    nickname: string;
+    role: string;
+  };
+}
+
+const UserName = ({ user }: IProps) => {
+  console.log('user : ', user);
   return (
     <Link to="/mypage">
       <StyledUserName>

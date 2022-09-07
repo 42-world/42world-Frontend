@@ -6,9 +6,12 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
 import { SITEMAP } from '@common/constants';
-import { theme } from '@styles/theme';
+import { theme } from '@root/styles/theme';
 
-const SidebarQuickLinkList = ({ setIsToggled }) => {
+interface IProps {
+  setIsToggled: (isToggled: boolean) => void;
+}
+const SidebarQuickLinkList = ({ setIsToggled }: IProps) => {
   return (
     <div css={sidebarCategoryListStyle}>
       <div css={sidebarCategoryListTitleStyle}>Quick Link</div>
@@ -21,8 +24,8 @@ const SidebarQuickLinkList = ({ setIsToggled }) => {
   );
 };
 
-const QuickLinkItem = ({ item, setIsToggled }) => {
-  const onClick = url => {
+const QuickLinkItem = ({ item, setIsToggled }: any) => {
+  const onClick = (url: string) => {
     setIsToggled(false);
     window.open(url);
   };

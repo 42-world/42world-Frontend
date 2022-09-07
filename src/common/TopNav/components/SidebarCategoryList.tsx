@@ -7,9 +7,13 @@ import { Link } from 'react-router-dom';
 
 import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 
-import { theme } from '@styles/theme';
+import { theme } from '@root/styles/theme';
 
-const SidebarCategoryList = ({ setIsToggled }) => {
+interface IProps {
+  setIsToggled: (isToggled: boolean) => void;
+}
+
+const SidebarCategoryList = ({ setIsToggled }: IProps) => {
   const { isError, categories } = useGetCategory();
   return (
     <div css={sidebarCategoryListStyle}>

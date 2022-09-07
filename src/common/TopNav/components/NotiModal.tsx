@@ -3,18 +3,24 @@ import { useEffect, useRef } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 import NotiList from './NotiList';
+import { Notification } from '@network/types/Notification';
 import { notiModalState } from '@root/store/notiModal';
 
 import { css } from '@emotion/react';
-import { theme } from '@styles/theme';
+import { theme } from '@root/styles/theme';
 
-const NotiModal = ({ noti }) => {
-  const modalRef = useRef(null);
+interface IProps {
+  noti: Notification[] | null;
+}
+
+const NotiModal = ({ noti }: IProps) => {
+  const modalRef = useRef<HTMLInputElement>(null);
+
   const setIsOpen = useSetRecoilState(notiModalState);
-  const clickModalOutside = e => {
+  const clickModalOutside = (e: any) => {
     const target = e.target;
 
-    if (!modalRef.current.contains(target) && target.className !== 'alarm-icon') {
+    if (!modalRef?.current?.contains(target) && target.className !== 'alarm-icon') {
       setIsOpen(false);
     }
   };
@@ -30,7 +36,7 @@ const NotiModal = ({ noti }) => {
         <div className="main-title">알람</div>
         <div className="divide"></div>
         <div css={notiLists}>
-          {noti.map(data => {
+          {noti.map((data: Notification) => {
             return <NotiList type={data.type} body={data.content} articleId={data.articleId} isRead={data.isRead} />;
           })}
         </div>

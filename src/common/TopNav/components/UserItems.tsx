@@ -7,15 +7,16 @@ import LoginButton from './LoginButton';
 import UserName from './UserName';
 import NotiModal from './NotiModal';
 
+import { Notification } from '@network/types/Notification';
 import { notiModalState } from '@root/store/notiModal';
 import { useGetUser } from '@common/hooks/api/user';
 import { isEmpty } from '@common/utils';
-import { NotificationService } from '@network';
-import { theme } from '@styles/theme';
+import { NotificationService } from '@root/network';
+import { theme } from '@root/styles/theme';
 
 const UserItems = () => {
   const { user } = useGetUser();
-  const [noti, setNoti] = useState(null);
+  const [noti, setNoti] = useState<Notification[] | null>(null);
   const [isOpen, setIsOpen] = useRecoilState(notiModalState);
   const [notYetReadCount, setNotYetReadCount] = useState(0);
 
@@ -26,10 +27,12 @@ const UserItems = () => {
   };
 
   const getNoti = async () => {
-    const result = await NotificationService.getNotifications();
+    const result: any = await NotificationService.getNotifications();
+    // Notification[] 타입이 어째서 일치하지 않는다고 나오는가?
+
     setNoti(result);
     if (result.length) {
-      setNotYetReadCount(result.filter(data => !data.isRead).length);
+      setNotYetReadCount(result.filter((data: Notification) => !data.isRead).length);
     }
   };
 
@@ -71,8 +74,8 @@ const userStyle = css`
   }
 
   .button {
-    background-color: ${props => props.theme.secondary};
-    color: ${props => props.theme.textWhite};
+    background-color: ${theme.secondary};
+    color: ${theme.textWhite};
     font-weight: bold;
     font-size: 1rem;
     margin: 0 10px;
