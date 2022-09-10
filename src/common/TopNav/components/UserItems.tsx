@@ -42,7 +42,7 @@ const UserItems = () => {
 
   return (
     <div css={userStyle}>
-      {isEmpty(user) ? (
+      {!user ? (
         <div className="button">
           <LoginButton />
         </div>
