@@ -95,13 +95,13 @@ const userStyle = css`
   }
 
   .alarm-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
   .alarm-number {
     position: absolute;
-    top: 0.2rem;
-    left: 1.2rem;
+    top: 0rem;
+    left: 1rem;
 
     width: 1rem;
     height: 1rem;

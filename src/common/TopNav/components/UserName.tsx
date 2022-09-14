@@ -1,16 +1,10 @@
 import { Link } from 'react-router-dom';
 import { StyledProfileImage, StyledUserName } from '../styled';
 import { PICTURE_DIR, PROFILE_LIST } from '@common/constants';
+import { User } from '@network/types/User';
 
 interface Props {
-  user: {
-    character: number;
-    githubUsername: string;
-    id: number;
-    intraId: string;
-    nickname: string;
-    role: string;
-  };
+  user: User;
 }
 
 const UserName = ({ user }: Props) => {
