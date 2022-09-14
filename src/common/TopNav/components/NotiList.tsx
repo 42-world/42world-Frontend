@@ -32,13 +32,13 @@ const NotiList = ({ type, body, articleId, isRead }: Props) => {
         <BiCommentDots css={NotiItemIconStyle} />
         <text css={NotiItemContentStyle}>{body}</text>
       </NotiListStyle>
-      <div className="divide"></div>
+      <div css={divider}></div>
     </>
   );
 };
 export default NotiList;
 
-// props를 전달해 주기 위해 부득히하게 styled-component를 사용.
+// props를 전달해 주기 위해 부득이하게 styled 방식 사용.
 const NotiListStyle = styled.div`
   display: flex;
   flex-direction: row;
@@ -68,4 +68,9 @@ const NotiItemContentStyle = css`
   font-size: 0.8rem;
   font-weight: 400;
   width: 13rem;
+`;
+
+const divider = css`
+  border-bottom: 2px solid #d9d9d9;
+  width: 270px;
 `;
