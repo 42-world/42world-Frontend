@@ -12,14 +12,14 @@ import {
   comment,
 } from '@components/pages/Mypage/styles/ArticlePreview.styles';
 
-interface IProps {
+interface Props {
   id: number;
   title: string;
   likeCount: number;
   commentCount: number;
 }
 
-const ArticlePreview = ({ id, title, likeCount, commentCount }: IProps) => {
+const ArticlePreview = ({ id, title, likeCount, commentCount }: Props) => {
   const navigate = useNavigate();
 
   const handleClickArticle = () => {

@@ -9,11 +9,11 @@ import { notiModalState } from '@root/store/notiModal';
 import { css } from '@emotion/react';
 import { theme } from '@root/styles/theme';
 
-interface IProps {
+interface Props {
   noti: Notification[] | null;
 }
 
-const NotiModal = ({ noti }: IProps) => {
+const NotiModal = ({ noti }: Props) => {
   const modalRef = useRef<HTMLInputElement>(null);
 
   const setIsOpen = useSetRecoilState(notiModalState);

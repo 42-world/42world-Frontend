@@ -9,11 +9,11 @@ import { useGetCategory, CATEGORY_URL } from '@common/hooks/api/category';
 
 import { theme } from '@root/styles/theme';
 
-interface IProps {
+interface Props {
   setIsToggled: (isToggled: boolean) => void;
 }
 
-const SidebarCategoryList = ({ setIsToggled }: IProps) => {
+const SidebarCategoryList = ({ setIsToggled }: Props) => {
   const { isError, categories } = useGetCategory();
   return (
     <div css={sidebarCategoryListStyle}>

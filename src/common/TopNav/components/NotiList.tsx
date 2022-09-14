@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { theme } from '@root/styles/theme';
 
-interface IProps {
+interface Props {
   type: string;
   body: string;
   articleId: number;
@@ -18,7 +18,7 @@ interface styledProps {
   bg: string;
 }
 
-const NotiList = ({ type, body, articleId, isRead }: IProps) => {
+const NotiList = ({ type, body, articleId, isRead }: Props) => {
   console.log({ type, body, articleId, isRead });
   const navi = useNavigate();
   const onClickNavigation = () => {

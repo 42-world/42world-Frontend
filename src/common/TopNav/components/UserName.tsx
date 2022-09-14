@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { StyledProfileImage, StyledUserName } from '../styled';
 import { PICTURE_DIR, PROFILE_LIST } from '@common/constants';
 
-interface IProps {
+interface Props {
   user: {
     character: number;
     githubUsername: string;
@@ -13,8 +13,7 @@ interface IProps {
   };
 }
 
-const UserName = ({ user }: IProps) => {
-  console.log('user : ', user);
+const UserName = ({ user }: Props) => {
   return (
     <Link to="/mypage">
       <StyledUserName>
