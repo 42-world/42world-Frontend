@@ -16,18 +16,21 @@ const MobileDonation = () => {
 
   return (
     <div css={DonationBody}>
-      <div css={DonationImages}>
-        <div onClick={() => moveQRLink(donationLink[0])}>
-          <img className="front" src="/assets/donation/donation-paint1.jpg" />
-        </div>
-        <div onClick={() => moveQRLink(donationLink[1])}>
-          <img className="front" src="/assets/donation/donation-paint2.jpg" />
-        </div>
-        <div onClick={() => moveQRLink(donationLink[2])}>
-          <img className="front" src="/assets/donation/donation-paint3.jpg" />
-        </div>
+      {/* <div css={DonationImages}> */}
+      <div css={DonationImage} onClick={() => moveQRLink(donationLink[0])}>
+        <img src="/assets/donation/donation-paint1.png" />
+        <text>❤500원 후원하기❤</text>
       </div>
-      <h1>클릭하면 이동합니다! 🖱️</h1>
+      <div css={DonationImage} onClick={() => moveQRLink(donationLink[1])}>
+        <img src="/assets/donation/donation-paint2.png" />
+        <text>❤4,242원 후원하기❤</text>
+      </div>
+      <div css={DonationImage} onClick={() => moveQRLink(donationLink[2])}>
+        <img src="/assets/donation/donation-paint3.png" />
+        <text>❤10,000원 후원하기❤</text>
+      </div>
+      {/* </div> */}
+      <text>클릭하면 이동합니다! 🖱️</text>
     </div>
   );
 };
@@ -38,31 +41,28 @@ const DonationBody = css`
   display: flex;
   flex-direction: column;
 
-  h1 {
-    margin-top: 1rem;
-
-    font-size: 2rem;
+  text {
+    margin: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 `;
 
-const DonationImages = css`
+const DonationImage = css`
   display: flex;
   flex-direction: column;
 
-  div {
-    position: relative;
-    margin: 10px;
-    width: 300px;
-    height: 300px;
-  }
+  position: relative;
+  margin: 10px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  background-color: white;
+
   img {
     position: relative;
     width: 100%;
     height: 100%;
-  }
-
-  .front {
-    z-index: 100;
+    object-fit: cover;
   }
 `;

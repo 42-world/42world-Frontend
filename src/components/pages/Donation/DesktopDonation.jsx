@@ -7,50 +7,33 @@ const DesktopDonation = () => {
   return (
     <div css={DonationBody}>
       <div css={DonationImages}>
-        <div>
-          <img className="front" src="/assets/donation/donation-paint1.jpg" />
-          <img className="back" src="/assets/donation/donation1.png" />
+        <div css={DonationImage}>
+          <img className="front" src="/assets/donation/donation-paint1.png" />
+          <text>❤500원 후원하기❤</text>
         </div>
-        <div>
-          <img className="front" src="/assets/donation/donation-paint2.jpg" />
-          <img className="back" src="/assets/donation/donation2.png" />
+        <div css={DonationImage}>
+          <img className="front" src="/assets/donation/donation-paint2.png" />
+          <text>❤4,242원 후원하기❤</text>
         </div>
-        <div>
-          <img className="front" src="/assets/donation/donation-paint3.jpg" />
-          <img className="back" src="/assets/donation/donation3.png" />
+        <div css={DonationImage}>
+          <img className="front" src="/assets/donation/donation-paint3.png" />
+          <text>❤10,000원 후원하기❤</text>
         </div>
       </div>
-
-      <h1>마우스를 올려보세요! 🖱️</h1>
     </div>
   );
 };
 
 export default DesktopDonation;
 
-const RotateAnimation = keyframes`
-0% {
-  tansform: rotateY(0deg);
-}
-1% {
-  transform: rotateY(180deg);
-z-index: -100;
- 
-}
-100% {
-  transform: rotateY(180deg);
-}
-`;
-
 const DonationBody = css`
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h1 {
-    margin-top: 1rem;
-
-    font-size: 2rem;
+  text {
+    margin: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 `;
@@ -58,27 +41,23 @@ const DonationBody = css`
 const DonationImages = css`
   display: flex;
   flex-direction: row;
-  div {
-    position: relative;
-    margin: 10px;
-    width: 400px;
-    height: 400px;
-  }
+`;
+
+const DonationImage = css`
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  margin: 10px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  background-color: white;
+
   img {
     position: relative;
     width: 100%;
     height: 100%;
-  }
-
-  .front {
-    z-index: 100;
-    &:hover {
-      animation: ${RotateAnimation} 100s ease 1;
-    }
-  }
-  .back {
-    z-index: 5;
-    height: 390px;
-    top: -400px;
+    object-fit: cover;
   }
 `;
