@@ -36,18 +36,17 @@ const CommentItem = ({ comment, articleId, handleDelete }: CommentItemProps) => 
       <div css={commentWriterStyle}>
         <h3 className={comment.writer.id === article.writer.id ? 'writer' : ''}>{comment.writer.nickname}</h3>
         <h4 css={commentCreatedAtStyle}>{getCreatedAt(comment.createdAt)}</h4>
-        {comment.isSelf ? (
+        {comment.isSelf && (
           <button css={commentDeleteButtonStyle} onClick={() => handleDelete(comment.id)}>
             삭제
           </button>
-        ) : (
-          <div css={commentLikeButtonStyle}>
-            <button css={isReactionable && likeButtonCursorStyle} onClick={handleClickLikeComment}>
-              {isLike ? <FaHeart /> : <FaRegHeart />}
-            </button>
-            <span>{likeCount}</span>
-          </div>
         )}
+        <div css={commentLikeButtonStyle}>
+          <button css={isReactionable && likeButtonCursorStyle} onClick={handleClickLikeComment}>
+            {isLike ? <FaHeart /> : <FaRegHeart />}
+          </button>
+          <span>{likeCount}</span>
+        </div>
       </div>
       <div css={commentContentStyle}>{comment.content}</div>
     </div>
@@ -98,6 +97,8 @@ const commentDeleteButtonStyle = css`
   color: #999;
   transform: translateY(-1.3px);
   cursor: pointer;
+  margin-right: 0.5rem;
+}
 `;
 
 const commentLikeButtonStyle = css`
