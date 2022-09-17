@@ -3,8 +3,6 @@
 import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
-import { Notification } from '@network/types/Notification';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { theme } from '@root/styles/theme';
 
@@ -13,9 +11,6 @@ interface Props {
   body: string;
   articleId: number;
   isRead: boolean;
-}
-interface styledProps {
-  bg: string;
 }
 
 const NotiList = ({ type, body, articleId, isRead }: Props) => {
@@ -28,10 +23,10 @@ const NotiList = ({ type, body, articleId, isRead }: Props) => {
   const backgroundColor = isRead ? theme.backgroundGray2 : theme.backgroundWhite;
   return (
     <>
-      <NotiListStyle bg={backgroundColor} onClick={onClickNavigation}>
+      <div css={NotiListStyle(backgroundColor)} onClick={onClickNavigation}>
         <BiCommentDots css={NotiItemIconStyle} />
         <text css={NotiItemContentStyle}>{body}</text>
-      </NotiListStyle>
+      </div>
       <div css={divider}></div>
     </>
   );
@@ -39,7 +34,7 @@ const NotiList = ({ type, body, articleId, isRead }: Props) => {
 export default NotiList;
 
 // props를 전달해 주기 위해 부득이하게 styled 방식 사용.
-const NotiListStyle = styled.div`
+const NotiListStyle = (backgroundColor: string) => css`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -47,7 +42,7 @@ const NotiListStyle = styled.div`
   padding: 0.5rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  background-color: ${(props: styledProps) => props.bg};
+  background-color: ${backgroundColor};
   &:hover {
     background-color: ${theme.buttonBlue1};
   }
