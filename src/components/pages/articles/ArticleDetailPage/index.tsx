@@ -10,6 +10,7 @@ import ArticleContainer from './components/article/ArticleContainer';
 import CommentContainer from './components/comment/CommentContainer';
 import Board from '../common/Board';
 import { block } from '../common/styles';
+import ReactHelmet from '@root/common/ReactHelmet';
 
 const ArticleDetailPage = () => {
   const { id = '0' } = useParams();
@@ -28,6 +29,7 @@ const ArticleDetailPage = () => {
       <div css={[block, articleListStyle]}>
         {article && (
           <>
+            <ReactHelmet keywords={article.title} title={article.title} description={article.content} />
             <div css={categoryBlock}>
               <ArticleContainer article={article} />
             </div>
