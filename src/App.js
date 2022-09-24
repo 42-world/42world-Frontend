@@ -1,5 +1,6 @@
 import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { HelmetProvider } from 'react-helmet-async';
 
 import './styles/reset.css';
 import Router from './Router';
@@ -11,9 +12,11 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <Router />
-      </RecoilRoot>
+      <HelmetProvider>
+        <RecoilRoot>
+          <Router />
+        </RecoilRoot>
+      </HelmetProvider>
     </QueryClientProvider>
   );
 }
