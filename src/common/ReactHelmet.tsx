@@ -16,7 +16,7 @@ const ReactHelmet: React.FC<Props> = ({ keywords, description, title, favicon })
         <meta name="keywords" content={keywords} />
         <title>{title}</title>
         <meta property="og:title" content={title} />
-        <meta property="og:image" content={favicon} />
+        {favicon && <meta property="og:image" content={favicon} />}
         <meta property="og:site_name" content="42world" />
         <meta property="og:description" content={description} />
       </Helmet>
