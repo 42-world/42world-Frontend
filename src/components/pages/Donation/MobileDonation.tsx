@@ -9,7 +9,7 @@ const MobileDonation = () => {
     'supertoss://send?amount=10000&bank=%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%B1%85%ED%81%AC&accountNo=3333210942896&origin=qr    ',
   ];
 
-  const moveQRLink = link => {
+  const moveQRLink = (link: string) => {
     window.open(link);
   };
 
