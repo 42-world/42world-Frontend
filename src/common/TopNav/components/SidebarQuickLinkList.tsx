@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 import { SITEMAP } from '@common/constants';
 import { theme } from '@root/styles/theme';
 
-interface IProps {
+interface Props {
   setIsToggled: (isToggled: boolean) => void;
 }
-const SidebarQuickLinkList = ({ setIsToggled }: IProps) => {
+const SidebarQuickLinkList = ({ setIsToggled }: Props) => {
   return (
     <div css={sidebarCategoryListStyle}>
       <div css={sidebarCategoryListTitleStyle}>Quick Link</div>

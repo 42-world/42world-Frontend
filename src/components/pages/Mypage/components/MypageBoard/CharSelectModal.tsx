@@ -9,12 +9,12 @@ import { useCharSelectModal } from '@components/pages/Mypage/hooks';
 import MypageButton from '@components/pages/Mypage/components/MypageBoard/MypageButton';
 import CharSelectModalButtons from './CharSelectModalButtons';
 
-interface IProps {
+interface Props {
   userInfo: User;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const CharSelectModal = ({ userInfo, setIsModalOpen }: IProps) => {
+const CharSelectModal = ({ userInfo, setIsModalOpen }: Props) => {
   const { handleClickChar, handleClickClose, modalRef } = useCharSelectModal(setIsModalOpen);
 
   return (

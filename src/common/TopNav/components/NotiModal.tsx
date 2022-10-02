@@ -9,11 +9,11 @@ import { notiModalState } from '@root/store/notiModal';
 import { css } from '@emotion/react';
 import { theme } from '@root/styles/theme';
 
-interface IProps {
+interface Props {
   noti: Notification[] | null;
 }
 
-const NotiModal = ({ noti }: IProps) => {
+const NotiModal = ({ noti }: Props) => {
   const modalRef = useRef<HTMLInputElement>(null);
 
   const setIsOpen = useSetRecoilState(notiModalState);
@@ -33,8 +33,8 @@ const NotiModal = ({ noti }: IProps) => {
   return (
     noti && (
       <div css={modal} ref={modalRef}>
-        <div className="main-title">알람</div>
-        <div className="divide"></div>
+        <div css={mainTitle}>알람</div>
+        <div css={divider}></div>
         <div css={notiLists}>
           {noti.map((data: Notification) => {
             return <NotiList type={data.type} body={data.content} articleId={data.articleId} isRead={data.isRead} />;
@@ -76,19 +76,21 @@ const modal = css`
   padding: 10px;
 
   box-shadow: ${theme.boxShadow};
-  .divide {
-    border-bottom: 2px solid #d9d9d9;
-    width: 270px;
-  }
-  .main-title {
-    font-weight: bold;
-    background: white;
-    padding: 10px;
-  }
 
   @media screen and (max-width: 880px) {
     display: none;
   }
+`;
+
+const mainTitle = css`
+  font-weight: bold;
+  background: white;
+  padding: 10px;
+`;
+
+const divider = css`
+  border-bottom: 2px solid #d9d9d9;
+  width: 270px;
 `;
 
 const notiLists = css`

@@ -41,77 +41,78 @@ const UserItems = () => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <div css={userStyle}>
       {!user ? (
         <div className="button">
+=======
+    <>
+      {isEmpty(user) ? (
+        <div css={button}>
+>>>>>>> 786f1c2f2abaa1f923f7bd74172abb006a88ba51
           <LoginButton />
         </div>
       ) : (
-        <div className="info">
-          <div className="alarm-button button" onClick={onClickIcon}>
-            <div>
-              <img className="alarm-icon" src="/assets/bell.svg"></img>
-              <div className="alarm-number">{notYetReadCount}</div>
-            </div>
+        <div css={userInfoStyle}>
+          <div css={alarmButton} onClick={onClickIcon}>
+            <img css={alarmIcon} src="/assets/bell.svg"></img>
+            <div css={alarmNumber}>{notYetReadCount}</div>
             {isOpen && <NotiModal noti={noti} />}
           </div>
-          <div className="button">
+          <div css={button}>
             <UserName user={user} />
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 export default UserItems;
 
-const userStyle = css`
-  .info {
-    display: flex;
-    color: white;
-    display: flex;
-    align-items: center;
-  }
+const userInfoStyle = css`
+  display: flex;
+  color: white;
+  display: flex;
+  align-items: center;
+`;
 
-  .button {
-    background-color: ${theme.secondary};
-    color: ${theme.textWhite};
-    font-weight: bold;
-    font-size: 1rem;
-    margin: 0 10px;
+const button = css`
+  background-color: ${theme.secondary};
+  color: ${theme.textWhite};
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0 10px;
+  cursor: pointer;
+`;
 
-    /* reset css */
-    background: inherit;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
-    overflow: visible;
-    cursor: pointer;
-    outline: 0;
-  }
-  .alarm-button {
-    position: relative;
-  }
+const alarmButton = css`
+  position: relative;
+  background-color: ${theme.secondary};
+  color: ${theme.textWhite};
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0 10px;
+  cursor: pointer;
+`;
 
-  .alarm-icon {
-    width: 2rem;
-    height: 2rem;
-  }
-  .alarm-number {
-    position: absolute;
-    top: 0.2rem;
-    left: 1.2rem;
+const alarmIcon = css`
+  width: 1.8rem;
+  height: 1.8rem;
+`;
 
-    width: 1rem;
-    height: 1rem;
-    line-height: 1rem;
+const alarmNumber = css`
+  position: absolute;
+  top: 0rem;
+  left: 1rem;
 
-    text-align: center;
-    border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
 
-    font-size: 0.6rem;
+  text-align: center;
+  border-radius: 50%;
 
-    background-color: ${theme.buttonRed1};
-  }
+  font-size: 0.6rem;
+
+  background-color: ${theme.buttonRed1};
 `;

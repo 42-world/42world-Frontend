@@ -3,22 +3,17 @@
 import { BiCommentDots } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
-import { Notification } from '@network/types/Notification';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { theme } from '@root/styles/theme';
 
-interface IProps {
+interface Props {
   type: string;
   body: string;
   articleId: number;
   isRead: boolean;
 }
-interface styledProps {
-  bg: string;
-}
 
-const NotiList = ({ type, body, articleId, isRead }: IProps) => {
+const NotiList = ({ type, body, articleId, isRead }: Props) => {
   console.log({ type, body, articleId, isRead });
   const navi = useNavigate();
   const onClickNavigation = () => {
@@ -28,18 +23,18 @@ const NotiList = ({ type, body, articleId, isRead }: IProps) => {
   const backgroundColor = isRead ? theme.backgroundGray2 : theme.backgroundWhite;
   return (
     <>
-      <NotiListStyle bg={backgroundColor} onClick={onClickNavigation}>
+      <div css={NotiListStyle(backgroundColor)} onClick={onClickNavigation}>
         <BiCommentDots css={NotiItemIconStyle} />
         <text css={NotiItemContentStyle}>{body}</text>
-      </NotiListStyle>
-      <div className="divide"></div>
+      </div>
+      <div css={divider}></div>
     </>
   );
 };
 export default NotiList;
 
-// props를 전달해 주기 위해 부득히하게 styled-component를 사용.
-const NotiListStyle = styled.div`
+// props를 전달해 주기 위해 부득이하게 styled 방식 사용.
+const NotiListStyle = (backgroundColor: string) => css`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -47,7 +42,7 @@ const NotiListStyle = styled.div`
   padding: 0.5rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  background-color: ${(props: styledProps) => props.bg};
+  background-color: ${backgroundColor};
   &:hover {
     background-color: ${theme.buttonBlue1};
   }
@@ -68,4 +63,9 @@ const NotiItemContentStyle = css`
   font-size: 0.8rem;
   font-weight: 400;
   width: 13rem;
+`;
+
+const divider = css`
+  border-bottom: 2px solid #d9d9d9;
+  width: 270px;
 `;

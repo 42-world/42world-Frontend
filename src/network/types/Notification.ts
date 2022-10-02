@@ -1,6 +1,6 @@
 export type Notification = {
   id: number;
-  type: string;
+  type: 'NEW_COMMENT' | 'FROM_ADMIN';
   content: string;
   isRead: boolean;
   articleId: number;
