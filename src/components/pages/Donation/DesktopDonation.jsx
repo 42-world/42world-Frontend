@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { css, keyframes } from '@emotion/react';
-import { theme } from '@styles/theme';
+import { css } from '@emotion/react';
 
 const DesktopDonation = () => {
   return (

@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { css, keyframes } from '@emotion/react';
-import { theme } from '@styles/theme';
+import { css } from '@emotion/react';
 
 const MobileDonation = () => {
   const donationLink = [
@@ -16,7 +15,6 @@ const MobileDonation = () => {
 
   return (
     <div css={DonationBody}>
-      {/* <div css={DonationImages}> */}
       <div css={DonationImage} onClick={() => moveQRLink(donationLink[0])}>
         <img src="/assets/donation/donation-paint1.png" />
         <text>❤500원 후원하기❤</text>
@@ -29,7 +27,6 @@ const MobileDonation = () => {
         <img src="/assets/donation/donation-paint3.png" />
         <text>❤10,000원 후원하기❤</text>
       </div>
-      {/* </div> */}
       <text>클릭하면 이동합니다! 🖱️</text>
     </div>
   );
@@ -45,6 +42,7 @@ const DonationBody = css`
     margin: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
+    text-align: center;
   }
 `;
 
