@@ -4,9 +4,9 @@ const useClickOutside = (onClicKOutside: () => void) => {
   const ref: RefObject<HTMLDivElement> = createRef();
 
   useEffect(() => {
-    const handleClickOutside = () => {
-      if (!event?.target) return;
-      if (ref.current && !ref.current.contains(event.target as HTMLDivElement)) onClicKOutside();
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!e?.target) return;
+      if (ref.current && !ref.current.contains(e.target as HTMLDivElement)) onClicKOutside();
     };
 
     document.addEventListener('mousedown', handleClickOutside);
