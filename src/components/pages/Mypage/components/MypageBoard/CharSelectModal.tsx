@@ -1,13 +1,20 @@
+/** @jsxImportSource @emotion/react */
+
 import { Dispatch, SetStateAction } from 'react';
 
 import { ModalPortal } from '@components/pages/Mypage/utils';
-import { StyledCharSelectModal } from '@components/pages/Mypage/styles';
 import { PROFILE_LIST } from '@common/constants';
 import { User } from '@network/types/User';
 import { useCharSelectModal } from '@components/pages/Mypage/hooks';
-
 import MypageButton from '@components/pages/Mypage/components/MypageBoard/MypageButton';
 import CharSelectModalButtons from './CharSelectModalButtons';
+
+import {
+  charSelectInnerContainer,
+  charSelectList,
+  charSelectModalContainer,
+  charSelectModalWrapper,
+} from '@components/pages/Mypage/styles/CharSelectModal.styles';
 
 interface IProps {
   userInfo: User;
@@ -19,12 +26,12 @@ const CharSelectModal = ({ userInfo, setIsModalOpen }: IProps) => {
 
   return (
     <ModalPortal>
-      <StyledCharSelectModal>
-        <div className="char-select-modal-container" ref={modalRef}>
+      <div css={charSelectModalWrapper}>
+        <div css={charSelectModalContainer} ref={modalRef}>
           <h2>캐릭터 선택</h2>
           <hr />
-          <div className="char-select-inner">
-            <ul className="char-list">
+          <div css={charSelectInnerContainer}>
+            <ul css={charSelectList}>
               {PROFILE_LIST.map((character, index) => (
                 <CharSelectModalButtons
                   userInfo={userInfo}
@@ -40,7 +47,7 @@ const CharSelectModal = ({ userInfo, setIsModalOpen }: IProps) => {
             </MypageButton>
           </div>
         </div>
-      </StyledCharSelectModal>
+      </div>
     </ModalPortal>
   );
 };

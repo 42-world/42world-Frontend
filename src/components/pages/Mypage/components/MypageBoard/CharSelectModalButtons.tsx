@@ -1,4 +1,7 @@
+/** @jsxImportSource @emotion/react */
+
 import { User } from '@network/types/User';
+import { charSelectButton, charSelectImage } from '@components/pages/Mypage/styles/CharSelectModalButtons.styles';
 
 interface Props {
   userInfo: User;
@@ -10,9 +13,9 @@ interface Props {
 const CharSelectModalButtons = ({ userInfo, character, index, onClick }: Props) => {
   return (
     <li key={index}>
-      <button onClick={async () => await onClick(index)}>
+      <button css={charSelectButton} onClick={async () => await onClick(index)}>
         <img
-          className={index === userInfo.character ? 'selected' : ''}
+          css={charSelectImage(index === userInfo.character)}
           alt="profile"
           src={'/assets/CharacterWhiteBG/' + character}
         />
