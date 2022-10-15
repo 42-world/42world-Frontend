@@ -1,6 +1,7 @@
-import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
+/** @jsxImportSource @emotion/react */
 
-import { StyledMyArticleBoard } from '@components/pages/Mypage/styles';
+import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
+import { myArticleBoardTitle, myArticleBoardWrapper } from '@components/pages/Mypage/styles/MyArticleBoard.styles';
 
 interface IProps {
   articleType: number;
@@ -10,15 +11,13 @@ const MyArticleBoard = ({ articleType }: IProps) => {
   const { articleInfo, handleClickGoBack, innerComponent } = useMyArticleBoard(articleType);
 
   return (
-    <StyledMyArticleBoard>
-      <div className="title">
+    <div css={myArticleBoardWrapper}>
+      <div css={myArticleBoardTitle}>
         <h1>{articleInfo.title}</h1>
-        <button className="go-back" onClick={handleClickGoBack}>
-          {'< 돌아가기'}
-        </button>
+        <button onClick={handleClickGoBack}>{'< 돌아가기'}</button>
       </div>
       {innerComponent}
-    </StyledMyArticleBoard>
+    </div>
   );
 };
 
