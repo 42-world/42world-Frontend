@@ -4,27 +4,30 @@ import styled from 'styled-components';
 import { css } from '@emotion/react';
 
 import CategoryList from '@common/CategoryList';
-import { Container } from '@components/atoms/global';
 import { block } from './styles';
-import { theme } from '@styles/theme';
 import Advertisement from './Advertisement';
+import { theme } from '@styles/theme';
 
 const Board = ({ categoryId, children }) => {
   return (
-    <BoardContainer>
+    <div css={boardContainer}>
       <div css={[block, categoryBlock]}>
         <CategoryList categoryId={categoryId} />
       </div>
       {children}
       <Advertisement />
-    </BoardContainer>
+    </div>
   );
 };
 
-const BoardContainer = styled(Container)`
+const boardContainer = css`
   display: flex;
-  flex-direction: row;
-  margin-top: 1.5rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  & > main {
+    width: 100%;
+  }
 
   ${theme.mobileSize} {
     flex-direction: column;
