@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
 import { StyledProfileImage, StyledUserName } from '../styled';
 import { PICTURE_DIR, PROFILE_LIST } from '@common/constants';
+import { User } from '@network/types/User';
 
-const UserName = ({ user }) => {
+interface Props {
+  user: User;
+}
+
+const UserName = ({ user }: Props) => {
   return (
     <Link to="/mypage">
       <StyledUserName>
