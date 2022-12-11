@@ -2,11 +2,11 @@ import { useMyArticleBoard } from '@components/pages/Mypage/hooks';
 
 import { StyledMyArticleBoard } from '@components/pages/Mypage/styles';
 
-interface IProps {
+interface Props {
   articleType: number;
 }
 
-const MyArticleBoard = ({ articleType }: IProps) => {
+const MyArticleBoard = ({ articleType }: Props) => {
   const { articleInfo, handleClickGoBack, innerComponent } = useMyArticleBoard(articleType);
 
   return (
