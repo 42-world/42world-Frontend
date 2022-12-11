@@ -11,7 +11,7 @@ type GetCommentsByArticleId = (
   order?: 'ASC' | 'DESC',
 ) => Promise<Pagination<Comment>>;
 
-const getCommentsByArticleId: GetCommentsByArticleId = async (articleId, page, take, order = 'DESC') => {
+const getCommentsByArticleId: GetCommentsByArticleId = async (articleId, page, take, order = 'ASC') => {
   const res = await apiClient.get(COMMENTS_URL(articleId), {
     params: {
       order,
