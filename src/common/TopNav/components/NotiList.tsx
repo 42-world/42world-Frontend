@@ -13,8 +13,7 @@ interface Props {
   isRead: boolean;
 }
 
-const NotiList = ({ type, body, articleId, isRead }: Props) => {
-  console.log({ type, body, articleId, isRead });
+const NotiList = ({ body, articleId, isRead }: Props) => {
   const navi = useNavigate();
   const onClickNavigation = () => {
     navi(`article/${articleId}`);
