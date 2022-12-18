@@ -70,16 +70,12 @@ const modal = css`
   max-width: 300px;
   max-height: 400px;
   margin-top: 20px;
-  right: -10px;
+  right: -100%;
   border: 2px solid #979797;
   border-radius: 0.5rem;
   padding: 10px;
 
   box-shadow: ${theme.boxShadow};
-
-  @media screen and (max-width: 880px) {
-    display: none;
-  }
 `;
 
 const mainTitle = css`
