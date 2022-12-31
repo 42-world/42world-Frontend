@@ -1,7 +1,11 @@
+/** @jsxImportSource @emotion/react */
+
 import MyArticlePreview from '@components/pages/Mypage/components/MypageBoard/MyArticlePreview';
 import MypageProfile from '@components/pages/Mypage/components/MypageBoard/MypageProfile';
 import { ARTICLE_TYPE } from '@components/pages/Mypage/utils';
 import { useMypageBoard } from '@components/pages/Mypage/hooks';
+
+import { mypageArticle } from '@components/pages/Mypage/styles/MypageBoard.styles';
 
 const MypageBoard = () => {
   const { articles, comments, likeArticles } = useMypageBoard();
@@ -9,7 +13,7 @@ const MypageBoard = () => {
   return (
     <>
       <MypageProfile />
-      <div className="mypage-article">
+      <div css={mypageArticle}>
         <MyArticlePreview
           title="내 게시글"
           type={ARTICLE_TYPE.ARTICLE}
