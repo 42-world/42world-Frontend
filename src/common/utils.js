@@ -12,7 +12,7 @@ export const isEmpty = value => {
 export const getArticleTime = time =>
   dayjs(time).isSame(dayjs(), 'day') ? dayjs(time).format('HH:mm') : dayjs(time).format('MM/DD');
 
-export const isNewArticle = time => dayjs().isBefore(dayjs(time).add(12, 'hour'));
+export const isNewArticle = time => dayjs().isBefore(dayjs(time).add(48, 'hour'));
 
 export const numberRange = (start, end) => {
   return new Array(end + 1 - start).fill().map((d, i) => i + start);

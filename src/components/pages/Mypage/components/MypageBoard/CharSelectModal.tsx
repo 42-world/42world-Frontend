@@ -16,12 +16,12 @@ import {
   charSelectModalWrapper,
 } from '@components/pages/Mypage/styles/CharSelectModal.styles';
 
-interface IProps {
+interface Props {
   userInfo: User;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const CharSelectModal = ({ userInfo, setIsModalOpen }: IProps) => {
+const CharSelectModal = ({ userInfo, setIsModalOpen }: Props) => {
   const { handleClickChar, handleClickClose, modalRef } = useCharSelectModal(setIsModalOpen);
 
   return (
