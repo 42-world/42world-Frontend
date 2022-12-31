@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
-import styled from 'styled-components';
 import { css } from '@emotion/react';
 
 import CategoryList from '@common/CategoryList';
-import { block } from './styles';
 import Advertisement from './Advertisement';
-import { theme } from '@styles/theme';
+
+import { block } from './styles';
+import { theme } from '@root/styles/theme';
 
 const Board = ({ categoryId, children }) => {
   return (
@@ -25,7 +25,8 @@ const boardContainer = css`
   margin: 0 auto;
   width: 100%;
   max-width: 1100px;
-  & > main {
+  flex-direction: row;
+  margin-top: 1.5rem;
     width: 100%;
   }
 
