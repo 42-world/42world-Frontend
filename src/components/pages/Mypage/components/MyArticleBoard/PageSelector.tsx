@@ -3,11 +3,11 @@
 import { usePageSelector } from '@components/pages/Mypage/hooks';
 import { pageSelectorButton, pageSelectorWrapper } from '@components/pages/Mypage/styles/PageSelector.styles';
 
-interface IProps {
+interface Props {
   maxPage: number;
 }
 
-const PageSelector = ({ maxPage }: IProps) => {
+const PageSelector = ({ maxPage }: Props) => {
   const { pageList, curPage, handleClickPrev, handleClickNext, handleClickPageNum } = usePageSelector(maxPage);
 
   return (
