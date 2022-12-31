@@ -17,7 +17,7 @@ const Login = () => {
           <TextContent>42WORLD 커뮤니티는</TextContent>
           <TextContent>
             42서울인들과
-            <HighlightText>취업자/창업자/알럼나이/카뎃을</HighlightText>
+            <HighlightText> 취업자/창업자/알럼나이/카뎃을</HighlightText>
           </TextContent>
           <TextContent>아우르는 통합 커뮤니티 채널입니다.</TextContent>
           <TextContent>여러분의 피드백을 받아</TextContent>
