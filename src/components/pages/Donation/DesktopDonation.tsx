@@ -7,15 +7,15 @@ const DesktopDonation = () => {
     <div css={DonationBody}>
       <div css={DonationImages}>
         <div css={DonationImage}>
-          <img className="front" src="/assets/donation/donation-paint1.png" />
+          <img className="front" src="/assets/donation/donation-paint1-cut.png" />
           <text>❤500원 후원하기❤</text>
         </div>
         <div css={DonationImage}>
-          <img className="front" src="/assets/donation/donation-paint2.png" />
+          <img className="front" src="/assets/donation/donation-paint2-cut.png" />
           <text>❤4,242원 후원하기❤</text>
         </div>
         <div css={DonationImage}>
-          <img className="front" src="/assets/donation/donation-paint3.png" />
+          <img className="front" src="/assets/donation/donation-paint3-cut.png" />
           <text>❤10,000원 후원하기❤</text>
         </div>
       </div>
@@ -48,8 +48,8 @@ const DonationImage = css`
 
   position: relative;
   margin: 10px;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   text-align: center;
   background-color: white;
 

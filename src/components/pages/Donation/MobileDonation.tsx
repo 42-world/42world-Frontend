@@ -16,15 +16,15 @@ const MobileDonation = () => {
   return (
     <div css={DonationBody}>
       <div css={DonationImage} onClick={() => moveQRLink(donationLink[0])}>
-        <img src="/assets/donation/donation-paint1.png" />
+        <img src="/assets/donation/donation-paint1-cut.png" />
         <text>❤500원 후원하기❤</text>
       </div>
       <div css={DonationImage} onClick={() => moveQRLink(donationLink[1])}>
-        <img src="/assets/donation/donation-paint2.png" />
+        <img src="/assets/donation/donation-paint2-cut.png" />
         <text>❤4,242원 후원하기❤</text>
       </div>
       <div css={DonationImage} onClick={() => moveQRLink(donationLink[2])}>
-        <img src="/assets/donation/donation-paint3.png" />
+        <img src="/assets/donation/donation-paint3-cut.png" />
         <text>❤10,000원 후원하기❤</text>
       </div>
       <text>클릭하면 이동합니다! 🖱️</text>
