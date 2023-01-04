@@ -85,12 +85,12 @@ const quickLinkItemInfoStyle = css`
   align-items: flex-start;
 
   h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
   }
   span {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 `;
 
