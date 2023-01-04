@@ -1,13 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
-import { useState, useRef, useEffect } from 'react';
 import { css } from '@emotion/react';
 
-import styled from 'styled-components';
 import { SITEMAP } from '@common/constants';
 
 import { theme } from '@styles/theme';
-import { rem } from '@styles/rem';
 
 // TODO: into hamburger menu
 const QuickLink = () => {
