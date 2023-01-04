@@ -12,8 +12,8 @@ const useGetMyArticles = () => {
     refetch,
   } = useQuery(['myArticles', curPage], () => UserService.getMyArticles(curPage), {
     refetchOnWindowFocus: true,
-    cacheTime: 1000 * 10 * 60,
-    staleTime: 1000 * 10 * 60,
+    cacheTime: 0,
+    staleTime: 0,
   }); // TODO: 게시글 미리보기에서 게시글 모음 페이지로 넘어갈 때 refetch 필요성?
 
   return { isError, articles: data.data, maxPage: data.meta.pageCount, refetch };
