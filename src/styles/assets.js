@@ -4,9 +4,9 @@ export const assets = {
     '80000co': '/assets/sidebar/80000co.png',
     humansof42: '/assets/sidebar/humansof42.png',
     giggle: '/assets/sidebar/giggle.png',
-    '42doproject': '/assets/sidebar/42doproject.png',
-    '42swim': '/assets/sidebar/42swim.png',
-    '42psychic': '/assets/sidebar/42psychic.png',
+    '42gg': '/assets/sidebar/42gg.png',
+    '42jiphyeonjeon': '/assets/sidebar/42jiphyeonjeon.png',
+    cabi: '/assets/sidebar/cabi.png',
   },
   footer: {
     github: '/assets/Footer/github.svg',
