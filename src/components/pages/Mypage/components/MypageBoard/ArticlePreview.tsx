@@ -30,14 +30,14 @@ const ArticlePreview = ({ id, title, likeCount, commentCount }: Props) => {
     <div css={articlePreviewWrapper} onClick={handleClickArticle}>
       <h3 css={articleHeaderWrapper}>{title}</h3>
       <div css={reactionWrapper}>
-        <span css={like}>
+        <div css={like(likeCount)}>
           <AiOutlineHeart />
           <span>{likeCount}</span>
-        </span>
-        <span css={comment}>
+        </div>
+        <div css={comment(commentCount)}>
           <BiCommentDots />
           <span>{commentCount}</span>
-        </span>
+        </div>
       </div>
     </div>
   );

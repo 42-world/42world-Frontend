@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserService } from '@network';
+import { UserService } from '@root/network';
 
 import { PROFILE_LIST } from '@root/common/constants';
 import { useGetUser, useLogout } from '@common/hooks/api/user';
 
 const useProfileSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user: userInfo, refetch } = useGetUser();
+  const { user: userInfo } = useGetUser();
   const navigate = useNavigate();
   const logout = useLogout();
 

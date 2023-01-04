@@ -1,30 +1,34 @@
 /** @jsxImportSource @emotion/react */
 
-import styled from 'styled-components';
 import { css } from '@emotion/react';
 
 import CategoryList from '@common/CategoryList';
-import { Container } from '@components/atoms/global';
-import { block } from './styles';
-import { theme } from '@styles/theme';
 import Advertisement from './Advertisement';
+
+import { block } from './styles';
+import { theme } from '@root/styles/theme';
 
 const Board = ({ categoryId, children }) => {
   return (
-    <BoardContainer>
+    <div css={boardContainer}>
       <div css={[block, categoryBlock]}>
         <CategoryList categoryId={categoryId} />
       </div>
       {children}
       <Advertisement />
-    </BoardContainer>
+    </div>
   );
 };
 
-const BoardContainer = styled(Container)`
+const boardContainer = css`
   display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
   flex-direction: row;
   margin-top: 1.5rem;
+    width: 100%;
+  }
 
   ${theme.mobileSize} {
     flex-direction: column;
