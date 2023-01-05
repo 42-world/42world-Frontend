@@ -25,8 +25,9 @@ const boardContainer = css`
   margin: 0 auto;
   width: 100%;
   max-width: 1100px;
-  flex-direction: row;
-  margin-top: 1.5rem;
+  & > main {
+    flex-direction: row;
+    margin-top: 1.5rem;
     width: 100%;
   }
 
